@@ -55,6 +55,29 @@ const LongTermCowork = () => {
                        placeholder={'تعداد روز :'}/>
             </div>
             <DatePeaker/>
+            <div className={'flex w-full justify-end mt-[56px]'}>
+                <div dir={'rtl'}><span className="text-orange-500 text-sm font-bold">توجه : </span><span
+                    className="text-orange-500 text-sm font-medium">در تاریخ های غیر فعال به دلیل تکمیل ظرفیت ، امکان رزرو وجود ندارد.</span>
+                </div>
+            </div>
+            <div className={'flex w-full justify-end mt-[13px]'}>
+                <div className="text-center"><span className="text-white text-sm font-bold ">توجه</span><span
+                    className="text-white text-sm font-extrabold "> :</span><span
+                    className="text-white text-sm font-bold "> </span><span
+                    className="text-white text-sm font-normal ">قوانین و شرایط </span><span
+                    className="text-white text-sm font-normal ">لغو رزرو</span><span
+                    className="text-white text-sm font-normal "> را از</span><span
+                    className="text-orange-500 text-sm font-normal "> </span><span
+                    className="text-orange-500 text-sm font-bold ">اینجا</span><span
+                    className="text-orange-500 text-sm font-normal "> </span><span
+                    className="text-white text-sm font-normal ">مشاهده کنید</span></div>
+            </div>
+            <div className={'flex w-full justify-end mt-[12px]'}>
+                <div><span className="text-white text-sm font-bold ">مبلغ قابل پرداخت : </span><span
+                    className="text-white text-base font-bold fo">450</span><span
+                    className="text-white text-sm font-bold "> </span><span
+                    className="text-white text-sm font-normal ">تومان</span></div>
+            </div>
             <button
                 className={'flex justify-center items-center text-white text-lg font-medium bg-[#026AE1] w-[408px] h-12 rounded-xl mt-[40px]'}>
                 پرداخت
