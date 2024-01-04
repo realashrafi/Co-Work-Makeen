@@ -10,9 +10,9 @@ import ComponentsRenderByOrders from "@/app/buy/subscribtions/components/Compone
 import HeaderBuy from "@/app/buy/components/HeaderBuy";
 const Page = () => {
     const [dailyCowork, setDailyCowork] = useState(false)
-    const [longTermCowork, setLongTermCowork] = useState(true)
+    const [longTermCowork, setLongTermCowork] = useState(false)
     const [dailySession, setDailySession] = useState(false)
-    const [hourlySession, setHourlySession] = useState(false)
+    const [hourlySession, setHourlySession] = useState(true)
     const orders:any={dailyCowork,longTermCowork,dailySession,hourlySession}
     return (
         <div className={'bg-[#0A2E65] pb-[64px]'}>
