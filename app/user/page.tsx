@@ -1,56 +1,33 @@
+'use client'
 import Interface from "@/app/user/components/Interface";
+import axios from "axios";
+import {useEffect, useState} from "react";
+import {redirect} from "next/navigation";
 
 
-const dataOfFav = [
-    {
-        id: 1,
-        title: 'علوم انسانی',
-    }, {
-        id: 2,
-        title: 'هوش مصنوعی',
-    }, {
-        id: 3,
-        title: 'هنر',
-    }, {
-        id: 4,
-        title: 'برنامه نویسی',
-    }, {
-        id: 5,
-        title: 'آمار و داده کاوی',
-    }, {
-        id: 6,
-        title: 'مهندسی نرم افزار',
-    }, {
-        id: 7,
-        title: 'رباتیک',
-    }, {
-        id: 8,
-        title: 'مدیریت',
-    },
-]
-
-const User = (e: any) => {
-
-
-    //     e.preventDefault()
-    //     const token: any = localStorage.getItem('token');
-    //     const config = {
-    //         headers: {
-    //             Authorization: `Bearer ${token}`,
-    //             Accept: 'application/json',
-    //         }
-    //     }
-    //      axios.get('https://www.cowork.v1r.ir/api/v1/user/me', config)
-    //         .then((res) =>setResData(res.data))
-    //         .catch((err) => console.error(err));
-    //
-    // console.log(resData)
-
-
+const User = () => {
+    const [data, setData] = useState<any>()
+    // @ts-ignore
+    useEffect((e:any) => {
+            const token = localStorage.getItem('token');
+            e?.preventDefault()
+            axios.get('https://www.cowork.v1r.ir/api/v1/user/me', {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    Accept: 'application/json',
+                }
+            })
+                // .then((res)=> {
+                //     res.status !== 200 ? redirect('/') : ''
+                // })
+                .then((res) => setData(res.data))
+                .catch((err) => console.error(err))
+    }, []);
     return (
-       <div>
-           <Interface/>
-       </div>
+        <div>
+            {}
+            <Interface data={data}/>
+        </div>
     );
 };
 

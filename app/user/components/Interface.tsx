@@ -6,8 +6,9 @@ import Link from "next/link";
 // @ts-ignore
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-    import userImage from './data/userImage.png'
+import userImage from './data/userImage.png'
 import Image from "next/image";
+
 
 const dataOfFav = [
     {
@@ -37,17 +38,17 @@ const dataOfFav = [
     },
 ]
 
-const UserInterface = () => {
-    const [resData, setResData] = useState<any>()
+const UserInterface = ({data}: any) => {
     useEffect(() => {
         AOS.init({
             duration: 800,
             once: false,
         })
     }, []);
+
     return (
         <div className={'bg-[#0A2E65] h-[2040px]'}>
-            <UserNavbar/>
+            <UserNavbar data={data}/>
             <div className={'flex pt-[160px]'}>
                 <div data-aos={'fade-right'} className={'w-[79.3%] h-[1752PX] bg-[#002256] rounded-[24px] mb-[132px]'}>
                     <div className={'flex mt-[28px] mr-[50px]  justify-end items-center'}>
@@ -88,23 +89,23 @@ const UserInterface = () => {
                             <div className={' mr-[2.16%] w-[22.7%]'}>
                                 <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                    style={{direction: "rtl"}}>شماره موبایل</p>
-                                <input
-                                    className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] '}
-                                    placeholder={'شماره موبایل'}/>
+                                <input value={data?.user.phone_number}
+                                       className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] '}
+                                       placeholder={'شماره موبایل'}/>
                             </div>
                             <div className={' mr-[2.16%] w-[22.7%]'}>
                                 <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                    style={{direction: "rtl"}}>نام ونام خانوادگی</p>
-                                <input
-                                    className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] '}
-                                    placeholder={'نام ونام خانوادگی'}/>
+                                <input value={data?.user.last_name}
+                                       className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] '}
+                                       placeholder={'نام ونام خانوادگی'}/>
                             </div>
                             <div className={'  mr-[1.3%] w-[22.7%]'}>
                                 <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                    style={{direction: "rtl"}}>نام</p>
-                                <input
-                                    className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] '}
-                                    placeholder={'نام'}/>
+                                <input value={data?.user.first_name}
+                                       className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] '}
+                                       placeholder={'نام'}/>
                             </div>
                         </div>
                         <div className={'flex justify-end mt-[39px]'}>
@@ -112,16 +113,16 @@ const UserInterface = () => {
                             <div className={' mr-[2.16%] w-[22.7%]'}>
                                 <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                    style={{direction: "rtl"}}>کد ملی</p>
-                                <input
-                                    className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] '}
-                                    placeholder={'کد ملی'}/>
+                                <input value={data?.user.national_code}
+                                       className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] '}
+                                       placeholder={'کد ملی'}/>
                             </div>
                             <div className={' mr-[2.16%] w-[22.7%]'}>
                                 <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                    style={{direction: "rtl"}}>انتخاب جنسیت</p>
-                                <select
-                                    className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px]'}
-                                    placeholder={'انتخاب جنسیت'} style={{direction: "rtl"}}>
+                                <select value={data?.user.gender}
+                                        className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px]'}
+                                        placeholder={'انتخاب جنسیت'} style={{direction: "rtl"}}>
                                     <option value="notintrested">انتخاب جنسیت</option>
                                     <option value="unknown">نامشخص</option>
                                     <option value="male">مرد</option>
@@ -131,9 +132,9 @@ const UserInterface = () => {
                             <div className={'  mr-[1.3%] w-[22.7%]'}>
                                 <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                    style={{direction: "rtl"}}>ایمیل</p>
-                                <input
-                                    className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] '}
-                                    placeholder={'ایمیل'}/>
+                                <input value={data?.user.email}
+                                       className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] '}
+                                       placeholder={'ایمیل'}/>
                             </div>
 
                         </div>
@@ -141,9 +142,9 @@ const UserInterface = () => {
                             <div className={'  mr-[1.3%] w-[22.7%]'}>
                                 <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                    style={{direction: "rtl"}}>مدرک تحصیلی</p>
-                                <select
-                                    className={'w-[100%]  h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px]'}
-                                    placeholder={'انتخاب جنسیت'} style={{direction: "rtl"}}>
+                                <select value={data?.user.education}
+                                        className={'w-[100%]  h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px]'}
+                                        placeholder={'انتخاب جنسیت'} style={{direction: "rtl"}}>
                                     <option value="notintrested">انتخاب مدرک</option>
                                     <option value="unknown">دکتری</option>
                                     <option value="male">کارشناسی ارشد</option>
@@ -175,9 +176,9 @@ const UserInterface = () => {
                         <div className={' mr-[2.16%] w-[22.7%]'}>
                             <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                style={{direction: "rtl"}}>نام کاربری</p>
-                            <input
-                                className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] '}
-                                placeholder={'نام کاربری'}/>
+                            <input value={data?.user.username}
+                                   className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] '}
+                                   placeholder={'نام کاربری'}/>
                         </div>
                     </div>
                     <div className={'h-[32px] mt-[56px] items-center mr-[27px] flex'} style={{direction: "rtl"}}>

@@ -40,6 +40,7 @@ const RegisterModalStep2 = ({checked, number}: any) => {
             console.log(e)
         }
     }
+
     const handleRegisterNewMember = async (e: any) => {
         await axios.post('https://www.cowork.v1r.ir/api/v1/auth/user/register', {
             code: registerCode,
