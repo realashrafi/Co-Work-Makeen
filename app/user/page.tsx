@@ -2,7 +2,6 @@
 import Interface from "@/app/user/components/Interface";
 import axios from "axios";
 import {useEffect, useState} from "react";
-import {redirect} from "next/navigation";
 
 
 const User = () => {

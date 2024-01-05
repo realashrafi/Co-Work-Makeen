@@ -28,6 +28,7 @@ const RegisterModalStep2 = ({checked, number}: any) => {
         setShowModal(true)
     }
     const handleUserLogin = async (e: any) => {
+        e.preventDefault()
         try {
             const response = await axios.post('https://www.cowork.v1r.ir/api/v1/auth/user/login', {
                 phone_number: number,
@@ -42,6 +43,7 @@ const RegisterModalStep2 = ({checked, number}: any) => {
     }
 
     const handleRegisterNewMember = async (e: any) => {
+        e.preventDefault()
         await axios.post('https://www.cowork.v1r.ir/api/v1/auth/user/register', {
             code: registerCode,
             phone_number: number,
