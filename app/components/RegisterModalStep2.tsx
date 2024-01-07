@@ -5,19 +5,21 @@ import logoMakeen from "@/app/user/components/data/logo-makeen.png";
 import Image from "next/image";
 import RegisterModalStep3 from "@/app/components/RegisterModalStep3";
 import axios from "axios";
-import {redirect} from 'next/navigation'
+import {redirect, useRouter} from 'next/navigation'
+import Swal from "sweetalert2";
+import Link from "next/link";
 
 
-const RegisterModalStep2 = ({checked, number}: any) => {
+const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any) => {
     const [showModal, setShowModal] = useState(false)
     const [userExist, setUserExist] = useState()
     const [userPasswordToLogin, setUserPasswordToLogin] = useState('')
-    const [userLoginStatus, setUserLoginStatus] = useState<any>()
-    const [userRegisterStatus, setUserRegisterStatus] = useState<any>()
     const [registerCode, setRegisterCode] = useState('')
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
+    const [email, setEmail] = useState('')
     const [passForRegister, setPassForRegister] = useState('')
+    const router = useRouter()
     const handleSubmit = async (e: any) => {
         e.preventDefault()
         await axios.post('https://www.cowork.v1r.ir/api/v1/auth/user/check-phone-number', {
@@ -34,9 +36,21 @@ const RegisterModalStep2 = ({checked, number}: any) => {
                 phone_number: number,
                 password: userPasswordToLogin
             })
-            setUserLoginStatus(response.status)
-            localStorage.setItem('token', response.data.token)
-
+            statusLogin.setUserLoginStatus(response.status)
+            localStorage.setItem('userToken', response.data.token)
+            if (response.status == 200) {
+                //@ts-ignore
+                localStorage.setItem('loginStatus', 200)
+                Swal.fire({
+                    title: "وارد شدید",
+                    text: "میتوانید از قسمت ورود به حساب کاربری خود وارد شوید",
+                    icon: "success",
+                    background: '#002256',
+                    color: '#EEEFEE',
+                    confirmButtonColor: "#FF792C",
+                    confirmButtonText: '<button >باشه</button>'
+                })
+            }
         } catch (e) {
             console.log(e)
         }
@@ -44,15 +58,33 @@ const RegisterModalStep2 = ({checked, number}: any) => {
 
     const handleRegisterNewMember = async (e: any) => {
         e.preventDefault()
-        await axios.post('https://www.cowork.v1r.ir/api/v1/auth/user/register', {
-            code: registerCode,
-            phone_number: number,
-            first_name: firstName,
-            last_name: lastName,
-            password: passForRegister
-        })
-            .then((response) => setUserRegisterStatus(response.status))
-            .catch((err) => console.error(err))
+        try {
+            const response = await axios.post('https://www.cowork.v1r.ir/api/v1/auth/user/register', {
+                code: registerCode,
+                phone_number: number,
+                first_name: firstName,
+                last_name: lastName,
+                password: passForRegister,
+                email: email
+            })
+            statusRegister.setUserRegisterStatus(response.status)
+            localStorage.setItem('userToken', response.data.token)
+            if (response.status == 200) {
+                //@ts-ignore
+                localStorage.setItem('loginStatus', 200)
+                Swal.fire({
+                    title: "وارد شدید",
+                    text: "میتوانید از قسمت ورود به حساب کاربری خود وارد شوید",
+                    icon: "success",
+                    background: '#002256',
+                    color: '#EEEFEE',
+                    confirmButtonColor: "#FF792C",
+                    confirmButtonText: '<button >باشه</button>'
+                })
+            }
+        } catch (e) {
+            console.log(e)
+        }
     }
     return (
         <div>
@@ -122,7 +154,7 @@ const RegisterModalStep2 = ({checked, number}: any) => {
                                 className={'flex w-[80%] mx-auto justify-center items-center bg-[#44C0ED] rounded-xl text-white h-10 mt-[56px] '}>
                             ورود
                         </button>
-                        {userLoginStatus == 200 ? redirect('/user') : ''}
+                        {statusLogin?.userLoginStatus == 200 ? redirect('/') : ''}
                     </div>
                 </ReactModal>
                 :
@@ -211,16 +243,21 @@ const RegisterModalStep2 = ({checked, number}: any) => {
                                    onChange={(e) => setLastName(e.target.value)}
                                    className={'self-end w-[89%] h-10 bg-[#0A2E65] rounded-xl mt-[8px] px-[16px]'}
                                    dir={'rtl'} placeholder={'نام خانوادگی خود را وارد نمایید'}/>
+                            <input type="text"
+                                   onChange={(e) => setEmail(e.target.value)}
+                                   className={'self-end w-[89%] h-10 bg-[#0A2E65] rounded-xl mt-[8px] px-[16px]'}
+                                   dir={'rtl'} placeholder={'ایمیل خود وارد نمایید'}/>
                             <input type="password"
                                    onChange={(e) => setPassForRegister(e.target.value)}
                                    className={'self-end w-[89%] h-10 bg-[#0A2E65] rounded-xl mt-[8px] px-[16px]'}
-                                   dir={'rtl'} placeholder={'رمز عبوری برای حساب کاربری خود وارد نمایید'}/>
+                                   dir={'rtl'}
+                                   placeholder={'رمز عبوری برای حساب کاربری خود وارد نمایید'}/>
                             <div onClick={handleRegisterNewMember}
                                  className={'self-end cursor-pointer w-[89%] h-10 bg-sky-400 rounded-xl mt-[40px] flex justify-center items-center text-white text-base font-bold'}
                             >ثبت
                             </div>
                         </div>
-                        {userRegisterStatus == 200 ? redirect('/user') : ''}
+                        {statusRegister?.userRegisterStatus == 200 ? redirect('/') : ''}
                     </div>
                 </ReactModal>}
         </div>

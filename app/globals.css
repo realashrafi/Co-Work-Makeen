@@ -6,3 +6,10 @@
 .rmdp-container .custom-calendar.ep-arrow {
     background-color: #002256;
 }
+.rmdp-day, .rmdp-week-day {
+    color: #EEEFEE !important;
+    cursor: pointer;
+    height: 34px;
+    position: relative;
+    width: 34px;
+}

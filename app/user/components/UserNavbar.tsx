@@ -8,7 +8,7 @@ import persian from "react-date-object/calendars/persian";
 const UserNavbar = ({data}: any) => {
     const date = new DateObject({calendar:persian})
 
-    console.log(date.format( ))
+    // console.log(date.format( ))
     return (
         <div className={'fixed w-[100%]  z-[3] '}>
             <div className={'flex items-center  justify-between h-[156px] w-[79.93%] bg-[#0A2E65] '}>
@@ -27,7 +27,7 @@ const UserNavbar = ({data}: any) => {
                     </p>
                     <IconHandShake/>
                     <p className={'ml-[17px] text-[16px]  text-[#FFFEFF] '}>
-                        عزیز ، خوش اومدی {data?.user.first_name} {data?.user.last_name}</p>
+                        {data?.user.first_name} {data?.user.last_name} عزیز ، خوش اومدی </p>
                 </div>
             </div>
         </div>

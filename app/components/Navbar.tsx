@@ -9,7 +9,7 @@ const Navbar = () => {
     return (
         <div>
             <div className={''}>
-                <div className={'flex justify-between w-full pt-[35px]'}>
+                <div className={'flex justify-between w-full pl-[7.6%] pt-[35px]'}>
                     <DropDownNavbar/>
                     <NavbarLinks/>
                     <Link className={'mr-[8%] '} href={'/'}>

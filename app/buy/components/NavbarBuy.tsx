@@ -1,11 +1,14 @@
 'use client'
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {FaAngleDown} from "react-icons/fa6";
 import {IoPersonOutline} from "react-icons/io5";
 import Link from "next/link";
 // @ts-ignore
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import {redirect, useRouter} from "next/navigation";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const DropDownNavbar = () => {
     useEffect(() => {
@@ -13,18 +16,39 @@ const DropDownNavbar = () => {
             duration: 800,
             once: false,
         })
+        handleFetch()
     }, []);
+    const router = useRouter()
+    const [me, setMe] = useState<any>()
+
+    const handleFetch = async () => {
+        const token = localStorage.getItem('userToken');
+        try {
+            const response = await axios.get('https://www.cowork.v1r.ir/api/v1/user/me', {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    Accept: 'application/json',
+                }
+            })
+            setMe(response.data.user)
+        } catch (e) {
+            console.log(e)
+        }
+    }
+    console.log(me)
     return (
-        <details className="dropdown w-[10%] ml-[7.6%]">
+        <details className="dropdown w-[150px] ">
             <summary
-                className={' mt-[5px] px-[18px] flex justify-between h-[32px] bg-[#44C0ED]  rounded-xl'}>
-                <FaAngleDown className={'w-[14px] text-white h-[18px] my-auto'}/><IoPersonOutline
-                className={'w-[21px] text-white  h-[21px] my-auto'}/>
+                className={'px-[18px] flex justify-between h-[32px] bg-[#44C0ED]  rounded-xl'}>
+                <FaAngleDown className={'w-[14px] text-white h-[18px] my-auto'}/>
+                <div className={'text-white'}>پنل کاربری</div>
+                <IoPersonOutline
+                    className={'w-[21px] text-white  h-[21px] my-auto'}/>
             </summary>
             <div tabIndex={0}
                  className="dropdown-content  z-50 card card-compact mt-[16px] w-[310px]  p-2 shadow bg-[#002256] text-primary-content">
                 <div className={'flex items-center pt-[25px] justify-end'}>
-                    <p className={'text-white text-sm font-bold mr-[18px]'}>شکیلا شاهرضایی</p>
+                    <p className={'text-white text-sm font-bold mr-[18px]'}>{me?.first_name} {me?.last_name}</p>
                     <div className={'w-[45px] h-[45px] rounded-full bg-gray-100 mr-[17px]'}></div>
                 </div>
                 <div className={'flex justify-center mt-[12px]'}>
@@ -40,7 +64,7 @@ const DropDownNavbar = () => {
                     </svg>
                 </div>
                 <div className={'flex flex-col items-end py-[6px]'}>
-                    <Link href={''} className={'cursor-pointer flex justify-end items-center mr-[31px] my-[6px]'}>
+                    <Link href={'/user'} className={'cursor-pointer flex justify-end items-center mr-[31px] my-[6px]'}>
                         <p className={'text-right text-white text-sm font-normal '}>داشبورد من</p>
                         <svg className={'ml-[24px]'} width="15" height="15" viewBox="0 0 15 15" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
@@ -55,7 +79,7 @@ const DropDownNavbar = () => {
                             </g>
                         </svg>
                     </Link>
-                    <Link href={''} className={'cursor-pointer flex justify-end items-center mr-[31px] my-[6px]'}>
+                    <Link href={'/tariffs'} className={'cursor-pointer flex justify-end items-center mr-[31px] my-[6px]'}>
                         <p className={'text-right text-white text-sm font-normal '}>خرید اشتراک</p>
                         <svg className={'ml-[24px]'} width="17" height="13" viewBox="0 0 17 13" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
@@ -64,7 +88,7 @@ const DropDownNavbar = () => {
                                   fill="#FFFEFF"/>
                         </svg>
                     </Link>
-                    <Link href={''} className={'cursor-pointer flex justify-end items-center mr-[31px] my-[6px]'}>
+                    <Link href={'/user/walletuser'} className={'cursor-pointer flex justify-end items-center mr-[31px] my-[6px]'}>
                         <p className={'text-right text-white text-sm font-normal '}>کیف پول من</p>
                         <svg className={'ml-[24px]'} width="16" height="16" viewBox="0 0 16 16" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
@@ -73,7 +97,7 @@ const DropDownNavbar = () => {
                                   fill="#FFFEFF"/>
                         </svg>
                     </Link>
-                    <Link href={''} className={'cursor-pointer flex justify-end items-center mr-[31px] my-[6px]'}>
+                    <Link href={'user/reservehistory'} className={'cursor-pointer flex justify-end items-center mr-[31px] my-[6px]'}>
                         <p className={'text-right text-white text-sm font-normal '}>تاریخچه رزرو</p>
                         <svg className={'ml-[24px]'} width="16" height="16" viewBox="0 0 16 16" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
@@ -82,7 +106,7 @@ const DropDownNavbar = () => {
                                   fill="#FFFEFF"/>
                         </svg>
                     </Link>
-                    <Link href={''} className={'cursor-pointer flex justify-end items-center mr-[31px] my-[6px]'}>
+                    <Link href={'user/notifications'} className={'cursor-pointer flex justify-end items-center mr-[31px] my-[6px]'}>
                         <p className={'text-right text-white text-sm font-normal '}>اعلانات</p>
                         <svg className={'ml-[24px]'} width="15" height="16" viewBox="0 0 15 16" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
@@ -104,14 +128,30 @@ const DropDownNavbar = () => {
                         </defs>
                     </svg>
                 </div>
-                <div className={'cursor-pointer flex justify-end items-center mr-[31px] mb-[64px] my-[12px]'}>
+                <div className={'cursor-pointer flex justify-end items-center mr-[31px] mb-[64px] my-[12px]'}
+                     onClick={() => {
+                         localStorage.setItem('userToken', '')
+                         localStorage.setItem('loginStatus', '')
+                         router.push('/')
+                         router.refresh()
+                         Swal.fire({
+                             title: "حارج شدید",
+                             text: "موفقیت امیز بود",
+                             icon: "success",
+                             background: '#002256',
+                             color: '#EEEFEE',
+                             confirmButtonColor: "#FF792C",
+                             confirmButtonText: 'باشه',
+                             backdrop: '#002256'
+                         })
+                     }}>
                     <p className={'text-right text-white text-sm font-normal '}>خروج از حساب کاربری</p>
-                    <svg className={'ml-[24px]'} width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg className={'ml-[24px]'} width="16" height="16" viewBox="0 0 16 16" fill="none"
+                         xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M8.07535 0C3.75179 0 0.24707 3.52733 0.24707 7.87879C0.24707 12.2302 3.75179 15.7576 8.07535 15.7576C12.3989 15.7576 15.9036 12.2302 15.9036 7.87879C15.9036 3.52733 12.3989 0 8.07535 0ZM11.9895 11.0303V8.66667H6.5097V7.09091H11.9895V4.72727L15.1208 7.87879L11.9895 11.0303Z"
                             fill="#FFFEFF"/>
                     </svg>
-
                 </div>
             </div>
         </details>

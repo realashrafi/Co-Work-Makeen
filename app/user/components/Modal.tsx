@@ -8,6 +8,7 @@ import Link from "next/link";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import axios from "axios";
+import Swal from "sweetalert2";
 const Modal = () => {
     const [showModal, setShowModal] = useState(false)
     useEffect(() => {
@@ -16,6 +17,19 @@ const Modal = () => {
             once:false
         })
     }, []);
+    const logout=()=>{
+        localStorage.setItem('userToken',"")
+        Swal.fire({
+            title: "حارج شدید",
+            text: "موفقیت امیز بود",
+            icon: "success",
+            background: '#002256',
+            color: '#EEEFEE',
+            confirmButtonColor: "#FF792C",
+            confirmButtonText: 'باشه',
+            backdrop: '#002256'
+        })
+    }
     return (
         <div className={''}>
             <Link className={''} href={''}>
@@ -68,7 +82,7 @@ const Modal = () => {
                     </div>
                     <div className={'w-[63%] mx-auto pt-[59px] flex'}>
 
-                        <Link onClick={()=>localStorage.setItem('token',"")}
+                        <Link onClick={logout}
                             className={'w-[100%] mr-[20px] h-[40px] text-[#FF792C] flex justify-center items-center border-[#FF792C] hover:bg-[#FF792C] hover:text-white border-[1px] rounded-[24px]'}
                             href={'/'}>
                             خروج

@@ -9,7 +9,7 @@ const SideBarUser = () => {
     const pathName = usePathname()
     return (
         <div className={'flex-col w-[20%] pr-[1%]  flex items-center  top-0 right-0 fixed pt-[11px] bg-[#0A2E65]'}>
-            <Link href={'/'} className={'mt-[15%] ml-[5%] mb-[25%] '}>
+            <Link href={'/'} className={'mt-[15%] ml-[5%] mb-[25%] z-50'}>
                 <Image src={logoMakeen} alt={''}/>
             </Link>
             <Link className={''} href={'/user'}>

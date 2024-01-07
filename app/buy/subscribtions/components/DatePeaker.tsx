@@ -8,10 +8,10 @@ import "react-multi-date-picker/styles/backgrounds/bg-dark.css"
 
 const DatePeaker = () => {
     const [value, setValue] = useState<any>()
-    const style:any = {color:'white',border:'none',boxShadow:"none"}
+    const style:any = {color:'#EEEFEE',border:'none',boxShadow:"none"}
     console.table(value)
     return (
-        <div className={'relative flex flex-col mt-[10px] text-white bg-[#002256] rounded-[13px] px-[4px]'}>
+        <div  className={'relative flex flex-col mt-[10px] text-white bg-[#002256] rounded-[13px] px-[4px]'}>
             <div className={'flex items-center w-[70%] justify-around mx-auto mt-[16px]'} dir={'rtl'}>
                 <div className={'flex items-center'}>
                     <div className={'w-[11px] h-[11px] rounded-full bg-[#F6F6F6]'}></div>

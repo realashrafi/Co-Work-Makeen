@@ -11,7 +11,7 @@ import HeaderBuy from "@/app/buy/components/HeaderBuy";
 const Page = () => {
     return (
         <div className={'bg-[#0A2E65] pb-[64px]'}>
-            <div className={'flex justify-between w-full pt-[35px]'}>
+            <div className={'flex justify-between w-full pl-[7.6%] pt-[35px]'}>
                 <NavbarBuy/>
                 <NavbarLinks/>
                 <Link className={'mr-[8%] '} href={'/'}>

@@ -23,6 +23,7 @@ const Admin = () => {
             setLoginStatus(res.status)
             setUsername('');
             setPassword('');
+            localStorage.setItem('adminToken',res.data.token)
         } catch (error) {
             console.log(error);
         }

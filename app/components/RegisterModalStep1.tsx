@@ -5,21 +5,21 @@ import logoMakeen from "@/app/user/components/data/logo-makeen.png";
 import Image from "next/image";
 import RegisterModalStep2 from "@/app/components/RegisterModalStep2";
 
-const RegisterModalStep1 = () => {
+const RegisterModalStep1 = ({statusLogin,statusRegister}:any) => {
     const [showModal, setShowModal] = useState(false)
     const [checked, setChecked] = useState(false)
     const [number, setNumber] = useState('')
 
     return (
         <div>
-            <div className={'cursor-pointer pt-[5px] group-hover'} onClick={() => setShowModal(true)}>
+            <div className={'cursor-pointer pt-[5px] group'} onClick={() => setShowModal(true)}>
                 <div className={'flex justify-center items-center  '}>
-                    <div className="text-white text-base font-normal mr-[1%] hover:text-orange-500 -mt-[3px]">ثبت نام</div>
+                    <div className="text-white text-base font-normal mr-[1%] group-hover:text-orange-500 -mt-[3px]">ثبت نام</div>
                     <svg className={'mx-[4%]'} width="2" height="22" viewBox="0 0 2 22" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
-                        <path id="Line 202" d="M1.25 0.99707L1.25 21.0033" stroke="#EEEFEE" strokeLinecap="round"/>
+                        <path  id="Line 202" d="M1.25 0.99707L1.25 21.0033" stroke="#FF792C" strokeLinecap="round"/>
                     </svg>
-                    <div className="text-white text-base font-normal ml-[1%] -mt-[3px] hover:text-orange-500">ورود</div>
+                    <div className="text-white text-base font-normal ml-[1%] -mt-[3px] group-hover:text-orange-500">ورود</div>
                 </div>
             </div>
             <ReactModal
@@ -70,7 +70,7 @@ const RegisterModalStep1 = () => {
                                onChange={(e) => setNumber(e.target.value)}
                                placeholder={'مثال 09367674845'}/>
                     </div>
-                    <RegisterModalStep2 number={number} checked={checked}/>
+                    <RegisterModalStep2 number={number} checked={checked} statusLogin={statusLogin} statusregister={statusRegister}/>
                     <div className={'flex justify-end pr-[50px] mt-[10px]'}>
                         <div className={' text-right text-white text-xs mr-[10px] font-normal'}>قوانین و شرایط عضویت در
                             آکادمی مکین را می پذیرم

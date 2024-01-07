@@ -6,6 +6,8 @@ import Image from "next/image";
 // @ts-ignore
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import LoginForBuy from "@/app/buy/components/LoginForBuy";
+
 const Section3Tariffs = () => {
     useEffect(() => {
         AOS.init({
@@ -17,8 +19,10 @@ const Section3Tariffs = () => {
         <section className={'bg-[#002256] w-full flex flex-col relative '}>
             {/*<div*/}
             {/*    className={'w-[13%] h-[56px] self-end mt-[28px]  border-r-0 border-[3px] border-[#FF792C] rounded-l-full'}></div>*/}
-            <div data-aos={'fade'} data-aos-delay="400" className="w-[170px] absolute right-0 -top-20 h-[219px] opacity-50 bg-[#FF792C] rounded-l-full blur-[100px]" />
-            <div data-aos={'fade'} data-aos-delay="800" className="w-[170px] absolute left-0 top-20 h-[219px] opacity-50 bg-[#FF792C] rounded-r-full blur-[100px]" />
+            <div data-aos={'fade'} data-aos-delay="400"
+                 className="w-[170px] absolute right-0 -top-20 h-[219px] opacity-50 bg-[#FF792C] rounded-l-full blur-[100px]"/>
+            <div data-aos={'fade'} data-aos-delay="800"
+                 className="w-[170px] absolute left-0 top-20 h-[219px] opacity-50 bg-[#FF792C] rounded-r-full blur-[100px]"/>
             <div className={'flex w-full relative  pt-[123px]'}>
                 <div className={'w-1/19 mr-[7%] '}>
                     <div data-aos="fade-right" className={'w-[550px]  pr-[5%]'}>
@@ -42,28 +46,33 @@ const Section3Tariffs = () => {
             <div className={'w-[71%] h-[294px] mx-auto rounded-[24px]  mt-[50px] bg-[#0A2E65] flex'}>
                 <div className={'w-[82%]'}>
                     <div className={'h-[50%] flex '}>
-                        <div className={'w-[26%] h-[48px] bg-[#FF792C] mt-[49px] rounded-[10px] ml-[6%] text-center'}>
-                            <p className={' text-[#F8F8F8] text-[16px] pt-[10px]  '}>ادامه فرایند خرید</p>
+                        <div
+                            className={'w-[26%] flex items-center justify-center h-[48px] bg-[#FF792C]  mt-[49px] rounded-[10px] ml-[6%] '}>
+                            <div className={'-ml-[64px]'}></div>
+                            <LoginForBuy orderData={4}/>
                         </div>
                         <div className={'ml-[23%] mt-[57px] '}>
                             <p className={'text-[18px] text-[#FFFEFF]'}>20 تومان</p>
                         </div>
-                        <div className={'w-[13%] ml-[18%] pt-[45px] flex-col'} style={{direction:"rtl"}}>
+                        <div className={'w-[13%] ml-[18%] pt-[45px] flex-col'} style={{direction: "rtl"}}>
                             <p className={'text-[16px] text-[#FFFFFF]'}>اشتراک ساعتی</p>
                             <p className={'text-[14px] pt-[8px] text-[#FFFFFF]'}>برای هر یک ساعت</p>
                         </div>
                     </div>
-                    <svg className={'w-[96%] mx-auto'} height="1" viewBox="0 0 826 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg className={'w-[96%] mx-auto'} height="1" viewBox="0 0 826 1" fill="none"
+                         xmlns="http://www.w3.org/2000/svg">
                         <rect width="826" height="1" fill="#002256"/>
                     </svg>
                     <div className={'h-[50%] flex '}>
-                        <div className={'w-[26%] h-[48px] bg-[#FF792C] mt-[49px] rounded-[10px] ml-[6%] text-center'}>
-                            <p className={' text-[#F8F8F8] text-[16px] pt-[10px]  '}>ادامه فرایند خرید</p>
+                        <div
+                            className={'w-[26%] flex items-center justify-center h-[48px] bg-[#FF792C]  mt-[49px] rounded-[10px] ml-[6%] '}>
+                            <div className={'-ml-[64px]'}></div>
+                            <LoginForBuy orderData={3}/>
                         </div>
                         <div className={'ml-[23%] mt-[57px] '}>
                             <p className={'text-[18px] text-[#FFFEFF]'}>100 تومان</p>
                         </div>
-                        <div className={'w-[13%] ml-[18%] pt-[45px] flex-col'} style={{direction:"rtl"}}>
+                        <div className={'w-[13%] ml-[18%] pt-[45px] flex-col'} style={{direction: "rtl"}}>
                             <p className={'text-[16px] text-[#FFFFFF]'}>اشتراک روزانه</p>
                             <p className={'text-[14px] pt-[8px] text-[#FFFFFF]'}>از 8 صبح تا 8 شب</p>
                         </div>

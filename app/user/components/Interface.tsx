@@ -39,6 +39,7 @@ const dataOfFav = [
 ]
 
 const UserInterface = ({data}: any) => {
+
     useEffect(() => {
         AOS.init({
             duration: 800,

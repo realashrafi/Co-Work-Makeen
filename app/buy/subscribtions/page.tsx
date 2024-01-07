@@ -1,5 +1,5 @@
 'use client'
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import NavbarBuy from '../components/NavbarBuy';
 import NavbarLinks from "@/app/components/NavbarLinks";
 import Link from 'next/link';
@@ -8,16 +8,63 @@ import iconNavbar from "@/public/images/logo-makeen 8.png";
 import SidebarBuy from '../components/SidebarBuy';
 import ComponentsRenderByOrders from "@/app/buy/subscribtions/components/ComponentsRenderByOrders";
 import HeaderBuy from "@/app/buy/components/HeaderBuy";
+import {redirect, useRouter, useSearchParams} from "next/navigation";
+import axios from "axios";
+import Swal from "sweetalert2";
+import DropDownNavbar from "@/app/components/DropDownNavbar";
+
 const Page = () => {
-    const [dailyCowork, setDailyCowork] = useState(false)
-    const [longTermCowork, setLongTermCowork] = useState(false)
-    const [dailySession, setDailySession] = useState(false)
-    const [hourlySession, setHourlySession] = useState(true)
-    const orders:any={dailyCowork,longTermCowork,dailySession,hourlySession}
+    const router = useRouter()
+    const getData = useSearchParams()
+    const orderData = getData.get('data')
+    const [order, setOrder] = useState(Number(orderData))
+    const [me, setMe] = useState<any>()
+    useEffect(() => {
+        handleFetch()
+    }, []);
+    const handleFetch = async () => {
+        const token = localStorage.getItem('userToken');
+        try {
+            const response = await axios.get('https://www.cowork.v1r.ir/api/v1/user/me', {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    Accept: 'application/json',
+                }
+            })
+            setMe(response.data)
+            if (response.data.user.national_code === null) {
+                Swal.fire({
+                    title: 'تکمیل اطلاعات',
+                    text: "لطفا اطلاعات حساب کاربری خود را تکمیل کنید",
+                    icon: "warning",
+                    background: '#002256',
+                    color: '#EEEFEE',
+                    confirmButtonColor: "#FF792C",
+                    confirmButtonText: 'باشه',
+                    backdrop: '#002256'
+                })
+                router.push('/buy')
+            }
+        } catch (e) {
+            console.log(e)
+            Swal.fire({
+                title: "خطایی رخ داده",
+                text: "لطفا وارد حساب کاربری خود شوید",
+                icon: "warning",
+                background: '#002256',
+                color: '#EEEFEE',
+                confirmButtonColor: "#FF792C",
+                confirmButtonText: 'باشه',
+                backdrop: '#002256'
+            })
+            router.push('/')
+        }
+    }
     return (
         <div className={'bg-[#0A2E65] pb-[64px]'}>
-            <div className={'flex justify-between w-full pt-[35px]'}>
-                <NavbarBuy/>
+            <div className={'flex justify-between w-full pl-[7.6%] pt-[35px]'}>
+                {/*<NavbarBuy/>*/}
+                <DropDownNavbar data={me?.user}/>
                 <NavbarLinks/>
                 <Link className={'mr-[8%] '} href={'/'}>
                     <Image src={iconNavbar} alt={'iconNavbar'}/>
@@ -27,7 +74,7 @@ const Page = () => {
                 <HeaderBuy/>
                 <div className="w-[90.9%] mx-auto h-[0px] border-2 border-[#0A2E65] mt-[24px]"></div>
                 <div className={'flex justify-end pt-[43px]'}>
-                    <ComponentsRenderByOrders orders={orders}/>
+                    <ComponentsRenderByOrders order={order}/>
                     <SidebarBuy/>
                 </div>
             </div>

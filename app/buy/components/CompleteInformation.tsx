@@ -1,61 +1,164 @@
-import React from 'react';
+'use client'
+import React, {useEffect, useState} from 'react';
+import {useRouter} from "next/navigation";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const CompleteInformation = () => {
+    const router = useRouter()
+    const [me, setMe] = useState<any>()
+    const [userID, setUserID] = useState<any>()
+    const [first_name, setFirst_name] = useState<any>()
+    const [last_name, setLast_name] = useState<any>()
+    const [dob, setDob] = useState<any>()
+    const [national_code, setNational_code] = useState<any>()
+    const [email, setEmail] = useState<any>()
+    const [gender, setGender] = useState<any>()
+    const [education, setEducation] = useState<any>()
+    useEffect(() => {
+        handleFetch()
+    }, []);
+    const handleFetch = async () => {
+        const token = localStorage.getItem('userToken');
+        try {
+            const response = await axios.get('https://www.cowork.v1r.ir/api/v1/user/me', {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    Accept: 'application/json',
+                }
+            })
+            setMe(response.data)
+            setUserID(response.data.user.id)
+            setFirst_name(response.data.user.first_name)
+            setLast_name(response.data.user.last_name)
+            setEmail(response.data.user.email)
+        } catch (e) {
+            console.log(e)
+            Swal.fire({
+                title: "خطایی رخ داده",
+                text: "لطفا وارد حساب کاربری خود شوید",
+                icon: "warning",
+                background: '#002256',
+                color: '#EEEFEE',
+                confirmButtonColor: "#FF792C",
+                confirmButtonText: 'باشه',
+                backdrop: '#002256'
+            })
+            router.push('/')
+        }
+    }
+    const handleupdate = async (e: any) => {
+        const token = localStorage.getItem('userToken');
+        e.preventDefault()
+        try {
+            const response = await axios.put(`https://www.cowork.v1r.ir/api/v1/user/${userID}`, {
+                first_name: first_name,
+                last_name: last_name,
+                email: email,
+                dob: dob,
+                gender: gender,
+                national_code: national_code,
+                education: education,
+                password: "12345678",
+                password_confirmation: "12345678",
+                current_password: "12345678"
+            }, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    Accept: 'application/json',
+                }
+            })
+           if (response.status==200){
+               Swal.fire({
+                   title: "انجام شد",
+                   text: "حالا میتوانید خرید کنید",
+                   icon: "success",
+                   background: '#002256',
+                   color: '#EEEFEE',
+                   confirmButtonColor: "#FF792C",
+                   confirmButtonText: 'باشه',
+                   backdrop: '#002256'
+               })
+               router.back()
+           }
+        } catch (e) {
+            console.log(e)
+        }
+    }
+    console.log(me)
+    console.log()
     return (
         <div className={'flex w-[100%] flex-col  '}>
             <div className={'flex justify-between mr-[87px] px-[48px] '}>
                 <div className={'w-[45%]'}>
-                    <p className={'text-white text-sm font-normal'} dir={'rtl'}>نام خانوادگی :</p>
-                    <input type="text" className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'} placeholder={'نام خانوادگی'} dir={'rtl'}/>
+                    <p className={'text-white text-sm font-normal'} dir={'rtl'}>*نام خانوادگی :</p>
+                    <input type="text" onChange={(e) => setLast_name(e.target.value)} value={last_name}
+                           className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'}
+                           placeholder={'نام خانوادگی'} dir={'rtl'}/>
                 </div>
                 <div className={'w-[45%]'}>
-                    <p className={'text-white text-sm font-normal'} dir={'rtl'}>نام :</p>
-                    <input type="text" className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'} placeholder={'نام'} dir={'rtl'}/>
+                    <p className={'text-white text-sm font-normal'} dir={'rtl'}>*نام :</p>
+                    <input type="text" onChange={(e) => setFirst_name(e.target.value)} value={first_name}
+                           className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'} placeholder={'نام'}
+                           dir={'rtl'}/>
                 </div>
             </div>
             <div className={'flex justify-between mr-[87px] px-[48px] mt-[54px]'}>
                 <div className={'w-[45%]'}>
-                    <p className={'text-white text-sm font-normal'} dir={'rtl'}>تاریخ تولد :</p>
-                    <input type="text" className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'} placeholder={'تاریخ تولد'} dir={'rtl'}/>
+                    <p className={'text-white text-sm font-normal'} dir={'rtl'}>*تاریخ تولد :</p>
+                    <input type="text" onChange={(e) => setDob(e.target.value)} value={dob}
+                           className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'}
+                           placeholder={'تاریخ تولد'} dir={'rtl'}/>
                 </div>
                 <div className={'w-[45%]'}>
-                    <p className={'text-white text-sm font-normal'} dir={'rtl'}>کد ملی :</p>
-                    <input type="text" className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'} placeholder={'کد ملی'} dir={'rtl'}/>
+                    <p className={'text-white text-sm font-normal'} dir={'rtl'}>*کد ملی :</p>
+                    <input type="text" onChange={(e) => setNational_code(e.target.value)} value={national_code}
+                           className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'}
+                           placeholder={'کد ملی'} dir={'rtl'}/>
                 </div>
             </div>
             <div className={'flex justify-between mr-[87px] px-[48px] mt-[54px]'}>
                 <div className={'w-[45%]'}>
                     <p className={'text-white text-sm font-normal'} dir={'rtl'}>ساکن منطقه :</p>
-                    <input type="text" className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'} placeholder={'ساکن منطقه'} dir={'rtl'}/>
+                    <input type="text" className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'}
+                           placeholder={'ساکن منطقه'} dir={'rtl'}/>
                 </div>
                 <div className={'w-[45%]'}>
-                    <p className={'text-white text-sm font-normal'} dir={'rtl'}>جنسیت :</p>
-                    <select className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'} dir={'rtl'}>
-                        <option value="null">مقطع خود را انتخاب کنید</option>
-
+                    <p className={'text-white text-sm font-normal'} dir={'rtl'}>*جنسیت :</p>
+                    <select className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'} value={gender}
+                            dir={'rtl'} onChange={(e) => setGender(e.target.value)}>
+                        <option value="male">مرد</option>
+                        <option value="female">زن</option>
                     </select>
                 </div>
             </div>
             <div className={'flex justify-between mr-[87px] px-[48px] mt-[54px]'}>
                 <div className={'w-[45%]'}>
                     <p className={'text-white text-sm font-normal'} dir={'rtl'}>رشته تحصیلی :</p>
-                    <input type="text" className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'} placeholder={'رشته تحصیلی'} dir={'rtl'}/>
+                    <input type="text" className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'}
+                           placeholder={'رشته تحصیلی'} dir={'rtl'}/>
                 </div>
                 <div className={'w-[45%]'}>
-                    <p className={'text-white text-sm font-normal'} dir={'rtl'}>مدرک تحصیلی :</p>
-                    <select className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'} dir={'rtl'} >
-                        <option value="null">مقطع خود را انتخاب کنید</option>
+                    <p className={'text-white text-sm font-normal'} dir={'rtl'}>*مدرک تحصیلی :</p>
+                    <select onChange={(e) => setEducation(e.target.value)} value={education}
+                            className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'} dir={'rtl'}>
+                        <option value="دیپلم">دیپلم</option>
+                        <option value="فوق دیپلم">فوق دیپلم</option>
+                        <option value="کارشناسی ارشد">کارشناسی ارشد</option>
+                        <option value="دکترا">دکترا</option>
                     </select>
                 </div>
             </div>
             <div className={'flex justify-between mr-[87px] px-[48px] mt-[54px]'}>
-            <div className={'w-[45%]'}>
+                <div className={'w-[45%]'}>
                     <p className={'text-white text-sm font-normal'} dir={'rtl'}>مهارت تحصیلی :</p>
-                    <input type="text" className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'} placeholder={'مهارت تحصیلی'} dir={'rtl'}/>
+                    <input type="text" className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'}
+                           placeholder={'مهارت تحصیلی'} dir={'rtl'}/>
                 </div>
                 <div className={'w-[45%]'}>
                     <p className={'text-white text-sm font-normal'} dir={'rtl'}>دانشگاه :</p>
-                    <input type="text" className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'} placeholder={'دانشگاه'} dir={'rtl'}/>
+                    <input type="text" className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'}
+                           placeholder={'دانشگاه'} dir={'rtl'}/>
                 </div>
             </div>
             <div className={'flex justify-between mr-[87px] px-[48px] mt-[54px]'}>
@@ -115,11 +218,15 @@ const CompleteInformation = () => {
                 </div>
             </div>
             <div className={'flex mr-[87px] px-[48px] mt-[65px]'} dir={'rtl'}>
-                <input type="checkbox" />
-                <p className={'text-white text-sm font-normal mr-[1%]'}>قوانین و شرایط عضویت در آکادمی مکین را می پذیرم</p>
+                <input type="checkbox"/>
+                <p className={'text-white text-sm font-normal mr-[1%]'}>قوانین و شرایط عضویت در آکادمی مکین را می
+                    پذیرم</p>
             </div>
             <div className={'flex justify-end mr-[87px] px-[48px] mt-[77px]'}>
-                <div className={'w-[408px] h-12 rounded-xl flex justify-center items-center text-stone-50 text-lg font-medium bg-[#026AE1]'}>ثبت</div>
+                <div
+                    className={'w-[408px] h-12 rounded-xl flex justify-center items-center text-stone-50 text-lg font-medium bg-[#026AE1]'}
+                    onClick={handleupdate}>ثبت
+                </div>
             </div>
         </div>
     );

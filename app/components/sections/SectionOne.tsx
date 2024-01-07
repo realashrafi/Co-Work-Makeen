@@ -14,7 +14,7 @@ const SectionOne = () => {
         })
     }, []);
     return (
-        <section className={'flex  justify-center flex-col bg-fixed bg-[url("/IMG_20231002_160850.png")] '}>
+        <section className={'flex  justify-center flex-col bg-cover bg-no-repeat bg-fixed bg-[url("/IMG_20231002_160850.png")] '}>
             <div className={'bg-gradient-to-t from-[#002256] to-transparent backdrop-brightness-[25%] '}>
                 <Navbar/>
                 <div data-aos={'fade'}
