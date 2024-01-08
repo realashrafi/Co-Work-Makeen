@@ -22,7 +22,7 @@ const DropDownNavbar = () => {
     const [me, setMe] = useState<any>()
 
     const handleFetch = async () => {
-        const token = localStorage.getItem('userToken');
+        const token = localStorage?.getItem('userToken');
         try {
             const response = await axios.get('https://www.cowork.v1r.ir/api/v1/user/me', {
                 headers: {
@@ -37,7 +37,7 @@ const DropDownNavbar = () => {
     }
     console.log(me)
     return (
-        <details className="dropdown w-[150px] ">
+        <details className="dropdown cursor-pointer w-[150px] ">
             <summary
                 className={'px-[18px] flex justify-between h-[32px] bg-[#44C0ED]  rounded-xl'}>
                 <FaAngleDown className={'w-[14px] text-white h-[18px] my-auto'}/>
@@ -128,12 +128,11 @@ const DropDownNavbar = () => {
                         </defs>
                     </svg>
                 </div>
-                <div className={'cursor-pointer flex justify-end items-center mr-[31px] mb-[64px] my-[12px]'}
+                <a href={'/'}>
+                <div  className={'cursor-pointer flex justify-end items-center mr-[31px] mb-[64px] my-[12px]'}
                      onClick={() => {
                          localStorage.setItem('userToken', '')
                          localStorage.setItem('loginStatus', '')
-                         router.push('/')
-                         router.refresh()
                          Swal.fire({
                              title: "حارج شدید",
                              text: "موفقیت امیز بود",
@@ -144,6 +143,8 @@ const DropDownNavbar = () => {
                              confirmButtonText: 'باشه',
                              backdrop: '#002256'
                          })
+                         router.push('/')
+                         router.refresh()
                      }}>
                     <p className={'text-right text-white text-sm font-normal '}>خروج از حساب کاربری</p>
                     <svg className={'ml-[24px]'} width="16" height="16" viewBox="0 0 16 16" fill="none"
@@ -153,6 +154,7 @@ const DropDownNavbar = () => {
                             fill="#FFFEFF"/>
                     </svg>
                 </div>
+                </a>
             </div>
         </details>
     );

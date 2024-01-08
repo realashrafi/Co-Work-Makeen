@@ -5,6 +5,7 @@ import Link from "next/link";
 import IconHandShake from "@/app/user/components/IconHandShake";
 import {DateObject} from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
+import DropDownNavbar from "@/app/components/DropDownNavbar";
 const UserNavbar = ({data}: any) => {
     const date = new DateObject({calendar:persian})
 
@@ -13,7 +14,7 @@ const UserNavbar = ({data}: any) => {
         <div className={'fixed w-[100%]  z-[3] '}>
             <div className={'flex items-center  justify-between h-[156px] w-[79.93%] bg-[#0A2E65] '}>
                 <div className={'ml-[4.7%]'}>
-                    <Image src={''} width={60} height={60} alt={'userImage'}/>
+                    <DropDownNavbar/>
                 </div>
                 <Link className={'ml-[5.2%]'} href={'/user/notifications'}>
                     <div className={' relative'}>

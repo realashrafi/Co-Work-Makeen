@@ -1,6 +1,5 @@
 'use client'
 import React, {useEffect, useState} from 'react';
-import NavbarBuy from '../components/NavbarBuy';
 import NavbarLinks from "@/app/components/NavbarLinks";
 import Link from 'next/link';
 import Image from "next/image";
@@ -8,7 +7,7 @@ import iconNavbar from "@/public/images/logo-makeen 8.png";
 import SidebarBuy from '../components/SidebarBuy';
 import ComponentsRenderByOrders from "@/app/buy/subscribtions/components/ComponentsRenderByOrders";
 import HeaderBuy from "@/app/buy/components/HeaderBuy";
-import {redirect, useRouter, useSearchParams} from "next/navigation";
+import { useRouter, useSearchParams} from "next/navigation";
 import axios from "axios";
 import Swal from "sweetalert2";
 import DropDownNavbar from "@/app/components/DropDownNavbar";
@@ -20,11 +19,12 @@ const Page = () => {
     const [order, setOrder] = useState(Number(orderData))
     const [me, setMe] = useState<any>()
     useEffect(() => {
+        //@ts-ignore
         handleFetch()
-    }, []);
+    },[] );
     const handleFetch = async () => {
-        const token = localStorage.getItem('userToken');
         try {
+        const token = localStorage?.getItem('userToken');
             const response = await axios.get('https://www.cowork.v1r.ir/api/v1/user/me', {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -64,7 +64,7 @@ const Page = () => {
         <div className={'bg-[#0A2E65] pb-[64px]'}>
             <div className={'flex justify-between w-full pl-[7.6%] pt-[35px]'}>
                 {/*<NavbarBuy/>*/}
-                <DropDownNavbar data={me?.user}/>
+                <DropDownNavbar />
                 <NavbarLinks/>
                 <Link className={'mr-[8%] '} href={'/'}>
                     <Image src={iconNavbar} alt={'iconNavbar'}/>

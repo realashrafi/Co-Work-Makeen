@@ -19,7 +19,15 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
     const [passForRegister, setPassForRegister] = useState('')
+    const [lastChecked, setLastChecked] = useState(checked)
+    const [rolls, setRolls] = useState(false)
     const router = useRouter()
+    const finalCheck = ()=>{
+        if (number.length>10){
+            !lastChecked
+        }
+        else lastChecked
+    }
     const handleSubmit = async (e: any) => {
         e.preventDefault()
         await axios.post('https://www.cowork.v1r.ir/api/v1/auth/user/check-phone-number', {
@@ -38,11 +46,11 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
             })
             statusLogin.setUserLoginStatus(response.status)
             localStorage.setItem('userToken', response.data.token)
-            if (response.status == 200) {
+            if (response?.status == 200) {
                 //@ts-ignore
-                localStorage.setItem('loginStatus', 200)
+                // localStorage.setItem('loginStatus', 200)
                 Swal.fire({
-                    title: "وارد شدید",
+                    title: `${response.data.user.first_name} عزیز وارد شدید `,
                     text: "میتوانید از قسمت ورود به حساب کاربری خود وارد شوید",
                     icon: "success",
                     background: '#002256',
@@ -69,11 +77,11 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
             })
             statusRegister.setUserRegisterStatus(response.status)
             localStorage.setItem('userToken', response.data.token)
-            if (response.status == 200) {
+            if (response?.status == 200) {
                 //@ts-ignore
-                localStorage.setItem('loginStatus', 200)
+                // localStorage.setItem('loginStatus', 200)
                 Swal.fire({
-                    title: "وارد شدید",
+                    title: `${response.data.user.first_name} عزیز وارد شدید `,
                     text: "میتوانید از قسمت ورود به حساب کاربری خود وارد شوید",
                     icon: "success",
                     background: '#002256',
@@ -89,7 +97,7 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
     return (
         <div>
             <div className={'flex justify-center  mt-[48px]'} onClick={handleSubmit}>
-                <button disabled={!checked}
+                <button disabled={number.length > 10 ? lastChecked : !lastChecked}
                         className={'w-[79%] disabled:opacity-50 h-10 bg-sky-400 rounded-xl flex items-center justify-center text-white text-base font-bold'}>ادامه
                 </button>
             </div>
@@ -252,10 +260,18 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                                    className={'self-end w-[89%] h-10 bg-[#0A2E65] rounded-xl mt-[8px] px-[16px]'}
                                    dir={'rtl'}
                                    placeholder={'رمز عبوری برای حساب کاربری خود وارد نمایید'}/>
-                            <div onClick={handleRegisterNewMember}
-                                 className={'self-end cursor-pointer w-[89%] h-10 bg-sky-400 rounded-xl mt-[40px] flex justify-center items-center text-white text-base font-bold'}
-                            >ثبت
+                            <div className={'self-end flex justify-end  mt-[20px]'}>
+                                <div className={' text-right text-white text-xs mr-[10px] font-normal'}>قوانین و شرایط
+                                    عضویت در
+                                    آکادمی مکین را می پذیرم
+                                </div>
+                                <input type="checkbox" checked={rolls}
+                                       onClick={() => setRolls(!rolls)}/>
                             </div>
+                            <button onClick={handleRegisterNewMember} disabled={!rolls}
+                                    className={'self-end cursor-pointer w-[89%] disabled:opacity-50 h-10 bg-sky-400 rounded-xl mt-[8px] flex justify-center items-center text-white text-base font-bold'}
+                            >ثبت
+                            </button>
                         </div>
                         {statusRegister?.userRegisterStatus == 200 ? redirect('/') : ''}
                     </div>

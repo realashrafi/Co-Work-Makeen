@@ -16,10 +16,11 @@ const CompleteInformation = () => {
     const [gender, setGender] = useState<any>()
     const [education, setEducation] = useState<any>()
     useEffect(() => {
+        //@ts-ignore
         handleFetch()
     }, []);
     const handleFetch = async () => {
-        const token = localStorage.getItem('userToken');
+        const token = localStorage?.getItem('userToken');
         try {
             const response = await axios.get('https://www.cowork.v1r.ir/api/v1/user/me', {
                 headers: {
@@ -32,6 +33,7 @@ const CompleteInformation = () => {
             setFirst_name(response.data.user.first_name)
             setLast_name(response.data.user.last_name)
             setEmail(response.data.user.email)
+            setNational_code(response.data.user.national_code)
         } catch (e) {
             console.log(e)
             Swal.fire({
@@ -48,7 +50,7 @@ const CompleteInformation = () => {
         }
     }
     const handleupdate = async (e: any) => {
-        const token = localStorage.getItem('userToken');
+        const token = localStorage?.getItem('userToken');
         e.preventDefault()
         try {
             const response = await axios.put(`https://www.cowork.v1r.ir/api/v1/user/${userID}`, {
