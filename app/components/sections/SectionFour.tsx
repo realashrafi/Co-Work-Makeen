@@ -30,12 +30,12 @@ const SectionFour = () => {
 
     return (
         <section className={'bg-[#002256]  pt-[150px]'}>
-            <div className={'flex bg-[#F8F9FC] rounded-[12px]'}>
-                <div className={'w-1/2 flex justify-end items-center'}>
-                    <div className={'pl-[100px]  flex flex-col   h-[544px] '}>
+            <div className={'flex flex-wrap lg:flex-nowrap bg-[#F8F9FC] rounded-[12px]'}>
+                <div className={'lg:w-1/2 w-[100%] lg:mt-[8%] flex lg:justify-end mx-auto justify-center '}>
+                    <div className={'lg:pl-[100px]   flex flex-col   h-[544px] '}>
                         <div className={'flex items-center '}>
                             <div
-                                className={`w-[236px] h-[66px] mt-[20px] flex justify-center -mr-[20px] border-2 rounded-l-full border-[${lights[0]}]`}>
+                                className={`lg:w-[236px] w-[35%] h-[66px] mt-[20px] flex justify-center -mr-[20px] border-2 rounded-l-full border-[${lights[0]}]`}>
 
                                 <svg width="45px" height="45px" viewBox="0 -0.5 25 25" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
@@ -83,13 +83,13 @@ const SectionFour = () => {
                                 </svg>
                             </div>
                             <div
-                                className={'text-neutral-700 text-base font-medium h-[66px] w-[236px] mt-[20px] ml-[20px] flex items-center'}>
+                                className={'text-neutral-700 text-base font-medium h-[66px] w-fit lg:w-[236px] mt-[20px] ml-[20px] flex items-center'}>
                                 ثبت نام در سایت
                             </div>
                         </div>
-                        <div  className={'flex items-center'}>
+                        <div  className={'flex items-center  '}>
                             <div
-                                className={'text-neutral-700 text-base font-medium h-[66px] w-[236px] mt-[20px] -mr-[20px] flex items-center justify-end pr-[40px]'}>
+                                className={'text-neutral-700 text-base font-medium h-[66px] w-fit lg:w-[236px] mt-[20px] -mr-[20px] flex items-center justify-end pr-[40px]'}>
                                 تکمیل فرم و ارسال
                             </div>
                             <div className={'relative'}>
@@ -106,7 +106,7 @@ const SectionFour = () => {
                                 </svg>
                             </div>
                             <div
-                                className={`w-[236px] h-[66px] mt-[20px] flex justify-center items-center  -ml-[20px] border-2 rounded-r-full border-[${lights[1]}]`}>
+                                className={`lg:w-[236px] w-[35%] h-[66px] mt-[20px] flex justify-center items-center  -ml-[20px] border-2 rounded-r-full border-[${lights[1]}]`}>
                                 <svg width="46" height="50" viewBox="0 0 46 50" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <g id="Group 485">
@@ -132,7 +132,7 @@ const SectionFour = () => {
                         </div>
                         <div  className={'flex items-center '}>
                             <div
-                                className={`w-[236px] h-[66px] mt-[20px] flex justify-center items-center -mr-[20px] border-2 rounded-l-full border-[${lights[2]}]`}>
+                                className={`lg:w-[236px] w-[33%] h-[66px] mt-[20px] flex justify-center items-center -mr-[20px] border-2 rounded-l-full border-[${lights[2]}]`}>
                                 <svg width="49" height="38" viewBox="0 0 49 38" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <g id="Group 487">
@@ -160,13 +160,13 @@ const SectionFour = () => {
                                 </svg>
                             </div>
                             <div
-                                className={'text-neutral-700 text-base font-medium h-[66px] w-[236px] mt-[20px] ml-[20px] flex items-center'}>
+                                className={'text-neutral-700 text-base font-medium h-[66px] w-fit  lg:w-[236px] mt-[20px] ml-[20px] flex items-center'}>
                                 تایید مدارک و پرداخت
                             </div>
                         </div>
                         <div  className={'flex items-center'}>
                             <div
-                                className={'text-neutral-700 text-base font-medium h-[66px] w-[236px] mt-[20px] -mr-[20px] flex items-center justify-end pr-[40px]'}>
+                                className={'text-neutral-700 text-base font-medium h-[66px]  w-fit lg:w-[236px] mt-[20px] -mr-[20px] flex items-center justify-end pr-[40px]'}>
                                 مراجعه حضوری و استقرار
                             </div>
                             <div className={'relative'}>
@@ -183,7 +183,7 @@ const SectionFour = () => {
                                 </svg>
                             </div>
                             <div
-                                className={`w-[236px] h-[66px] mt-[20px] flex justify-center items-center -ml-[20px] border-2 rounded-r-full border-[${lights[3]}]`}>
+                                className={`w-[33%] lg:w-[236px] h-[66px] mt-[20px] flex justify-center items-center -ml-[20px] border-2 rounded-r-full border-[${lights[3]}]`}>
                                 <svg width="48px" height="48px" viewBox="0 0 24 24" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -201,12 +201,12 @@ const SectionFour = () => {
                         </div>
                     </div>
                 </div>
-                <div className={'w-1/2 flex justify-end mr-[119px]'}>
-                    <div className={'w-[322px]  h-[704px] relative'}>
+                <div className={'lg:w-1/2 flex w-[90%] lg:justify-end justify-center lg:mr-[119px]'}>
+                    <div className={'w-[322px]  h-[704px]  relative'}>
                         <h2 className={'h-[43px]  w-[302px] text-center text-indigo-800 text-opacity-20 text-[25px] font-extrabold capitalize tracking-[9px] z-40 left-[-125px] top-[130px] -rotate-90  absolute'}>Cowork
                             Makeen</h2>
                         <div
-                            className={'ml-[49px] w-[273px] h-[704px] justify-center flex flex-col bg-[#002256] relative bottom-[15px] rounded-b-full'}>
+                            className={'ml-[49px] w-[273px] h-[704px] justify-center flex flex-col bg-[#002256] relative lg:bottom-[15px] -bottom-[15px] rounded-t-full lg:rounded-t-none lg:rounded-b-full'}>
                             <h2 className={'w-[197px] h-[78.68px] text-center text-[#FF792C] text-[22px] font-extrabold mb-[45px] mx-auto'}>مسیر
                                 پیوستن به
                                 فضای کار اشتراکی</h2>

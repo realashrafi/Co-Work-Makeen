@@ -48,7 +48,7 @@ const RegisterModalStep3 = ({number}: any) => {
                 style={{
                     overlay: {
                         zIndex: 10,
-                        position: 'fixed',
+                        position: 'absolute',
                         top: 0,
                         left: 0,
                         right: 0,
@@ -56,10 +56,10 @@ const RegisterModalStep3 = ({number}: any) => {
                         backgroundColor: ''
                     },
                     content: {
-                        width: '36%',
+                        width: '90%',
                         height: 516,
                         position: 'absolute',
-                        left: '32%',
+                        left: '5%',
                         top: '20%',
                         background: '#002256',
                         overflow: 'auto',
@@ -71,7 +71,7 @@ const RegisterModalStep3 = ({number}: any) => {
                     }
                 }}
                 isOpen={showModal}>
-                <div>
+                <div className={'lg:mx-[400px]'}>
                     <div className={'flex justify-end pr-[24px] mt-[24px]'}>
                         <div className={'cursor-pointer'} onClick={() => setShowModal(false)}>X</div>
                     </div>

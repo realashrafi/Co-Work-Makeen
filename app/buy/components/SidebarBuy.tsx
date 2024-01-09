@@ -6,7 +6,7 @@ const SidebarBuy = () => {
     const pathname = usePathname()
     return (
         <div className={'flex flex-col'}>
-            <Link href={'/buy'}
+            <Link href={''}
                 className={`${pathname=== '/buy'?'bg-[#0B99DE]':''} my-[8px] flex items-center justify-end rounded-l-full pr-[18.7%]  w-[319px] h-[53px]`}>
                 <div className={'flex items-center '}>
                     <p className={` text-base font-normal ${pathname=== '/buy'?'text-white':'text-[#FF792C]'}`}>تکمیل اطلاعات</p>
@@ -18,7 +18,7 @@ const SidebarBuy = () => {
                     </svg>
                 </div>
             </Link>
-            <Link href={'/buy/subscribtions'}
+            <Link href={''}
                 className={`${pathname=== '/buy/subscribtions'?'bg-[#0B99DE]':''} my-[8px] flex items-center justify-end rounded-l-full pr-[18.7%]  w-[319px] h-[53px]`}>
                 <div className={'flex items-center '}>
                     <p className={` text-base font-normal ${pathname=== '/buy/subscribtions'?'text-white':'text-[#FF792C]'} `}>خرید اشتراک</p>
@@ -30,7 +30,7 @@ const SidebarBuy = () => {
                     </svg>
                 </div>
             </Link>
-            <Link href={'/buy/submitedChair'}
+            <Link href={''}
                 className={`${pathname=== '/buy/submitedChair'?'bg-[#0B99DE]':''} my-[8px] flex items-center justify-end rounded-l-full pr-[18.7%]  w-[319px] h-[53px]`}>
                 <div className={'flex items-center '}>
                     <p className={'text-white text-base font-normal '}>ثبت صندلی</p>

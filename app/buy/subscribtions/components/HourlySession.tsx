@@ -76,39 +76,39 @@ const HourlySession = () => {
                           fill="#FFFEFF"/>
                 </svg>
             </div>
-            <div className={'flex items-center w-[70%] mx-auto justify-between mt-[26px]'}>
+            <div className={'flex items-center w-[80%] lg:w-[70%] mx-auto justify-between mt-[26px]'}>
                 <div
-                    className={'w-[140px] h-10 bg-[#002256] rounded-xl flex items-center justify-center text-white '}>دوشنبه
+                    className={'w-[140px] mx-1 my-1   h-10 bg-[#002256] rounded-xl flex items-center justify-center text-white '}>دوشنبه
                 </div>
                 <div
-                    className={'w-[140px] h-10 bg-[#002256] rounded-xl flex items-center justify-center text-white '}>یکشنبه
+                    className={'w-[140px] mx-1 my-1   h-10 bg-[#002256] rounded-xl flex items-center justify-center text-white '}>یکشنبه
                 </div>
                 <div
-                    className={'w-[140px] h-10 bg-[#026AE1] rounded-xl flex items-center justify-center text-white '}>شنبه
-                </div>
-            </div>
-            <div className={'flex items-center w-[70%] mx-auto justify-between mt-[8px]'}>
-                <div
-                    className={'w-[140px] h-10 bg-[#002256] rounded-xl flex items-center justify-center text-white '}>پنچشنبه
-                </div>
-                <div
-                    className={'w-[140px] h-10 bg-[#002256] rounded-xl flex items-center justify-center text-white '}>چهارشنبه
-                </div>
-                <div
-                    className={'w-[140px] h-10 bg-[#002256] rounded-xl flex items-center justify-center text-white '}>سه شنبه
+                    className={'w-[140px] mx-1 my-1   h-10 bg-[#026AE1] rounded-xl flex items-center justify-center text-white '}>شنبه
                 </div>
             </div>
-            <div className={'flex flex-col justify-center mt-[48px]'}>
+            <div className={'flex items-center w-[80%] lg:w-[70%] mx-auto justify-between mt-[8px]'}>
+                <div
+                    className={'w-[140px] mx-1 my-1   h-10 bg-[#002256] rounded-xl flex items-center justify-center text-white '}>پنچشنبه
+                </div>
+                <div
+                    className={'w-[140px] mx-1 my-1   h-10 bg-[#002256] rounded-xl flex items-center justify-center text-white '}>چهارشنبه
+                </div>
+                <div
+                    className={'w-[140px] mx-1 my-1   h-10 bg-[#002256] rounded-xl flex items-center justify-center text-white '}>سه شنبه
+                </div>
+            </div>
+            <div className={'flex w-[95%] mx-auto flex-col justify-center mt-[48px]'}>
                 {days.slice(0, 7).map(item => (
                     <div key={item.id} className={'flex w-[100%] h-[56px] my-[4px]'}>
                         <div
-                            className={'flex  text-center justify-between items-center px-[10%] w-[450px] bg-[#002256] rounded-l-3xl'}>
+                            className={'flex  text-center justify-between items-center px-1 lg:px-[10%] w-[80%] lg:w-[450px] bg-[#002256] rounded-l-3xl'}>
                             <div className={'text-[#44C0ED] text-sm font-normal '} dir={'rtl'}>{item.peak}</div>
                             <div className={'text-white text-sm font-normal '}>{item.date}</div>
                             <div className={'text-white text-sm font-normal '}>{item.name}</div>
                         </div>
                         <div
-                            className={'flex w-[150px] bg-[#002256] justify-center items-center border-l-2 border-[#0A2E65] rounded-r-3xl'}>
+                            className={'flex w-[20%] px-1 lg:w-[150px] bg-[#002256] justify-center items-center border-l-2 border-[#0A2E65] rounded-r-3xl'}>
                             <svg width="32" height="30" viewBox="0 0 32 30" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path id="Vector"
@@ -152,7 +152,7 @@ const HourlySession = () => {
                     className="text-white text-sm font-normal ">مشاهده کنید</span></div>
             </div>
             <button
-                className={'flex justify-center items-center text-white text-lg font-medium bg-[#026AE1] w-[408px] h-12 rounded-xl mt-[40px]'}>
+                className={'flex justify-center items-center text-white text-lg font-medium bg-[#026AE1] w-[40%] lg:w-[408px] h-12 rounded-xl mt-[40px]'}>
                 پرداخت
             </button>
         </div>

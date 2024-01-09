@@ -12,7 +12,7 @@ const RegisterModalStep1 = ({statusLogin, statusRegister}: any) => {
     const validation = () => {
         if (number.length < 11) {
             return (
-                <div className={' text-orange-500 font-light text-[10px] relative right-[45%] bottom-[30px]'}>شماره موبایل 11 رقمی خود را وارد کنید</div>
+                <div className={' text-orange-500 font-light text-[10px] relative mr-4 '}>شماره موبایل 11 رقمی خود را وارد کنید</div>
             )
         }
     }
@@ -33,7 +33,7 @@ const RegisterModalStep1 = ({statusLogin, statusRegister}: any) => {
                     <div className="text-white text-base font-normal mr-[1%] group-hover:text-orange-500 -mt-[3px]">ثبت
                         نام
                     </div>
-                    <svg className={'mx-[4%]'} width="2" height="22" viewBox="0 0 2 22" fill="none"
+                    <svg className={'lg:mx-[4%]'} width="2" height="22" viewBox="0 0 2 22" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path id="Line 202" d="M1.25 0.99707L1.25 21.0033" stroke="#FF792C" strokeLinecap="round"/>
                     </svg>
@@ -46,7 +46,7 @@ const RegisterModalStep1 = ({statusLogin, statusRegister}: any) => {
                 style={{
                     overlay: {
                         zIndex: 10,
-                        position: 'fixed',
+                        position: 'absolute',
                         top: 0,
                         left: 0,
                         right: 0,
@@ -54,10 +54,10 @@ const RegisterModalStep1 = ({statusLogin, statusRegister}: any) => {
                         backgroundColor: 'rgba(255, 255, 255, 0.2)'
                     },
                     content: {
-                        width: '36%',
+                        width: '90%',
                         height: 465,
                         position: 'absolute',
-                        left: '32%',
+                        left: '5%',
                         top: '20%',
                         background: '#002256',
                         overflow: 'auto',
@@ -69,7 +69,7 @@ const RegisterModalStep1 = ({statusLogin, statusRegister}: any) => {
                     }
                 }}
                 isOpen={showModal}>
-                <div>
+                <div className={'lg:mx-[400px]'}>
                     <div className={'flex justify-end pr-[24px] mt-[24px]'}>
                         <div className={'cursor-pointer'} onClick={() => setShowModal(false)}>X</div>
                     </div>

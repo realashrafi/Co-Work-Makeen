@@ -127,34 +127,34 @@ const DailyCowork = () => {
 
     ]
     return (
-        <div className={'w-[80%] flex flex-col items-center mx-auto'}>
+        <div className={'lg:w-[80%] flex  flex-col items-center mx-auto'}>
             <div className={'text-white text-base font-bold mt-[32px]'}>خرید اشتراک روزانه کوورک</div>
             <div className={'text-orange-500 text-sm font-normal mt-[8px]'}>هزینه روزانه 30 تومان</div>
-            <div className={'w-[100%] flex justify-between items-center mt-[70px]'}>
-                <div className={'flex items-center'}>
+            <div className={'w-[100%] flex lg:justify-between justify-center mx-auto  flex-wrap  lg:flex-nowrap items-center mt-[70px]'}>
+                <div className={'flex  items-center w-[90%]'}>
                     <div className={'text-white text-sm font-bold '}>تعداد صندلی های پر شده</div>
                     <div className={'w-4 h-4 rounded-full bg-[#FF792C] ml-2'}></div>
                 </div>
-                <div className={'flex items-center'}>
+                <div className={'flex items-center  w-[90%]'}>
                     <div className={'text-white text-sm font-bold '}>تعداد صندلی های باقی مانده</div>
                     <div className={'w-4 h-4 rounded-full bg-[#44C0ED] ml-2'}></div>
                 </div>
-                <div className={'flex items-center'}>
+                <div className={'flex items-center w-[90%]'}>
                     <div className={'text-white text-sm font-bold '}>تعداد کل صندلی ها</div>
                     <div className={'w-4 h-4 rounded-full bg-[#FFFEFF] ml-2'}></div>
                 </div>
             </div>
-            <div className={'flex items-center justify-between mt-[36px]'}>
+            <div className={'flex lg:flex-nowrap flex-wrap-reverse items-center justify-between mt-[36px]'}>
                 <div className={'text-sky-400 text-xs font-bold'}>
                     بیشتر
                 </div>
                 <svg width="3" height="22" viewBox="0 0 3 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path id="Line 203" d="M1.5 1L1.5 21" stroke="#44C0ED" strokeWidth="2" strokeLinecap="round"/>
                 </svg>
-                <div className={'w-[60%] flex '} dir={'rtl'}>
+                <div className={'lg:w-[60%] flex lg:flex-nowrap flex-wrap justify-center '} dir={'rtl'}>
                     {selectedDay.slice(0, 3).map(item => (
                         <div dir={'ltr'}
-                            className={'w-[146px] h-8 bg-[#002256] rounded-[32px] justify-evenly flex items-center mx-[2px]'}
+                            className={'w-[146px] lg:my-0 my-1 h-8 bg-[#002256] rounded-[32px] justify-evenly flex items-center mx-[2px]'}
                             key={item.id}>
                             <div className={'text-white text-xs font-normal'}>{item.date}</div>
                             <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
@@ -181,26 +181,26 @@ const DailyCowork = () => {
             </div>
             <div className={'flex flex-col mt-[50px] '}>
                 {days.slice(0, 6).map(item => (
-                    <div key={item.id} className={'flex w-[100%] h-[56px] my-1'}>
-                        <div className={'flex justify-around w-[180px] bg-[#002256] rounded-l-full'}>
+                    <div key={item.id} className={'flex lg:w-[100%]  h-[56px] my-1'}>
+                        <div className={'flex justify-around lg:w-[180px] w-[30%] bg-[#002256] rounded-l-full'}>
                             <div className={'flex items-center text-sm font-bold text-[#FF792C]'}>
                                 {item.soldChair}
-                                <div className="w-4 h-4 bg-[#FF792C] rounded-full ml-[8px]"/>
+                                <div className="w-4 h-4 bg-[#FF792C] rounded-full lg:ml-[8px]"/>
                             </div>
                             <div className={'flex items-center text-sm font-bold text-[#44C0ED]'}>
                                 {item.chairForSale}
-                                <div className="w-4 h-4 bg-[#44C0ED] rounded-full ml-[8px]"/>
+                                <div className="w-4 h-4 bg-[#44C0ED] rounded-full lg:ml-[8px]"/>
                             </div>
                             <div className={'flex items-center text-sm font-bold text-[#EEEFEE]'}>
                                 {item.allChair}
-                                <div className="w-4 h-4 bg-[#EEEFEE] rounded-full ml-[8px]"/>
+                                <div className="w-4 h-4 bg-[#EEEFEE] rounded-full lg:ml-[8px]"/>
                             </div>
                         </div>
                         <div
-                            className={'flex w-[435px] relative items-center justify-around bg-[#002256] rounded-r-[14px] border-[#0A2E65] border-l-[2px]'}>
-                            <div className={'text-white text-sm font-normal'} dir={'rtl'}>{item.peak}</div>
-                            <div className={'text-white text-sm font-normal'}>{item.date}</div>
-                            <div className={'text-white text-sm font-normal'}>{item.day}</div>
+                            className={'flex lg:w-[435px] w-[80%] relative items-center justify-around bg-[#002256] rounded-r-[14px] border-[#0A2E65] border-l-[2px]'}>
+                            <div className={'text-white lg:border-none border-[#0A2E65] border-[1px] text-sm font-normal'} dir={'rtl'}>{item.peak}</div>
+                            <div className={'text-white  text-sm font-normal'}>{item.date}</div>
+                            <div className={'text-white  text-sm font-normal'}>{item.day}</div>
                             <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
                                  xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                                 <rect width="30" height="30" fill="url(#pattern0)"/>
@@ -215,7 +215,7 @@ const DailyCowork = () => {
                             <div
                                 className={`absolute right-0 rounded-full w-1 h-[30px]  ${item.checked ? 'bg-[#44C0ED]' : ''}`}></div>
                         </div>
-                        <div className={'flex items-center ml-[20px]'}>
+                        <div className={'flex items-center ml-4 lg:ml-[20px]'}>
                             <label
                                 className="cursor-pointer  duration-300 relative overflow-hidden w-[30px] h-[30px] flex justify-center items-center  rounded-lg bg-[#002256] ">
                                 <input className="peer  hidden" type="checkbox" checked={item.checked}/>
@@ -260,7 +260,7 @@ const DailyCowork = () => {
                 </div>
             </div>
             <button
-                className={'flex justify-center items-center text-white text-lg font-medium bg-[#026AE1] w-[408px] h-12 rounded-xl mt-[40px]'}>
+                className={'flex justify-center items-center text-white text-lg font-medium bg-[#026AE1] w-[40%] lg:w-[408px] h-12 rounded-xl mt-[40px]'}>
                 پرداخت
             </button>
         </div>

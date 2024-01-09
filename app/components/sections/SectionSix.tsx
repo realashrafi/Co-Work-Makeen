@@ -7,7 +7,7 @@ import {hidden} from "next/dist/lib/picocolors";
 
 const SectionSix = () => {
     return (
-        <section className={'bg-[#002256] pt-[180px] pb-[120px] flex justify-center'}>
+        <section className={'bg-[#002256] lg:pt-[180px] pt-12 pb-12 lg:pb-[120px] flex lg:flex-nowrap flex-wrap justify-center'}>
             <div className="relative group cursor-pointer  -mx-[15px] rounded-[18px] duration-500 scale-[85%] w-[275px] h-[275px] bg-[#44C0ED] ">
                 <div className="">
                     <div className="absolute bottom-24 flex justify-center  duration-500 group-hover:-translate-y-14">

@@ -1,3 +1,4 @@
+'use client'
 import React from 'react';
 import SideBarAdminPanel from "@/app/admin/components/SideBarAdminPanel";
 import NavbarAdminPanel from "@/app/admin/components/NavbarAdminPanel";

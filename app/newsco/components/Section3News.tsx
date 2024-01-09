@@ -6,14 +6,14 @@ import img3 from '../components/data/workShopImg3.png'
 
 const Section3News = () => {
     return (
-        <div className={'pt-[80px]'}>
+        <div className={'lg:pt-[80px] pt-12'}>
             <div className={'flex justify-end mr-[7.6%] pb-[32px]'}>
                 <p className={'text-[#FFFEFF] text-[22px] border-r-[2px] pr-[13px] border-[#FF792C]'}>ورکشاپ ها</p>
             </div>
-            <div className={'h-[753px] w-[85%] flex mx-auto '}>
-                <div className={'w-[54%] rounded-[12px] bg-[#0A2E65] h-[753px]'}>
+            <div className={'lg:h-[753px] lg:w-[85%] justify-center lg:flex-nowrap flex-wrap flex mx-auto '}>
+                <div className={'lg:w-[54%] w-[90%] rounded-[12px] bg-[#0A2E65] h-[753px] my-4 lg:my-0'}>
                     <Image src={img1} alt={''}/>
-                    <p className={'text-[26px] text-[#44C0ED] pt-[34px] pr-[25px]'} style={{direction: "rtl"}}>سومین
+                    <p className={'text-[26px] text-[#44C0ED] pt-[34px] px-4 lg:pr-[25px]'} style={{direction: "rtl"}}>سومین
                         دوره ی کارگاه سواد بصری
                     </p>
                     <p className={'text-[22px] text-[#FFFEFF] pt-[20px] pr-[25px] pl-[54px]'}
@@ -34,9 +34,9 @@ const Section3News = () => {
                         </svg>
                     </div>
                 </div>
-                <div className={'w-[40.5%] flex-col  ml-[5.3%]'}>
+                <div className={'w-[90%] lg:w-[49%] flex-col  lg:ml-[5.3%]'}>
                     <div className={'w-[100%] h-[368px]  rounded-[7px] bg-[#0A2E65]'}>
-                        <Image src={img2} alt={''}/>
+                        <Image src={img2}  alt={''}/>
                         <p className={'text-[20px] text-[#44C0ED] pt-[15px] pr-[25px]'}
                            style={{direction: "rtl"}}>برگزاری جلسه اول سواد بصری
                         </p>

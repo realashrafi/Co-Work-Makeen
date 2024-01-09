@@ -29,7 +29,7 @@ const AddMoney = () => {
                 style={{
                     overlay: {
                         zIndex: 10,
-                        position: 'fixed',
+                        position: 'absolute',
                         top: 0,
                         left: 0,
                         right: 0,
@@ -37,10 +37,10 @@ const AddMoney = () => {
                         backgroundColor: 'rgba(255, 255, 255, 0.2)'
                     },
                     content: {
-                        width: '45%',
+                        width: '90%',
                         height: 609,
                         position: 'absolute',
-                        left: '30%',
+                        left: '5%',
                         top: '15%',
                         background: '#002256',
                         overflow: 'auto',
@@ -52,24 +52,25 @@ const AddMoney = () => {
                     }
                 }}
                 isOpen={showModalMoney}>
-                <div className={'w-[80%] border-b-[1px] border-[#CCCCCC22] pb-[5%] mx-auto mt-[8%]  items-center flex'}>
-                    <div className={'flex pr-[33px]  text-[#FFFEFF] text-[16px] '}
+                <div>
+                <div className={'lg:w-[80%] border-b-[1px] border-[#CCCCCC22] py-4 mx-auto   items-center flex'}>
+                    <div className={'flex lg:pr-[33px] pl-4  text-[#FFFEFF] text-[16px] '}
                          style={{direction: 'rtl'}}>
                         <Link href={''} onClick={() => setShowModalMoney(false)}>X</Link>
                     </div>
                     <p className={'text-center text-[#FFFEFF] text-[16px] pl-[33%] '}>افزایش موجودی</p>
                 </div>
                 <div
-                    className={'w-[383px] flex-col flex justify-center items-center h-[87px] bg-[#026AE1] mx-auto mt-[42px] border-b-[6px] border-[#44C0ED] rounded-[12px]'}>
+                    className={'lg:w-[383px] w-[90%] flex-col flex justify-center items-center h-[87px] bg-[#026AE1] mx-auto mt-[42px] border-b-[6px] border-[#44C0ED] rounded-[12px]'}>
                     <p className={'text-[#FFFEFF] text-[12px] '}>: موجودی کیف پول </p>
                     <p className={'text-[#FFFEFF] mt-[10px] text-[12px] '}>30 تومان</p>
                 </div>
-                <div className={'w-[383px] mt-[49px] h-[76px] flex flex-col mx-auto justify-between'}>
+                <div className={'lg:w-[383px] w-[90%] mt-[49px] h-[76px] flex flex-col mx-auto justify-between'}>
                     <p className={'text-[#FFFEFF] text-[14px] '} dir={'rtl'}>مبلغ مورد نظرت را انتخاب یا وارد کن</p>
                     <input  value={profit} className={'h-[44px] rounded-[12px] text-[#FFFEFF] bg-[#0A2E65] text-center'}
                            placeholder={'مبلغ ( تومان)'} onChange={(e: React.ChangeEvent<HTMLInputElement>)=>setProfit(e.target.value)}/>
                 </div>
-                <div className={'w-[383px] mt-[34px] flex justify-around h-[38px] mx-auto '}>
+                <div className={'lg:w-[383px] mt-[34px] flex justify-around h-[38px] mx-auto '}>
                     <div onClick={()=>setProfit(500)}
                         className={'w-[94px] cursor-pointer justify-center h-[38px] bg-[#0A2E65] text-[14px] rounded-[8px] text-center flex items-center text-[#E6E6E6]'}>
                         500 تومان
@@ -87,6 +88,7 @@ const AddMoney = () => {
             <Link href={'/user/walletuser'} onClick={()=>setShowModalMoney(false)} className={'w-[289px] cursor-pointer h-[40px] bg-[#026AE1] mt-[50px] justify-center mx-auto text-[#FFFEFF] flex items-center text-center rounded-[12px]'}>
                 افزایش موجودی
             </Link>
+                </div>
             </ReactModal>
         </div>
     );

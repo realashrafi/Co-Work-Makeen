@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 const ComponentsRenderByOrders = ({order}: any) => {
 
     return (
-        <div className={'w-[65%] flex justify-center mx-auto'}>
+        <div className={'lg:w-[65%] w-[100%] flex justify-center mx-auto'}>
             <div className={'w-[100%] h-[1128px] rounded-xl bg-[#0A2E65]'}>
                 {order === 1 ? <DailyCowork/> : null}
                 {order === 2 ? <LongTermCowork/> : null}

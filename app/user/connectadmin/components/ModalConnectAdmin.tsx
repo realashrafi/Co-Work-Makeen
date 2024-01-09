@@ -28,10 +28,10 @@ const ModalConnectAdmin = () => {
                         backgroundColor: 'rgba(255, 255, 255, 0.2)',
                     },
                     content: {
-                        width: '40%',
+                        width: '90%',
                         height: 609,
                         position: 'absolute',
-                        left: '30%',
+                        left: '5%',
                         top: '15%',
                         background: '#002256',
                         overflow: 'auto',
@@ -44,7 +44,7 @@ const ModalConnectAdmin = () => {
                 }}
                 isOpen={showModal}>
                 <div className={'w-[100%]  flex-col'}>
-                  <div className={'flex   border-[#0A2E65] mx-[24px] pb-[24px] border-b-[1px] '}>
+                  <div className={'flex justify-between  border-[#0A2E65] mx-[24px] pb-[24px] border-b-[1px] '}>
                       <Link className={'ml-[21px] mt-[45px]'} onClick={()=>setShowModal(false)} href={''}>
                           x
                       </Link>

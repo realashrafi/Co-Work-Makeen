@@ -1,7 +1,5 @@
 import React from 'react';
-import leftVector from '../components/data/leftVector.png'
-import Image from "next/image";
-import Link from "next/link";
+    import Image from "next/image";
 import blueChair from '../components/data/desk-chair.png'
 import LoginForBuy from "@/app/buy/components/LoginForBuy";
 
@@ -10,19 +8,19 @@ const Section2Tariffs = () => {
     return (
         <section className={'bg-[#002256] flex flex-col   pt-[53px]'}>
             <div
-                className={'w-[14%] h-[53px] bg-[#FF792C] flex justify-center items-center text-center rounded-[40px] -mb-[18px] ml-[76%] z-10'}>
+                className={'lg:w-[14%]  mx-auto  px-3 h-[53px] bg-[#FF792C] flex justify-center ml-[33%] items-center text-center rounded-[40px] -mb-[18px] lg:ml-[70%] z-10'}>
                 <p className={'text-[#FFFEFF] text-[14px]'}>دانشجویان مکینی</p>
             </div>
-            <div className={'bg-[#0A2E65] items-center ml-[20%] flex w-[71%] h-[120px] rounded-[24px]'}>
+            <div className={'bg-[#0A2E65] items-center justify-center mx-auto mt-2 lg:mt-0 lg:flex-nowrap flex-wrap-reverse  flex lg:w-[71%] w-[90%] h-[120px] rounded-[24px]'}>
                 <LoginForBuy orderData={1}/>
-                <div className={'ml-[19%] '}>
-                    <p className={'text-[#FF792C] text-[18px]'}>30 تومان</p>
+                <div className={'lg:ml-[19%] ml-8 '}>
+                    <p className={'text-[#FF792C]  text-[18px]'}>30 تومان</p>
                 </div>
-                <div className={'flex flex-col ml-[14%]'} style={{direction: "rtl"}}>
+                <div className={'flex flex-col lg:ml-[14%]'} style={{direction: "rtl"}}>
                     <p className={'text-[16px] text-[#FFFFFF] '}>اشتراک روزانه</p>
                     <p className={'text-[14px] text-[#FFFFFF] '}>تنها برای یک روز قابل استفاده است</p>
                 </div>
-                <div className={'ml-[8%] '}>
+                <div className={'lg:ml-[8%] ml-8 '}>
                     <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg"
                          href="http://www.w3.org/1999/xlink">
                         <rect width="50" height="50" fill="url(#pattern0)"/>
@@ -37,16 +35,16 @@ const Section2Tariffs = () => {
 
                 </div>
             </div>
-            <div className={'bg-[#0A2E65] mt-[18px] items-center ml-[20%] flex w-[71%] h-[120px] rounded-[24px]'}>
+            <div className={'bg-[#0A2E65] mt-[18px] items-center justify-center mx-auto flex-wrap-reverse lg:flex-nowrap flex lg:w-[71%] w-[90%] h-[120px] rounded-[24px]'}>
                 <LoginForBuy orderData={2}/>
-                <div className={'ml-[18%] '}>
+                <div className={'lg:ml-[18%] ml-8'}>
                     <p className={'text-[#FF792C] text-[18px]'}>500 تومان</p>
                 </div>
-                <div className={'flex flex-col ml-[14%]'} style={{direction: "rtl"}}>
+                <div className={'flex flex-col lg:ml-[14%]'} style={{direction: "rtl"}}>
                     <p className={'text-[16px] text-[#FFFFFF] '}>اشتراک ماهانه</p>
                     <p className={'text-[14px] text-[#FFFFFF] '}> برای 30 یک روز قابل استفاده است</p>
                 </div>
-                <div className={'ml-[8%] '}>
+                <div className={'lg:ml-[8%] ml-8'}>
                     <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg"
                          href="http://www.w3.org/1999/xlink">
                         <rect width="50" height="50" fill="url(#pattern0)"/>
@@ -63,32 +61,32 @@ const Section2Tariffs = () => {
             </div>
 
             <div
-                className={'w-[14%] h-[53px] bg-[#44C0ED] mt-[66px] flex justify-center items-center text-center rounded-[40px] -mb-[18px] ml-[64%] z-10'}>
+                className={'lg:w-[14%] mx-auto px-3 h-[53px] bg-[#44C0ED] mt-8 lg:mt-[66px] flex justify-center items-center text-center rounded-[40px] -mb-[18px] lg:ml-[70%] z-10'}>
                 <p className={'text-[#FFFEFF] text-[14px]'}>دانشجویان آزاد</p>
             </div>
-            <div className={'bg-[#0A2E65] items-center   ml-[8%] flex w-[71%] h-[120px] rounded-[24px]'}>
+            <div className={'bg-[#0A2E65] items-center  flex-wrap-reverse justify-center lg:flex-nowrap mx-auto mt-1  flex lg:w-[71%] w-[90%] h-[120px] rounded-[24px]'}>
                <LoginForBuy orderData={1}/>
-                <div className={'ml-[19%] '}>
+                <div className={'lg:ml-[19%] ml-8 '}>
                     <p className={'text-[#44C0ED] text-[18px]'}>40 تومان</p>
                 </div>
-                <div className={'flex flex-col ml-[14%]'} style={{direction: "rtl"}}>
+                <div className={'flex flex-col lg:ml-[14%]'} style={{direction: "rtl"}}>
                     <p className={'text-[16px] text-[#FFFFFF] '}>اشتراک روزانه</p>
                     <p className={'text-[14px] text-[#FFFFFF] '}>تنها برای یک روز قابل استفاده است</p>
                 </div>
-                <div className={'ml-[8%] '}>
+                <div className={'lg:ml-[8%] ml-8 '}>
                     <Image src={blueChair} alt={''}/>
                 </div>
             </div>
-            <div className={'bg-[#0A2E65] mt-[18px] items-center ml-[8%] flex w-[71%] h-[120px] rounded-[24px]'}>
+            <div className={'bg-[#0A2E65] mt-[18px] justify-center lg:flex-nowrap flex-wrap-reverse items-center mx-auto flex lg:w-[71%] w-[90%] h-[120px] rounded-[24px]'}>
                 <LoginForBuy orderData={2}/>
-                <div className={'ml-[18%] '}>
+                <div className={'lg:ml-[18%] ml-8'}>
                     <p className={'text-[#44C0ED] text-[18px]'}>650 تومان</p>
                 </div>
-                <div className={'flex flex-col ml-[14%]'} style={{direction: "rtl"}}>
+                <div className={'flex flex-col ml-8 lg:ml-[14%]'} style={{direction: "rtl"}}>
                     <p className={'text-[16px] text-[#FFFFFF] '}>اشتراک ماهانه</p>
                     <p className={'text-[14px] text-[#FFFFFF] '}> برای 30 یک روز قابل استفاده است</p>
                 </div>
-                <div className={'ml-[8%] '}>
+                <div className={'lg:ml-[8%] ml-8 '}>
                     <Image src={blueChair} alt={''}/>
                 </div>
             </div>

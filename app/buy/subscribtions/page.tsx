@@ -62,20 +62,20 @@ const Page = () => {
     }
     return (
         <div className={'bg-[#0A2E65] pb-[64px]'}>
-            <div className={'flex justify-between w-full pl-[7.6%] pt-[35px]'}>
+            <div className={'flex px-3 lg:px-0 lg:justify-between w-full lg:pl-[7.6%] pt-[35px]'}>
                 {/*<NavbarBuy/>*/}
                 <DropDownNavbar />
                 <NavbarLinks/>
-                <Link className={'mr-[8%] '} href={'/'}>
+                <Link className={'lg:mr-[8%] '} href={'/'}>
                     <Image src={iconNavbar} alt={'iconNavbar'}/>
                 </Link>
             </div>
             <div className={'w-[94.8%] h-[1768px] rounded-xl bg-[#002256] mx-auto mt-[15px] flex flex-col '}>
                 <HeaderBuy/>
                 <div className="w-[90.9%] mx-auto h-[0px] border-2 border-[#0A2E65] mt-[24px]"></div>
-                <div className={'flex justify-end pt-[43px]'}>
+                <div className={'flex justify-end flex-wrap-reverse lg:flex-nowrap pt-[43px]'}>
                     <ComponentsRenderByOrders order={order}/>
-                    <SidebarBuy/>
+                    <SidebarBuy />
                 </div>
             </div>
         </div>

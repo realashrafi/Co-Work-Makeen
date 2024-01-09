@@ -2,8 +2,8 @@ import React from 'react';
 
 const IconEmptyWallet = () => {
     return (
-        <div className={'w-[100%] '}>
-            <svg className={'w-[50%] mx-auto'} viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div className={'w-[100%] flex  '}>
+            <svg className={'lg:w-[50%] mx-auto'} viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M500 382.4H0V382.65H500V382.4Z" fill="#EBEBEB"/>
                 <path d="M173.22 388.78H150.04V389.03H173.22V388.78Z" fill="#EBEBEB"/>
                 <path d="M458.77 394.14H402.1V394.39H458.77V394.14Z" fill="#EBEBEB"/>
@@ -20,22 +20,22 @@ const IconEmptyWallet = () => {
                 <path opacity="0.1" d="M158.197 309.015L139.007 315.644L97.3096 213.878L115.876 196.762L118.972 200.118L158.197 309.015Z" fill="black"/>
                 <path d="M161.919 155.574L92.8691 180.605L141.599 315.027L210.649 289.996L161.919 155.574Z" fill="#407BFF"/>
                 <path opacity="0.5" d="M161.919 155.574L92.8691 180.605L141.599 315.027L210.649 289.996L161.919 155.574Z" fill="#FAFAFA"/>
-                <path d="M159.759 161.638L98.8271 183.727L144.411 309.469L205.342 287.38L159.759 161.638Z" stroke="#407BFF" stroke-miterlimit="10"/>
+                <path d="M159.759 161.638L98.8271 183.727L144.411 309.469L205.342 287.38L159.759 161.638Z" stroke="#407BFF" strokeMiterlimit="10"/>
                 <path d="M157.474 250.421C164.461 247.889 167.549 238.733 164.373 229.971C161.197 221.21 152.959 216.16 145.972 218.693C138.986 221.226 135.897 230.381 139.073 239.143C142.249 247.905 150.488 252.954 157.474 250.421Z" fill="#407BFF"/>
                 <path d="M323.111 257.179L221.611 262.897C218.013 263.1 214.482 263.964 211.198 265.447L101.059 315.171C97.0606 316.976 94.8576 321.321 95.7656 325.613L114.236 412.959C115.504 418.953 122.102 422.123 127.573 419.366L236.266 364.6L336.753 361.422C342.032 361.255 345.96 356.482 345.108 351.27L331.44 267.637C330.735 263.317 327.486 257.059 323.111 257.179Z" fill="#407BFF"/>
-                <path opacity="0.2" d="M225.739 278.203L312.825 272.836" stroke="black" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                <path opacity="0.2" d="M215.307 280.453L231.221 353.533" stroke="black" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                <path opacity="0.2" d="M225.739 278.203L312.825 272.836" stroke="black" strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+                <path opacity="0.2" d="M215.307 280.453L231.221 353.533" stroke="black" strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
                 <path opacity="0.2" d="M109.229 346.429L120.448 402.645C120.448 402.645 129.049 380.338 109.229 346.429Z" fill="#FAFAFA"/>
                 <path opacity="0.2" d="M110.701 347.09C111.086 348.115 210.355 305.493 210.355 305.493C210.355 305.493 212.867 336.132 182.993 352.889C153.119 369.645 110.701 347.09 110.701 347.09Z" fill="#FAFAFA"/>
                 <path d="M176.642 348.747C179.017 348.747 180.942 346.822 180.942 344.447C180.942 342.072 179.017 340.147 176.642 340.147C174.267 340.147 172.342 342.072 172.342 344.447C172.342 346.822 174.267 348.747 176.642 348.747Z" fill="#407BFF"/>
                 <path opacity="0.2" d="M210.407 305.493C210.407 305.493 222.719 324.016 219.741 355.583L210.407 305.493Z" fill="black"/>
                 <g opacity="0.2">
-                    <path d="M104.479 324.35L106.766 323.339" stroke="#FAFAFA" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M111.521 321.238L204.22 280.264" stroke="#FAFAFA" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5.2 5.2"/>
-                    <path d="M206.598 279.213L208.884 278.203" stroke="#FAFAFA" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M104.479 324.35L106.766 323.339" stroke="#FAFAFA" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M111.521 321.238L204.22 280.264" stroke="#FAFAFA" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="5.2 5.2"/>
+                    <path d="M206.598 279.213L208.884 278.203" stroke="#FAFAFA" strokeLinecap="round" strokeLinejoin="round"/>
                 </g>
-                <path opacity="0.2" d="M228.66 294.629L315.746 289.262" stroke="black" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                <path opacity="0.2" d="M232.579 315.116L319.665 309.75" stroke="black" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                <path opacity="0.2" d="M228.66 294.629L315.746 289.262" stroke="black" strokeWidth="2" strokeMiterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                <path opacity="0.2" d="M232.579 315.116L319.665 309.75" stroke="black" stroke-width="2" strokeMiterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M300.583 169.557C300.583 169.557 298.39 192.891 289.724 194.901C281.057 196.911 273.732 193.304 273.732 193.304L266.685 187.882L263.245 199.87C263.245 199.87 267.006 204.982 274.852 201.438C274.852 201.438 288.843 207.605 296.589 201.438C304.335 195.271 306.813 178.382 306.813 178.382L300.583 169.557Z" fill="#B97964"/>
                 <path d="M307.553 158.256C307.553 158.256 301.505 147.947 304.254 129.253C307.003 110.559 322.673 108.223 328.721 109.597C334.769 110.971 339.717 116.763 343.841 127.819C347.965 138.874 349.477 141.761 356.349 139.837C363.222 137.913 381.503 131.865 386.589 137.225C391.675 142.586 390.025 148.634 390.025 148.634C390.025 148.634 415.454 142.449 413.254 165.128C411.055 187.808 374.355 208.976 339.442 186.571C304.529 164.166 307.553 158.256 307.553 158.256Z" fill="#263238"/>
                 <path d="M307.269 213.147C307.269 213.147 300.358 272.58 300.588 300.454C300.818 328.328 310.724 393.981 310.724 393.981H322.933C322.933 393.981 321.32 341.459 321.551 323.49C321.782 305.521 325.006 275.805 325.006 275.805C325.006 275.805 328.922 302.527 333.529 311.972C338.136 321.417 363.706 354.819 381.444 365.186L389.737 357.584C389.737 357.584 371.308 334.778 364.397 323.49C357.486 312.202 351.266 308.977 348.732 288.014C346.198 267.051 350.575 233.418 343.203 213.147H307.269Z" fill="#263238"/>

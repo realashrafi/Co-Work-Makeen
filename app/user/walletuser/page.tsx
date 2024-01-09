@@ -73,6 +73,7 @@ const dataOfWallet = [
     },
 ]
 const WalletUser = () => {
+    const [visible, setVisible] = useState(false)
     useEffect(() => {
         AOS.init({
             duration: 800,
@@ -98,7 +99,7 @@ const WalletUser = () => {
     const helpEmpty = () => {
         if (dataOfWallet.length === 0) {
             return (
-                <div>
+                <div className={'w-[100%]  '}>
                     <p className={'text-[#FFFEFF] text-[16px] font-[400] text-center mt-[180px]'}>! کیف پول شما خالی می
                         باشد</p>
                     <IconEmptyWallet/>
@@ -107,38 +108,38 @@ const WalletUser = () => {
         } else {
             return (
                 <div>
-                    <div className={'flex  '}>
+                    <div className={'flex  lg:justify-end justify-center '}>
                         <select
-                            className={'w-[15%] text-center mt-[45px] ml-[66.3%]  h-[30px] bg-[#FF792C] text-[12px] text-[#FFFFEF] rounded-[12px]'}
+                            className={'lg:w-[15%] text-center mt-[45px] lg:ml-[56.3%]  h-[30px] bg-[#FF792C] text-[12px] text-[#FFFFEF] rounded-[12px]'}
                             style={{direction: "rtl"}}>
                             <option>بر اساس جدیدترین</option>
                             <option>بر اساس جدیدترین</option>
                             <option>بر اساس جدیدترین</option>
                         </select>
-                        <p className={'w-[137px]  mt-[45px] ml-[27px] mr-[65px]  text-[#FFFEFF] text-[18px] font-[500] '}
+                        <p className={'  mt-[45px] ml-[27px] lg:mr-[65px]  text-[#FFFEFF] text-[18px] font-[500] '}
                            style={{direction: "rtl"}}>
                             موجودی کیف پول
                         </p>
                     </div>
                     <div
-                        className={'w-[88.27%]  mt-[32px]  h-[52px] flex mx-auto rounded-[5px] items-center bg-[#0A2E65]'}
+                        className={'lg:w-[88.27%] w-[95%] px-2 justify-between lg:justify-start  mt-[32px]  h-[52px] flex mx-auto rounded-[5px] items-center bg-[#0A2E65]'}
                         style={{direction: "rtl"}}>
-                        <p className={'text-[#FF792C] text-[14px] mr-[7.13%] font-[400]'}>#</p>
-                        <p className={'text-[#FFFFEF] text-[14px] mr-[16.25%] font-[400]'}>تاریخ</p>
-                        <p className={'text-[#FFFFEF] text-[14px] mr-[14.76%] font-[400]'}>نوع اشتراک</p>
-                        <p className={'text-[#FFFFEF] text-[14px] mr-[13.57%] font-[400]'}>مجموع</p>
-                        <p className={'text-[#FFFFEF] text-[14px] mr-[15.85%] font-[400]'}>وضعیت</p>
+                        <p className={'text-[#FF792C] text-[14px] lg:mr-[7.13%] font-[400]'}>#</p>
+                        <p className={'text-[#FFFFEF] text-[14px] lg:mr-[16.25%] font-[400]'}>تاریخ</p>
+                        <p className={'text-[#FFFFEF] text-[14px] lg:mr-[14.76%] font-[400]'}>نوع اشتراک</p>
+                        <p className={'text-[#FFFFEF] text-[14px] lg:mr-[13.57%] font-[400]'}>مجموع</p>
+                        <p className={'text-[#FFFFEF] text-[14px] lg:mr-[15.85%] font-[400]'}>وضعیت</p>
                     </div>
-                    <div className={'flex flex-col mt-[16px] mx-auto w-[88.27%]'} style={{direction: "rtl"}}>
+                    <div className={'flex flex-col mt-[16px] w-[95%] mx-auto lg:w-[88.27%]'} style={{direction: "rtl"}}>
                         {dataOfWallet.slice(0,length).map(item => (
                             <div key={item.id}
                                  className={'w-[100%] h-[52px] border-[#FF792C] border-r-[2px] flex items-center mb-[8px] bg-[#0A2E65] rounded-[5px]'}>
-                                <div className={' justify-between w-[89%] h-[100%] flex items-center'}>
-                                    <p className={'mr-[6.14%] text-[#C9C9C9] text-[14px]'}>{item.num}</p>
+                                <div className={' justify-between lg:w-[89%] w-[100%] h-[100%] flex items-center'}>
+                                    <p className={'lg:mr-[6.14%] ml-2 text-[#C9C9C9] text-[14px]'}>{item.num}</p>
                                     <p className={'text-[#C9C9C9] text-[14px]'}>{item.date}</p>
                                     <p className={'text-[#C9C9C9] text-[14px]'}>{item.sub}</p>
                                     <p className={'text-[#C9C9C9] text-[14px]'}> {item.sum}تومان </p>
-                                    <p className={'ml-[3.5%] text-[#C9C9C9] text-[14px]'}>{item.status}</p>
+                                    <p className={'lg:ml-[3.5%] mr-2 text-[#C9C9C9] text-[14px]'}>{item.status}</p>
                                 </div>
                                 <button
                                     className={'bg-[#002256] w-[] text-[#FF792C] rounded-[12px] ml-[16px] h-[30px] px-[10px] text-[11px] '}>
@@ -157,15 +158,16 @@ const WalletUser = () => {
             <UserNavbar/>
             <div className={'flex pt-[160px]'}>
                 <div data-aos={'fade-right'}
-                    className={'w-[79.3%]  flex-col items-center justify-center h-[1752PX] bg-[#002256] rounded-[24px] mb-[132px]'}>
+                     className={'lg:w-[79.3%]  flex-col items-center justify-center h-[1752PX] bg-[#002256] rounded-[24px] mb-[132px]'}>
                     {helpEmpty()}
-                    <div className={'mt-[69px] flex flex-col items-end mr-[5.6%]'}>
+                    <div className={'mt-[69px] flex flex-col items-center lg:items-end lg:mr-[5.6%]'}>
                         <p className={'text-[#FFFEFF] text-[18px] font-[400]'}>
                             کیف پول من
                         </p>
                         <div
-                            className={'w-[76.6%] flex justify-between mt-[32px] relative h-[344px] bg-[#0A2E65] rounded-[20px]'}>
-                            <svg style={{zIndex: 1}} className={'absolute bottom-0 left-0'} width="320" height="339"
+                            className={'lg:w-[76.6%] w-[95%] flex justify-between mt-[32px] relative h-[344px] bg-[#0A2E65] rounded-[20px]'}>
+                            <svg style={{zIndex: 1}} className={'absolute bottom-0 left-0 w-[80%] lg:w-[320px] '}
+                                 height="339"
                                  viewBox="0 0 320 339" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path opacity="0.2"
@@ -189,7 +191,8 @@ const WalletUser = () => {
                         </div>
                     </div>
                 </div>
-                <SideBarUser/>
+                <button className={'absolute right-4'} onClick={() => setVisible(true)}>X</button>
+                <SideBarUser visible={visible} setVisible={setVisible}/>
             </div>
         </div>
     );

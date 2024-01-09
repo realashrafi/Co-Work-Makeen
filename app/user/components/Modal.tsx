@@ -57,10 +57,10 @@ const Modal = () => {
                         backgroundColor: 'rgba(255, 255, 255, 0.2)'
                     },
                     content: {
-                        width: '45%',
+                        width: '90%',
                         height: 235,
                         position: 'absolute',
-                        left: '30%',
+                        left: '5%',
                         top: '30%',
                         background: '#002256',
                         overflow: 'auto',

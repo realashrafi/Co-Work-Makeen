@@ -5,18 +5,18 @@ import Image from "next/image";
 import komod from '../data/komod.png'
 const SectionFive = () => {
     return (
-        <section className={'bg-[#002256] flex relative text-white pt-[200px]'}>
-            <div className={'flex justify-center pl-24 w-1/2 mx-auto flex-col'}>
-                <h2 className={'text-orange-500 text-[22px] font-bold text-center'}>مزیت های فضای کار اشتراکی مکین</h2>
-                <p className={'pt-[25px] w-[557px] text-justify text-zinc-100 text-base font-normal'} style={{direction: "rtl"}}>آکادمی مکین
+        <section className={'bg-[#002256] lg:flex flex-wrap relative text-white lg:pt-[200px]'}>
+            <div className={'flex justify-center lg:pl-24 lg:w-1/2 w-[95%] mx-auto flex-col'}>
+                <h2 className={'text-orange-500 lg:pt-0 pt-[50px] text-[22px] font-bold text-center'}>مزیت های فضای کار اشتراکی مکین</h2>
+                <p className={'pt-[25px] lg:w-[557px] w-[95%] mx-auto text-justify text-zinc-100 text-base font-normal'} style={{direction: "rtl"}}>آکادمی مکین
                     همواره در تلاش بوده تا شرایط رفاهی را برای عزیزان فراهم کرده تا بتونن در آسایش و امنیت
                     کامل به کار خود ادامه دهند
                 </p>
-                <div className={'absolute bottom-[-60px] left-[5px] mt-[77px]'}>
+                <div className={'lg:absolute relative  lg:bottom-[-60px] lg:left-[5px] mt-[20px] lg:mt-[77px]'}>
                     <Image src={designElement} alt={''}/>
                 </div>
             </div>
-            <div className={'w-1/2  pl-[70px] flex flex-col justify-center items-center '}>
+            <div className={'lg:w-1/2 lg:mx-0 mx-8 lg:pl-[70px] flex flex-col justify-center items-center '}>
                 <div className={'flex '}>
                     <div className={'pr-[50px]'}>
                         <Image src={komod} alt={''} className={'ml-[25px] mt-[35px]'}/>

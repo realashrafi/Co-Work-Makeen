@@ -6,17 +6,17 @@ const Section2HistoryReserve = () => {
     const pers =50
     return (
         <div>
-            <p className={'mt-[70px] ml-[27px] mr-[65px]  text-[#FFFEFF] text-[18px] font-[500] '}
+            <p className={'mt-[70px] ml-[27px] lg:mr-[65px] mr-14 text-[#FFFEFF] text-[18px] font-[500] '}
                style={{direction: "rtl"}}>
                 وضعیت آخرین رزرو
             </p>
             <div
-                className={'w-[88.27%] h-[344px] text-center flex justify-between px-[4%] mt-[32px] bg-[#0A2E65] rounded-[20px] mx-auto'}>
-                <div className={'flex-col mt-[145px]'}>
+                className={'lg:w-[88.27%] w-[95%] pb-4 lg:pb-0 lg:h-[344px] justify-center text-center flex lg:flex-nowrap flex-wrap-reverse lg:justify-between px-[4%] mt-[32px] bg-[#0A2E65] rounded-[20px] mx-auto'}>
+                <div className={'flex-col mt-12 lg:mt-[145px]'}>
                     <div className={'text-[#FFFEFF] text-[16px] font-[400]'}>تعداد روزهای باقی مانده :5 روز</div>
                     <div className={'text-[#FFFEFF]  mt-[16px] text-[16px] font-[400]'}>تعداد روزهای استفاده شده : 25 روز</div>
                 </div>
-                <div className={'w-[29%] flex flex-col  items-center'}>
+                <div className={'lg:w-[29%] flex flex-col  items-center'}>
                     <div className={'flex justify-between w-[100%] mt-[24px] mb-[48px]'}>
                         <p className={'text-[#44C0ED] text-[14px] font-[400] '}>18 مهر 1402</p>
                         <p className={'text-[#44C0ED] text-[14px] font-[400] '}>اشتراک ماهانه</p>

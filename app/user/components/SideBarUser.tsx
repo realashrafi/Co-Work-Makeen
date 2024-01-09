@@ -1,3 +1,4 @@
+'use client'
 import React from 'react';
 import Link from "next/link";
 import Modal from "@/app/user/components/Modal";
@@ -5,10 +6,13 @@ import {usePathname} from "next/navigation";
 import Image from "next/image";
 import logoMakeen from "@/app/user/components/data/logo-makeen.png";
 
-const SideBarUser = () => {
+const SideBarUser = ({visible,setVisible}:any) => {
     const pathName = usePathname()
+    
     return (
-        <div className={'flex-col w-[20%] pr-[1%]  flex items-center  top-0 right-0 fixed pt-[11px] bg-[#0A2E65]'}>
+        <div
+            className={`flex-col lg:w-[20%] rounded-xl pr-[1%]  flex items-center lg:visible ${visible ? '' : 'invisible'} top-0 right-0 fixed pt-24 lg:pt-[11px] bg-[#0A2E65]`}>
+            <button className={'relative lg:invisible top-20 left-32 w-4 h-4'} onClick={() => setVisible(false)}>X</button>
             <Link href={'/'} className={'mt-[15%] ml-[5%] mb-[25%] z-50'}>
                 <Image src={logoMakeen} alt={''}/>
             </Link>

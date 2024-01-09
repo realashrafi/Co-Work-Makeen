@@ -11,7 +11,7 @@ const DoneReserve = () => {
             <div className={'w-[90%] mx-auto rounded-xl  mt-[43px] flex flex-col h-[776px] bg-[#0A2E65]'}>
                 <div className={'relative'}>
                     <div
-                        className="absolute -bottom-7 right-[22%] w-[458px] h-14 bg-[#13B86C] rounded-3xl flex justify-center items-center">
+                        className="absolute -bottom-7 w-[100%] lg:right-[22%] lg:w-[458px] h-14 bg-[#13B86C] rounded-3xl flex justify-center items-center">
                         <div className="text-white text-base font-normal mr-[8px]" dir={'rtl'}>رزرو شما با موفقیت ثبت شد .
                         </div>
                         <svg width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">

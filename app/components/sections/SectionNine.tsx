@@ -11,7 +11,7 @@ const SectionNine = () => {
             <div className={' pt-[50px]'}>
                 <Image src={iconFooter} alt={''}/>
             </div>
-            <div className={'w-[531px]  pt-[17px] mr-[30px]'} style={{direction: "rtl"}}>
+            <div className={'lg:w-[531px] w-[90%] lg:mx-0 mx-auto pt-[17px] lg:mr-[30px]'} style={{direction: "rtl"}}>
                 <p className={'text-[#FFFFFF] text-[16px] '}>آکادمی مکین ، یه محیط صمیمی و تخصصیه که تمام تلاشش ایجاد
                     فرصت های شغلی برای جوانان این سرزمینه.ما با
                     استفاده از متدلوژی آمزشی منحصر به فرد ، به افراد کمک میکنیم به آرزوشون برسن.
@@ -31,16 +31,16 @@ const SectionNine = () => {
             </div>
             <div className={''}>
                 <ul className={'flex pb-[70px]'}>
-                    <li className={'text-[#FFFFFF] pr-[25px]'}>وبلاگ</li>
-                    <svg width="2" height="14" className={'mt-[6px] mr-[25px]'} viewBox="0 0 2 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <li className={'text-[#FFFFFF] mr-3 lg:pr-[25px]'}>وبلاگ</li>
+                    <svg width="2" height="14" className={'mt-[6px] mr-3 lg:mr-[25px]'} viewBox="0 0 2 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 1V13" stroke="white" strokeLinecap="round"/>
                     </svg>
-                    <li className={'text-[#FFFFFF] pr-[25px]'}>تماس با ما</li>
-                    <svg width="2" height="14" className={'mt-[6px]  mr-[25px]'} viewBox="0 0 2 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <li className={'text-[#FFFFFF] mr-3 lg:pr-[25px]'}>تماس با ما</li>
+                    <svg width="2" height="14" className={'mt-[6px] mr-3  lg:mr-[25px]'} viewBox="0 0 2 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 1V13" stroke="white" strokeLinecap="round"/>
                     </svg>
-                    <li className={'text-[#FFFFFF] pr-[25px]'}>تعرفه ها</li>
-                    <svg width="2" height="14" className={'mt-[6px] mr-[25px]'} viewBox="0 0 2 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <li className={'text-[#FFFFFF] mr-3 lg:pr-[25px]'}>تعرفه ها</li>
+                    <svg width="2" height="14" className={'mt-[6px] mr-3 lg:mr-[25px]'} viewBox="0 0 2 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 1V13" stroke="white" strokeLinecap="round"/>
                     </svg>
                     <li className={'text-[#FFFFFF] '}>صفحه اصلی</li>

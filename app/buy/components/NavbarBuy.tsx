@@ -39,9 +39,9 @@ const DropDownNavbar = () => {
     return (
         <details className="dropdown cursor-pointer w-[150px] ">
             <summary
-                className={'px-[18px] flex justify-between h-[32px] bg-[#44C0ED]  rounded-xl'}>
+                className={'lg:px-[18px] px-2 flex justify-between h-[32px] bg-[#44C0ED] items-center  rounded-xl'}>
                 <FaAngleDown className={'w-[14px] text-white h-[18px] my-auto'}/>
-                <div className={'text-white'}>پنل کاربری</div>
+                <div className={'text-white  text-[10px]'}>پنل کاربری</div>
                 <IoPersonOutline
                     className={'w-[21px] text-white  h-[21px] my-auto'}/>
             </summary>

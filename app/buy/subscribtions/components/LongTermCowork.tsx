@@ -19,8 +19,8 @@ const LongTermCowork = () => {
                     className="text-white text-sm font-normal "> </span><span
                     className="text-white text-sm font-normal ">رزرو کنند</span></div>
             </div>
-            <div className={'w-full flex justify-between items-center mt-[17px]'}>
-                <div className={'flex items-center'}>
+            <div className={'w-full flex lg:flex-nowrap flex-wrap justify-center lg:justify-between items-center mt-[17px]'}>
+                <div className={'flex items-center lg:my-0 my-1'}>
                     <div><span className="text-white text-xs font-normal">ساعت اداری :</span><span
                         className="text-white text-sm font-normal"> </span><span
                         className="text-white text-sm font-normal ">8</span><span
@@ -29,7 +29,7 @@ const LongTermCowork = () => {
                         className="text-white text-sm font-normal"> </span><span
                         className="text-white text-sm font-normal f">16</span></div>
                 </div>
-                <div className={'flex items-center relative'}>
+                <div className={'flex items-center relative lg:my-0 my-1'}>
                     <div
                         className={'w-[124px] h-[32px] flex items-center justify-center bg-[#002256] rounded-l-xl border-r-[1.5px] border-[#0A2E65]'}>تاریخ
                         اعتبار
@@ -47,14 +47,16 @@ const LongTermCowork = () => {
 
                     </div>
                     <div
-                        className={'w-[124px] h-[32px] flex items-center justify-center bg-[#002256] rounded-r-xl border-l-[1.5px] border-[#0A2E65]'}>تاریخ
+                        className={'w-[124px] lg:my-0 my-1 h-[32px] flex items-center justify-center bg-[#002256] rounded-r-xl border-l-[1.5px] border-[#0A2E65]'}>تاریخ
                         رزرو
                     </div>
                 </div>
                 <input className="w-[122px] h-8 bg-[#002256] rounded-lg px-[16px]" dir={'rtl'}
                        placeholder={'تعداد روز :'}/>
             </div>
+            <div className={'flex justify-center lg:scale-100 scale-[85%]'}>
             <DatePeaker/>
+            </div>
             <div className={'flex w-full justify-end mt-[56px]'}>
                 <div dir={'rtl'}><span className="text-orange-500 text-sm font-bold">توجه : </span><span
                     className="text-orange-500 text-sm font-medium">در تاریخ های غیر فعال به دلیل تکمیل ظرفیت ، امکان رزرو وجود ندارد.</span>
@@ -79,7 +81,7 @@ const LongTermCowork = () => {
                     className="text-white text-sm font-normal ">تومان</span></div>
             </div>
             <button
-                className={'flex justify-center items-center text-white text-lg font-medium bg-[#026AE1] w-[408px] h-12 rounded-xl mt-[40px]'}>
+                className={'flex justify-center items-center text-white text-lg font-medium bg-[#026AE1] w-[40%] lg:w-[408px] h-12 rounded-xl mt-[40px]'}>
                 پرداخت
             </button>
         </div>

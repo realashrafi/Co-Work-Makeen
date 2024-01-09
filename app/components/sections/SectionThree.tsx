@@ -21,9 +21,9 @@ const SectionThree = () => {
     };
     return (
         <section className={'bg-[#002256]'}>
-            <div className={'pt-[121px]'}>
+            <div className={'lg:pt-[121px] pt-1'}>
                 <h2 className={'text-[22px] text-center  text-[#FFFEFF]'}>گالری تصاویر</h2>
-                <div className={'w-[84%] h-[219px] mt-[52px] mx-auto flex justify-center '}>
+                <div className={'lg:w-[84%] w-[95%] h-[219px] mt-[52px] mx-auto flex justify-center '}>
                     <Splide options={options} aria-label="My Favorite Images">
                         <SplideSlide>
                             <Image src={img3} className={'mx-[12px]'} alt={''}/>

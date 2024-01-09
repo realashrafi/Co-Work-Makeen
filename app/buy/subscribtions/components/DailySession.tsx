@@ -68,17 +68,17 @@ const DailySession = () => {
         <div className={'w-[80%] flex flex-col items-center mx-auto'}>
             <div className={'text-white text-base font-bold mt-[32px]'}>رزرو روزانه اتاق جلسات</div>
             <div className={'text-orange-500 text-sm font-normal mt-[8px]'}>هزینه روزانه 100 تومان</div>
-            <div className={'flex flex-col justify-center mt-[48px]'}>
+            <div className={'flex flex-col mx-auto w-[90%] justify-center mt-[48px]'}>
                 {days.slice(0, 6).map(item => (
                     <div key={item.id} className={'flex w-[100%] h-[56px] my-[4px]'}>
                         <div
-                            className={'flex  text-center justify-between items-center px-[10%] w-[450px] bg-[#002256] rounded-l-3xl'}>
+                            className={'flex  text-center justify-between items-center lg:px-[10%] w-[80%] px-1 lg:w-[450px] bg-[#002256] rounded-l-3xl'}>
                             <div className={'text-white text-sm font-normal '} dir={'rtl'}>{item.peak}</div>
                             <div className={'text-white text-sm font-normal '}>{item.date}</div>
                             <div className={'text-white text-sm font-normal '}>{item.name}</div>
                         </div>
                         <div
-                            className={'flex w-[150px] bg-[#002256] justify-center items-center border-l-2 border-[#0A2E65] rounded-r-3xl'}>
+                            className={'flex w-[10%] px-1 lg:w-[150px] bg-[#002256] justify-center items-center border-l-2 border-[#0A2E65] rounded-r-3xl'}>
                             <svg width="32" height="30" viewBox="0 0 32 30" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path id="Vector"
@@ -122,7 +122,7 @@ const DailySession = () => {
                     className="text-white text-sm font-normal ">مشاهده کنید</span></div>
             </div>
             <button
-                className={'flex justify-center items-center text-white text-lg font-medium bg-[#026AE1] w-[408px] h-12 rounded-xl mt-[40px]'}>
+                className={'flex justify-center items-center text-white text-lg font-medium bg-[#026AE1] w-[40%] lg:w-[408px] h-12 rounded-xl mt-[40px]'}>
                 پرداخت
             </button>
         </div>

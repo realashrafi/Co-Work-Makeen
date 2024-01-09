@@ -9,9 +9,9 @@ const LoginForBuy = ({orderData}: any) => {
    
 
     return (
-        <div className={'flex  items-center ml-[64px]'}>
+        <div className={'flex  items-center lg:ml-[64px]'}>
             <Link href={`/buy/subscribtions?data=${orderData}`} >
-                <div className={' mr-[16px]'} >
+                <div className={' lg:mr-[16px] mr-4'} >
                     <Image src={leftVector} alt={''}/>
                 </div>
             </Link>

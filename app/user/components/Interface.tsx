@@ -1,5 +1,5 @@
 'use client'
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import UserNavbar from "@/app/user/components/UserNavbar";
 import SideBarUser from "@/app/user/components/SideBarUser";
 import Link from "next/link";
@@ -39,7 +39,7 @@ const dataOfFav = [
 ]
 
 const UserInterface = ({data}: any) => {
-
+    const [visible, setVisible] = useState(false)
     useEffect(() => {
         AOS.init({
             duration: 800,
@@ -48,10 +48,11 @@ const UserInterface = ({data}: any) => {
     }, []);
 
     return (
-        <div className={'bg-[#0A2E65] h-[2040px]'}>
+        <div className={'bg-[#0A2E65] w-[100%] h-[2040px]'}>
             <UserNavbar data={data}/>
             <div className={'flex pt-[160px]'}>
-                <div data-aos={'fade-right'} className={'w-[79.3%] h-[1752PX] bg-[#002256] rounded-[24px] mb-[132px]'}>
+                <div data-aos={'fade-right'}
+                     className={'lg:w-[79.3%] w-[100%] h-[1752PX] bg-[#002256] rounded-[24px] mb-[132px]'}>
                     <div className={'flex mt-[28px] mr-[50px]  justify-end items-center'}>
                         <div className={'relative cursor-pointer'}>
                             <div className={'absolute bottom-0'}>
@@ -78,30 +79,30 @@ const UserInterface = ({data}: any) => {
                         <p className={'text-[#FFFEFF] text-[18px] font-[500]'}>اطلاعات فردی</p>
                     </div>
                     <div
-                        className={'w-[96.7%] mt-[25px] h-[352px]   rounded-[12px]  border-[#0A2E65] border-[1px] mx-auto'}>
-                        <div className={'flex '}>
-                            <div className={'ml-[1.3%] mr-[2.16%] w-[22.7%]'}>
+                        className={'w-[96.7%] mt-[25px] lg:h-[352px]   rounded-[12px]  border-[#0A2E65] border-[1px] mx-auto'}>
+                        <div className={'flex  lg:flex-nowrap justify-center flex-wrap'}>
+                            <div className={'ml-[1.3%] mr-[2.16%] lg:w-[22.7%]'}>
                                 <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                    style={{direction: "rtl"}}>تاریخ تولد</p>
                                 <input
                                     className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] '}
                                     placeholder={'تاریخ تولد'}/>
                             </div>
-                            <div className={' mr-[2.16%] w-[22.7%]'}>
+                            <div className={' mr-[2.16%] lg:w-[22.7%]'}>
                                 <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                    style={{direction: "rtl"}}>شماره موبایل</p>
                                 <input value={data?.user.phone_number}
                                        className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] '}
                                        placeholder={'شماره موبایل'}/>
                             </div>
-                            <div className={' mr-[2.16%] w-[22.7%]'}>
+                            <div className={' mr-[2.16%] lg:w-[22.7%]'}>
                                 <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                    style={{direction: "rtl"}}>نام ونام خانوادگی</p>
                                 <input value={data?.user.last_name}
                                        className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] '}
                                        placeholder={'نام ونام خانوادگی'}/>
                             </div>
-                            <div className={'  mr-[1.3%] w-[22.7%]'}>
+                            <div className={'  mr-[1.3%] lg:w-[22.7%]'}>
                                 <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                    style={{direction: "rtl"}}>نام</p>
                                 <input value={data?.user.first_name}
@@ -109,16 +110,16 @@ const UserInterface = ({data}: any) => {
                                        placeholder={'نام'}/>
                             </div>
                         </div>
-                        <div className={'flex justify-end mt-[39px]'}>
+                        <div className={'flex lg:justify-end mt-[39px] lg:flex-nowrap justify-center flex-wrap'}>
 
-                            <div className={' mr-[2.16%] w-[22.7%]'}>
+                            <div className={' mr-[2.16%] lg:w-[22.7%]'}>
                                 <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                    style={{direction: "rtl"}}>کد ملی</p>
                                 <input value={data?.user.national_code}
                                        className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] '}
                                        placeholder={'کد ملی'}/>
                             </div>
-                            <div className={' mr-[2.16%] w-[22.7%]'}>
+                            <div className={' mr-[2.16%] lg:w-[22.7%]'}>
                                 <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                    style={{direction: "rtl"}}>انتخاب جنسیت</p>
                                 <select value={data?.user.gender}
@@ -130,7 +131,7 @@ const UserInterface = ({data}: any) => {
                                     <option value="female">زن</option>
                                 </select>
                             </div>
-                            <div className={'  mr-[1.3%] w-[22.7%]'}>
+                            <div className={'  mr-[1.3%] lg:w-[22.7%]'}>
                                 <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                    style={{direction: "rtl"}}>ایمیل</p>
                                 <input value={data?.user.email}
@@ -139,21 +140,20 @@ const UserInterface = ({data}: any) => {
                             </div>
 
                         </div>
-                        <div className={'flex justify-end mt-[23px]'}>
-                            <div className={'  mr-[1.3%] w-[22.7%]'}>
-                                <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
-                                   style={{direction: "rtl"}}>مدرک تحصیلی</p>
-                                <select value={data?.user.education}
-                                        className={'w-[100%]  h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px]'}
-                                        placeholder={'انتخاب جنسیت'} style={{direction: "rtl"}}>
-                                    <option value="notintrested">انتخاب مدرک</option>
-                                    <option value="unknown">دکتری</option>
-                                    <option value="male">کارشناسی ارشد</option>
-                                    <option value="female">کار دانی</option>
-                                    <option value="female">دیپلم</option>
-                                    <option value="female">بی سواد</option>
-                                </select>
-                            </div>
+                        <div className={' lg:mr-[1.3%] w-[50%] mx-auto lg:w-[22.7%]'}>
+                            <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
+                               style={{direction: "rtl"}}>مدرک تحصیلی</p>
+                            <select value={data?.user.education}
+                                    className={'w-[100%]  h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px]'}
+                                    placeholder={'انتخاب جنسیت'} style={{direction: "rtl"}}>
+                                <option value="notintrested">انتخاب مدرک</option>
+                                <option value="unknown">دکتری</option>
+                                <option value="male">کارشناسی ارشد</option>
+                                <option value="female">کار دانی</option>
+                                <option value="female">دیپلم</option>
+                                <option value="female">بی سواد</option>
+                            </select>
+
                         </div>
                     </div>
                     <div className={'h-[32px] mt-[37px] items-center mr-[27px] flex'} style={{direction: "rtl"}}>
@@ -167,14 +167,14 @@ const UserInterface = ({data}: any) => {
                     </div>
                     <div
                         className={'w-[96.7%] flex justify-end  pt-[10px] mt-[25px] h-[138px]   rounded-[12px]  border-[#0A2E65] border-[1px] mx-auto'}>
-                        <div className={' mr-[2.16%] w-[22.7%]'}>
+                        <div className={' mr-[2.16%] lg:w-[22.7%]'}>
                             <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                style={{direction: "rtl"}}>رمز عبور</p>
                             <input
                                 className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] '}
                                 placeholder={'رمز عبور'}/>
                         </div>
-                        <div className={' mr-[2.16%] w-[22.7%]'}>
+                        <div className={' mr-[2.16%] lg:w-[22.7%]'}>
                             <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                style={{direction: "rtl"}}>نام کاربری</p>
                             <input value={data?.user.username}
@@ -192,14 +192,14 @@ const UserInterface = ({data}: any) => {
                         <p className={'text-[#FFFEFF] text-[18px] font-[500]'}>علاقه مندی ها</p>
                     </div>
                     <div
-                        className={'w-[96.7%] mt-[25px] h-[256px]   rounded-[12px]  border-[#0A2E65] border-[1px] mx-auto'}>
+                        className={'lg:w-[96.7%] mt-[25px] lg:h-[256px]  w-[90%]  rounded-[12px]  border-[#0A2E65] border-[1px] mx-auto'}>
                         <div className={'flex justify-end text-[#FFFEFF] text-[18px] font-[500] pr-[24px] pt-[24px]'}>
                             انتخاب دسته بندی مورد علاقه شما
                         </div>
-                        <div className={'mx-[1.35%] mt-[16px] flex   '}>
+                        <div className={'mx-[1.35%] mt-[16px] flex  justify-center lg:flex-nowrap flex-wrap '}>
                             {dataOfFav.slice(0, 4).map(item => (
                                 <button key={item.id}
-                                        className={'w-[22.7%] mx-[12px] focus:bg-[#FF792C] after:bg-[#FF792C] h-[48px] bg-[#0A2E65] rounded-[30px]  '}>
+                                        className={' m-1 lg:w-[22.7%] w-[40%] lg:mx-[12px] focus:bg-[#FF792C] after:bg-[#FF792C] h-[48px] bg-[#0A2E65] rounded-[30px]  '}>
                                     <div
                                         className={'flex justify-between text-[#FFFFFF] text-[14px] font-[400] mr-[24px] my-[12px] '}>
                                         <svg width="24" className={'ml-[24px]'} height="24" viewBox="0 0 24 24"
@@ -213,10 +213,10 @@ const UserInterface = ({data}: any) => {
                                 </button>
                             ))}
                         </div>
-                        <div className={'mx-[1.35%] mt-[26px] flex   '}>
+                        <div className={'mx-[1.35%] mt-[26px] flex justify-center lg:flex-nowrap flex-wrap  '}>
                             {dataOfFav.slice(4, 8).map(item => (
                                 <button key={item.id}
-                                        className={'w-[22.7%]  mx-[12px] h-[48px] bg-[#0A2E65] focus:bg-[#FF792C] rounded-[30px]  '}>
+                                        className={'m-1 lg:w-[22.7%] w-[40%]  lg:mx-[12px] h-[48px] bg-[#0A2E65] focus:bg-[#FF792C] rounded-[30px]  '}>
                                     <div
                                         className={'flex justify-between text-[#FFFFFF] text-[14px] font-[400] mr-[24px] my-[12px] '}>
                                         <svg width="24" className={'ml-[24px]'} height="24" viewBox="0 0 24 24"
@@ -243,7 +243,8 @@ const UserInterface = ({data}: any) => {
                         </div>
                     </div>
                 </div>
-                <SideBarUser/>
+                    <button className={'absolute right-4'} onClick={()=>setVisible(true)}>X</button>
+                    <SideBarUser visible={visible} setVisible={setVisible}/>
             </div>
         </div>
     );

@@ -16,7 +16,7 @@ const SectionSeven = () => {
     }, []);
     return (
         <section
-            className={'relative  bg-gradient-to-t from-[#000B19] via-[#002250] to-[#002256] text-white text-center pb-[133px] h-[731px]'}>
+            className={'relative  bg-gradient-to-t from-[#000B19] via-[#002250] to-[#002256] text-white text-center pb-1 lg:pb-[133px] h-[731px]'}>
             <div data-aos={'fade'}
                  className="w-[170px] absolute z-10  right-0 -top-40 h-[219px] opacity-60 bg-[#FF792C] rounded-l-full blur-[140px]"/>
             <div data-aos={'fade'}

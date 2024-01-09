@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 // @ts-ignore
 import ReactModal from 'react-modal'
 import Link from "next/link";
+import LoginForBuy from "@/app/buy/components/LoginForBuy";
 
 const AddSub = () => {
     const [showModalSub, setShowModalSub] = useState(false)
@@ -37,10 +38,10 @@ const AddSub = () => {
                         backgroundColor: 'rgba(255, 255, 255, 0.2)'
                     },
                     content: {
-                        width: '55%',
+                        width: '90%',
                         height: 667,
                         position: 'absolute',
-                        left: '25%',
+                        left: '5%',
                         top: '11%',
                         background: '#002256',
                         overflow: 'auto',
@@ -52,12 +53,12 @@ const AddSub = () => {
                     }
                 }}
                 isOpen={showModalSub}>
-                <div className={'w-[85%] border-b-[1px] border-[#CCCCCC22] pb-[5%] mx-auto mt-[8%]  items-center flex'}>
-                    <div className={'flex pr-[33px]  text-[#FFFEFF] text-[16px] '}
+                <div className={'lg:w-[85%] border-b-[1px] border-[#CCCCCC22] pb-[5%] mx-auto mt-[5%] justify-between  items-center flex'}>
+                    <div className={'flex lg:pr-[33px] ml-3  text-[#FFFEFF] text-[16px] '}
                          style={{direction: 'rtl'}}>
                         <Link href={''} onClick={() => setShowModalSub(false)}>X</Link>
                     </div>
-                    <p className={'text-center text-[#FFFEFF] text-[16px] pl-[37%] '}>خرید اشتراک</p>
+                    <p className={'text-center text-[#FFFEFF] text-[16px] lg:pl-[37%] '}>خرید اشتراک</p>
                 </div>
                 <div className={'flex items-center mt-[56px] justify-center'}>
                     <svg className={'mr-[11px]'} width="43" height="17" viewBox="0 0 43 17" fill="none"
@@ -86,38 +87,22 @@ const AddSub = () => {
                     </svg>
                 </div>
                 <div className={'flex flex-col mt-[16px]'}>
-                    <div className={'bg-[#0A2E65] w-[73.8%] rounded-[20px] flex items-center mx-auto h-[65px]'}>
-                        <Link className={'text-[#FFFEFF] ml-[37px] text-[14px] flex items-center '} href={''}>
-                            <svg className={'mr-[11px]'} width="8" height="13" viewBox="0 0 8 13" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M6.94922 0.748268C6.78482 0.75252 6.62908 0.812043 6.51412 0.913019L0.185411 6.35509C-0.0618038 6.56767 -0.0618038 6.91205 0.185411 7.12463L6.51412 12.5667C6.67234 12.7091 6.90843 12.7665 7.13092 12.7166C7.35218 12.6666 7.52523 12.5178 7.58333 12.3275C7.64142 12.1362 7.57468 11.9332 7.40904 11.7972L1.52779 6.73986L7.40904 1.68256C7.59569 1.52631 7.65255 1.28716 7.55119 1.07989C7.4486 0.873691 7.21003 0.741891 6.94922 0.748268Z"
-                                    fill="white"/>
-                            </svg>
-                            ادامه فرایند خرید
-                        </Link>
-                        <p className={'text-[#FF792C] text-[15px] ml-[94px]'}>
+                    <div className={'bg-[#0A2E65] lg:w-[73.8%] justify-evenly lg:rounded-[20px] flex items-center mx-auto h-[65px]'}>
+                        <LoginForBuy orderData={1}/>
+                        <p className={'text-[#FF792C] text-[15px] lg:ml-[94px]'}>
                             30 تومان
                         </p>
-                        <div className={'flex ml-[16%] flex-col justify-center '} dir={'rtl'}>
+                        <div className={'flex w-[30%] lg:ml-[16%] flex-col justify-center '} dir={'rtl'}>
                             <p className={'text-[#FFFEFF]'}>اشتراک روزانه</p>
                             <p className={'text-[#D9D9D9] text-[12px]'}>تنها برای یک روز قابل استفاده است</p>
                         </div>
                     </div>
-                    <div className={'bg-[#0A2E65] mt-[14px] w-[73.8%] rounded-[20px] flex items-center mx-auto h-[65px]'}>
-                        <Link className={'text-[#FFFEFF] ml-[37px] text-[14px] flex items-center '} href={''}>
-                            <svg className={'mr-[11px]'} width="8" height="13" viewBox="0 0 8 13" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M6.94922 0.748268C6.78482 0.75252 6.62908 0.812043 6.51412 0.913019L0.185411 6.35509C-0.0618038 6.56767 -0.0618038 6.91205 0.185411 7.12463L6.51412 12.5667C6.67234 12.7091 6.90843 12.7665 7.13092 12.7166C7.35218 12.6666 7.52523 12.5178 7.58333 12.3275C7.64142 12.1362 7.57468 11.9332 7.40904 11.7972L1.52779 6.73986L7.40904 1.68256C7.59569 1.52631 7.65255 1.28716 7.55119 1.07989C7.4486 0.873691 7.21003 0.741891 6.94922 0.748268Z"
-                                    fill="white"/>
-                            </svg>
-                            ادامه فرایند خرید
-                        </Link>
-                        <p className={'text-[#FF792C] text-[15px] ml-[94px]'}>
+                    <div className={'bg-[#0A2E65] mt-[14px] lg:w-[73.8%] justify-evenly lg:rounded-[20px] flex items-center mx-auto h-[65px]'}>
+                        <LoginForBuy orderData={2}/>
+                        <p className={'text-[#FF792C] text-[15px] lg:ml-[94px]'}>
                             500 تومان
                         </p>
-                        <div className={'flex ml-[16%] flex-col justify-center '} dir={'rtl'}>
+                        <div className={'flex w-[30%] lg:ml-[16%] flex-col justify-center '} dir={'rtl'}>
                             <p className={'text-[#FFFEFF]'}>اشتراک ماهانه</p>
                             <p className={'text-[#D9D9D9] text-[12px]'}>تنها برای یک ماه قابل استفاده است</p>
                         </div>
@@ -138,38 +123,22 @@ const AddSub = () => {
                     </svg>
                 </div>
                 <div className={'flex flex-col mt-[16px]'}>
-                    <div className={'bg-[#0A2E65] w-[73.8%] rounded-[20px] flex items-center mx-auto h-[65px]'}>
-                        <Link className={'text-[#FFFEFF] ml-[37px] text-[14px] flex items-center '} href={''}>
-                            <svg className={'mr-[11px]'} width="8" height="13" viewBox="0 0 8 13" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M6.94922 0.748268C6.78482 0.75252 6.62908 0.812043 6.51412 0.913019L0.185411 6.35509C-0.0618038 6.56767 -0.0618038 6.91205 0.185411 7.12463L6.51412 12.5667C6.67234 12.7091 6.90843 12.7665 7.13092 12.7166C7.35218 12.6666 7.52523 12.5178 7.58333 12.3275C7.64142 12.1362 7.57468 11.9332 7.40904 11.7972L1.52779 6.73986L7.40904 1.68256C7.59569 1.52631 7.65255 1.28716 7.55119 1.07989C7.4486 0.873691 7.21003 0.741891 6.94922 0.748268Z"
-                                    fill="white"/>
-                            </svg>
-                            ادامه فرایند خرید
-                        </Link>
-                        <p className={'text-[#FF792C] text-[15px] ml-[94px]'}>
+                    <div className={'bg-[#0A2E65] lg:w-[73.8%] w-[99%] justify-evenly lg:rounded-[20px] flex items-center mx-auto h-[65px]'}>
+                        <LoginForBuy orderData={4}/>
+                        <p className={'text-[#FF792C] text-[15px] lg:ml-[94px]'}>
                             20 تومان
                         </p>
-                        <div className={'flex ml-[29%] flex-col justify-center '} dir={'rtl'}>
+                        <div className={'flex lg:ml-[29%] flex-col justify-center '} dir={'rtl'}>
                             <p className={'text-[#FFFEFF]'}>اشتراک ساعتی</p>
                             <p className={'text-[#D9D9D9] text-[12px]'}>برای هر یک ساعت</p>
                         </div>
                     </div>
-                    <div className={'bg-[#0A2E65] mt-[14px] w-[73.8%] rounded-[20px] flex items-center mx-auto h-[65px]'}>
-                        <Link className={'text-[#FFFEFF] ml-[37px] text-[14px] flex items-center '} href={''}>
-                            <svg className={'mr-[11px]'} width="8" height="13" viewBox="0 0 8 13" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M6.94922 0.748268C6.78482 0.75252 6.62908 0.812043 6.51412 0.913019L0.185411 6.35509C-0.0618038 6.56767 -0.0618038 6.91205 0.185411 7.12463L6.51412 12.5667C6.67234 12.7091 6.90843 12.7665 7.13092 12.7166C7.35218 12.6666 7.52523 12.5178 7.58333 12.3275C7.64142 12.1362 7.57468 11.9332 7.40904 11.7972L1.52779 6.73986L7.40904 1.68256C7.59569 1.52631 7.65255 1.28716 7.55119 1.07989C7.4486 0.873691 7.21003 0.741891 6.94922 0.748268Z"
-                                    fill="white"/>
-                            </svg>
-                            ادامه فرایند خرید
-                        </Link>
-                        <p className={'text-[#FF792C] text-[15px] ml-[94px]'}>
+                    <div className={'bg-[#0A2E65] mt-[14px] lg:w-[73.8%] w-[99%] justify-evenly lg:rounded-[20px] flex items-center mx-auto h-[65px]'}>
+                        <LoginForBuy orderData={3}/>
+                        <p className={'text-[#FF792C] text-[15px] lg:ml-[94px]'}>
                             100 تومان
                         </p>
-                        <div className={'flex ml-[27%] flex-col justify-center '} dir={'rtl'}>
+                        <div className={'flex lg:ml-[27%] flex-col justify-center '} dir={'rtl'}>
                             <p className={'text-[#FFFEFF]'}>اشتراک روزانه</p>
                             <p className={'text-[#D9D9D9] text-[12px]'}>از 8 صبح تا 8 شب</p>
                         </div>

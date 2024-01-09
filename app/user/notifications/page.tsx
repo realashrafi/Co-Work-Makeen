@@ -31,14 +31,7 @@ const notifications = [
 ]
 const Notifications = () => {
     const [seen, setSeen] = useState('false')
-    const bgNotSeen = '#FFE7DA'
-    const bgSeen = '#CBE4FF'
-    const bgNotSeen2 = '#FF792C'
-    const bgSeen2 = '#007AFF'
-
-    const [bgBySeen, setBgBySeen] = useState(bgNotSeen)
-    const [bgBySeen2, setBgBySeen2] = useState(bgNotSeen2)
-
+    const [visible, setVisible] = useState(false)
     useEffect(() => {
         AOS.init({
             duration: 800,
@@ -57,7 +50,7 @@ const Notifications = () => {
             )
         } else {
             return (
-                <div dir={'rtl'} className={'w-[95%] flex mx-auto'}>
+                <div dir={'rtl'} className={'w-[95%] flex lg:flex-nowrap flex-wrap lg:justify-start justify-center mx-auto'}>
                     {notifications.filter((item) => item.seen.includes(seen)
                     ).map((item) => (
                         <div dir={'rtl'}
@@ -81,31 +74,32 @@ const Notifications = () => {
         }
     }
     return (
-        <div className={'bg-[#0A2E65] h-[2040px] '}>
+        <div className={'bg-[#0A2E65] lg:h-[2040px] '}>
             <UserNavbar/>
             <div className={'flex pt-[160px]'}>
                 <div data-aos={'fade-right'}
-                     className={'w-[79.3%] flex-col h-[1752PX] bg-[#002256] rounded-[24px] mb-[132px]'}>
+                     className={'lg:w-[79.3%] w-[100%] flex-col h-[1752PX] bg-[#002256] rounded-[24px] mb-[132px]'}>
                     <div className={'flex w-[100%] justify-end'}>
                         <div
-                            className={'w-[32.9%]  flex justify-between items-center h-[52px] bg-[#0A2E65] rounded-[12px] mt-[40px]  mr-[37px]'}>
+                            className={'lg:w-[32.9%]   w-full flex justify-between items-center h-[52px] bg-[#0A2E65] rounded-[12px] mt-[40px]  lg:mr-[37px]'}>
                             <div onClick={() => {
                                 setSeen('true')
                             }}
-                                 className={`w-[152px] ml-[15px] cursor-pointer h-[40px]  flex justify-center items-center ${seen==='true'?'bg-[#44C0ED]':''} hover:bg-[#44C0ED] mr-[15px] rounded-[12px] text-[#FFFEFF] text-[16px] font-[400]`}>
+                                 className={`lg:w-[152px] ml-[15px] px-1 lg:px-0 cursor-pointer h-[40px]  flex justify-center items-center ${seen === 'true' ? 'bg-[#44C0ED]' : ''} hover:bg-[#44C0ED] mr-[15px] rounded-[12px] text-[#FFFEFF] text-[16px] font-[400]`}>
                                 اعلانات خوانده شده
                             </div>
                             <div onClick={() => {
                                 setSeen('false')
                             }}
-                                 className={`w-[152px] cursor-pointer ml-[15px] h-[40px] flex justify-center ${seen==='false'?'bg-[#44C0ED]':''} hover:bg-[#44C0ED] items-center mr-[15px] rounded-[12px] text-[#FFFEFF] text-[16px] font-[400]`}>
+                                 className={`lg:w-[152px] px-1 lg:px-0 cursor-pointer ml-[15px] h-[40px] flex justify-center ${seen === 'false' ? 'bg-[#44C0ED]' : ''} hover:bg-[#44C0ED] items-center mr-[15px] rounded-[12px] text-[#FFFEFF] text-[16px] font-[400]`}>
                                 اعلانات خوانده نشده
                             </div>
                         </div>
                     </div>
                     {rendering()}
                 </div>
-                <SideBarUser/>
+                <button className={'absolute right-4'} onClick={() => setVisible(true)}>X</button>
+                <SideBarUser visible={visible} setVisible={setVisible}/>
             </div>
         </div>
     );

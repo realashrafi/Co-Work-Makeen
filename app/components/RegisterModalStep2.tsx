@@ -7,7 +7,6 @@ import RegisterModalStep3 from "@/app/components/RegisterModalStep3";
 import axios from "axios";
 import {redirect, useRouter} from 'next/navigation'
 import Swal from "sweetalert2";
-import Link from "next/link";
 
 
 const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any) => {
@@ -106,7 +105,7 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                     style={{
                         overlay: {
                             zIndex: 10,
-                            position: 'fixed',
+                            position: 'absolute',
                             top: 0,
                             left: 0,
                             right: 0,
@@ -114,10 +113,10 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                             backgroundColor: ''
                         },
                         content: {
-                            width: '36%',
+                            width: '90%',
                             height: 516,
                             position: 'absolute',
-                            left: '32%',
+                            left: '5%',
                             top: '20%',
                             background: '#002256',
                             overflow: 'auto',
@@ -129,7 +128,7 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                         }
                     }}
                     isOpen={showModal}>
-                    <div>
+                    <div className={'lg:mx-[400px]'}>
                         <div className={'flex justify-end pr-[24px] mt-[24px]'}>
                             <div className={'cursor-pointer'} onClick={() => setShowModal(false)}>X</div>
                         </div>
@@ -170,7 +169,7 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                     style={{
                         overlay: {
                             zIndex: 10,
-                            position: 'fixed',
+                            position: 'absolute',
                             top: 0,
                             left: 0,
                             right: 0,
@@ -178,10 +177,10 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                             backgroundColor: ''
                         },
                         content: {
-                            width: '36%',
+                            width: '90%',
                             height: 766,
                             position: 'absolute',
-                            left: '32%',
+                            left: '5%',
                             top: '2%',
                             background: '#002256',
                             overflow: 'auto',
@@ -193,7 +192,7 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                         }
                     }}
                     isOpen={showModal}>
-                    <div>
+                    <div className={'lg:mx-[400px]'}>
                         <div className={'flex justify-end pr-[24px] mt-[24px]'}>
                             <div className={'cursor-pointer'} onClick={() => setShowModal(false)}>X</div>
                         </div>
@@ -251,15 +250,15 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                                    onChange={(e) => setLastName(e.target.value)}
                                    className={'self-end w-[89%] h-10 bg-[#0A2E65] rounded-xl mt-[8px] px-[16px]'}
                                    dir={'rtl'} placeholder={'نام خانوادگی خود را وارد نمایید'}/>
-                            <input type="text"
-                                   onChange={(e) => setEmail(e.target.value)}
-                                   className={'self-end w-[89%] h-10 bg-[#0A2E65] rounded-xl mt-[8px] px-[16px]'}
-                                   dir={'rtl'} placeholder={'ایمیل خود وارد نمایید'}/>
                             <input type="password"
                                    onChange={(e) => setPassForRegister(e.target.value)}
                                    className={'self-end w-[89%] h-10 bg-[#0A2E65] rounded-xl mt-[8px] px-[16px]'}
                                    dir={'rtl'}
                                    placeholder={'رمز عبوری برای حساب کاربری خود وارد نمایید'}/>
+                            <input type="text"
+                                   onChange={(e) => setEmail(e.target.value)}
+                                   className={'self-end w-[89%] h-10 bg-[#0A2E65] rounded-xl mt-[8px] px-[16px]'}
+                                   dir={'rtl'} placeholder={'برای بازیابی رمز عبور ایمیل خود را وارد کنید'}/>
                             <div className={'self-end flex justify-end  mt-[20px]'}>
                                 <div className={' text-right text-white text-xs mr-[10px] font-normal'}>قوانین و شرایط
                                     عضویت در

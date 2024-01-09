@@ -91,7 +91,7 @@ const CompleteInformation = () => {
     console.log()
     return (
         <div className={'flex w-[100%] flex-col  '}>
-            <div className={'flex justify-between mr-[87px] px-[48px] '}>
+            <div className={'flex justify-between lg:mr-[87px] lg:px-[48px] px-2 '}>
                 <div className={'w-[45%]'}>
                     <p className={'text-white text-sm font-normal'} dir={'rtl'}>*نام خانوادگی :</p>
                     <input type="text" onChange={(e) => setLast_name(e.target.value)} value={last_name}
@@ -105,7 +105,7 @@ const CompleteInformation = () => {
                            dir={'rtl'}/>
                 </div>
             </div>
-            <div className={'flex justify-between mr-[87px] px-[48px] mt-[54px]'}>
+            <div className={'flex justify-between lg:mr-[87px] lg:px-[48px] px-2 mt-[54px]'}>
                 <div className={'w-[45%]'}>
                     <p className={'text-white text-sm font-normal'} dir={'rtl'}>*تاریخ تولد :</p>
                     <input type="text" onChange={(e) => setDob(e.target.value)} value={dob}
@@ -119,7 +119,7 @@ const CompleteInformation = () => {
                            placeholder={'کد ملی'} dir={'rtl'}/>
                 </div>
             </div>
-            <div className={'flex justify-between mr-[87px] px-[48px] mt-[54px]'}>
+            <div className={'flex justify-between lg:mr-[87px] lg:px-[48px] px-2 mt-[54px]'}>
                 <div className={'w-[45%]'}>
                     <p className={'text-white text-sm font-normal'} dir={'rtl'}>ساکن منطقه :</p>
                     <input type="text" className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'}
@@ -134,7 +134,7 @@ const CompleteInformation = () => {
                     </select>
                 </div>
             </div>
-            <div className={'flex justify-between mr-[87px] px-[48px] mt-[54px]'}>
+            <div className={'flex justify-between lg:mr-[87px] lg:px-[48px] px-2 mt-[54px]'}>
                 <div className={'w-[45%]'}>
                     <p className={'text-white text-sm font-normal'} dir={'rtl'}>رشته تحصیلی :</p>
                     <input type="text" className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'}
@@ -151,7 +151,7 @@ const CompleteInformation = () => {
                     </select>
                 </div>
             </div>
-            <div className={'flex justify-between mr-[87px] px-[48px] mt-[54px]'}>
+            <div className={'flex justify-between lg:mr-[87px] lg:px-[48px] px-2 mt-[54px]'}>
                 <div className={'w-[45%]'}>
                     <p className={'text-white text-sm font-normal'} dir={'rtl'}>مهارت تحصیلی :</p>
                     <input type="text" className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'}
@@ -163,7 +163,7 @@ const CompleteInformation = () => {
                            placeholder={'دانشگاه'} dir={'rtl'}/>
                 </div>
             </div>
-            <div className={'flex justify-between mr-[87px] px-[48px] mt-[54px]'}>
+            <div className={'flex justify-between lg:mr-[87px] lg:px-[48px] px-2 mt-[54px]'}>
                 <div className={'w-[100%]'}>
                     <div dir={'rtl'}>
                         <span className="text-white text-sm font-normal ">در صورتی که </span><span
@@ -173,7 +173,7 @@ const CompleteInformation = () => {
                     <input type="text" className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'}/>
                 </div>
             </div>
-            <div className={'flex justify-between mr-[87px] px-[48px] mt-[54px]'}>
+            <div className={'flex justify-between lg:mr-[87px] lg:px-[48px] px-2 mt-[54px]'}>
                 <div className={'w-[100%]'}>
                     <div className="text-white text-sm font-normal " dir={'rtl'}>جهت اطلاع رسانی برگزاری ورکشاپ
                         های مرتبط ، علائق خود را انتخاب کنید :
@@ -183,8 +183,8 @@ const CompleteInformation = () => {
                     </select>
                 </div>
             </div>
-            <div className={'flex justify-end mr-[87px] px-[48px] mt-[74px]'}>
-                <div className={'w-[25%] relative mr-[18%]'}>
+            <div className={'flex justify-end lg:mr-[87px] lg:px-[48px] px-2 mt-[74px]'}>
+                <div className={'lg:w-[25%] relative mr-[18%]'}>
                     <div className={'absolute top-[45%] right-[30%]'}>
                         <div className={'flex flex-col justify-center items-center'}>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -201,7 +201,7 @@ const CompleteInformation = () => {
                     <p className={'text-white text-sm font-normal '} dir={'rtl'}>تصویر کارت ملی :</p>
                     <input type="text" className={'w-[100%] h-40 bg-[#0A2E65] rounded-xl mt-[16px]'}/>
                 </div>
-                <div className={'w-[25%] relative'}>
+                <div className={'lg:w-[25%] relative'}>
                     <div className={'absolute top-[45%] right-[30%]'}>
                         <div className={'flex flex-col justify-center items-center'}>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -219,12 +219,12 @@ const CompleteInformation = () => {
                     <input type="text" className={'w-[100%] h-40 bg-[#0A2E65] rounded-xl mt-[16px]'}/>
                 </div>
             </div>
-            <div className={'flex mr-[87px] px-[48px] mt-[65px]'} dir={'rtl'}>
+            <div className={'flex lg:mr-[87px] lg:px-[48px] px-2 mt-[65px]'} dir={'rtl'}>
                 <input type="checkbox"/>
                 <p className={'text-white text-sm font-normal mr-[1%]'}>قوانین و شرایط عضویت در آکادمی مکین را می
                     پذیرم</p>
             </div>
-            <div className={'flex justify-end mr-[87px] px-[48px] mt-[77px]'}>
+            <div className={'flex justify-end lg:mr-[87px] lg:px-[48px] px-2 mt-[77px]'}>
                 <div
                     className={'w-[408px] h-12 rounded-xl flex justify-center items-center text-stone-50 text-lg font-medium bg-[#026AE1]'}
                     onClick={handleupdate}>ثبت

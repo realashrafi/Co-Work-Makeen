@@ -32,9 +32,9 @@ const Section2News = () => {
                 <p className={'text-[#FFFEFF] text-[22px] border-r-[2px] pr-[13px] border-[#FF792C]'}>مقالات</p>
             </div>
             <div
-                className={'w-[85%] flex h-[541px] bg-[#0A2E65] rounded-[12px] mx-auto pt-[40px] pb[40px] pr-[20px] pl-[20px]'}>
+                className={'lg:w-[85%] flex lg:h-[541px] bg-[#0A2E65] justify-center lg:flex-nowrap flex-wrap rounded-[12px] mx-auto pt-[40px] pb[40px] lg:pr-[20px] lg:pl-[20px]'}>
                 {data.map(card => (
-                    <div key={card.id} className={'flex-col w-[32.3%] mx-[16px] bg-[#002256] h-[461px] rounded-[12px]'}>
+                    <div key={card.id} className={'flex-col lg:w-[32.3%] lg:mx-[16px] my-4 w-[90%] bg-[#002256] h-[461px] rounded-[12px]'}>
                         <div className={'w-[100%] rounded-t-[12px] h-[266px]'}>
                             <Image src={card.img} width={372} height={266} alt={''}/>
                         </div>
