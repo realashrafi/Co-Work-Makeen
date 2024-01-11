@@ -31,7 +31,7 @@ const SectionFour = () => {
     return (
         <section className={'bg-[#002256]  pt-[150px]'}>
             <div className={'flex flex-wrap lg:flex-nowrap bg-[#F8F9FC] rounded-[12px]'}>
-                <div className={'lg:w-1/2 w-[100%] lg:mt-[8%] flex lg:justify-end mx-auto justify-center '}>
+                <div className={'lg:w-1/2 w-[100%] pt-11 lg:pt-0 lg:mt-[8%] flex lg:justify-end mx-auto justify-center '}>
                     <div className={'lg:pl-[100px]   flex flex-col   h-[544px] '}>
                         <div className={'flex items-center '}>
                             <div

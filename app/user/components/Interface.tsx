@@ -8,6 +8,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import userImage from './data/userImage.png'
 import Image from "next/image";
+import {ImMenu} from "react-icons/im";
 
 
 const dataOfFav = [
@@ -243,7 +244,7 @@ const UserInterface = ({data}: any) => {
                         </div>
                     </div>
                 </div>
-                    <button className={'absolute right-4'} onClick={()=>setVisible(true)}>X</button>
+                    <button className={'absolute right-4'} onClick={()=>setVisible(true)}><ImMenu className={'mt-4 scale-150 text-white'} /></button>
                     <SideBarUser visible={visible} setVisible={setVisible}/>
             </div>
         </div>

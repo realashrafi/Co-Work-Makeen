@@ -58,7 +58,7 @@ const AddSub = () => {
                          style={{direction: 'rtl'}}>
                         <Link href={''} onClick={() => setShowModalSub(false)}>X</Link>
                     </div>
-                    <p className={'text-center text-[#FFFEFF] text-[16px] lg:pl-[37%] '}>خرید اشتراک</p>
+                    <p className={'text-center text-[#FFFEFF] text-[16px] lg:pl-[37%] pr-3 '}>خرید اشتراک</p>
                 </div>
                 <div className={'flex items-center mt-[56px] justify-center'}>
                     <svg className={'mr-[11px]'} width="43" height="17" viewBox="0 0 43 17" fill="none"
@@ -103,7 +103,7 @@ const AddSub = () => {
                             500 تومان
                         </p>
                         <div className={'flex w-[30%] lg:ml-[16%] flex-col justify-center '} dir={'rtl'}>
-                            <p className={'text-[#FFFEFF]'}>اشتراک ماهانه</p>
+                            <p className={'text-[#FFFEFF]'}>اشتراک اشتراک بلند مدت</p>
                             <p className={'text-[#D9D9D9] text-[12px]'}>تنها برای یک ماه قابل استفاده است</p>
                         </div>
                     </div>

@@ -1,5 +1,4 @@
 import React from 'react';
-import DropDownNavbar from "@/app/components/DropDownNavbar";
 import NavbarLinks from "@/app/components/NavbarLinks";
 import Link from "next/link";
 import Image from "next/image";

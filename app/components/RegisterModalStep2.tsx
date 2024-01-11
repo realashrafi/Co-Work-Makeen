@@ -74,13 +74,16 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                 password: passForRegister,
                 email: email
             })
-            statusRegister.setUserRegisterStatus(response.status)
+            // statusRegister.setUserRegisterStatus(response.status)
             localStorage.setItem('userToken', response.data.token)
+            console.log(response.status)
             if (response?.status == 200) {
                 //@ts-ignore
                 // localStorage.setItem('loginStatus', 200)
+                console.log('1')
+                router.push('/')
                 Swal.fire({
-                    title: `${response.data.user.first_name} عزیز وارد شدید `,
+                    title: `${response.data.user.first_name} عزیز ثبت نام موفق بود `,
                     text: "میتوانید از قسمت ورود به حساب کاربری خود وارد شوید",
                     icon: "success",
                     background: '#002256',
@@ -192,7 +195,7 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                         }
                     }}
                     isOpen={showModal}>
-                    <div className={'lg:mx-[400px]'}>
+                    <div className={'lg:mx-[400px] '}>
                         <div className={'flex justify-end pr-[24px] mt-[24px]'}>
                             <div className={'cursor-pointer'} onClick={() => setShowModal(false)}>X</div>
                         </div>
@@ -203,8 +206,8 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                             <div dir={'rtl'} className={'text-white text-[15px] font-bold '}>ایجاد حساب کاربری جدید برای
                                 :
                             </div>
-                            <div className={'flex  items-center mr-[140px] mt-[8px]'}>
-                                <svg className={'mr-[120px] cursor-pointer'} onClick={() => setShowModal(false)}
+                            <div className={'flex  items-center mr-20 lg:mr-[140px] mt-[8px]'}>
+                                <svg className={'mr-16 lg:mr-[120px] cursor-pointer'} onClick={() => setShowModal(false)}
                                      width="24"
                                      height="16" viewBox="0 0 24 16" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
@@ -215,7 +218,7 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                                 <div className={'text-orange-500 text-base font-normal '}>{number}</div>
                             </div>
                         </div>
-                        <div className={'flex flex-col items-end mt-[51px] pr-[56px] '}>
+                        <div className={'flex flex-col items-end mt-[51px] pr-4 lg:pr-[56px] '}>
                             <div className={'text-slate-50 text-xs font-normal'} dir={'rtl'}>حساب کاربری با شماره
                                 موبایل {number} وجود ندارد.
                             </div>
@@ -233,7 +236,7 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                         <div className={'flex justify-center'}>
                             <div className={'text-orange-500 text-xs font-normal mt-[8px]'}>ارسال مجدد کد تایید</div>
                         </div>
-                        <div className={'flex flex-col items-center mt-[45px]  mr-[52px]'}>
+                        <div className={'flex flex-col items-center mt-[45px] mr-8 lg:mr-[52px]'}>
                             <div className={'self-end items-center text-white text-[15px] flex font-bold'}>
                                 فرم ثبت نام
                                 <svg className={'ml-[8px]'} width="3" height="20" viewBox="0 0 3 20" fill="none"
@@ -272,7 +275,7 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                             >ثبت
                             </button>
                         </div>
-                        {statusRegister?.userRegisterStatus == 200 ? redirect('/') : ''}
+                        {/*{statusRegister?.userRegisterStatus == 200 ? redirect('/') : ''}*/}
                     </div>
                 </ReactModal>}
         </div>

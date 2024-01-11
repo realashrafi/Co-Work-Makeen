@@ -23,7 +23,7 @@ const historyData = [
         id: 3,
         num: '1601',
         date: '18 مهر 1402',
-        sub: 'ماهانه کوورک',
+        sub: 'اشتراک بلند مدت کوورک',
         sum: '500',
         status: 'پرداخت شده',
         disable: true
@@ -31,7 +31,7 @@ const historyData = [
         id: 4,
         num: '1601',
         date: '18 مهر 1402',
-        sub: 'ماهانه کوورک',
+        sub: 'اشتراک بلند مدت کوورک',
         sum: '500',
         status: 'پرداخت شده',
         disable: true
@@ -39,7 +39,7 @@ const historyData = [
         id: 5,
         num: '1601',
         date: '18 مهر 1402',
-        sub: 'ماهانه کوورک',
+        sub: 'اشتراک بلند مدت کوورک',
         sum: '500',
         status: 'پرداخت شده',
         disable: true
@@ -47,7 +47,7 @@ const historyData = [
         id: 6,
         num: '1601',
         date: '18 مهر 1402',
-        sub: 'ماهانه کوورک',
+        sub: 'اشتراک بلند مدت کوورک',
         sum: '500',
         status: 'پرداخت شده',
         disable: true
@@ -55,7 +55,7 @@ const historyData = [
         id: 7,
         num: '1601',
         date: '18 مهر 1402',
-        sub: 'ماهانه کوورک',
+        sub: 'اشتراک بلند مدت کوورک',
         sum: '500',
         status: 'پرداخت شده',
         disable: true
@@ -63,7 +63,7 @@ const historyData = [
         id: 8,
         num: '1601',
         date: '18 مهر 1402',
-        sub: 'ماهانه کوورک',
+        sub: 'اشتراک بلند مدت کوورک',
         sum: '500',
         status: 'پرداخت شده',
         disable: true

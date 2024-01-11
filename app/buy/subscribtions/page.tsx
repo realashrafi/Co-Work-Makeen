@@ -71,7 +71,7 @@ const Page = () => {
                 </Link>
             </div>
             <div className={'w-[94.8%] h-[1768px] rounded-xl bg-[#002256] mx-auto mt-[15px] flex flex-col '}>
-                <HeaderBuy/>
+                <HeaderBuy />
                 <div className="w-[90.9%] mx-auto h-[0px] border-2 border-[#0A2E65] mt-[24px]"></div>
                 <div className={'flex justify-end flex-wrap-reverse lg:flex-nowrap pt-[43px]'}>
                     <ComponentsRenderByOrders order={order}/>

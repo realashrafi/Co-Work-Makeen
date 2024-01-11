@@ -35,13 +35,24 @@ const Section2Tariffs = () => {
 
                 </div>
             </div>
-            <div className={'bg-[#0A2E65] mt-[18px] items-center justify-center mx-auto flex-wrap-reverse lg:flex-nowrap flex lg:w-[71%] w-[90%] h-[120px] rounded-[24px]'}>
+            <div className={'bg-[#0A2E65] relative mt-[18px] items-center justify-center mx-auto flex-wrap-reverse lg:flex-nowrap flex lg:w-[71%] w-[90%] h-[120px] rounded-[24px]'}>
+                <div className={'absolute right-0 top:1/3 lg:-right-14 lg:top-0 flex flex-col items-center justify-center'}>
+                    <div className={'text-neutral-50 text-lg font-bold origin-top-left rotate-[-10.52deg]'} dir={'rtl'}>3 روز رایگان</div>
+                    <div className={'-mt-2'}>
+                        <svg width="53" height="21" viewBox="0 0 53 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path id="Vector 76"
+                                  d="M51.5459 1.41658C51.5459 1.41658 0.0852882 12.5535 1.22538 16.3863C2.36547 20.2191 59.2544 2.77633 48.2702 9.69424C37.286 16.6122 14.8273 16.5145 17.1194 18.9612C19.4115 21.408 39.2951 18.1024 39.2951 18.1024"
+                                  stroke="white" strokeWidth="1.5" stroke-linecap="round"/>
+                        </svg>
+
+                    </div>
+                </div>
                 <LoginForBuy orderData={2}/>
                 <div className={'lg:ml-[18%] ml-8'}>
                     <p className={'text-[#FF792C] text-[18px]'}>500 تومان</p>
                 </div>
                 <div className={'flex flex-col lg:ml-[14%]'} style={{direction: "rtl"}}>
-                    <p className={'text-[16px] text-[#FFFFFF] '}>اشتراک ماهانه</p>
+                    <p className={'text-[16px] text-[#FFFFFF] '}>اشتراک اشتراک بلند مدت</p>
                     <p className={'text-[14px] text-[#FFFFFF] '}> برای 30 یک روز قابل استفاده است</p>
                 </div>
                 <div className={'lg:ml-[8%] ml-8'}>
@@ -83,7 +94,7 @@ const Section2Tariffs = () => {
                     <p className={'text-[#44C0ED] text-[18px]'}>650 تومان</p>
                 </div>
                 <div className={'flex flex-col ml-8 lg:ml-[14%]'} style={{direction: "rtl"}}>
-                    <p className={'text-[16px] text-[#FFFFFF] '}>اشتراک ماهانه</p>
+                    <p className={'text-[16px] text-[#FFFFFF] '}>اشتراک اشتراک بلند مدت</p>
                     <p className={'text-[14px] text-[#FFFFFF] '}> برای 30 یک روز قابل استفاده است</p>
                 </div>
                 <div className={'lg:ml-[8%] ml-8 '}>

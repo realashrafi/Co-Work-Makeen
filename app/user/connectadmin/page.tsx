@@ -8,15 +8,58 @@ import ModalConnectAdmin from "@/app/user/connectadmin/components/ModalConnectAd
 // @ts-ignore
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import {ImMenu} from "react-icons/im";
+import axios from "axios";
+import Swal from "sweetalert2";
+import {useRouter} from "next/navigation";
 const ConnectAdmin = () => {
     const [visible, setVisible] = useState(false)
-
+    const [data, setData] = useState<any>()
     useEffect(() => {
         AOS.init({
             duration: 800,
             once: false,
         })
+        handleFetch()
     }, []);
+    const router = useRouter()
+    const handleFetch = async () => {
+        try {
+            const token = localStorage?.getItem('userToken');
+            const response = await axios.get('https://www.cowork.v1r.ir/api/v1/user/me', {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    Accept: 'application/json',
+                }
+            })
+            setData(response.data)
+            // if (response.status===200) {
+            //     Swal.fire({
+            //         title: 'خوش آمدید',
+            //         text: "وارد پنل خود شدید",
+            //         icon: "success",
+            //         background: '#002256',
+            //         color: '#EEEFEE',
+            //         confirmButtonColor: "#FF792C",
+            //         confirmButtonText: 'باشه',
+            //         backdrop: '#002256'
+            //     })
+            // }
+        } catch (e) {
+            console.log(e)
+            Swal.fire({
+                title: "خطایی رخ داده",
+                text: "لطفا وارد حساب کاربری خود شوید",
+                icon: "warning",
+                background: '#002256',
+                color: '#EEEFEE',
+                confirmButtonColor: "#FF792C",
+                confirmButtonText: 'باشه',
+                backdrop: '#002256'
+            })
+            router.push('/')
+        }
+    }
     return (
         <div className={'bg-[#0A2E65] h-[2040px] '}>
             <UserNavbar/>
@@ -34,7 +77,7 @@ const ConnectAdmin = () => {
                     </p>
                     <IconConnectAdmin/>
                 </div>
-                <button className={'absolute right-4'} onClick={() => setVisible(true)}>X</button>
+                <button className={'absolute right-4'} onClick={() => setVisible(true)}><ImMenu className={'mt-4 scale-150 text-white'} /></button>
                 <SideBarUser visible={visible} setVisible={setVisible}/>
             </div>
         </div>

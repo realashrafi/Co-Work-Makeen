@@ -12,6 +12,11 @@ export const metadata: Metadata = {
     title: 'فضای کار اشتراکی مکین',
     description: 'فضای کار اشتراکی مکین',
 }
+// export const metadata: Metadata = {
+//     manifest: "/manifest.json", // we are accessing our manifest file here
+//     title: "فضای کار اشتراکی مکین",
+//
+// };
 
 export default function RootLayout({children}: { children: React.ReactNode }) {
     return (

@@ -82,13 +82,13 @@ const SettingReserve = () => {
                         </div>
                         <div className={'flex  mt-[35px] mx-[67px] justify-between'}>
                             <div className={'w-[39.57%]'}>
-                                <p className={'text-black text-sm font-normal'} dir={'rtl'}>هزینه ماهانه کوورک</p>
+                                <p className={'text-black text-sm font-normal'} dir={'rtl'}>هزینه اشتراک بلند مدت کوورک</p>
                                 <select
                                     className={'w-[100%] px-4 mt-[8px] h-[40px] border-[#C4C4C4] bg-[#FFFEFF] border-[1px] rounded-[5px]'}
                                     dir={'rtl'}>
-                                    <option value="unk">هزینه ماهانه کوورک را وارد کنید</option>
-                                    <option value="unk">هزینه ماهانه کوورک را وارد کنید</option>
-                                    <option value="unk">هزینه ماهانه کوورک را وارد کنید</option>
+                                    <option value="unk">هزینه اشتراک بلند مدت کوورک را وارد کنید</option>
+                                    <option value="unk">هزینه اشتراک بلند مدت کوورک را وارد کنید</option>
+                                    <option value="unk">هزینه اشتراک بلند مدت کوورک را وارد کنید</option>
                                 </select>
                             </div>
                             <div className={'w-[39.57%]'}>

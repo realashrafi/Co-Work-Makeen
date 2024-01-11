@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 
 const DropDownNavbar = () => {
     const [userLoginStatus, setUserLoginStatus] = useState<any>()
-    const [userRegisterStatus, setUserRegisterStatus] = useState<any>()
+    const [userRegisterStatus, setUserRegisterStatus] = useState<any>(0)
     const [exist, setExist] = useState<any>(false)
     useEffect(() => {
         AOS.init({
