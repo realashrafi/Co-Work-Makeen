@@ -13,3 +13,25 @@
     position: relative;
     width: 34px;
 }
+.rmdp-header-values {
+    color: #EEEFEE !important;
+    margin: auto;
+}
+.rmdp-day:not(.rmdp-disabled):not(.rmdp-day-hidden) .highlight-red:hover {
+    background-color: #FF792C !important;
+}
+
+ .rmdp-day.rmdp-selected .highlight-red {
+     background-color: #FF792C !important;
+     color: #fff;
+ }
+ .rmdp-day:not(.rmdp-deactive) .highlight-red {
+     color: #FF792C !important;
+ }
+
+
+ .rmdp-day.rmdp-selected span:not(.highlight) {
+     background-color: #13B86C !important;
+     box-shadow: 0 0 3px #87ad8f !important;
+     color: #fff;
+ }

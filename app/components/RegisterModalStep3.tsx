@@ -73,7 +73,7 @@ const RegisterModalStep3 = ({number}: any) => {
                 isOpen={showModal}>
                 <div className={'lg:mx-[400px]'}>
                     <div className={'flex justify-end pr-[24px] mt-[24px]'}>
-                        <div className={'cursor-pointer'} onClick={() => setShowModal(false)}>X</div>
+                        <div className={'cursor-pointer text-white'} onClick={() => setShowModal(false)}>X</div>
                     </div>
                     <div className={'flex justify-center mt-[20px]'}>
                         <Image src={logoMakeen} alt={''}/>

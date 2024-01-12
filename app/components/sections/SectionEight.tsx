@@ -31,13 +31,13 @@ const SectionEight = () => {
                          key={item.id}>
                         <input type="checkbox" className="peer"/>
                         <div
-                            className="collapse-title  bg-[#002256] text-white-content peer-checked:bg-white peer-checked:text-secondary-content"
+                            className="collapse-title  bg-[#002256] text-white-content peer-checked:bg-white peer-checked:text-black"
                             style={{direction: "rtl"}}>
                             {item.title}
                         </div>
 
                         <div
-                            className="collapse-content   bg-[#002256] text-primary-content peer-checked:bg-white peer-checked:text-secondary-content"
+                            className="collapse-content   bg-[#002256] text-white-content peer-checked:bg-white peer-checked:text-black"
                             style={{direction: "rtl"}}>
                             <p className={'pt-4 border-t-2 '}>{item.content}</p>
                         </div>

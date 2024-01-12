@@ -55,7 +55,7 @@ const DatePeaker = () => {
                 multiple
                 calendar={persian}
                 locale={persian_fa}>
-                <div className={'w-[1px] bg-white h-[195px] absolute left-1/2 bottom-[170px]'}></div>
+                {/*<div className={'w-[1px] bg-white h-[195px] absolute left-1/2 bottom-[170px]'}></div>*/}
             </Calendar>
             <div className={'flex mt-[24px] justify-end'}>
                 <div className={'flex flex-col justify-center items-center'}>

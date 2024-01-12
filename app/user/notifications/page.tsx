@@ -119,7 +119,7 @@ const Notifications = () => {
     }
     return (
         <div className={'bg-[#0A2E65] lg:h-[2040px] '}>
-            <UserNavbar/>
+            <UserNavbar data={data}/>
             <div className={'flex pt-[160px]'}>
                 <div data-aos={'fade-right'}
                      className={'lg:w-[79.3%] w-[100%] flex-col h-[1752PX] bg-[#002256] rounded-[24px] mb-[132px]'}>

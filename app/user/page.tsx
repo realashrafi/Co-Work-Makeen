@@ -38,18 +38,18 @@ const User = () => {
                 }
             })
             setData(response.data)
-            if (response.status===200) {
-                Swal.fire({
-                    title: 'خوش آمدید',
-                    text: "وارد پنل خود شدید",
-                    icon: "success",
-                    background: '#002256',
-                    color: '#EEEFEE',
-                    confirmButtonColor: "#FF792C",
-                    confirmButtonText: 'باشه',
-                    backdrop: '#002256'
-                })
-            }
+            // if (response.status===200) {
+            //     Swal.fire({
+            //         title: 'خوش آمدید',
+            //         text: "وارد پنل خود شدید",
+            //         icon: "success",
+            //         background: '#002256',
+            //         color: '#EEEFEE',
+            //         confirmButtonColor: "#FF792C",
+            //         confirmButtonText: 'باشه',
+            //         backdrop: '#002256'
+            //     })
+            // }
         } catch (e) {
             console.log(e)
             Swal.fire({

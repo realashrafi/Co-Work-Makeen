@@ -19,7 +19,7 @@ const Section2HistoryReserve = () => {
                 <div className={'lg:w-[29%] flex flex-col  items-center'}>
                     <div className={'flex justify-between w-[100%] mt-[24px] mb-[48px]'}>
                         <p className={'text-[#44C0ED] text-[14px] font-[400] '}>18 مهر 1402</p>
-                        <p className={'text-[#44C0ED] text-[14px] font-[400] '}>اشتراک اشتراک بلند مدت</p>
+                        <p className={'text-[#44C0ED] text-[14px] font-[400] '}> اشتراک بلند مدت</p>
                     </div>
                     <div style={{width: 212}} className={'-rotate-[90deg] -mb-[80px]  relative'}>
                         <CircularProgressbar

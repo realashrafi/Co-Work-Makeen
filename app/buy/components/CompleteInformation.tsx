@@ -29,11 +29,11 @@ const CompleteInformation = () => {
                 }
             })
             setMe(response.data)
-            setUserID(response.data.user.id)
-            setFirst_name(response.data.user.first_name)
-            setLast_name(response.data.user.last_name)
-            setEmail(response.data.user.email)
-            setNational_code(response.data.user.national_code)
+            setUserID(response.data.id)
+            setFirst_name(response.data.first_name)
+            setLast_name(response.data.last_name)
+            setEmail(response.data.email)
+            setNational_code(response.data.national_code)
         } catch (e) {
             console.log(e)
             Swal.fire({
@@ -95,13 +95,13 @@ const CompleteInformation = () => {
                 <div className={'w-[45%]'}>
                     <p className={'text-white text-sm font-normal'} dir={'rtl'}>*نام خانوادگی :</p>
                     <input type="text" onChange={(e) => setLast_name(e.target.value)} value={last_name}
-                           className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'}
+                           className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'}
                            placeholder={'نام خانوادگی'} dir={'rtl'}/>
                 </div>
                 <div className={'w-[45%]'}>
                     <p className={'text-white text-sm font-normal'} dir={'rtl'}>*نام :</p>
                     <input type="text" onChange={(e) => setFirst_name(e.target.value)} value={first_name}
-                           className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'} placeholder={'نام'}
+                           className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'} placeholder={'نام'}
                            dir={'rtl'}/>
                 </div>
             </div>
@@ -109,25 +109,25 @@ const CompleteInformation = () => {
                 <div className={'w-[45%]'}>
                     <p className={'text-white text-sm font-normal'} dir={'rtl'}>*تاریخ تولد :</p>
                     <input type="text" onChange={(e) => setDob(e.target.value)} value={dob}
-                           className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'}
+                           className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'}
                            placeholder={'تاریخ تولد'} dir={'rtl'}/>
                 </div>
                 <div className={'w-[45%]'}>
                     <p className={'text-white text-sm font-normal'} dir={'rtl'}>*کد ملی :</p>
                     <input type="text" onChange={(e) => setNational_code(e.target.value)} value={national_code}
-                           className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'}
+                           className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'}
                            placeholder={'کد ملی'} dir={'rtl'}/>
                 </div>
             </div>
             <div className={'flex justify-between lg:mr-[87px] lg:px-[48px] px-2 mt-[54px]'}>
                 <div className={'w-[45%]'}>
                     <p className={'text-white text-sm font-normal'} dir={'rtl'}>ساکن منطقه :</p>
-                    <input type="text" className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'}
+                    <input type="text" className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'}
                            placeholder={'ساکن منطقه'} dir={'rtl'}/>
                 </div>
                 <div className={'w-[45%]'}>
                     <p className={'text-white text-sm font-normal'} dir={'rtl'}>*جنسیت :</p>
-                    <select className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'} value={gender}
+                    <select className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'} value={gender}
                             dir={'rtl'} onChange={(e) => setGender(e.target.value)}>
                         <option value="male">مرد</option>
                         <option value="female">زن</option>
@@ -137,13 +137,13 @@ const CompleteInformation = () => {
             <div className={'flex justify-between lg:mr-[87px] lg:px-[48px] px-2 mt-[54px]'}>
                 <div className={'w-[45%]'}>
                     <p className={'text-white text-sm font-normal'} dir={'rtl'}>رشته تحصیلی :</p>
-                    <input type="text" className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'}
+                    <input type="text" className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'}
                            placeholder={'رشته تحصیلی'} dir={'rtl'}/>
                 </div>
                 <div className={'w-[45%]'}>
                     <p className={'text-white text-sm font-normal'} dir={'rtl'}>*مدرک تحصیلی :</p>
                     <select onChange={(e) => setEducation(e.target.value)} value={education}
-                            className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'} dir={'rtl'}>
+                            className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'} dir={'rtl'}>
                         <option value="دیپلم">دیپلم</option>
                         <option value="فوق دیپلم">فوق دیپلم</option>
                         <option value="کارشناسی ارشد">کارشناسی ارشد</option>
@@ -154,12 +154,12 @@ const CompleteInformation = () => {
             <div className={'flex justify-between lg:mr-[87px] lg:px-[48px] px-2 mt-[54px]'}>
                 <div className={'w-[45%]'}>
                     <p className={'text-white text-sm font-normal'} dir={'rtl'}>مهارت تحصیلی :</p>
-                    <input type="text" className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'}
+                    <input type="text" className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'}
                            placeholder={'مهارت تحصیلی'} dir={'rtl'}/>
                 </div>
                 <div className={'w-[45%]'}>
                     <p className={'text-white text-sm font-normal'} dir={'rtl'}>دانشگاه :</p>
-                    <input type="text" className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'}
+                    <input type="text" className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'}
                            placeholder={'دانشگاه'} dir={'rtl'}/>
                 </div>
             </div>
@@ -170,7 +170,7 @@ const CompleteInformation = () => {
                         className="text-orange-500 text-sm font-normal ">دانشجوی مکین </span><span
                         className="text-white text-sm font-normal ">هستین ، کد دانشجویی خود را وارد کنید :</span>
                     </div>
-                    <input type="text" className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'}/>
+                    <input type="text" className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'}/>
                 </div>
             </div>
             <div className={'flex justify-between lg:mr-[87px] lg:px-[48px] px-2 mt-[54px]'}>
@@ -178,7 +178,7 @@ const CompleteInformation = () => {
                     <div className="text-white text-sm font-normal " dir={'rtl'}>جهت اطلاع رسانی برگزاری ورکشاپ
                         های مرتبط ، علائق خود را انتخاب کنید :
                     </div>
-                    <select className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px]'} dir={'rtl'}>
+                    <select className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'} dir={'rtl'}>
                         <option value="null">علائق خود را انتخاب کنید</option>
                     </select>
                 </div>

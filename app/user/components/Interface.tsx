@@ -9,6 +9,8 @@ import 'aos/dist/aos.css';
 import userImage from './data/userImage.png'
 import Image from "next/image";
 import {ImMenu} from "react-icons/im";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 
 const dataOfFav = [
@@ -41,13 +43,102 @@ const dataOfFav = [
 
 const UserInterface = ({data}: any) => {
     const [visible, setVisible] = useState(false)
+    const [dob, setDob] = useState<any>()
+    const [phone, setPhone] = useState<any>()
+    const [last_name, setLast_name] = useState<any>()
+    const [first_name, setFirst_name] = useState<any>()
+    const [national_code, setNational_code] = useState<any>()
+    const [gender, setGender] = useState<any>()
+    const [email, setEmail] = useState<any>()
+    const [education, setEducation] = useState<any>()
+    const [userID, setUserID] = useState<any>()
     useEffect(() => {
         AOS.init({
             duration: 800,
             once: false,
         })
+        // handleUseData()
+        handleFetch()
     }, []);
+// const handleUseData = ()=>{
+//     setUserID(data?.id)
+//     setFirst_name(data?.first_name)
+//     setLast_name(data?.last_name)
+//     setEmail(data?.email)
+//     setNational_code(data?.national_code)
+// }
+    const handleFetch = async () => {
+        const token = localStorage?.getItem('userToken');
+        try {
+            const response = await axios.get('https://www.cowork.v1r.ir/api/v1/user/me', {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    Accept: 'application/json',
+                }
+            })
+            console.log(response.data)
+            setUserID(response.data.id)
+            setGender(response.data.gender)
+            setPhone(response.data.phone_number)
+            setDob(response.data.dob)
+            setFirst_name(response.data.first_name)
+            setLast_name(response.data.last_name)
+            setEducation(response.data.education)
+            setEmail(response.data.email)
+            setNational_code(response.data.national_code)
+        } catch (e) {
+            console.log(e)
+            // Swal.fire({
+            //     title: "خطایی رخ داده",
+            //     text: "لطفا وارد حساب کاربری خود شوید",
+            //     icon: "warning",
+            //     background: '#002256',
+            //     color: '#EEEFEE',
+            //     confirmButtonColor: "#FF792C",
+            //     confirmButtonText: 'باشه',
+            //     backdrop: '#002256'
+            // })
+            // router.push('/')
+        }
+    }
+    const handleupdate = async (e: any) => {
+        const token = localStorage?.getItem('userToken');
+        e.preventDefault()
 
+        try {
+            const response = await axios.put(`https://www.cowork.v1r.ir/api/v1/user/${userID}`, {
+                first_name: first_name,
+                last_name: last_name,
+                email: email,
+                dob: dob,
+                gender: gender,
+                national_code: national_code,
+                education: education,
+                password: "12345678",
+                password_confirmation: "12345678",
+                current_password: "12345678"
+            }, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    Accept: 'application/json',
+                }
+            })
+            if (response.status==200){
+                Swal.fire({
+                    title: "انجام شد",
+                    text: "حالا میتوانید خرید کنید",
+                    icon: "success",
+                    background: '#002256',
+                    color: '#EEEFEE',
+                    confirmButtonColor: "#FF792C",
+                    confirmButtonText: 'باشه',
+                    backdrop: '#002256'
+                })
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    }
     return (
         <div className={'bg-[#0A2E65] w-[100%] h-[2040px]'}>
             <UserNavbar data={data}/>
@@ -85,28 +176,28 @@ const UserInterface = ({data}: any) => {
                             <div className={'ml-[1.3%] mr-[2.16%] lg:w-[22.7%]'}>
                                 <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                    style={{direction: "rtl"}}>تاریخ تولد</p>
-                                <input
-                                    className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] '}
-                                    placeholder={'تاریخ تولد'}/>
+                                <input value={dob} onChange={(e) => setDob(e.target.value)}
+                                       className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] '}
+                                       placeholder={'تاریخ تولد'}/>
                             </div>
                             <div className={' mr-[2.16%] lg:w-[22.7%]'}>
                                 <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                    style={{direction: "rtl"}}>شماره موبایل</p>
-                                <input value={data?.user.phone_number}
+                                <input value={phone} onChange={(e) => setPhone(e.target.value)}
                                        className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] '}
                                        placeholder={'شماره موبایل'}/>
                             </div>
                             <div className={' mr-[2.16%] lg:w-[22.7%]'}>
                                 <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                    style={{direction: "rtl"}}>نام ونام خانوادگی</p>
-                                <input value={data?.user.last_name}
+                                <input value={last_name} onChange={(e) => setLast_name(e.target.value)}
                                        className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] '}
                                        placeholder={'نام ونام خانوادگی'}/>
                             </div>
                             <div className={'  mr-[1.3%] lg:w-[22.7%]'}>
                                 <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                    style={{direction: "rtl"}}>نام</p>
-                                <input value={data?.user.first_name}
+                                <input value={first_name} onChange={(e) => setFirst_name(e.target.value)}
                                        className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] '}
                                        placeholder={'نام'}/>
                             </div>
@@ -116,14 +207,15 @@ const UserInterface = ({data}: any) => {
                             <div className={' mr-[2.16%] lg:w-[22.7%]'}>
                                 <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                    style={{direction: "rtl"}}>کد ملی</p>
-                                <input value={data?.user.national_code}
+                                <input value={national_code} onChange={(e) => setNational_code(e.target.value)}
                                        className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] '}
                                        placeholder={'کد ملی'}/>
                             </div>
                             <div className={' mr-[2.16%] lg:w-[22.7%]'}>
                                 <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                    style={{direction: "rtl"}}>انتخاب جنسیت</p>
-                                <select value={data?.user.gender}
+                                <select value={gender}
+                                        onChange={(e) => setGender(e.target.value)}
                                         className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px]'}
                                         placeholder={'انتخاب جنسیت'} style={{direction: "rtl"}}>
                                     <option value="notintrested">انتخاب جنسیت</option>
@@ -135,24 +227,24 @@ const UserInterface = ({data}: any) => {
                             <div className={'  mr-[1.3%] lg:w-[22.7%]'}>
                                 <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                    style={{direction: "rtl"}}>ایمیل</p>
-                                <input value={data?.user.email}
+                                <input value={email} onChange={(e) => setEmail(e.target.value)}
                                        className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] '}
                                        placeholder={'ایمیل'}/>
                             </div>
 
                         </div>
-                        <div className={' lg:mr-[1.3%] w-[50%] mx-auto lg:w-[22.7%]'}>
+                        <div className={' lg:mr-[1.3%] w-[50%] mx-auto pb-4 lg:pb-0 lg:w-[22.7%]'}>
                             <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                style={{direction: "rtl"}}>مدرک تحصیلی</p>
-                            <select value={data?.user.education}
+                            <select value={education} onChange={(e) => setEducation(e.target.value)}
                                     className={'w-[100%]  h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px]'}
                                     placeholder={'انتخاب جنسیت'} style={{direction: "rtl"}}>
                                 <option value="notintrested">انتخاب مدرک</option>
-                                <option value="unknown">دکتری</option>
-                                <option value="male">کارشناسی ارشد</option>
-                                <option value="female">کار دانی</option>
-                                <option value="female">دیپلم</option>
-                                <option value="female">بی سواد</option>
+                                <option value="دکتری">دکتری</option>
+                                <option value="کارشناسی ارشد">کارشناسی ارشد</option>
+                                <option value="کار دانی">کار دانی</option>
+                                <option value="دیپلم">دیپلم</option>
+                                <option value="بی سواد">بی سواد</option>
                             </select>
 
                         </div>
@@ -178,7 +270,7 @@ const UserInterface = ({data}: any) => {
                         <div className={' mr-[2.16%] lg:w-[22.7%]'}>
                             <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                style={{direction: "rtl"}}>نام کاربری</p>
-                            <input value={data?.user.username}
+                            <input value={data?.username}
                                    className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] '}
                                    placeholder={'نام کاربری'}/>
                         </div>
@@ -233,7 +325,7 @@ const UserInterface = ({data}: any) => {
                         </div>
                     </div>
                     <div className={'flex mt-[58px] items-center ml-[5.6%]'}>
-                        <Link className={'w-[16.9%]'} href={'/user/reservehistory'}>
+                        <Link className={'w-[16.9%]'} href={''} onClick={handleupdate}>
                             <div
                                 className={'w-[100%] text-[#FFFEFF] text-[16px] font-[400] bg-[#44C0ED] justify-center h-[48px] flex items-center text-center rounded-[12px]'}>
                                 اعمال تغییرات
@@ -244,8 +336,9 @@ const UserInterface = ({data}: any) => {
                         </div>
                     </div>
                 </div>
-                    <button className={'absolute right-4'} onClick={()=>setVisible(true)}><ImMenu className={'mt-4 scale-150 text-white'} /></button>
-                    <SideBarUser visible={visible} setVisible={setVisible}/>
+                <button className={'absolute right-4'} onClick={() => setVisible(true)}><ImMenu
+                    className={'mt-4 scale-150 text-white'}/></button>
+                <SideBarUser visible={visible} setVisible={setVisible}/>
             </div>
         </div>
     );

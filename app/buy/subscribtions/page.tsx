@@ -32,7 +32,7 @@ const Page = () => {
                 }
             })
             setMe(response.data)
-            if (response.data.user.national_code === null) {
+            if (response.data.national_code === null) {
                 Swal.fire({
                     title: 'تکمیل اطلاعات',
                     text: "لطفا اطلاعات حساب کاربری خود را تکمیل کنید",

@@ -12,7 +12,7 @@ const RegisterModalStep1 = ({statusLogin, statusRegister}: any) => {
     const validation = () => {
         if (number.length < 11) {
             return (
-                <div className={' text-orange-500 font-light text-[10px] relative mr-4 '}>شماره موبایل 11 رقمی خود را وارد کنید</div>
+                <div className={' text-orange-500 font-light text-[10px] mt-2 relative mr-4 '}>شماره موبایل 11 رقمی خود را وارد کنید</div>
             )
         }
     }
@@ -30,7 +30,7 @@ const RegisterModalStep1 = ({statusLogin, statusRegister}: any) => {
         <div>
             <div className={'cursor-pointer pt-[5px] group'} onClick={() => setShowModal(true)}>
                 <div className={'flex justify-center items-center  '}>
-                    <div className="text-white text-base font-normal mr-[1%] group-hover:text-orange-500 -mt-[3px]">ثبت
+                    <div className="text-white text-sm font-normal mr-[1%] group-hover:text-orange-500 -mt-[3px]">ثبت
                         نام
                     </div>
                     <svg className={'lg:mx-[4%]'} width="2" height="22" viewBox="0 0 2 22" fill="none"
@@ -38,7 +38,7 @@ const RegisterModalStep1 = ({statusLogin, statusRegister}: any) => {
                         <path id="Line 202" d="M1.25 0.99707L1.25 21.0033" stroke="#FF792C" strokeLinecap="round"/>
                     </svg>
                     <div
-                        className="text-white text-base font-normal ml-[1%] -mt-[3px] group-hover:text-orange-500">ورود
+                        className="text-white text-sm font-normal ml-[1%] -mt-[3px] group-hover:text-orange-500">ورود
                     </div>
                 </div>
             </div>
@@ -71,7 +71,7 @@ const RegisterModalStep1 = ({statusLogin, statusRegister}: any) => {
                 isOpen={showModal}>
                 <div className={'lg:mx-[400px]'}>
                     <div className={'flex justify-end pr-[24px] mt-[24px]'}>
-                        <div className={'cursor-pointer'} onClick={() => setShowModal(false)}>X</div>
+                        <div className={'cursor-pointer text-white'} onClick={() => setShowModal(false)}>X</div>
                     </div>
                     <div className={'flex justify-center mt-[20px]'}>
                         <Image src={logoMakeen} alt={''}/>

@@ -17,63 +17,63 @@ import {useRouter} from "next/navigation";
 
 
 const dataOfWallet = [
-    {
-        id: 1,
-        num: '1603',
-        date: '19 آبان 1402',
-        sub: 'روزانه کوورک',
-        sum: '30',
-        status: 'عودت داده شده',
-    }, {
-        id: 2,
-        num: '1602',
-        date: '16 آبان 1402',
-        sub: 'روزانه اتاق جلسات',
-        sum: '30',
-        status: 'عودت داده شده',
-    }, {
-        id: 3,
-        num: '1602',
-        date: '16 آبان 1402',
-        sub: 'روزانه اتاق جلسات',
-        sum: '30',
-        status: 'عودت داده شده',
-    }, {
-        id: 4,
-        num: '1602',
-        date: '16 آبان 1402',
-        sub: 'روزانه اتاق جلسات',
-        sum: '30',
-        status: 'عودت داده شده',
-    }, {
-        id: 5,
-        num: '1602',
-        date: '16 آبان 1402',
-        sub: 'روزانه اتاق جلسات',
-        sum: '30',
-        status: 'عودت داده شده',
-    }, {
-        id: 6,
-        num: '1606',
-        date: '16 آبان 1402',
-        sub: 'روزانه اتاق جلسات',
-        sum: '30',
-        status: 'عودت داده شده',
-    }, {
-        id: 7,
-        num: '1602',
-        date: '16 آبان 1402',
-        sub: 'روزانه اتاق جلسات',
-        sum: '30',
-        status: 'عودت داده شده',
-    }, {
-        id: 8,
-        num: '1602',
-        date: '16 آبان 1402',
-        sub: 'روزانه اتاق جلسات',
-        sum: '30',
-        status: 'عودت داده شده',
-    },
+        {
+            id: 1,
+            num: '1603',
+            date: '19 آبان 1402',
+            sub: 'روزانه کوورک',
+            sum: '30',
+            status: 'عودت داده شده',
+        }, {
+            id: 2,
+            num: '1602',
+            date: '16 آبان 1402',
+            sub: 'روزانه اتاق جلسات',
+            sum: '30',
+            status: 'عودت داده شده',
+        }, {
+            id: 3,
+            num: '1602',
+            date: '16 آبان 1402',
+            sub: 'روزانه اتاق جلسات',
+            sum: '30',
+            status: 'عودت داده شده',
+        }, {
+            id: 4,
+            num: '1602',
+            date: '16 آبان 1402',
+            sub: 'روزانه اتاق جلسات',
+            sum: '30',
+            status: 'عودت داده شده',
+        }, {
+            id: 5,
+            num: '1602',
+            date: '16 آبان 1402',
+            sub: 'روزانه اتاق جلسات',
+            sum: '30',
+            status: 'عودت داده شده',
+        }, {
+            id: 6,
+            num: '1606',
+            date: '16 آبان 1402',
+            sub: 'روزانه اتاق جلسات',
+            sum: '30',
+            status: 'عودت داده شده',
+        }, {
+            id: 7,
+            num: '1602',
+            date: '16 آبان 1402',
+            sub: 'روزانه اتاق جلسات',
+            sum: '30',
+            status: 'عودت داده شده',
+        }, {
+            id: 8,
+            num: '1602',
+            date: '16 آبان 1402',
+            sub: 'روزانه اتاق جلسات',
+            sum: '30',
+            status: 'عودت داده شده',
+        },
 ]
 const WalletUser = () => {
     const [visible, setVisible] = useState(false)
@@ -198,7 +198,7 @@ const WalletUser = () => {
     }
     return (
         <div className={'bg-[#0A2E65] h-[2040px] '}>
-            <UserNavbar/>
+            <UserNavbar data={data}/>
             <div className={'flex pt-[160px]'}>
                 <div data-aos={'fade-right'}
                      className={'lg:w-[79.3%]  flex-col items-center justify-center h-[1752PX] bg-[#002256] rounded-[24px] mb-[132px]'}>

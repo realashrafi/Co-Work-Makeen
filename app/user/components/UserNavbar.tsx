@@ -12,7 +12,7 @@ const UserNavbar = ({data}: any) => {
     // console.log(date.format( ))
     return (
         <div className={'fixed w-[100%]   z-[3] '}>
-            <div className={'flex items-center px-2 w-[100%] justify-between h-[156px] lg:w-[79.93%] bg-[#0A2E65] '}>
+            <div className={'flex items-center px-2 w-[100%] justify-between  h-[156px] lg:w-[79.93%] bg-[#0A2E65] '}>
                 <div className={'lg:ml-[4.7%]'}>
                     <DropDownNavbar/>
                 </div>
@@ -28,7 +28,7 @@ const UserNavbar = ({data}: any) => {
                     </p>
                     <IconHandShake/>
                     <p className={'lg:visible invisible lg:ml-[17px] flex-wrap text-[16px]  text-[#FFFEFF] '}>
-                        {data?.user.first_name} {data?.user.last_name} عزیز ، خوش اومدی </p>
+                        {data?.first_name} {data?.last_name} عزیز ، خوش اومدی </p>
                 </div>
 
             </div>

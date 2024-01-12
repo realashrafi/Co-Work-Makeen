@@ -52,7 +52,7 @@ const Section2Tariffs = () => {
                     <p className={'text-[#FF792C] text-[18px]'}>500 تومان</p>
                 </div>
                 <div className={'flex flex-col lg:ml-[14%]'} style={{direction: "rtl"}}>
-                    <p className={'text-[16px] text-[#FFFFFF] '}>اشتراک اشتراک بلند مدت</p>
+                    <p className={'text-[16px] text-[#FFFFFF] '}> اشتراک بلند مدت</p>
                     <p className={'text-[14px] text-[#FFFFFF] '}> برای 30 یک روز قابل استفاده است</p>
                 </div>
                 <div className={'lg:ml-[8%] ml-8'}>
@@ -94,7 +94,7 @@ const Section2Tariffs = () => {
                     <p className={'text-[#44C0ED] text-[18px]'}>650 تومان</p>
                 </div>
                 <div className={'flex flex-col ml-8 lg:ml-[14%]'} style={{direction: "rtl"}}>
-                    <p className={'text-[16px] text-[#FFFFFF] '}>اشتراک اشتراک بلند مدت</p>
+                    <p className={'text-[16px] text-[#FFFFFF] '}> اشتراک بلند مدت</p>
                     <p className={'text-[14px] text-[#FFFFFF] '}> برای 30 یک روز قابل استفاده است</p>
                 </div>
                 <div className={'lg:ml-[8%] ml-8 '}>

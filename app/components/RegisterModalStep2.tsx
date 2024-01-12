@@ -27,6 +27,16 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
         }
         else lastChecked
     }
+    const handleInput = (e: any) => {
+        const inputValue:any = e.target.value
+        const numericValue =
+            inputValue.replace(/[^0-9]/g,'')
+        if (numericValue<= 5){
+            e.target.value=numericValue
+        }else {
+            e.target.value=numericValue.slice(0,5)
+        }
+    }
     const handleSubmit = async (e: any) => {
         e.preventDefault()
         await axios.post('https://www.cowork.v1r.ir/api/v1/auth/user/check-phone-number', {
@@ -80,8 +90,7 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
             if (response?.status == 200) {
                 //@ts-ignore
                 // localStorage.setItem('loginStatus', 200)
-                console.log('1')
-                router.push('/')
+                setShowModal(false)
                 Swal.fire({
                     title: `${response.data.user.first_name} عزیز ثبت نام موفق بود `,
                     text: "میتوانید از قسمت ورود به حساب کاربری خود وارد شوید",
@@ -91,6 +100,7 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                     confirmButtonColor: "#FF792C",
                     confirmButtonText: '<button >باشه</button>'
                 })
+                router.refresh()
             }
         } catch (e) {
             console.log(e)
@@ -133,7 +143,7 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                     isOpen={showModal}>
                     <div className={'lg:mx-[400px]'}>
                         <div className={'flex justify-end pr-[24px] mt-[24px]'}>
-                            <div className={'cursor-pointer'} onClick={() => setShowModal(false)}>X</div>
+                            <div className={'cursor-pointer text-white'} onClick={() => setShowModal(false)}>X</div>
                         </div>
                         <div className={'flex justify-center mt-[20px]'}>
                             <Image src={logoMakeen} alt={''}/>
@@ -154,7 +164,7 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                         <div className={'flex justify-center mt-[16px]'}>
                             <input
                                 onChange={(e) => setUserPasswordToLogin(e.target.value)}
-                                className={'rounded-xl h-10 w-[79%] px-[16px] bg-[#0A2E65]'}
+                                className={'rounded-xl h-10 w-[79%] text-white px-[16px] bg-[#0A2E65]'}
                                 type="password"
                                 dir={'rtl'}
                                 placeholder={'رمز عبور حساب کاربری خود را وارد کنید'}/>
@@ -197,7 +207,7 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                     isOpen={showModal}>
                     <div className={'lg:mx-[400px] '}>
                         <div className={'flex justify-end pr-[24px] mt-[24px]'}>
-                            <div className={'cursor-pointer'} onClick={() => setShowModal(false)}>X</div>
+                            <div className={'cursor-pointer text-white'} onClick={() => setShowModal(false)}>X</div>
                         </div>
                         <div className={'flex justify-center mt-[20px]'}>
                             <Image src={logoMakeen} alt={''}/>
@@ -228,8 +238,8 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                             </div>
                         </div>
                         <div className={'flex justify-center mt-[16px]'}>
-                            <input type="text" className={'w-[79%] px-[16px] h-10 bg-[#0A2E65] rounded-xl'} dir={'rtl'}
-                                   placeholder={'کد تایید را وارد نمایید'}
+                            <input type="text" className={'w-[79%] px-[16px] h-10 bg-[#0A2E65] text-white rounded-xl'} dir={'rtl'}
+                                   placeholder={'کد تایید را وارد نمایید'} onInput={handleInput}
                                    onChange={(e) => setRegisterCode(e.target.value)}
                             />
                         </div>
@@ -247,20 +257,20 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                             </div>
                             <input type="text"
                                    onChange={(e) => setFirstName(e.target.value)}
-                                   className={'self-end w-[89%] h-10 bg-[#0A2E65] rounded-xl mt-[18px] px-[16px]'}
+                                   className={'self-end w-[89%] h-10 bg-[#0A2E65] rounded-xl text-white mt-[18px] px-[16px]'}
                                    dir={'rtl'} placeholder={'نام خود را وارد نمایید'}/>
                             <input type="text"
                                    onChange={(e) => setLastName(e.target.value)}
-                                   className={'self-end w-[89%] h-10 bg-[#0A2E65] rounded-xl mt-[8px] px-[16px]'}
+                                   className={'self-end w-[89%] h-10 bg-[#0A2E65] rounded-xl text-white mt-[8px] px-[16px]'}
                                    dir={'rtl'} placeholder={'نام خانوادگی خود را وارد نمایید'}/>
                             <input type="password"
                                    onChange={(e) => setPassForRegister(e.target.value)}
-                                   className={'self-end w-[89%] h-10 bg-[#0A2E65] rounded-xl mt-[8px] px-[16px]'}
+                                   className={'self-end w-[89%] h-10 bg-[#0A2E65] rounded-xl text-white mt-[8px] px-[16px]'}
                                    dir={'rtl'}
                                    placeholder={'رمز عبوری برای حساب کاربری خود وارد نمایید'}/>
                             <input type="text"
                                    onChange={(e) => setEmail(e.target.value)}
-                                   className={'self-end w-[89%] h-10 bg-[#0A2E65] rounded-xl mt-[8px] px-[16px]'}
+                                   className={'self-end w-[89%] h-10 bg-[#0A2E65] rounded-xl text-white mt-[8px] px-[16px]'}
                                    dir={'rtl'} placeholder={'برای بازیابی رمز عبور ایمیل خود را وارد کنید'}/>
                             <div className={'self-end flex justify-end  mt-[20px]'}>
                                 <div className={' text-right text-white text-xs mr-[10px] font-normal'}>قوانین و شرایط

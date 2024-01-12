@@ -30,7 +30,7 @@ const DropDownNavbar = () => {
                     Accept: 'application/json',
                 }
             })
-            setMe(response.data.user)
+            setMe(response.data)
         } catch (e) {
             console.log(e)
         }
