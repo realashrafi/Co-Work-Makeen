@@ -20,6 +20,8 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
     const [passForRegister, setPassForRegister] = useState('')
     const [lastChecked, setLastChecked] = useState(checked)
     const [rolls, setRolls] = useState(false)
+    const [validate, setValidate] = useState(false)
+
     const router = useRouter()
     const finalCheck = ()=>{
         if (number.length>10){
@@ -39,12 +41,15 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
     }
     const handleSubmit = async (e: any) => {
         e.preventDefault()
-        await axios.post('https://www.cowork.v1r.ir/api/v1/auth/user/check-phone-number', {
+        try {
+        const res= await axios.post('https://www.cowork.v1r.ir/api/v1/auth/user/check-phone-number', {
             phone_number: number
         })
-            .then((response) => setUserExist(response.data.user_exits))
-            .catch((err) => console.error(err))
-        setShowModal(true)
+            setUserExist(res.data.user_exits)
+            setShowModal(true)
+        }catch (e) {
+            console.log(e)
+        }
     }
     const handleUserLogin = async (e: any) => {
         e.preventDefault()
@@ -287,7 +292,8 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                         </div>
                         {/*{statusRegister?.userRegisterStatus == 200 ? redirect('/') : ''}*/}
                     </div>
-                </ReactModal>}
+                </ReactModal>
+            }
         </div>
     );
 };

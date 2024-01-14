@@ -84,9 +84,10 @@ function ParallaxElement() {
                     slot="container-start"
                     className="parallax-bg"
                     style={{
+                        //https://abrehamrahi.ir/o/public/DM3fznCa/
                         // @ts-ignore
                         'background-image':
-                            `url(https://abrehamrahi.ir/o/public/DM3fznCa/)`,
+                            `url('/parallaxImage.jpg')`,
                     }}
                     data-swiper-parallax="-23%"
                 >
@@ -120,10 +121,10 @@ function ParallaxElement() {
                                 </defs>
                             </svg>
                             <Image src={item.image} alt={''} className={'z-10 -mt-[6px]'}/>
-                            <p className={'text-sky-400 text-base font-bold leading-7 mt-[12px]'}>{item.name}</p>
+                            <p className={'text-1sky-400 text-base font-bold leading-7 mt-[12px]'}>{item.name}</p>
                             <p className={'text-orange-500 text-xs font-light leading-normal mt-[4px]'}>{item.title}</p>
                         </div>
-                        <div className={'w-[50%] mx-auto pt-[20px] ml-[35%]'} dir={'rtl'}>
+                        <div  className={'w-[50%] mx-auto pt-[20px] ml-[35%]'} dir={'rtl'}>
                             <p className={'text-right line-clamp-3 text-white text-sm font-normal'}>{item.content}</p>
                         </div>
                         </div>

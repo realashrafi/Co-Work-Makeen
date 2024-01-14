@@ -7,11 +7,14 @@ import RegisterModalStep1 from "@/app/components/RegisterModalStep1";
 import NavbarBuy from "@/app/buy/components/NavbarBuy";
 import axios from "axios";
 import Swal from "sweetalert2";
+import LoadingMakeenLogo from "@/app/components/LoadingMakeenLogo";
+import LoadingMinimal from "@/app/components/LoadingMinimal";
 
 const DropDownNavbar = () => {
     const [userLoginStatus, setUserLoginStatus] = useState<any>()
     const [userRegisterStatus, setUserRegisterStatus] = useState<any>(0)
     const [exist, setExist] = useState<any>(false)
+    const [validate, setValidate] = useState(false)
     useEffect(() => {
         AOS.init({
             duration: 800,
@@ -30,14 +33,21 @@ const DropDownNavbar = () => {
                 }
             })
             console.log(response)
+            if (response.status == 200) {
+                setValidate(false)
+            } else {
+                setValidate(true)
+            }
             setExist(true)
         } catch (e) {
             console.log(e)
+            setValidate(true)
             setExist(false)
         }
     }
     const statusLogin = {userLoginStatus, setUserLoginStatus}
     const statusRegister = {userRegisterStatus, setUserRegisterStatus}
+
     return (
         <div className=" w-[150px] ">
             <div
@@ -45,8 +55,12 @@ const DropDownNavbar = () => {
                 {exist ?
                     <NavbarBuy/>
                     :
-                    <RegisterModalStep1 statusLogin={statusLogin} statusRegister={statusRegister}/>
+                    validate ?
+                        <RegisterModalStep1 statusLogin={statusLogin} statusRegister={statusRegister}/>
+                        :
+                        <LoadingMinimal/>
                 }
+                {}
             </div>
         </div>
     );

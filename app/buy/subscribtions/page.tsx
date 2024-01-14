@@ -7,10 +7,11 @@ import iconNavbar from "@/public/images/logo-makeen 8.png";
 import SidebarBuy from '../components/SidebarBuy';
 import ComponentsRenderByOrders from "@/app/buy/subscribtions/components/ComponentsRenderByOrders";
 import HeaderBuy from "@/app/buy/components/HeaderBuy";
-import { useRouter, useSearchParams} from "next/navigation";
+import {useRouter, useSearchParams} from "next/navigation";
 import axios from "axios";
 import Swal from "sweetalert2";
 import DropDownNavbar from "@/app/components/DropDownNavbar";
+import LoadingMakeenLogo from "@/app/components/LoadingMakeenLogo";
 
 const Page = () => {
     const router = useRouter()
@@ -18,13 +19,14 @@ const Page = () => {
     const orderData = getData.get('data')
     const [order, setOrder] = useState(Number(orderData))
     const [me, setMe] = useState<any>()
+    const [validate, setValidate] = useState(false)
     useEffect(() => {
         //@ts-ignore
         handleFetch()
-    },[] );
+    }, []);
     const handleFetch = async () => {
         try {
-        const token = localStorage?.getItem('userToken');
+            const token = localStorage?.getItem('userToken');
             const response = await axios.get('https://www.cowork.v1r.ir/api/v1/user/me', {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -32,6 +34,11 @@ const Page = () => {
                 }
             })
             setMe(response.data)
+            if (response.status == 200) {
+                setValidate(true)
+            } else {
+                setValidate(false)
+            }
             if (response.data.national_code === null) {
                 Swal.fire({
                     title: 'تکمیل اطلاعات',
@@ -61,23 +68,27 @@ const Page = () => {
         }
     }
     return (
-        <div className={'bg-[#0A2E65] pb-[64px]'}>
-            <div className={'flex px-3 lg:px-0 lg:justify-between w-full lg:pl-[7.6%] pt-[35px]'}>
-                {/*<NavbarBuy/>*/}
-                <DropDownNavbar />
-                <NavbarLinks/>
-                <Link className={'lg:mr-[8%] '} href={'/'}>
-                    <Image src={iconNavbar} alt={'iconNavbar'}/>
-                </Link>
-            </div>
-            <div className={'w-[94.8%] h-[1768px] rounded-xl bg-[#002256] mx-auto mt-[15px] flex flex-col '}>
-                <HeaderBuy />
-                <div className="w-[90.9%] mx-auto h-[0px] border-2 border-[#0A2E65] mt-[24px]"></div>
-                <div className={'flex justify-end flex-wrap-reverse lg:flex-nowrap pt-[43px]'}>
-                    <ComponentsRenderByOrders order={order}/>
-                    <SidebarBuy />
+        <div>
+            {validate ? <div className={'bg-[#0A2E65] pb-[64px]'}>
+                    <div className={'flex px-3 lg:px-0 lg:justify-between w-full lg:pl-[7.6%] pt-[35px]'}>
+                        {/*<NavbarBuy/>*/}
+                        <DropDownNavbar/>
+                        <NavbarLinks/>
+                        <Link className={'lg:mr-[8%] '} href={'/'}>
+                            <Image src={iconNavbar} alt={'iconNavbar'}/>
+                        </Link>
+                    </div>
+                    <div className={'w-[94.8%] h-[1768px] rounded-xl bg-[#002256] mx-auto mt-[15px] flex flex-col '}>
+                        <HeaderBuy/>
+                        <div className="w-[90.9%] mx-auto h-[0px] border-2 border-[#0A2E65] mt-[24px]"></div>
+                        <div className={'flex justify-end flex-wrap-reverse lg:flex-nowrap pt-[43px]'}>
+                            <ComponentsRenderByOrders order={order}/>
+                            <SidebarBuy/>
+                        </div>
+                    </div>
                 </div>
-            </div>
+                :
+                <LoadingMakeenLogo/>}
         </div>
     );
 };

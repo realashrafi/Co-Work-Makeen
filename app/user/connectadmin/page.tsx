@@ -12,9 +12,12 @@ import {ImMenu} from "react-icons/im";
 import axios from "axios";
 import Swal from "sweetalert2";
 import {useRouter} from "next/navigation";
+import LoadingMakeenLogo from "@/app/components/LoadingMakeenLogo";
+
 const ConnectAdmin = () => {
     const [visible, setVisible] = useState(false)
     const [data, setData] = useState<any>()
+    const [validate, setValidate] = useState(false)
     useEffect(() => {
         AOS.init({
             duration: 800,
@@ -33,6 +36,11 @@ const ConnectAdmin = () => {
                 }
             })
             setData(response.data)
+            if (response.status == 200) {
+                setValidate(true)
+            } else {
+                setValidate(false)
+            }
             // if (response.status===200) {
             //     Swal.fire({
             //         title: 'خوش آمدید',
@@ -61,25 +69,31 @@ const ConnectAdmin = () => {
         }
     }
     return (
-        <div className={'bg-[#0A2E65] h-[2040px] '}>
-            <UserNavbar data={data}/>
-            <div className={'flex pt-[160px]'}>
-                <div data-aos={'fade-right'}
-                     className={'lg:w-[79.3%] w-[100%] flex-col h-[1752PX] bg-[#002256] rounded-[24px] mb-[132px]'}>
-                    <div className={'flex mt-[40px] mr-[24px]'} style={{direction: "rtl"}}>
-                        <div className={'text-[#FFFEFF] text-[16px] font-[400] '}>
-                            برای ارتباط با پشتیبانی اینجا کلیک کنید
+        <div>
+            {validate ? <div className={'bg-[#0A2E65] h-[2040px] '}>
+                    <UserNavbar data={data}/>
+                    <div className={'flex pt-[160px]'}>
+                        <div data-aos={'fade-right'}
+                             className={'lg:w-[79.3%] w-[100%] flex-col h-[1752PX] bg-[#002256] rounded-[24px] mb-[132px]'}>
+                            <div className={'flex mt-[40px] mr-[24px]'} style={{direction: "rtl"}}>
+                                <div className={'text-[#FFFEFF] text-[16px] font-[400] '}>
+                                    برای ارتباط با پشتیبانی اینجا کلیک کنید
+                                </div>
+                                <ModalConnectAdmin/>
+                            </div>
+                            <p className={'text-[#FFFEFF] text-[16px] font-[400] text-center mt-[150px]'}>
+                                ! هیچ نتیجه ای یافت نشد
+                            </p>
+                            <IconConnectAdmin/>
                         </div>
-                        <ModalConnectAdmin/>
+                        <button className={'absolute right-4'} onClick={() => setVisible(true)}><ImMenu
+                            className={'mt-4 scale-150 text-white'}/></button>
+                        <SideBarUser visible={visible} setVisible={setVisible}/>
                     </div>
-                    <p className={'text-[#FFFEFF] text-[16px] font-[400] text-center mt-[150px]'}>
-                        ! هیچ نتیجه ای یافت نشد
-                    </p>
-                    <IconConnectAdmin/>
                 </div>
-                <button className={'absolute right-4'} onClick={() => setVisible(true)}><ImMenu className={'mt-4 scale-150 text-white'} /></button>
-                <SideBarUser visible={visible} setVisible={setVisible}/>
-            </div>
+                :
+                <LoadingMakeenLogo/>
+            }
         </div>
     );
 };

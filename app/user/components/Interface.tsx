@@ -80,7 +80,7 @@ const UserInterface = ({data}: any) => {
             setUserID(response.data.id)
             setGender(response.data.gender)
             setPhone(response.data.phone_number)
-            setDob(response.data.dob)
+            setDob(response.data.dob.slice(0,10))
             setFirst_name(response.data.first_name)
             setLast_name(response.data.last_name)
             setEducation(response.data.education)

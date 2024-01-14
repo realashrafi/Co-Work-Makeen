@@ -12,20 +12,21 @@ const RegisterModalStep1 = ({statusLogin, statusRegister}: any) => {
     const validation = () => {
         if (number.length < 11) {
             return (
-                <div className={' text-orange-500 font-light text-[10px] mt-2 relative mr-4 '}>شماره موبایل 11 رقمی خود را وارد کنید</div>
+                <div className={' text-orange-500 font-light text-[10px] mt-2 relative mr-4 '}>شماره موبایل 11 رقمی خود
+                    را وارد کنید</div>
             )
         }
     }
     const handleInput = (e: any) => {
-        const inputValue:any = e.target.value
+        const inputValue: any = e.target.value
         const numericValue =
-            inputValue.replace(/[^0-9]/g,'')
-        if (numericValue<= 11){
-            e.target.value=numericValue
-        }else {
-            e.target.value=numericValue.slice(0,11)
+            inputValue.replace(/[^0-9]/g, '')
+        if (numericValue <= 11) {
+            e.target.value = numericValue
+        } else {
+            e.target.value = numericValue.slice(0, 11)
         }
-            }
+    }
     return (
         <div>
             <div className={'cursor-pointer pt-[5px] group'} onClick={() => setShowModal(true)}>
@@ -37,8 +38,8 @@ const RegisterModalStep1 = ({statusLogin, statusRegister}: any) => {
                          xmlns="http://www.w3.org/2000/svg">
                         <path id="Line 202" d="M1.25 0.99707L1.25 21.0033" stroke="#FF792C" strokeLinecap="round"/>
                     </svg>
-                    <div
-                        className="text-white text-sm font-normal ml-[1%] -mt-[3px] group-hover:text-orange-500">ورود
+                    <div style={{}}
+                         className="text-white text-sm font-normal ml-[1%] -mt-[3px] group-hover:text-orange-500">ورود
                     </div>
                 </div>
             </div>
@@ -65,11 +66,11 @@ const RegisterModalStep1 = ({statusLogin, statusRegister}: any) => {
                         borderRadius: '24px',
                         outline: 'none',
                         padding: '0px',
-                        border: 'none'
+                        border: 'none',
                     }
                 }}
                 isOpen={showModal}>
-                <div className={'lg:mx-[400px]'}>
+                <div className={'lg:mx-[400px] '}>
                     <div className={'flex justify-end pr-[24px] mt-[24px]'}>
                         <div className={'cursor-pointer text-white'} onClick={() => setShowModal(false)}>X</div>
                     </div>
@@ -87,10 +88,11 @@ const RegisterModalStep1 = ({statusLogin, statusRegister}: any) => {
                     <div className={'flex flex-col items-end pr-[50px] mt-[32px]'}>
                         <div className={'text-slate-50 text-sm font-medium'}>ابتدا شماره موبایل خود را وارد نمایید</div>
                         <input type={'text'} maxLength={11} onInput={handleInput}
-                               className={`w-[88%] h-10 bg-[#0A2E65] mt-[16px] ${number.length>10 ?'text-green-500':'text-orange-500'} px-[16px] rounded-xl`} dir={'rtl'}
+                               className={`w-[88%] h-10 bg-[#0A2E65] mt-[16px] ${number.length > 10 ? 'text-green-500' : 'text-orange-500'} px-[16px] rounded-xl`}
+                               dir={'rtl'}
                                onChange={(e) => setNumber(e.target.value)}
                                placeholder={'مثال 09367674845'}/>
-                    {validation()}
+                        {validation()}
                     </div>
                     <RegisterModalStep2 number={number}
                                         checked={checked}

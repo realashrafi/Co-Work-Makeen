@@ -4,11 +4,14 @@ import axios from "axios";
 import {useEffect, useState} from "react";
 import Swal from "sweetalert2";
 import {useRouter} from "next/navigation";
+import LoadingMakeenLogo from "@/app/components/LoadingMakeenLogo";
 
 
 const User = () => {
     const [data, setData] = useState<any>()
-    const router =useRouter()
+    const [validate, setValidate] = useState(false)
+    const router = useRouter()
+
     useEffect(() => {
         // @ts-ignore
         handleFetch()
@@ -38,6 +41,11 @@ const User = () => {
                 }
             })
             setData(response.data)
+            if (response.status == 200) {
+                setValidate(true)
+            } else {
+                setValidate(false)
+            }
             // if (response.status===200) {
             //     Swal.fire({
             //         title: 'خوش آمدید',
@@ -64,10 +72,16 @@ const User = () => {
             })
             router.push('/')
         }
+
     }
     return (
         <div>
-            <Interface data={data}/>
+            {validate ?
+                <Interface data={data}/>
+                :
+                <LoadingMakeenLogo/>
+            }
+
         </div>
     );
 };

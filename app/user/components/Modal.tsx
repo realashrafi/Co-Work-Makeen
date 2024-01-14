@@ -20,7 +20,7 @@ const Modal = () => {
     const logout=()=>{
         localStorage.setItem('userToken',"")
         Swal.fire({
-            title: "حارج شدید",
+            title: "خارج شدید",
             text: "موفقیت امیز بود",
             icon: "success",
             background: '#002256',

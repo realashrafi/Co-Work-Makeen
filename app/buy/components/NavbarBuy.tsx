@@ -134,7 +134,7 @@ const DropDownNavbar = () => {
                          localStorage.setItem('userToken', '')
                          localStorage.setItem('loginStatus', '')
                          Swal.fire({
-                             title: "حارج شدید",
+                             title: "خارج شدید",
                              text: "موفقیت امیز بود",
                              icon: "success",
                              background: '#002256',

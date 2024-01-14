@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import {useRouter} from "next/navigation";
 import axios from "axios";
 import Swal from "sweetalert2";
+import LoadingMakeenLogo from "@/app/components/LoadingMakeenLogo";
 
 const CompleteInformation = () => {
     const router = useRouter()
@@ -15,6 +16,7 @@ const CompleteInformation = () => {
     const [email, setEmail] = useState<any>()
     const [gender, setGender] = useState<any>()
     const [education, setEducation] = useState<any>()
+    const [validate, setValidate] = useState(false)
     useEffect(() => {
         //@ts-ignore
         handleFetch()
@@ -34,6 +36,11 @@ const CompleteInformation = () => {
             setLast_name(response.data.last_name)
             setEmail(response.data.email)
             setNational_code(response.data.national_code)
+            if (response.status == 200) {
+                setValidate(true)
+            } else {
+                setValidate(false)
+            }
         } catch (e) {
             console.log(e)
             Swal.fire({
@@ -70,27 +77,26 @@ const CompleteInformation = () => {
                     Accept: 'application/json',
                 }
             })
-           if (response.status==200){
-               Swal.fire({
-                   title: "انجام شد",
-                   text: "حالا میتوانید خرید کنید",
-                   icon: "success",
-                   background: '#002256',
-                   color: '#EEEFEE',
-                   confirmButtonColor: "#FF792C",
-                   confirmButtonText: 'باشه',
-                   backdrop: '#002256'
-               })
-               router.back()
-           }
+            if (response.status == 200) {
+                Swal.fire({
+                    title: "انجام شد",
+                    text: "حالا میتوانید خرید کنید",
+                    icon: "success",
+                    background: '#002256',
+                    color: '#EEEFEE',
+                    confirmButtonColor: "#FF792C",
+                    confirmButtonText: 'باشه',
+                    backdrop: '#002256'
+                })
+                router.back()
+            }
         } catch (e) {
             console.log(e)
         }
     }
     console.log(me)
-    console.log()
     return (
-        <div className={'flex w-[100%] flex-col  '}>
+         <div className={'flex w-[100%] flex-col  '}>
             <div className={'flex justify-between lg:mr-[87px] lg:px-[48px] px-2 '}>
                 <div className={'w-[45%]'}>
                     <p className={'text-white text-sm font-normal'} dir={'rtl'}>*نام خانوادگی :</p>
@@ -101,7 +107,8 @@ const CompleteInformation = () => {
                 <div className={'w-[45%]'}>
                     <p className={'text-white text-sm font-normal'} dir={'rtl'}>*نام :</p>
                     <input type="text" onChange={(e) => setFirst_name(e.target.value)} value={first_name}
-                           className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'} placeholder={'نام'}
+                           className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'}
+                           placeholder={'نام'}
                            dir={'rtl'}/>
                 </div>
             </div>
@@ -122,12 +129,14 @@ const CompleteInformation = () => {
             <div className={'flex justify-between lg:mr-[87px] lg:px-[48px] px-2 mt-[54px]'}>
                 <div className={'w-[45%]'}>
                     <p className={'text-white text-sm font-normal'} dir={'rtl'}>ساکن منطقه :</p>
-                    <input type="text" className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'}
+                    <input type="text"
+                           className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'}
                            placeholder={'ساکن منطقه'} dir={'rtl'}/>
                 </div>
                 <div className={'w-[45%]'}>
                     <p className={'text-white text-sm font-normal'} dir={'rtl'}>*جنسیت :</p>
-                    <select className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'} value={gender}
+                    <select className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'}
+                            value={gender}
                             dir={'rtl'} onChange={(e) => setGender(e.target.value)}>
                         <option value="male">مرد</option>
                         <option value="female">زن</option>
@@ -137,13 +146,15 @@ const CompleteInformation = () => {
             <div className={'flex justify-between lg:mr-[87px] lg:px-[48px] px-2 mt-[54px]'}>
                 <div className={'w-[45%]'}>
                     <p className={'text-white text-sm font-normal'} dir={'rtl'}>رشته تحصیلی :</p>
-                    <input type="text" className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'}
+                    <input type="text"
+                           className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'}
                            placeholder={'رشته تحصیلی'} dir={'rtl'}/>
                 </div>
                 <div className={'w-[45%]'}>
                     <p className={'text-white text-sm font-normal'} dir={'rtl'}>*مدرک تحصیلی :</p>
                     <select onChange={(e) => setEducation(e.target.value)} value={education}
-                            className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'} dir={'rtl'}>
+                            className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'}
+                            dir={'rtl'}>
                         <option value="دیپلم">دیپلم</option>
                         <option value="فوق دیپلم">فوق دیپلم</option>
                         <option value="کارشناسی ارشد">کارشناسی ارشد</option>
@@ -154,12 +165,14 @@ const CompleteInformation = () => {
             <div className={'flex justify-between lg:mr-[87px] lg:px-[48px] px-2 mt-[54px]'}>
                 <div className={'w-[45%]'}>
                     <p className={'text-white text-sm font-normal'} dir={'rtl'}>مهارت تحصیلی :</p>
-                    <input type="text" className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'}
+                    <input type="text"
+                           className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'}
                            placeholder={'مهارت تحصیلی'} dir={'rtl'}/>
                 </div>
                 <div className={'w-[45%]'}>
                     <p className={'text-white text-sm font-normal'} dir={'rtl'}>دانشگاه :</p>
-                    <input type="text" className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'}
+                    <input type="text"
+                           className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'}
                            placeholder={'دانشگاه'} dir={'rtl'}/>
                 </div>
             </div>
@@ -170,7 +183,8 @@ const CompleteInformation = () => {
                         className="text-orange-500 text-sm font-normal ">دانشجوی مکین </span><span
                         className="text-white text-sm font-normal ">هستین ، کد دانشجویی خود را وارد کنید :</span>
                     </div>
-                    <input type="text" className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'}/>
+                    <input type="text"
+                           className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'}/>
                 </div>
             </div>
             <div className={'flex justify-between lg:mr-[87px] lg:px-[48px] px-2 mt-[54px]'}>
@@ -178,7 +192,8 @@ const CompleteInformation = () => {
                     <div className="text-white text-sm font-normal " dir={'rtl'}>جهت اطلاع رسانی برگزاری ورکشاپ
                         های مرتبط ، علائق خود را انتخاب کنید :
                     </div>
-                    <select className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'} dir={'rtl'}>
+                    <select className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'}
+                            dir={'rtl'}>
                         <option value="null">علائق خود را انتخاب کنید</option>
                     </select>
                 </div>
@@ -226,7 +241,7 @@ const CompleteInformation = () => {
             </div>
             <div className={'flex justify-end lg:mr-[87px] lg:px-[48px] px-2 mt-[77px]'}>
                 <div
-                    className={'w-[408px] h-12 rounded-xl flex justify-center items-center text-stone-50 text-lg font-medium bg-[#026AE1]'}
+                    className={'lg:w-[408px] w-[280px] lg:mx-0 mx-auto h-12 rounded-xl flex justify-center items-center text-stone-50 text-lg font-medium bg-[#026AE1]'}
                     onClick={handleupdate}>ثبت
                 </div>
             </div>

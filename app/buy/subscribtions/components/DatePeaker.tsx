@@ -1,18 +1,31 @@
 'use client'
 import React, {useState} from 'react';
-import {Calendar} from "react-multi-date-picker"
-import persian from "react-date-object/calendars/persian"
-import persian_fa from "react-date-object/locales/persian_fa"
+import {Calendar, DateObject} from "react-multi-date-picker"
 import weekends from "react-multi-date-picker/plugins/highlight_weekends"
 import "react-multi-date-picker/styles/backgrounds/bg-dark.css"
+//gregorian calendar & locale
+import gregorian from "react-date-object/calendars/gregorian";
+import gregorian_fa from "react-date-object/locales/gregorian_fa";
+import gregorian_en from "react-date-object/locales/gregorian_en";
+
+//persian calendar & locale
+import persian from "react-date-object/calendars/persian";
+import persian_fa from "react-date-object/locales/persian_fa";
 
 const DatePeaker = () => {
     const [value, setValue] = useState<any>()
     const style:any = {color:'#EEEFEE',border:'none',boxShadow:"none"}
-    // if (document.documentElement.clientWidth<){
-    //     console.log()
-    // }
-    console.table(value)
+    const convert = (date:any,format:any="YYYY-MM-DD") => {
+        // @ts-ignore
+        let object = { date,format}
+
+        setValue({
+            gregorian: new DateObject(object).convert(gregorian, gregorian_fa).format(),
+            persian: new DateObject(object).format(),
+            ...object
+        })
+    }
+
     return (
         <div  className={'relative w-[100%] flex flex-col mt-[10px] text-white bg-[#002256] rounded-[13px] px-[4px]'}>
             <div className={'flex items-center lg:w-[70%] justify-around mx-auto mt-[16px]'} dir={'rtl'}>
@@ -49,7 +62,12 @@ const DatePeaker = () => {
                 disableYearPicker
                 value={value}
                 onChange={array => { //آرایه ای از دیت آبجکت ها
-                    // alert("تاریخ های انتخاب شده :\n" + array.join(",\n"))
+                    // console.log("array : "
+                    // @ts-ignore
+                    // let convertedDate = []
+                    // array.map(item=>{
+                    //     convertedDate.push(new DateObject(item).format())
+                    // })
                     setValue(array)
                 }}
                 multiple
@@ -79,6 +97,14 @@ const DatePeaker = () => {
             </div>
             <div className={'flex justify-start items-center mt-[30px] pl-[19px] pb-[24px]'}>
                 <div
+                    onClick={()=> {
+                        let cData:any = []
+                        // @ts-ignore
+                        value.map(item => {
+                            return cData.push(new DateObject(item).convert(gregorian, gregorian_en).format("YYYY-MM-DD"))
+                        })
+                        console.log(cData)
+                    }}
                     className={'flex justify-center items-center w-[100px] h-6 rounded-[5px] bg-[#13B86C] text-white text-sm font-bold'}>
                     ثبت
                 </div>

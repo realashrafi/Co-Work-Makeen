@@ -11,9 +11,12 @@ import {ImMenu} from "react-icons/im";
 import axios from "axios";
 import Swal from "sweetalert2";
 import {useRouter} from "next/navigation";
+import LoadingMakeenLogo from "@/app/components/LoadingMakeenLogo";
+
 const ReserveHistory = () => {
     const [visible, setVisible] = useState(false)
     const [data, setData] = useState<any>()
+    const [validate, setValidate] = useState(false)
     useEffect(() => {
         AOS.init({
             duration: 800,
@@ -32,6 +35,11 @@ const ReserveHistory = () => {
                 }
             })
             setData(response.data)
+            if (response.status == 200) {
+                setValidate(true)
+            } else {
+                setValidate(false)
+            }
             // if (response.status===200) {
             //     Swal.fire({
             //         title: 'خوش آمدید',
@@ -60,17 +68,24 @@ const ReserveHistory = () => {
         }
     }
     return (
-        <div className={'bg-[#0A2E65] h-[2040px] '}>
-            <UserNavbar data={data}/>
-            <div className={'flex pt-[160px]'}>
-                <div data-aos={'fade-right'}
-                     className={'lg:w-[79.3%] h-[1752PX] bg-[#002256] rounded-[24px] mb-[132px]'}>
-                    <Section1HistoryReserve/>
-                    <Section2HistoryReserve/>
+        <div>
+            {validate ?
+                <div className={'bg-[#0A2E65] h-[2040px] '}>
+                    <UserNavbar data={data}/>
+                    <div className={'flex pt-[160px]'}>
+                        <div data-aos={'fade-right'}
+                             className={'lg:w-[79.3%] h-[1752PX] bg-[#002256] rounded-[24px] mb-[132px]'}>
+                            <Section1HistoryReserve/>
+                            <Section2HistoryReserve/>
+                        </div>
+                        <button className={'absolute right-4'} onClick={() => setVisible(true)}><ImMenu
+                            className={'mt-4 scale-150 text-white'}/></button>
+                        <SideBarUser visible={visible} setVisible={setVisible}/>
+                    </div>
                 </div>
-                <button className={'absolute right-4'} onClick={() => setVisible(true)}><ImMenu className={'mt-4 scale-150 text-white'} /></button>
-                <SideBarUser visible={visible} setVisible={setVisible}/>
-            </div>
+                :
+                <LoadingMakeenLogo/>
+            }
         </div>
     );
 };
