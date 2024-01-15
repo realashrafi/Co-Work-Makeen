@@ -20,7 +20,7 @@ const Section2Tariffs = () => {
                     <p className={'text-[16px] text-[#FFFFFF] '}>اشتراک روزانه</p>
                     <p className={'text-[14px] text-[#FFFFFF] '}>تنها برای یک روز قابل استفاده است</p>
                 </div>
-                <div className={'lg:ml-[8%] ml-8 '}>
+                <div className={'lg:ml-6 ml-8 lg:mr-6'}>
                     <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg"
                          href="http://www.w3.org/1999/xlink">
                         <rect width="50" height="50" fill="url(#pattern0)"/>
@@ -55,7 +55,7 @@ const Section2Tariffs = () => {
                     <p className={'text-[16px] text-[#FFFFFF] '}> اشتراک بلند مدت</p>
                     <p className={'text-[14px] text-[#FFFFFF] '}> برای 30 یک روز قابل استفاده است</p>
                 </div>
-                <div className={'lg:ml-[8%] ml-8'}>
+                <div className={'lg:ml-6 ml-8 lg:mr-6'}>
                     <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg"
                          href="http://www.w3.org/1999/xlink">
                         <rect width="50" height="50" fill="url(#pattern0)"/>
@@ -84,7 +84,7 @@ const Section2Tariffs = () => {
                     <p className={'text-[16px] text-[#FFFFFF] '}>اشتراک روزانه</p>
                     <p className={'text-[14px] text-[#FFFFFF] '}>تنها برای یک روز قابل استفاده است</p>
                 </div>
-                <div className={'lg:ml-[8%] ml-8 '}>
+                <div className={'lg:ml-6 ml-8 lg:mr-6'}>
                     <Image src={blueChair} alt={''}/>
                 </div>
             </div>
@@ -97,7 +97,7 @@ const Section2Tariffs = () => {
                     <p className={'text-[16px] text-[#FFFFFF] '}> اشتراک بلند مدت</p>
                     <p className={'text-[14px] text-[#FFFFFF] '}> برای 30 یک روز قابل استفاده است</p>
                 </div>
-                <div className={'lg:ml-[8%] ml-8 '}>
+                <div className={'lg:ml-6 ml-8 lg:mr-6'}>
                     <Image src={blueChair} alt={''}/>
                 </div>
             </div>

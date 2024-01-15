@@ -1,6 +1,7 @@
 'use client'
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import ModalCancelReserve from "@/app/user/reservehistory/components/ModalCancelReserve";
+import axios from "axios";
 
 const historyData = [
     {
@@ -27,7 +28,7 @@ const historyData = [
         sum: '500',
         status: 'پرداخت شده',
         disable: true
-    },  {
+    }, {
         id: 4,
         num: '1601',
         date: '18 مهر 1402',
@@ -35,7 +36,7 @@ const historyData = [
         sum: '500',
         status: 'پرداخت شده',
         disable: true
-    },  {
+    }, {
         id: 5,
         num: '1601',
         date: '18 مهر 1402',
@@ -51,7 +52,7 @@ const historyData = [
         sum: '500',
         status: 'پرداخت شده',
         disable: true
-    },  {
+    }, {
         id: 7,
         num: '1601',
         date: '18 مهر 1402',
@@ -59,7 +60,7 @@ const historyData = [
         sum: '500',
         status: 'پرداخت شده',
         disable: true
-    },  {
+    }, {
         id: 8,
         num: '1601',
         date: '18 مهر 1402',
@@ -72,6 +73,24 @@ const historyData = [
 
 const Section1HistoryReserve = () => {
     const [length, setLength] = useState(3)
+    const [reserveData, setReserveData] = useState<any>()
+    useEffect(() => {
+        getHistory()
+    }, []);
+    const getHistory = async () => {
+        try {
+            const token = localStorage?.getItem('userToken');
+            const res = await axios.get('https://www.cowork.v1r.ir/api/v1/reservation/cowork', {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    Accept: 'application/json',
+                }
+            })
+            setReserveData(res.data)
+        } catch (e) {
+            console.log(e)
+        }
+    }
     const showButton = () => {
         if (length !== 3) {
             return (
@@ -87,6 +106,7 @@ const Section1HistoryReserve = () => {
             )
         }
     }
+    // @ts-ignore
     return (
         <div>
             <div className={'flex  justify-between '}>
@@ -102,24 +122,27 @@ const Section1HistoryReserve = () => {
                     تاریخچه رزرو ها
                 </p>
             </div>
-            <div className={'lg:w-[88.27%] w-[95%] justify-between lg:justify-start px-2 mt-[32px] h-[52px] flex mx-auto rounded-[5px] items-center bg-[#0A2E65]'}
-                 style={{direction: "rtl"}}>
+            <div
+                className={'lg:w-[88.27%] w-[95%] justify-between lg:justify-start px-2 mt-[32px] h-[52px] flex mx-auto rounded-[5px] items-center bg-[#0A2E65]'}
+                style={{direction: "rtl"}}>
                 <p className={'text-[#FF792C] text-[14px] lg:mr-[7.13%] font-[400]'}>#</p>
                 <p className={'text-[#FFFFEF] text-[14px] lg:mr-[16.25%] font-[400]'}>تاریخ</p>
                 <p className={'text-[#FFFFEF] text-[14px] lg:mr-[14.76%] font-[400]'}>نوع اشتراک</p>
                 <p className={'text-[#FFFFEF] text-[14px] lg:mr-[13.57%] font-[400]'}>مجموع</p>
                 <p className={'text-[#FFFFEF] text-[14px] lg:mr-[15.85%] font-[400]'}>وضعیت</p>
             </div>
-            <div className={'flex flex-col mt-[16px] mx-auto w-[95%] justify-between lg:justify-start lg:w-[88.27%]'} style={{direction: "rtl"}}>
-                {historyData.slice(0, length).map(item => (
+            <div className={'flex flex-col mt-[16px] mx-auto w-[95%] justify-between lg:justify-start lg:w-[88.27%]'}
+                 style={{direction: "rtl"}}>
+                {/*// @ts-ignore*/}
+                {reserveData?.slice(0, length).map(item => (
                     <div key={item.id}
                          className={'w-[100%] h-[52px] border-[#FF792C] px-2 border-r-[2px] flex items-center mb-[8px] bg-[#0A2E65] rounded-[5px]'}>
                         <div className={' justify-between w-[100%] lg:w-[89%] h-[100%] flex items-center'}>
-                            <p className={'lg:mr-[6.14%] ml-2 text-[#C9C9C9] text-[14px]'}>{item.num}</p>
+                            <p className={'lg:mr-[6.14%] ml-2 text-[#C9C9C9] text-[14px]'}>{item.user_id}</p>
                             <p className={'text-[#C9C9C9] text-[14px]'}>{item.date}</p>
-                            <p className={'text-[#C9C9C9] text-[14px]'}>{item.sub}</p>
-                            <p className={'text-[#C9C9C9] text-[14px]'}> {item.sum}تومان </p>
-                            <p className={'lg:ml-[3.5%] mr-2 text-[#C9C9C9] text-[14px]'}>{item.status}</p>
+                            <p className={'text-[#C9C9C9] text-[14px]'}>کوورک</p>
+                            <p className={'text-[#C9C9C9] text-[14px]'}> {item.price} تومان </p>
+                            <p className={'lg:ml-[3.5%] mr-2 text-[#C9C9C9] text-[14px]'}>{item.status=='reserved'?'پرداخت شده':item.status}</p>
                         </div>
                         <ModalCancelReserve item={item.disable}/>
                     </div>

@@ -2,10 +2,61 @@
 import React, {useState} from 'react';
 import ReactModal from 'react-modal'
 import Link from "next/link";
+import axios from "axios";
+import {headers} from "next/headers";
+import Swal from "sweetalert2";
 
-const AddMoney = () => {
+const AddMoney = ({data}: any) => {
     const [showModalMoney, setShowModalMoney] = useState(false)
     const [profit, setProfit] = useState<any>()
+    const addMoney = async (e: any) => {
+        e.preventDefault()
+        const axios = require('axios');
+        const token = localStorage?.getItem('userToken');
+        let config = {
+            method: 'put',
+            maxBodyLength: Infinity,
+            url: `https://www.cowork.v1r.ir/api/v1/user/${data?.id}/add-balance/${profit}`,
+            headers: {
+                'Accept': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        };
+
+        axios.request(config)
+            //@ts-ignore
+            .then((response) => {
+                console.log(JSON.stringify(response.data));
+                Swal.fire({
+                    title: "انجام شد",
+                    text: "در کیف پول شما نشست",
+                    icon: "success",
+                    background: '#002256',
+                    color: '#EEEFEE',
+                    confirmButtonColor: "#FF792C",
+                    confirmButtonText: 'باشه',
+                    backdrop: '#002256'
+                })
+                window.location.reload()
+            })
+                //@ts-ignore
+            .catch((error) => {
+                console.log(error);
+            });
+        // try {
+        //     const token = localStorage?.getItem('userToken');
+        //     const res = await axios.put(`https://www.cowork.v1r.ir/api/v1/user/${data?.id}/add-balance/${profit}`,
+        //          {
+        //             headers: {
+        //                 Authorization: `Bearer ${token}`,
+        //                 Accept: 'application/json',
+        //             }
+        //         })
+        //     console.log(res)
+        // } catch (e) {
+        //     console.log(e)
+        // }
+    }
     return (
         <div style={{zIndex: 2}}>
             <Link href={''} onClick={() => setShowModalMoney(true)}>
@@ -53,41 +104,45 @@ const AddMoney = () => {
                 }}
                 isOpen={showModalMoney}>
                 <div>
-                <div className={'lg:w-[80%] border-b-[1px] border-[#CCCCCC22] py-4 mx-auto   items-center flex'}>
-                    <div className={'flex lg:pr-[33px] pl-4  text-[#FFFEFF] text-[16px] '}
-                         style={{direction: 'rtl'}}>
-                        <Link href={''} onClick={() => setShowModalMoney(false)}>X</Link>
+                    <div className={'lg:w-[80%] border-b-[1px] border-[#CCCCCC22] py-4 mx-auto   items-center flex'}>
+                        <div className={'flex lg:pr-[33px] pl-4  text-[#FFFEFF] text-[16px] '}
+                             style={{direction: 'rtl'}}>
+                            <Link href={''} onClick={() => setShowModalMoney(false)}>X</Link>
+                        </div>
+                        <p className={'text-center text-[#FFFEFF] text-[16px] pl-[33%] '}>افزایش موجودی</p>
                     </div>
-                    <p className={'text-center text-[#FFFEFF] text-[16px] pl-[33%] '}>افزایش موجودی</p>
-                </div>
-                <div
-                    className={'lg:w-[383px] w-[90%] flex-col flex justify-center items-center h-[87px] bg-[#026AE1] mx-auto mt-[42px] border-b-[6px] border-[#44C0ED] rounded-[12px]'}>
-                    <p className={'text-[#FFFEFF] text-[12px] '}>: موجودی کیف پول </p>
-                    <p className={'text-[#FFFEFF] mt-[10px] text-[12px] '}>30 تومان</p>
-                </div>
-                <div className={'lg:w-[383px] w-[90%] mt-[49px] h-[76px] flex flex-col mx-auto justify-between'}>
-                    <p className={'text-[#FFFEFF] text-[14px] '} dir={'rtl'}>مبلغ مورد نظرت را انتخاب یا وارد کن</p>
-                    <input  value={profit} className={'h-[44px] rounded-[12px] text-[#FFFEFF] bg-[#0A2E65] text-center'}
-                           placeholder={'مبلغ ( تومان)'} onChange={(e: React.ChangeEvent<HTMLInputElement>)=>setProfit(e.target.value)}/>
-                </div>
-                <div className={'lg:w-[383px] mt-[34px] flex justify-around h-[38px] mx-auto '}>
-                    <div onClick={()=>setProfit(500)}
-                        className={'w-[94px] cursor-pointer justify-center h-[38px] bg-[#0A2E65] text-[14px] rounded-[8px] text-center flex items-center text-[#E6E6E6]'}>
-                        500 تومان
+                    <div
+                        className={'lg:w-[383px] w-[90%] flex-col flex justify-center items-center h-[87px] bg-[#026AE1] mx-auto mt-[42px] border-b-[6px] border-[#44C0ED] rounded-[12px]'}>
+                        <p className={'text-[#FFFEFF] text-[12px] '}>: موجودی کیف پول </p>
+                        <p className={'text-[#FFFEFF] mt-[10px] text-[12px] '}>{data?.balance} تومان</p>
                     </div>
-                    <div onClick={()=>setProfit(200)}
-                        className={'w-[94px] cursor-pointer justify-center h-[38px] bg-[#0A2E65] text-[14px] rounded-[8px] text-center flex items-center text-[#E6E6E6]'}>
-                        200 تومان
+                    <div className={'lg:w-[383px] w-[90%] mt-[49px] h-[76px] flex flex-col mx-auto justify-between'}>
+                        <p className={'text-[#FFFEFF] text-[14px] '} dir={'rtl'}>مبلغ مورد نظرت را انتخاب یا وارد کن</p>
+                        <input value={profit}
+                               className={'h-[44px] rounded-[12px] text-[#FFFEFF] bg-[#0A2E65] text-center'}
+                               placeholder={'مبلغ ( تومان)'}
+                               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setProfit(e.target.value)}/>
                     </div>
-                    <div onClick={()=>setProfit(100)}
-                        className={'w-[94px] cursor-pointer justify-center h-[38px] bg-[#0A2E65] text-[14px] rounded-[8px] text-center flex items-center text-[#E6E6E6]'}>
-                        100 تومان
+                    <div className={'lg:w-[383px] mt-[34px] flex justify-around h-[38px] mx-auto '}>
+                        <div onClick={() => setProfit(500000)}
+                             className={'w-[94px] cursor-pointer justify-center h-[38px] bg-[#0A2E65] text-[14px] rounded-[8px] text-center flex items-center text-[#E6E6E6]'}>
+                            500 تومان
+                        </div>
+                        <div onClick={() => setProfit(200000)}
+                             className={'w-[94px] cursor-pointer justify-center h-[38px] bg-[#0A2E65] text-[14px] rounded-[8px] text-center flex items-center text-[#E6E6E6]'}>
+                            200 تومان
+                        </div>
+                        <div onClick={() => setProfit(100000)}
+                             className={'w-[94px] cursor-pointer justify-center h-[38px] bg-[#0A2E65] text-[14px] rounded-[8px] text-center flex items-center text-[#E6E6E6]'}>
+                            100 تومان
+                        </div>
                     </div>
-                </div>
-                    <p className={'text-[#C3C3C3] text-[14px] text-center mx-auto mt-[16px]'}>حداکثر موجودی کیف پول 3 میلیون تومان می باشد</p>
-            <Link href={'/user/walletuser'} onClick={()=>setShowModalMoney(false)} className={'w-[289px] cursor-pointer h-[40px] bg-[#026AE1] mt-[50px] justify-center mx-auto text-[#FFFEFF] flex items-center text-center rounded-[12px]'}>
-                افزایش موجودی
-            </Link>
+                    <p className={'text-[#C3C3C3] text-[14px] text-center mx-auto mt-[16px]'}>حداکثر موجودی کیف پول 3
+                        میلیون تومان می باشد</p>
+                    <Link href={'/user/walletuser'} onClick={addMoney}
+                          className={'w-[289px] cursor-pointer h-[40px] bg-[#026AE1] mt-[50px] justify-center mx-auto text-[#FFFEFF] flex items-center text-center rounded-[12px]'}>
+                        افزایش موجودی
+                    </Link>
                 </div>
             </ReactModal>
         </div>

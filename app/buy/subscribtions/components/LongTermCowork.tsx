@@ -1,7 +1,41 @@
-import React from 'react';
+'use client'
+import React, {useState} from 'react';
 import DatePeaker from "@/app/buy/subscribtions/components/DatePeaker";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const LongTermCowork = () => {
+    const [dateSelected, setDateSelected] = useState<any>()
+    const reserveLongterm = async (e: any) => {
+        e.preventDefault()
+        try {
+            const token = localStorage?.getItem('userToken');
+            const res = await axios.post('https://www.cowork.v1r.ir/api/v1/reservation/cowork/reserve/long-term',
+                {
+                    dates: dateSelected
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        Accept: 'application/json',
+                    }
+                })
+            console.log(res)
+            Swal.fire({
+                title: "انجام شد",
+                text: "خرید شما موفق بود",
+                icon: "success",
+                background: '#002256',
+                color: '#EEEFEE',
+                confirmButtonColor: "#FF792C",
+                confirmButtonText: 'باشه',
+                backdrop: '#002256'
+            })
+            window.location.assign('/buy/submitedChair')
+        } catch (e) {
+            console.log(e)
+        }
+    }
     return (
         <div className={'w-[90%] flex flex-col items-center mx-auto'}>
             <div className={'text-white text-base font-bold mt-[32px]'}>خرید اشتراک بلند مدت کوورک</div>
@@ -55,7 +89,7 @@ const LongTermCowork = () => {
                        placeholder={'تعداد روز :'}/>
             </div>
             <div className={'flex justify-center lg:scale-100 scale-[85%]'}>
-            <DatePeaker/>
+            <DatePeaker dateSelected={dateSelected} setDateSelected={setDateSelected} />
             </div>
             <div className={'flex w-full justify-end mt-[56px]'}>
                 <div dir={'rtl'}><span className="text-orange-500 text-sm font-bold">توجه : </span><span
@@ -80,7 +114,7 @@ const LongTermCowork = () => {
                     className="text-white text-sm font-bold "> </span><span
                     className="text-white text-sm font-normal ">تومان</span></div>
             </div>
-            <button
+            <button onClick={reserveLongterm}
                 className={'flex justify-center items-center text-white text-lg font-medium bg-[#026AE1] w-[40%] lg:w-[408px] h-12 rounded-xl mt-[40px]'}>
                 پرداخت
             </button>

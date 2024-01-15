@@ -6,11 +6,10 @@ import Link from "next/link";
 // @ts-ignore
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import userImage from './data/userImage.png'
-import Image from "next/image";
 import {ImMenu} from "react-icons/im";
 import axios from "axios";
 import Swal from "sweetalert2";
+import UploadImage from "@/app/user/components/UploadImage";
 
 
 const dataOfFav = [
@@ -114,9 +113,9 @@ const UserInterface = ({data}: any) => {
                 gender: gender,
                 national_code: national_code,
                 education: education,
-                password: "12345678",
-                password_confirmation: "12345678",
-                current_password: "12345678"
+                // password: "12345678",
+                // password_confirmation: "12345678",
+                // current_password: "12345678"
             }, {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -139,6 +138,7 @@ const UserInterface = ({data}: any) => {
             console.log(e)
         }
     }
+    // console.log('data',data)
     return (
         <div className={'bg-[#0A2E65] w-[100%] h-[2040px]'}>
             <UserNavbar data={data}/>
@@ -146,20 +146,7 @@ const UserInterface = ({data}: any) => {
                 <div data-aos={'fade-right'}
                      className={'lg:w-[79.3%] w-[100%] h-[1752PX] bg-[#002256] rounded-[24px] mb-[132px]'}>
                     <div className={'flex mt-[28px] mr-[50px]  justify-end items-center'}>
-                        <div className={'relative cursor-pointer'}>
-                            <div className={'absolute bottom-0'}>
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <g id="Group 665">
-                                        <rect id="Rectangle 742" width="24" height="24" rx="5" fill="#F5F4F4"/>
-                                        <path id="Vector"
-                                              d="M17.1688 5C16.9668 5 16.7646 5.07695 16.6106 5.23129L15.263 6.57895L18.4209 9.73684L19.7685 8.38919C20.0772 8.0805 20.0772 7.58072 19.7685 7.27282L17.727 5.23129C17.5727 5.07695 17.3708 5 17.1688 5ZM14.0788 7.76316L5 16.8421V20H8.15785L17.2367 10.9211L14.0788 7.76316Z"
-                                              fill="#FF792C"/>
-                                    </g>
-                                </svg>
-                            </div>
-                            <Image src={userImage} alt={''}/>
-                        </div>
+                        <UploadImage data={data}/>
                     </div>
                     <div className={'h-[32px] mt-[37px] items-center mr-[27px] flex'} style={{direction: "rtl"}}>
                         <svg width="32" className={'ml-[17px]'} height="32" viewBox="0 0 32 32" fill="none"

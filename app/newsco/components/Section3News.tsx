@@ -11,17 +11,17 @@ const Section3News = () => {
                 <p className={'text-[#FFFEFF] text-[22px] border-r-[2px] pr-[13px] border-[#FF792C]'}>ورکشاپ ها</p>
             </div>
             <div className={'lg:h-[753px] lg:w-[85%] justify-center lg:flex-nowrap flex-wrap flex mx-auto '}>
-                <div className={'lg:w-[54%] w-[90%] rounded-[12px] bg-[#0A2E65] h-[753px] my-4 lg:my-0'}>
+                <div className={'lg:w-[54%] w-[90%] rounded-[12px] bg-[#0A2E65] pb-6 lg:h-[753px] my-4 lg:my-0'}>
                     <Image src={img1} alt={''}/>
-                    <p className={'text-[26px] text-[#44C0ED] pt-[34px] px-4 lg:pr-[25px]'} style={{direction: "rtl"}}>سومین
+                    <p className={'text-lg font-medium text-[#44C0ED] pt-[34px] px-4 lg:pr-[25px]'} style={{direction: "rtl"}}>سومین
                         دوره ی کارگاه سواد بصری
                     </p>
-                    <p className={'text-[22px] text-[#FFFEFF] pt-[20px] pr-[25px] pl-[54px]'}
+                    <p className={'text-base font-normal text-[#FFFEFF] pt-[20px] pr-[25px] pl-[54px]'}
                        style={{direction: "rtl"}}>اخیرا از
                         هوش مصنوعی به عنوان ابزاری که سرعت کار یک طراح را بالا میبرد رونمایی شده است. همچنین
                         جدیدترین نسخه ی آن برای ارتقای برنامه نویسی وارد بازار شد.
                     </p>
-                    <div className={'flex justify-between pr-[25px] pl-[50px] pt-[70px]'}>
+                    <div className={'flex justify-between pr-[25px] pl-[50px] pt-6 lg:pt-[175px]'}>
                         <p className={'text-[#FFFEFF]'}>متین ستوده . آبان 1402</p>
                         <svg width="104" height="24" viewBox="0 0 104 24" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
@@ -34,8 +34,8 @@ const Section3News = () => {
                         </svg>
                     </div>
                 </div>
-                <div className={'w-[90%] lg:w-[49%] flex-col  lg:ml-[5.3%]'}>
-                    <div className={'w-[100%] h-[368px]  rounded-[7px] bg-[#0A2E65]'}>
+                <div className={'w-[90%] lg:w-[49%] flex-col lg:-mr-[2.3%] lg:ml-[5.3%]'}>
+                    <div className={'lg:w-[95%] h-[368px]  rounded-[7px] bg-[#0A2E65]'}>
                         <Image src={img2}  alt={''}/>
                         <p className={'text-[20px] text-[#44C0ED] pt-[15px] pr-[25px]'}
                            style={{direction: "rtl"}}>برگزاری جلسه اول سواد بصری
@@ -57,7 +57,7 @@ const Section3News = () => {
                             </svg>
                         </div>
                     </div>
-                    <div className={'w-[100%] h-[368px] rounded-[7px] bg-[#0A2E65] mt-[16px] '}>
+                    <div className={'lg:w-[95%] h-[368px] rounded-[7px] bg-[#0A2E65] mt-[16px] '}>
                         <Image src={img3} alt={''}/>
                         <p className={'text-[20px] text-[#44C0ED] pt-[15px] pr-[25px]'} style={{direction: "rtl"}}>سومین
                             دوره ی کارگاه سواد بصری

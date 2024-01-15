@@ -60,7 +60,6 @@ const DropDownNavbar = () => {
                         :
                         <LoadingMinimal/>
                 }
-                {}
             </div>
         </div>
     );

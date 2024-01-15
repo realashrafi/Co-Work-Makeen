@@ -10,6 +10,7 @@ import SectionNine from "@/app/components/sections/SectionNine";
 
 
 export default function Home() {
+
     return (
         <div>
             <SectionOne />
