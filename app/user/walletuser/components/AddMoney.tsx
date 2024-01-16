@@ -5,6 +5,8 @@ import Link from "next/link";
 import axios from "axios";
 import {headers} from "next/headers";
 import Swal from "sweetalert2";
+import Image from "next/image";
+import gifIcon from "@/app/components/data/movedIcon.gif";
 
 const AddMoney = ({data}: any) => {
     const [showModalMoney, setShowModalMoney] = useState(false)
@@ -85,14 +87,10 @@ const AddMoney = ({data}: any) => {
                         left: 0,
                         right: 0,
                         bottom: 0,
-                        backgroundColor: 'rgba(255, 255, 255, 0.2)'
+                        backgroundColor: '#00000020',
+                        backdropFilter:'blur(5px)'
                     },
                     content: {
-                        width: '90%',
-                        height: 609,
-                        position: 'absolute',
-                        left: '5%',
-                        top: '15%',
                         background: '#002256',
                         overflow: 'auto',
                         WebkitOverflowScrolling: 'touch',
@@ -102,14 +100,15 @@ const AddMoney = ({data}: any) => {
                         border: 'none'
                     }
                 }}
-                isOpen={showModalMoney}>
+                isOpen={showModalMoney} className={'transition-transform w-[90%] mt-5 mx-auto lg:w-[38%] h-[609px]'}>
                 <div>
-                    <div className={'lg:w-[80%] border-b-[1px] border-[#CCCCCC22] py-4 mx-auto   items-center flex'}>
+                    <Image src={gifIcon} alt={''} className={'absolute lg:opacity-60 opacity-25 lg:top-20 top-[16%] scale-[90%] lg:-left-12'}/>
+                    <div className={'lg:w-[80%] border-b-[1px] border-[#CCCCCC22] py-8 mx-auto   items-center flex'}>
                         <div className={'flex lg:pr-[33px] pl-4  text-[#FFFEFF] text-[16px] '}
                              style={{direction: 'rtl'}}>
                             <Link href={''} onClick={() => setShowModalMoney(false)}>X</Link>
                         </div>
-                        <p className={'text-center text-[#FFFEFF] text-[16px] pl-[33%] '}>افزایش موجودی</p>
+                        <p className={'text-center text-[#FFFEFF] text-[16px] pl-[30%] lg:pl-[25%] '}>افزایش موجودی</p>
                     </div>
                     <div
                         className={'lg:w-[383px] w-[90%] flex-col flex justify-center items-center h-[87px] bg-[#026AE1] mx-auto mt-[42px] border-b-[6px] border-[#44C0ED] rounded-[12px]'}>

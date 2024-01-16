@@ -190,14 +190,10 @@ const UploadImage = ({data}: any) => {
                         left: 0,
                         right: 0,
                         bottom: 0,
-                        backgroundColor: 'rgba(255, 255, 255, 0.2)'
+                        backgroundColor: '#00000020',
+                        backdropFilter:'blur(5px)'
                     },
                     content: {
-                        width: '90%',
-                        height: 235,
-                        position: 'absolute',
-                        left: '5%',
-                        top: '30%',
                         background: '#002256',
                         overflow: 'auto',
                         WebkitOverflowScrolling: 'touch',
@@ -207,7 +203,7 @@ const UploadImage = ({data}: any) => {
                         border: 'none'
                     }
                 }}
-                isOpen={showModal}>
+                isOpen={showModal} className={'w-[90%] mt-[34%] lg:mt-5 mx-auto lg:w-[38%] h-[235px]'}>
                 <div className={'flex flex-col items-center'}>
                     <div className={'text-white self-end mr-4 mt-3'} onClick={() => setShowModal(false)}>X</div>
                     <div className="grid w-full max-w-xs items-center gap-1.5 mt-4" dir={'rtl'}>

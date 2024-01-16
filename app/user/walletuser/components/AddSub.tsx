@@ -4,6 +4,8 @@ import React, {useState} from 'react';
 import ReactModal from 'react-modal'
 import Link from "next/link";
 import LoginForBuy from "@/app/buy/components/LoginForBuy";
+import Image from "next/image";
+import gifIcon from "@/app/components/data/movedIcon.gif";
 
 const AddSub = () => {
     const [showModalSub, setShowModalSub] = useState(false)
@@ -30,19 +32,15 @@ const AddSub = () => {
                 style={{
                     overlay: {
                         zIndex: 10,
-                        position: 'fixed',
+                        position: 'absolute',
                         top: 0,
                         left: 0,
                         right: 0,
                         bottom: 0,
-                        backgroundColor: 'rgba(255, 255, 255, 0.2)'
+                        backgroundColor: '#00000020',
+                        backdropFilter:'blur(5px)'
                     },
                     content: {
-                        width: '90%',
-                        height: 667,
-                        position: 'absolute',
-                        left: '5%',
-                        top: '11%',
                         background: '#002256',
                         overflow: 'auto',
                         WebkitOverflowScrolling: 'touch',
@@ -52,7 +50,8 @@ const AddSub = () => {
                         border: 'none'
                     }
                 }}
-                isOpen={showModalSub}>
+                isOpen={showModalSub} className={'w-[90%] mt-5 mx-auto lg:w-[80%] h-[667px]'}>
+                <Image src={gifIcon} alt={''} className={'absolute opacity-25 lg:opacity-60 lg:top-20 top-[16%] scale-[90%] lg:-left-20'}/>
                 <div className={'lg:w-[85%] border-b-[1px] border-[#CCCCCC22] pb-[5%] mx-auto mt-[5%] justify-between  items-center flex'}>
                     <div className={'flex lg:pr-[33px] ml-3  text-[#FFFEFF] text-[16px] '}
                          style={{direction: 'rtl'}}>
@@ -60,7 +59,7 @@ const AddSub = () => {
                     </div>
                     <p className={'text-center text-[#FFFEFF] text-[16px] lg:pl-[37%] pr-3 '}>خرید اشتراک</p>
                 </div>
-                <div className={'flex items-center mt-[56px] justify-center'}>
+                <div className={'flex items-center mt-14 lg:mt-[16px] justify-center'}>
                     <svg className={'mr-[11px]'} width="43" height="17" viewBox="0 0 43 17" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path

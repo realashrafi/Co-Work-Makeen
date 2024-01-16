@@ -22,8 +22,8 @@ const Section1Tariffs = () => {
             </div>
             <div className={'flex  lg:flex-nowrap flex-wrap w-full'}>
                 <div  className={'lg:w-1/2  pt-[65px]  w-[88%] mx-auto lg:pl-[110px] flex relative'}>
-                    <Image width={377} height={503} className={'rounded-[18px]'} src={imgLeft} alt={''}/>
-                    <div className={' relative lg:left-[-20px] lg:pt-[407px]'}>
+                    <Image width={377} height={503} className={'rounded-[18px] z-[2] '} src={imgLeft} alt={''}/>
+                    <div className={' z-[1] relative lg:left-[-20px] lg:pt-[407px]'}>
                         <Image src={DesignCircle} className={'  '} width={212} height={96} alt={''}/>
                     </div>
                 </div>

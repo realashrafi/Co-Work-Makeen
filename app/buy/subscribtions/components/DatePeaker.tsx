@@ -122,7 +122,7 @@ const DatePeaker = ({dateSelected,setDateSelected}:any) => {
                                   color: '#EEEFEE',
                                   confirmButtonColor: "#FF792C",
                                   confirmButtonText: 'باشه',
-                                  backdrop: '#002256'
+                                  backdrop: ''
                               })
                           }
                       }}
@@ -178,7 +178,7 @@ const DatePeaker = ({dateSelected,setDateSelected}:any) => {
                             color: '#EEEFEE',
                             confirmButtonColor: "#FF792C",
                             confirmButtonText: 'باشه',
-                            backdrop: '#002256'
+                            backdrop: ''
                         })
                     }}
                     className={'flex cursor-pointer justify-center items-center w-[100px] h-6 rounded-[5px] bg-[#13B86C] text-white text-sm font-bold'}>

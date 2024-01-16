@@ -131,11 +131,6 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                             backgroundColor: ''
                         },
                         content: {
-                            width: '90%',
-                            height: 516,
-                            position: 'absolute',
-                            left: '5%',
-                            top: '20%',
                             background: '#002256',
                             overflow: 'auto',
                             WebkitOverflowScrolling: 'touch',
@@ -145,8 +140,8 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                             border: 'none'
                         }
                     }}
-                    isOpen={showModal}>
-                    <div className={'lg:mx-[400px]'}>
+                    isOpen={showModal} className={'w-[90%] mt-5 mx-auto lg:w-[38%] h-[516px]'}>
+                    <div className={''}>
                         <div className={'flex justify-end pr-[24px] mt-[24px]'}>
                             <div className={'cursor-pointer text-white'} onClick={() => setShowModal(false)}>X</div>
                         </div>
@@ -195,11 +190,6 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                             backgroundColor: ''
                         },
                         content: {
-                            width: '90%',
-                            height: 766,
-                            position: 'absolute',
-                            left: '5%',
-                            top: '2%',
                             background: '#002256',
                             overflow: 'auto',
                             WebkitOverflowScrolling: 'touch',
@@ -209,8 +199,8 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                             border: 'none'
                         }
                     }}
-                    isOpen={showModal}>
-                    <div className={'lg:mx-[400px] '}>
+                    isOpen={showModal}  className={'w-[90%] mt-5 mx-auto lg:w-[38%] h-[766px]'}>
+                    <div>
                         <div className={'flex justify-end pr-[24px] mt-[24px]'}>
                             <div className={'cursor-pointer text-white'} onClick={() => setShowModal(false)}>X</div>
                         </div>
@@ -251,7 +241,7 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                         <div className={'flex justify-center'}>
                             <div className={'text-orange-500 text-xs font-normal mt-[8px]'}>ارسال مجدد کد تایید</div>
                         </div>
-                        <div className={'flex flex-col items-center mt-[45px] mr-8 lg:mr-[52px]'}>
+                        <div className={'flex flex-col items-center mt-[30px] mr-8 lg:mr-[52px]'}>
                             <div className={'self-end items-center text-white text-[15px] flex font-bold'}>
                                 فرم ثبت نام
                                 <svg className={'ml-[8px]'} width="3" height="20" viewBox="0 0 3 20" fill="none"
@@ -286,7 +276,7 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                                        onClick={() => setRolls(!rolls)}/>
                             </div>
                             <button onClick={handleRegisterNewMember} disabled={!rolls}
-                                    className={'self-end cursor-pointer w-[89%] disabled:opacity-50 h-10 bg-sky-400 rounded-xl mt-[8px] flex justify-center items-center text-white text-base font-bold'}
+                                    className={'self-end cursor-pointer w-[89%] disabled:opacity-50 h-10 bg-sky-400 rounded-xl mt-[15px] flex justify-center items-center text-white text-base font-bold'}
                             >ثبت
                             </button>
                         </div>

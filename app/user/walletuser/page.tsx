@@ -15,67 +15,11 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import {useRouter} from "next/navigation";
 import LoadingMakeenLogo from "@/app/components/LoadingMakeenLogo";
+import {DateObject} from "react-multi-date-picker";
+import persian from "react-date-object/calendars/persian";
 
 
-const dataOfWallet = [
-    {
-        id: 1,
-        num: '1603',
-        date: '19 آبان 1402',
-        sub: 'روزانه کوورک',
-        sum: '30',
-        status: 'عودت داده شده',
-    }, {
-        id: 2,
-        num: '1602',
-        date: '16 آبان 1402',
-        sub: 'روزانه اتاق جلسات',
-        sum: '30',
-        status: 'عودت داده شده',
-    }, {
-        id: 3,
-        num: '1602',
-        date: '16 آبان 1402',
-        sub: 'روزانه اتاق جلسات',
-        sum: '30',
-        status: 'عودت داده شده',
-    }, {
-        id: 4,
-        num: '1602',
-        date: '16 آبان 1402',
-        sub: 'روزانه اتاق جلسات',
-        sum: '30',
-        status: 'عودت داده شده',
-    }, {
-        id: 5,
-        num: '1602',
-        date: '16 آبان 1402',
-        sub: 'روزانه اتاق جلسات',
-        sum: '30',
-        status: 'عودت داده شده',
-    }, {
-        id: 6,
-        num: '1606',
-        date: '16 آبان 1402',
-        sub: 'روزانه اتاق جلسات',
-        sum: '30',
-        status: 'عودت داده شده',
-    }, {
-        id: 7,
-        num: '1602',
-        date: '16 آبان 1402',
-        sub: 'روزانه اتاق جلسات',
-        sum: '30',
-        status: 'عودت داده شده',
-    }, {
-        id: 8,
-        num: '1602',
-        date: '16 آبان 1402',
-        sub: 'روزانه اتاق جلسات',
-        sum: '30',
-        status: 'عودت داده شده',
-    },
-]
+
 const WalletUser = () => {
     const [visible, setVisible] = useState(false)
     const [length, setLength] = useState(3)
@@ -91,6 +35,7 @@ const WalletUser = () => {
         getTransactions()
     }, []);
     const router = useRouter()
+    const date = new DateObject({calendar:persian})
 
     const handleFetch = async () => {
         try {
@@ -163,13 +108,13 @@ const WalletUser = () => {
         if (length !== 3) {
             return (
                 <p onClick={() => setLength(3)}
-                   className={'text-[#FF792C] cursor-pointer ml-[15px] text-[14px] font-[400] mt-[27px] '}
+                   className={'text-[#FF792C] cursor-pointer ml-3 lg:ml-20 text-[14px] font-[400] mt-2 '}
                    style={{direction: "ltr"}}>نمایش کمتر</p>
             )
         } else {
             return (
-                <p onClick={() => setLength(dataOfWallet.length)}
-                   className={'text-[#FF792C] cursor-pointer ml-[15px] text-[14px] font-[400] mt-[27px] '}
+                <p onClick={() => setLength(transactions.length)}
+                   className={'text-[#FF792C] cursor-pointer ml-3 lg:ml-20 text-[14px] font-[400] mt-2 '}
                    style={{direction: "ltr"}}>نمایش همه</p>
             )
         }
@@ -208,7 +153,7 @@ const WalletUser = () => {
                         <p className={'text-[#FFFFEF] text-[14px] lg:mr-[13.57%] font-[400]'}>مجموع</p>
                         <p className={'text-[#FFFFEF] text-[14px] lg:mr-[15.85%] font-[400]'}>وضعیت</p>
                     </div>
-                    <div className={'flex flex-col mt-[16px] w-[95%] mx-auto lg:w-[88.27%]'} style={{direction: "rtl"}}>
+                    <div className={'flex flex-col mt-[16px] h-[190px] overflow-auto w-[95%] mx-auto lg:w-[88.27%]'} style={{direction: "rtl"}}>
                         {/*// @ts-ignore*/}
                         {transactions?.slice(0, length).map(item => (
                             <div key={item.id}
@@ -221,13 +166,13 @@ const WalletUser = () => {
                                     <p className={'lg:ml-[3.5%] mr-2 text-[#C9C9C9] text-[14px]'}>{item.status=='successful'?'موفق':item.status}</p>
                                 </div>
                                 <button
-                                    className={'bg-[#002256] w-[] text-[#FF792C] rounded-[12px] ml-[16px] h-[30px] px-[10px] text-[11px] '}>
+                                    className={'bg-[#002256] w-[]  text-[#FF792C] rounded-[12px] ml-[10px] h-[30px] px-[10px] text-[11px] '}>
                                     خرید اشتراک
                                 </button>
                             </div>
                         ))}
-                        {showButton()}
                     </div>
+                    {showButton()}
                 </div>
             )
         }
@@ -241,7 +186,7 @@ const WalletUser = () => {
                     <div className={'flex pt-[160px]'}>
                         <div data-aos={'fade-right'}
                              className={'lg:w-[79.3%]  flex-col items-center justify-center h-[1752PX] bg-[#002256] rounded-[24px] mb-[132px]'}>
-                            {helpEmpty()}
+
                             <div className={'mt-[69px] flex flex-col items-center lg:items-end lg:mr-[5.6%]'}>
                                 <p className={'text-[#FFFEFF] text-[18px] font-[400]'}>
                                     کیف پول من
@@ -260,8 +205,8 @@ const WalletUser = () => {
                                     <ButtonsOfWallet data={data}/>
                                     <div className={'flex flex-col mr-[10%] mt-[38px]'}>
                                         <div
-                                            className={'border-r-[2px] text-[#FFFEFF] text-[14px] pl-[18px] flex items-center border-[#44C0ED]'}>
-                                            20 آبان 1402
+                                            className={'border-r-[2px] text-[#FFFEFF] text-[14px] pr-4 pl-[18px] flex items-center border-[#44C0ED]'} dir={'rtl'}>
+                                            {date.format()}
                                         </div>
                                         <div className={'w-[108px] h-[108px] mt-[28px] '}>
                                             <Image className={''} src={iconWallet} alt={''}/>
@@ -273,6 +218,7 @@ const WalletUser = () => {
                                     </div>
                                 </div>
                             </div>
+                            {helpEmpty()}
                         </div>
                         <button className={'absolute right-4'} onClick={() => setVisible(true)}><ImMenu
                             className={'mt-4 scale-150 text-white'}/></button>

@@ -4,6 +4,7 @@ import ReactModal from "react-modal";
 import logoMakeen from "@/app/user/components/data/logo-makeen.png";
 import Image from "next/image";
 import RegisterModalStep2 from "@/app/components/RegisterModalStep2";
+import gifIcon from "@/app/components/data/movedIcon.gif";
 
 const RegisterModalStep1 = ({statusLogin, statusRegister}: any) => {
     const [showModal, setShowModal] = useState(false)
@@ -52,14 +53,10 @@ const RegisterModalStep1 = ({statusLogin, statusRegister}: any) => {
                         left: 0,
                         right: 0,
                         bottom: 0,
-                        backgroundColor: 'rgba(255, 255, 255, 0.2)'
+                        backgroundColor: '#00000020',
+                        backdropFilter:'blur(5px)'
                     },
                     content: {
-                        width: '90%',
-                        height: 465,
-                        position: 'absolute',
-                        left: '5%',
-                        top: '20%',
                         background: '#002256',
                         overflow: 'auto',
                         WebkitOverflowScrolling: 'touch',
@@ -69,8 +66,10 @@ const RegisterModalStep1 = ({statusLogin, statusRegister}: any) => {
                         border: 'none',
                     }
                 }}
-                isOpen={showModal}>
-                <div className={'lg:mx-[400px] '}>
+                isOpen={showModal} className={'w-[90%] mt-5 mx-auto lg:w-[38%] h-[465px]'}>
+                    <Image src={gifIcon} alt={''} className={'absolute opacity-50 lg:top-20 top-[16%] scale-[90%] lg:-left-12'}/>
+                <div className={' z-[2]'}>
+
                     <div className={'flex justify-end pr-[24px] mt-[24px]'}>
                         <div className={'cursor-pointer text-white'} onClick={() => setShowModal(false)}>X</div>
                     </div>

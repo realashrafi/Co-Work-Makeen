@@ -21,7 +21,7 @@ const data = [
 ]
 const SectionEight = () => {
     return (
-        <section className={'bg-[#002256] bg-fixed bg-cover  bg-no-repeat bg-[url("/SectionLanding.png")] '}>
+        <section className={'bg-[#002256] bg-fixed bg-cover bg-center bg-no-repeat bg-[url("/SectionLanding.png")] '}>
             <div
                 className={'lg:h-[820px] h-fit lg:pb-0 pb-12 bg-gradient-to-t from-[#000A19] via-[#000A1950] to-[#000A19] backdrop-brightness-[30%] '}>
                 <h2 className={'text-[22px] text-center pt-[108px] text-[#FF792C] pb-[52px]'}>سوالات متداول</h2>
@@ -31,7 +31,7 @@ const SectionEight = () => {
                          key={item.id}>
                         <input type="checkbox" className="peer"/>
                         <div
-                            className="collapse-title  bg-[#002256] text-white-content peer-checked:bg-white peer-checked:text-black"
+                            className="collapse-title  text-white text-[15px] font-medium bg-[#002256] text-white-content peer-checked:bg-white peer-checked:text-black"
                             style={{direction: "rtl"}}>
                             {item.title}
                         </div>

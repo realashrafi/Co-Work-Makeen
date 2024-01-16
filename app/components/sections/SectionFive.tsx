@@ -5,9 +5,9 @@ import Image from "next/image";
 import komod from '../data/komod.png'
 const SectionFive = () => {
     return (
-        <section className={'bg-[#002256] lg:flex flex-wrap relative text-white lg:pt-[200px]'}>
+        <section className={'bg-[#002256] lg:flex flex-wrap relative text-white lg:pt-[147px]'}>
             <div className={'flex justify-center lg:pl-24 lg:w-1/2 w-[95%] mx-auto flex-col'}>
-                <h2 className={'text-orange-500 lg:pt-0 pt-[50px] text-[22px] font-bold text-center'}>مزیت های فضای کار اشتراکی مکین</h2>
+                <h2 className={'text-orange-500 lg:pt-0 pt-[50px] text-[22px] font-bold text-center'}>مزیت فضای کار اشتراکی مکین</h2>
                 <p className={'pt-[25px] lg:w-[557px] w-[95%] mx-auto text-justify text-zinc-100 text-base font-normal'} style={{direction: "rtl"}}>آکادمی مکین
                     همواره در تلاش بوده تا شرایط رفاهی را برای عزیزان فراهم کرده تا بتونن در آسایش و امنیت
                     کامل به کار خود ادامه دهند
