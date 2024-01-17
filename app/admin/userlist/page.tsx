@@ -8,7 +8,7 @@ const userList = [
         id: 1,
         fullName: 'محسن عزیزی',
         callNumber: '0936875492',
-        status:true,
+        status: true,
         age: '26',
         ability: 'طراح',
         lovers: 'هنر',
@@ -17,7 +17,7 @@ const userList = [
         id: 2,
         fullName: 'علی احمدی',
         callNumber: '0936875492',
-        status:true,
+        status: true,
         age: '18',
         ability: 'برنامه نویس',
         lovers: 'کامپیوتر',
@@ -35,7 +35,7 @@ const userList = [
         id: 4,
         fullName: 'شهاب رمضانی',
         callNumber: '0936875492',
-        status:true,
+        status: true,
         age: '26',
         ability: 'برنامه نویس',
         lovers: 'هنر',
@@ -44,7 +44,7 @@ const userList = [
         id: 5,
         fullName: 'فاطمه حسینی',
         callNumber: '0936875492',
-        status:true,
+        status: true,
         age: '22',
         ability: 'برنامه نویس',
         lovers: 'کامپیوتر',
@@ -156,11 +156,11 @@ const UserList = () => {
                             <div
                                 className={'w-[97.16%] h-[37px] flex items-center  mb-[10px] mt-[18px] mx-auto '}
                                 dir={'rtl'}>
-                                <p className={'text-[#222222] text-base font-normal mr-[1%]'}>نام و نام خانوادگی</p>
-                                <p className={'text-[#222222] text-base font-normal mr-[5%]'}>شماره تماس</p>
+                                <p className={'text-[#222222] text-base font-normal '}>نام و نام خانوادگی</p>
+                                <p className={'text-[#222222] text-base font-normal mr-[3%]'}>شماره تماس</p>
                                 <p className={'text-[#222222] text-base font-normal mr-[8%]'}>وضعیت</p>
-                                <p className={'text-[#222222] text-base font-normal mr-[7%]'}>سن</p>
-                                <p className={'text-[#222222] text-base font-normal mr-[9%]'}>مهارت</p>
+                                <p className={'text-[#222222] text-base font-normal mr-[6%]'}>سن</p>
+                                <p className={'text-[#222222] text-base font-normal mr-[7%]'}>مهارت</p>
                                 <p className={'text-[#222222] flex text-base font-normal mr-[9%]'}>علائق <span>
                                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                        xmlns="http://www.w3.org/2000/svg">
@@ -176,7 +176,7 @@ const UserList = () => {
 </svg>
 
                                 </span></p>
-                                <p className={'text-[#222222] text-base font-normal mr-[12%]'}>ایمیل</p>
+                                <p className={'text-[#222222] text-base font-normal mr-[12%]'}>مالی</p>
                             </div>
                             <div className={'w-[97.16%] flex  flex-col  mx-auto  '} dir={'rtl'}>
                                 {userList.map(item => (
@@ -185,7 +185,8 @@ const UserList = () => {
                                         key={item.id}>
                                         <p className={'text-[#222222] text-sm font-normal w-[120px] mr-[1%]'}>{item.fullName}</p>
                                         <p className={'text-[#222222] text-sm font-normal w-[83px] mr-[5.3%]'}>{item.callNumber}</p>
-                                        <button className={'text-[#222222] text-sm font-normal text-center  w-[76px] h-[24px] mr-[7%]'} >{item.status ?
+                                        <button
+                                            className={'text-[#222222] text-sm font-normal text-center  w-[76px] h-[24px] mr-[7%]'}>{item.status ?
                                             <div
                                                 className={'w-[67px] h-[24px] bg-[#01B574] rounded-[12px] flex items-center justify-center text-white'}>فعال</div> :
                                             <div
@@ -194,7 +195,12 @@ const UserList = () => {
                                         <p className={'text-[#222222] text-sm font-normal w-[26px] mr-[6%]'}>{item.age}</p>
                                         <p className={'text-[#222222] text-sm font-normal text-center w-[75px] mr-[6%]'}>{item.ability}</p>
                                         <p className={'text-[#222222] text-sm font-normal text-center w-[60px] mr-[7%]'}>{item.lovers}</p>
-                                        <p className={'text-[#222222] text-sm font-normal w-[120px] mr-[3.5%]'}>{item.mail}</p>
+                                        <div className={'w-fit mr-[3.5%] ml-3 flex justify-between items-center'}>
+                                            <p className={'w-[120px] text-neutral-500 relative right-5 text-[11px] font-bold'}>موجودی : 500 تومان</p>
+                                            <div className={'w-[2px] mx-2 h-[30px] bg-[#BFBFBF] rounded'}></div>
+                                            <div
+                                                className={'w-[67px] h-[24px] cursor-pointer bg-[#01B574] flex justify-center items-center rounded-3xl text-white text-xs font-bold'}>شارژ</div>
+                                        </div>
                                     </div>
                                 ))}
                             </div>

@@ -1,7 +1,49 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {CChart} from "@coreui/react-chartjs";
+import axios from "axios";
 
 const Section1HomeAdmin = () => {
+    const [transactios, setTransactios] = useState<any>()
+    const [reserves, setReserves] = useState<any>()
+    const [today, setToday] = useState<any>()
+    useEffect(() => {
+        getReserve()
+        getTransactions()
+    }, []);
+    const getTransactions = async () => {
+        const token = localStorage?.getItem('adminToken')
+        try {
+            const res = await axios.get('https://www.cowork.v1r.ir/api/v1/reports/transactions/amount/12-month',
+                {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+            console.log('trans', res)
+            setTransactios(res.data)
+        } catch (e) {
+            console.log(e)
+        }
+    }
+    const getReserve = async () => {
+        const token = localStorage?.getItem('adminToken')
+        try {
+            const res = await axios.get('https://www.cowork.v1r.ir/api/v1/reports/reservations/student-usage/12-month',
+                {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+            console.log('reserve', res)
+            setReserves(res.data)
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+
     return (
         <div className={' w-[96%] flex justify-between mt-[40px] mx-auto'}>
             <div
@@ -17,7 +59,7 @@ const Section1HomeAdmin = () => {
                     <CChart
                         type="line"
                         data={{
-                            labels: ["فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", 'آذر', 'دی', 'بهمن', 'اسفند'],
+                            labels: transactios?.key,
                             datasets: [
                                 {
                                     label: '',
@@ -26,7 +68,7 @@ const Section1HomeAdmin = () => {
                                     borderColor: "#165BAA",
                                     pointBackgroundColor: "#165BAA",
                                     pointBorderColor: "#165BAA",
-                                    data: [10, 160, 190, 129, 180, 380, 410, 320, 340, 370, 240, 100]
+                                    data: transactios?.values
                                 },
                             ],
 
@@ -58,21 +100,21 @@ const Section1HomeAdmin = () => {
                     <CChart
                         type="bar"
                         data={{
-                            labels: ['1', '2', '3', '4', '5', '6'],
+                            labels: reserves?.key,
                             datasets: [
                                 {
                                     label: 'مکینی',
                                     backgroundColor: '#FF792C',
                                     borderRadius: 10,
                                     barPercentage: 0.5,
-                                    data: [50, 70, 80, 60, 40, 90],
+                                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 67, null, null],
                                 },
                                 {
                                     label: 'غیر مکینی',
                                     borderRadius: 10,
                                     barPercentage: 0.5,
                                     backgroundColor: '#026AE1',
-                                    data: [70, 50, 40, 34, 67, 76],
+                                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 78, null, null],
                                 },
                             ],
                         }}

@@ -51,7 +51,7 @@ const AddSub = () => {
                     }
                 }}
                 isOpen={showModalSub} className={'w-[90%] mt-5 mx-auto lg:w-[80%] h-[667px]'}>
-                <Image src={gifIcon} alt={''} className={'absolute opacity-25 lg:opacity-60 lg:top-20 top-[16%] scale-[90%] lg:-left-20'}/>
+                <Image src={gifIcon} alt={''} className={'absolute opacity-25 lg:opacity-60 lg:top-20 -top-[17%] scale-[90%] lg:-left-20'}/>
                 <div className={'lg:w-[85%] border-b-[1px] border-[#CCCCCC22] pb-[5%] mx-auto mt-[5%] justify-between  items-center flex'}>
                     <div className={'flex lg:pr-[33px] ml-3  text-[#FFFEFF] text-[16px] '}
                          style={{direction: 'rtl'}}>

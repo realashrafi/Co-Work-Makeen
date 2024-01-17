@@ -2,6 +2,8 @@
 import React, {useState} from 'react';
 import Link from "next/link";
 import ReactModal from "react-modal"
+import Image from "next/image";
+import gifIcon from "@/app/components/data/movedIcon.gif";
 
 const ModalConnectAdmin = () => {
     const [showModal, setShowModal] = useState(false)
@@ -20,19 +22,15 @@ const ModalConnectAdmin = () => {
                 style={{
                     overlay: {
                         zIndex: 10,
-                        position: 'fixed',
+                        position: 'absolute',
                         top: 0,
                         left: 0,
                         right: 0,
                         bottom: 0,
-                        backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                        backgroundColor: '#00000020',
+                        backdropFilter:'blur(5px)'
                     },
                     content: {
-                        width: '90%',
-                        height: 609,
-                        position: 'absolute',
-                        left: '5%',
-                        top: '15%',
                         background: '#002256',
                         overflow: 'auto',
                         WebkitOverflowScrolling: 'touch',
@@ -42,8 +40,9 @@ const ModalConnectAdmin = () => {
                         border:'none'
                     }
                 }}
-                isOpen={showModal}>
-                <div className={'w-[100%]  flex-col'}>
+                isOpen={showModal} className={'w-[90%] mt-5 mx-auto lg:w-[40%] h-[609px]'}>
+                <Image src={gifIcon} alt={''} className={'absolute opacity-25 lg:opacity-60 lg:top-20 -top-[17%] scale-[90%] lg:-left-20 '}/>
+                <div className={'w-[100%]  flex-col '}>
                   <div className={'flex justify-between  border-[#0A2E65] mx-[24px] pb-[24px] border-b-[1px] '}>
                       <Link className={'ml-[21px] mt-[45px]'} onClick={()=>setShowModal(false)} href={''}>
                           x
@@ -51,11 +50,11 @@ const ModalConnectAdmin = () => {
                       <p className={'text-[#FFFEFF] ml-[165px] mt-[45px] text-[16px] text-center'}>ارتباط با پشتیبانی</p>
                   </div>
                    <div className={'w-[100%] flex pt-[56px]'}>
-                        <textarea className={'w-[70.67%] h-[213px]  mx-auto bg-[#0A2E65] text-[#FFFEFF] text-[16px] rounded-[24px] p-[20px]'} dir='rtl' placeholder={'پیام خود را بنویسید...'}>
+                        <textarea className={'lg:w-[70.67%] w-[90%] lg:h-[227px] h-[370px]  mx-auto bg-[#0A2E65] text-[#FFFEFF] text-[16px] rounded-[24px] p-[20px]'} dir='rtl' placeholder={'پیام خود را بنویسید...'}>
 
                     </textarea>
                    </div>
-                    <div className={'w-[100%] flex pt-[76px]'}>
+                    <div className={'w-[100%] flex lg:-mt-0 -mt-8 lg:pt-[76px]'}>
                         <Link
                             className={'w-[38%] mx-auto  h-[48px] text-[#FFFEFF] flex justify-center items-center bg-[#44C0ED] rounded-[24px]'}
                             href={''}>

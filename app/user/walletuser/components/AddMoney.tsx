@@ -100,9 +100,9 @@ const AddMoney = ({data}: any) => {
                         border: 'none'
                     }
                 }}
-                isOpen={showModalMoney} className={'transition-transform w-[90%] mt-5 mx-auto lg:w-[38%] h-[609px]'}>
+                isOpen={showModalMoney} className={'transition-transform w-[90%] mt-5 mx-auto lg:w-[38%] h-[609px] '}>
                 <div>
-                    <Image src={gifIcon} alt={''} className={'absolute lg:opacity-60 opacity-25 lg:top-20 top-[16%] scale-[90%] lg:-left-12'}/>
+                    <Image src={gifIcon} alt={''} className={'absolute lg:opacity-60 opacity-25 lg:top-20 -top-[17%] scale-[90%] lg:-left-12'}/>
                     <div className={'lg:w-[80%] border-b-[1px] border-[#CCCCCC22] py-8 mx-auto   items-center flex'}>
                         <div className={'flex lg:pr-[33px] pl-4  text-[#FFFEFF] text-[16px] '}
                              style={{direction: 'rtl'}}>

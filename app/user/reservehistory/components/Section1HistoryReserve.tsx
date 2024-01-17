@@ -87,7 +87,7 @@ const Section1HistoryReserve = () => {
                     Accept: 'application/json',
                 }
             })
-            setReserveData(res.data)
+            setReserveData(res.data.data)
         } catch (e) {
             console.log(e)
         }

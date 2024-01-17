@@ -1,10 +1,12 @@
-import React from 'react';
+'use client'
+import React, {useEffect, useState} from 'react';
 import Image from "next/image";
 import ali_rahmani from '../components/data/ali-rahmani.png'
 import maryam from '../components/data/maryam-akbari.png'
 import shahin from '../components/data/shahin-mlki.png'
 import {buildStyles, CircularProgressbar} from "react-circular-progressbar";
 import Link from "next/link";
+import axios from "axios";
 
 const userNotifications = [
     {
@@ -25,7 +27,28 @@ const userNotifications = [
     }
 ]
 const Section2HomeAdmin = () => {
-    const pers=80
+    const [today, setToday] = useState<any>()
+    useEffect(() => {
+        getToday()
+    }, []);
+    const getToday = async () => {
+        const token = localStorage?.getItem('adminToken')
+        try {
+            const res = await axios.get('https://www.cowork.v1r.ir/api/v1/reports/reservations/co-work-usage',
+                {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+            console.log('today', res)
+            setToday(res.data)
+
+        } catch (e) {
+            console.log(e)
+        }
+    }
+    const pers=today?.filedPercentage
     return (
         <div className={' w-[96%] flex justify-between mt-[59px] mx-auto'}>
             <div
@@ -121,13 +144,12 @@ const Section2HomeAdmin = () => {
                 <div className={'flex justify-between mt-[23px]'}>
                     <div className={'flex flex-col pl-[31px]'}>
                         <div
-                            className="w-[151.40px] mb-[21px] h-[64.88px] pl-[32.39px] pr-9 pt-[10.65px] pb-[10.72px] bg-neutral-100 rounded-[13.95px] backdrop-blur-[83.72px] flex-col justify-center items-center gap-[9.51px] inline-flex">
+                            className="w-[151.40px] mb-[21px] h-[64.88px]  pt-[10.65px] pb-[10.72px] bg-neutral-100 rounded-[13.95px] backdrop-blur-[83.72px] flex-col justify-center items-center gap-[9.51px] inline-flex">
                             <div
                                 className="text-center text-neutral-700 text-[10px] font-normal ">ظرفیت
-                                صندلی خالی
+                                صندلی پر شده
                             </div>
-                            <div className="text-center text-neutral-700 text-[10px] font-normal ">10
-                                صندلی
+                            <div className=" text-neutral-700 text-[10px] font-normal text-right" dir={'rtl'}>{today?.reservedChairs} صندلی
                             </div>
                         </div>
                         <div
@@ -136,8 +158,7 @@ const Section2HomeAdmin = () => {
                                 className="text-center text-neutral-700 text-[10px] font-normal ">ظرفیت
                                 صندلی خالی
                             </div>
-                            <div className="text-center text-neutral-700 text-[10px] font-normal ">10
-                                صندلی
+                            <div className=" text-neutral-700 text-[10px] font-normal text-right" dir={'rtl'}>{today?.remainingChairs} صندلی
                             </div>
                         </div>
                     </div>

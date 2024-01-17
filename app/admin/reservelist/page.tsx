@@ -1,7 +1,12 @@
 'use client'
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import SideBarAdminPanel from "@/app/admin/components/SideBarAdminPanel";
 import NavbarAdminPanel from "@/app/admin/components/NavbarAdminPanel";
+import axios from "axios";
+import {DateObject} from "react-multi-date-picker";
+import moment from 'jalali-moment';
+import LoadingMinimal from "@/app/components/LoadingMinimal";
+import LoadingSmall from "@/app/components/LoadingSmall";
 
 const reserveListCoWork = [
     {
@@ -106,6 +111,44 @@ const reserveListJalase = [
     },
 ]
 const ReserveList = () => {
+    const m = moment();
+    const [date, setDate] = useState<any>(m.format('YYYY-MM-DD'))
+    const [list, setList] = useState<any>()
+    useEffect(() => {
+        getCoworkData()
+    }, [date]);
+
+
+    const getCoworkData = async () => {
+
+
+        try {
+
+            const token = localStorage?.getItem('adminToken')
+            const res = await axios.get(`https://www.cowork.v1r.ir/api/v1/reservation/cowork?date=${date}`,
+                {
+                    headers: {
+                        Accept: 'application/json',
+                        Authorization: `Bearer ${token}`
+                    }
+                })
+            console.log('ressAdmin', res)
+            setList(res)
+        } catch (e) {
+            console.log(e)
+        }
+    }
+    const incDate = () => {
+        const new_date = m.add(1, 'day').format('YYYY-MM-DD')
+        setDate(new_date)
+    }
+    console.log(date)
+    const decDate = () => {
+        const new_date = m.subtract(1, 'day').format('YYYY-MM-DD')
+        setDate(new_date)
+    }
+    console.log(date)
+    //@ts-ignore
     return (
         <div className={'bg-[#F8F9FC] flex'}>
             <div className={'flex flex-col w-[81.25%]'}>
@@ -139,8 +182,8 @@ const ReserveList = () => {
                             className={'bg-[#F6F6F6] rounded-[12.8px] flex flex-col mx-auto mt-[34px]  w-[98.36%] pb-4'}>
                             <div className={'flex justify-between mt-[17px]'}>
                                 <div className={'flex ml-[22px]'}>
-                                    <div
-                                        className={'w-[45px] h-[32px] bg-[#FFFEFF] rounded-[5px] flex justify-center items-center'}>
+                                    <div onClick={incDate}
+                                         className={'cursor-pointer w-[45px] h-[32px] bg-[#FFFEFF] rounded-[5px] flex justify-center items-center'}>
                                         <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">
                                             <g id="arrow_back" clipPath="url(#clip0_664_3774)">
@@ -158,10 +201,10 @@ const ReserveList = () => {
                                     </div>
                                     <div
                                         className={'w-[150px] h-[32px] rounded-[5px] text-black text-sm font-normal mx-[10px] bg-[#FFFEFF] flex justify-center items-center'}>
-                                        سه شنبه 1402/07/12
+                                        {date}
                                     </div>
-                                    <div
-                                        className={'w-[45px] h-[32px] bg-[#FFFEFF] rounded-[5px] flex justify-center items-center'}>
+                                    <div onClick={decDate}
+                                         className={'cursor-pointer w-[45px] h-[32px] bg-[#FFFEFF] rounded-[5px] flex justify-center items-center'}>
                                         <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">
                                             <g id="arrow_back" clipPath="url(#clip0_664_3778)">
@@ -236,22 +279,30 @@ const ReserveList = () => {
 
                                 </span></p>
                             </div>
-                            <div className={'w-[97.16%] flex  flex-col  mx-auto  '} dir={'rtl'}>
-                                {reserveListCoWork.map(item => (
-                                    <div
-                                        className={'odd:bg-[#026AE114] even:bg-[#FF792C14] mb-[5px] w-[100%] h-[50px] flex justify-between items-center '}
-                                        key={item.id}>
-                                        <p className={'text-[#222222] text-sm font-normal w-[120px] mr-[4%]'}>{item.fullName}</p>
-                                        <p className={'text-[#222222] text-sm font-normal w-[80px] -mr-[7%]'}>{item.codeNumber}</p>
-                                        <p className={'text-[#222222] text-sm font-normal w-[70px] -mr-[2%]'}>{item.callNumber}</p>
-                                        <p className={'text-[#222222] text-sm font-normal text-center w-[60px] ml-[1%]'}>{item.sub}</p>
-                                        <p className={'text-[#222222] text-sm font-normal text-center w-[60px] ml-[2%]'}>{item.date}</p>
-                                        <p className={'text-[#222222] text-sm font-normal w-[80px] ml-[4%]'}>{item.status ?
-                                            <div className={'text-green-900 text-sm font-normal'}>پذیرش شده</div> :
-                                            <div className={'text-orange-500 text-sm font-normal'}>مراجعه
-                                                نکرده</div>}</p>
-                                    </div>
-                                ))}
+                            <div className={'w-[97.16%] flex items-center flex-col  mx-auto  '} dir={'rtl'}>
+                                {list?.data == undefined ?
+                                    <LoadingSmall />
+                                    :
+                                    list?.data.length == 0 ? <div className={'text-black mt-5'}>هنوز کسی رزرو نکرده است</div> :
+                                        //@ts-ignore
+                                        list?.data.map(item => (
+                                            <div
+                                                className={'odd:bg-[#026AE114] even:bg-[#FF792C14] mb-[5px] w-[100%] h-[50px] flex justify-between items-center '}
+                                                key={item.id}>
+                                                <p className={'text-[#222222] text-sm font-normal w-[120px] mr-[4%]'}>{item.user.first_name} {item.user.last_name}</p>
+                                                <p className={'text-[#222222] text-sm font-normal w-[80px] -mr-[7%]'}>{item.user.national_code}</p>
+                                                <p className={'text-[#222222] text-sm font-normal w-[70px] -mr-[2%]'}>{item.user.phone_number}</p>
+                                                <p className={'text-[#222222] text-sm font-normal text-center w-[60px] ml-[1%]'}>
+                                                    {item.long_term_co_work_reservation_id == null ? 'بلند مدت' : 'روزانه'}
+                                                </p>
+                                                <p className={'text-[#222222] text-sm font-normal text-center  ml-[2%] w-fit'}>{item.date}</p>
+                                                <div
+                                                    className={'text-[#222222] text-sm font-normal w-[80px] ml-[4%]'}>{item.status ?
+                                                    <p className={'text-green-900 text-sm font-normal'}>پذیرش شده</p> :
+                                                    <p className={'text-orange-500 text-sm font-normal'}>مراجعه
+                                                        نکرده</p>}</div>
+                                            </div>
+                                        ))}
                             </div>
                         </div>
                         <div
@@ -366,10 +417,11 @@ const ReserveList = () => {
                                         <p className={'text-[#222222] text-sm font-normal w-[70px] -mr-[2%]'}>{item.callNumber}</p>
                                         <p className={'text-[#222222] text-sm font-normal text-center w-[60px] ml-[1%]'}>{item.sub}</p>
                                         <p className={'text-[#222222] text-sm font-normal text-center w-[60px] ml-[2%]'}>{item.date}</p>
-                                        <p className={'text-[#222222] text-sm font-normal w-[80px] ml-[4%]'}>{item.status ?
-                                            <div className={'text-green-900 text-sm font-normal'}>پذیرش شده</div> :
-                                            <div className={'text-orange-500 text-sm font-normal'}>مراجعه
-                                                نکرده</div>}</p>
+                                        <div
+                                            className={'text-[#222222] text-sm font-normal w-[80px] ml-[4%]'}>{item.status ?
+                                            <p className={'text-green-900 text-sm font-normal'}>پذیرش شده</p> :
+                                            <p className={'text-orange-500 text-sm font-normal'}>مراجعه
+                                                نکرده</p>}</div>
                                     </div>
                                 ))}
                             </div>
