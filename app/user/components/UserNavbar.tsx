@@ -12,7 +12,7 @@ const UserNavbar = ({data}: any) => {
     // console.log(date.format( ))
     return (
         <div className={'fixed w-[100%]   z-[3] '}>
-            <div className={'flex items-center px-2 w-[100%] justify-between  h-[156px] lg:w-[79.93%] bg-[#0A2E65] '}>
+            <div className={'flex items-center px-2 w-[100%] justify-between  lg:h-[156px] lg:w-[79.93%] bg-[#0A2E65] '}>
                 <div className={'lg:ml-[4.7%]'}>
                     <DropDownNavbar/>
                 </div>

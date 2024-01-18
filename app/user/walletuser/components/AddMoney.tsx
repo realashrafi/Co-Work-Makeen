@@ -33,11 +33,11 @@ const AddMoney = ({data}: any) => {
                     title: "انجام شد",
                     text: "در کیف پول شما نشست",
                     icon: "success",
-                    background: '#002256',
+                    background: 'transparent',
                     color: '#EEEFEE',
                     confirmButtonColor: "#FF792C",
                     confirmButtonText: 'باشه',
-                    backdrop: '#002256'
+                    backdrop:'rgba(0,0,0,0.78)'
                 })
                 window.location.reload()
             })

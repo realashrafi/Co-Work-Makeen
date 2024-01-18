@@ -5,6 +5,7 @@ import {adminLogin, responseData} from "@/app/store/adminLoginSlice";
 import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
 import {redirect} from 'next/navigation'
+import Swal from "sweetalert2";
 const Admin = () => {
     const response = useSelector(responseData)
     const dispatch = useDispatch()

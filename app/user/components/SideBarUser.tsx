@@ -11,9 +11,9 @@ const SideBarUser = ({visible,setVisible}:any) => {
     
     return (
         <div
-            className={`flex-col lg:w-[20%] rounded-xl pr-[1%]  flex items-center lg:visible ${visible ? '' : 'invisible'} top-0 right-0 fixed pt-24 lg:pt-[11px] bg-[#0A2E65]`}>
+            className={`flex-col lg:w-[20%] rounded-xl pr-[1%]  flex items-center lg:visible ${visible ? '' : 'invisible'} lg:top-0 -top-24 right-0 fixed pt-24 lg:pt-[11px] bg-[#0A2E65]`}>
             <button className={'relative lg:invisible top-20 left-32 w-4 h-4'} onClick={() => setVisible(false)}>X</button>
-            <Link href={'/'} className={'lg:mt-[10%] mt-[14%] ml-[5%] mb-[25%] z-50'}>
+            <Link href={'/'} className={'lg:mt-[10%] mt-[14%] ml-[5%] lg:mb-[25%] z-50'}>
                 <Image src={logoMakeen} alt={''}/>
             </Link>
             <Link className={''} href={'/user'}>

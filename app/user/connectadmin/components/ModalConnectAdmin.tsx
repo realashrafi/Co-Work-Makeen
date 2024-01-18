@@ -40,7 +40,7 @@ const ModalConnectAdmin = () => {
                         border:'none'
                     }
                 }}
-                isOpen={showModal} className={'w-[90%] mt-5 mx-auto lg:w-[40%] h-[609px]'}>
+                isOpen={showModal} className={'w-[90%] mt-20 mx-auto lg:w-[40%] h-[609px]'}>
                 <Image src={gifIcon} alt={''} className={'absolute opacity-25 lg:opacity-60 lg:top-20 -top-[17%] scale-[90%] lg:-left-20 '}/>
                 <div className={'w-[100%]  flex-col '}>
                   <div className={'flex justify-between  border-[#0A2E65] mx-[24px] pb-[24px] border-b-[1px] '}>

@@ -82,11 +82,11 @@ const CompleteInformation = () => {
                     title: "انجام شد",
                     text: "حالا میتوانید خرید کنید",
                     icon: "success",
-                    background: '#002256',
+                    background: 'transparent',
                     color: '#EEEFEE',
                     confirmButtonColor: "#FF792C",
                     confirmButtonText: 'باشه',
-                    backdrop: '#002256'
+                    backdrop:'rgba(0,0,0,0.78)'
                 })
                 router.back()
             }

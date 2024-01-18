@@ -72,7 +72,7 @@ const ReserveHistory = () => {
             {validate ?
                 <div className={'bg-[#0A2E65] h-[2040px] '}>
                     <UserNavbar data={data}/>
-                    <div className={'flex pt-[160px]'}>
+                    <div className={'flex pt-14 lg:pt-[160px]'}>
                         <div data-aos={'fade-right'}
                              className={'lg:w-[79.3%] h-[1752PX] bg-[#002256] rounded-[24px] mb-[132px]'}>
                             <Section1HistoryReserve/>
@@ -84,7 +84,7 @@ const ReserveHistory = () => {
                     </div>
                 </div>
                 :
-                <LoadingMakeenLogo/>
+                <LoadingMakeenLogo bg={'#002256'}/>
             }
         </div>
     );

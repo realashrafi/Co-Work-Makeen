@@ -23,15 +23,15 @@ const Modal = () => {
             title: "خارج شدید",
             text: "موفقیت امیز بود",
             icon: "success",
-            background: '#002256',
+            background: 'transparent',
             color: '#EEEFEE',
             confirmButtonColor: "#FF792C",
             confirmButtonText: 'باشه',
-            backdrop: '#002256'
+            backdrop:'rgba(0,0,0,0.78)'
         })
     }
     return (
-        <div className={''}>
+        <div className={''} data-aos={'fade-right'}>
             <Link className={''} href={''}>
                 <div onClick={() => setShowModal(true)}
                      className={'w-[253px] mb-[31px] rounded-[12px] flex items-center h-[43px] mr-[12px] hover:bg-[#002256] ml-[32px] '}
@@ -54,14 +54,10 @@ const Modal = () => {
                         left: 0,
                         right: 0,
                         bottom: 0,
-                        backgroundColor: 'rgba(255, 255, 255, 0.2)'
+                        backgroundColor: '#00000020',
+                        backdropFilter:'blur(5px)'
                     },
                     content: {
-                        width: '90%',
-                        height: 235,
-                        position: 'absolute',
-                        left: '5%',
-                        top: '30%',
                         background: '#002256',
                         overflow: 'auto',
                         WebkitOverflowScrolling: 'touch',
@@ -71,14 +67,14 @@ const Modal = () => {
                         border:'none'
                     }
                 }}
-                isOpen={showModal}>
-                <div data-aos={'fade'}>
+                isOpen={showModal}  className={'w-[90%] mt-[30%] lg:mt-[20%] mx-auto lg:w-[38%] h-[235px]'}>
+                <div data-aos={'fade-right'}>
                     <div  className={'w-[100%]  flex-col'}>
                         <div className={'flex pr-[33px]  text-[#FFFEFF] text-[16px] pt-[22px] pb-[3px]'}
                              style={{direction: 'rtl'}}>
                             <Link href={''} onClick={() => setShowModal(false)}>X</Link>
                         </div>
-                        <p className={'text-center text-[#FFFEFF] text-[16px]  '}>? آیا از خروج خود اطمینان دارید </p>
+                        <p className={'text-center text-[#FFFEFF] text-[16px]'}> آیا از خروج خود اطمینان دارید؟ </p>
                     </div>
                     <div className={'w-[63%] mx-auto pt-[59px] flex'}>
 

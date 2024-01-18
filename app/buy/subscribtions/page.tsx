@@ -44,11 +44,11 @@ const Page = () => {
                     title: 'تکمیل اطلاعات',
                     text: "لطفا اطلاعات حساب کاربری خود را تکمیل کنید",
                     icon: "warning",
-                    background: '#002256',
+                    background: 'transparent',
                     color: '#EEEFEE',
                     confirmButtonColor: "#FF792C",
                     confirmButtonText: 'باشه',
-                    backdrop: '#002256'
+                    backdrop:'rgba(0,0,0,0.78)'
                 })
                 router.push('/buy')
             }
@@ -88,7 +88,7 @@ const Page = () => {
                     </div>
                 </div>
                 :
-                <LoadingMakeenLogo/>}
+                <LoadingMakeenLogo bg={'#002256'}/>}
         </div>
     );
 };

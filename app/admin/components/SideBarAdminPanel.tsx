@@ -110,7 +110,8 @@ const SideBarAdminPanel = () => {
                     <IoChatboxSharp className={'text-white w-[15px] h-[15px]'}/>
                 </div>
                 <p className={'text-white text-sm font-normal'}>ارتباط با پشتیبانی</p>
-            </Link> <Link
+            </Link>
+                <Link onClick={()=>localStorage.setItem('adminToken','')}
                 className={` group mt-[70px] mx-auto flex items-center hover:bg-[#2B345E] w-[220px] h-[50px] rounded-[15px]`}
                 href={'/admin'} dir={'rtl'}>
                 <div

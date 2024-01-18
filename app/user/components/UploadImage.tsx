@@ -139,11 +139,11 @@ const UploadImage = ({data}: any) => {
                                 title: 'انجام شد',
                                 text: 'عکس شما اپلود شد',
                                 icon: 'success',
-                                background: '#002256',
+                                background: 'transparent',
                                 color: '#EEEFEE',
                                 confirmButtonColor: '#FF792C',
                                 confirmButtonText: 'باشه',
-                                backdrop: '#002256',
+                                backdrop:'rgba(0,0,0,0.78)'
                             });
                         } else {
                             console.error('خطا در آپلود');

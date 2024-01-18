@@ -66,7 +66,7 @@ const RegisterModalStep1 = ({statusLogin, statusRegister}: any) => {
                         border: 'none',
                     }
                 }}
-                isOpen={showModal} className={'w-[90%] mt-5 mx-auto lg:w-[38%] h-[465px]'}>
+                isOpen={showModal} className={'w-[90%] mt-20 mx-auto lg:w-[38%] h-[465px]'}>
                     <Image src={gifIcon} alt={''} className={'absolute opacity-50 lg:top-20 -top-[17%] scale-[90%] lg:-left-12'}/>
                 <div className={' z-[2]'}>
 

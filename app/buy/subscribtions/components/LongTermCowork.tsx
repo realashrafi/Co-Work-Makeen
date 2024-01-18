@@ -32,8 +32,30 @@ const LongTermCowork = () => {
                 backdrop: '#002256'
             })
             window.location.assign('/buy/submitedChair')
-        } catch (e) {
-            console.log(e)
+            if (res.status==422){
+                Swal.fire({
+                    title: "خطا",
+                    text: `${res.data.message}`,
+                    icon: "warning",
+                    background: '#002256',
+                    color: '#EEEFEE',
+                    confirmButtonColor: "#FF792C",
+                    confirmButtonText: 'باشه',
+                    backdrop: '#002256'
+                })
+            }
+        } catch (res:any) {
+            console.log('catch',res)
+            Swal.fire({
+                title: "خطا",
+                text: `${res?.response.data.message}`,
+                icon: "warning",
+                background: '#002256',
+                color: '#EEEFEE',
+                confirmButtonColor: "#FF792C",
+                confirmButtonText: 'باشه',
+                backdrop: '#002256'
+            })
         }
     }
     return (

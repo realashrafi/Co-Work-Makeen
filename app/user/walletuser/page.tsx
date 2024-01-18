@@ -183,11 +183,11 @@ const WalletUser = () => {
             {validate ?
                 <div className={'bg-[#0A2E65] h-[2040px] '}>
                     <UserNavbar data={data}/>
-                    <div className={'flex pt-[160px]'}>
+                    <div className={'flex pt-14 lg:pt-[160px]'}>
                         <div data-aos={'fade-right'}
                              className={'lg:w-[79.3%]  flex-col items-center justify-center h-[1752PX] bg-[#002256] rounded-[24px] mb-[132px]'}>
 
-                            <div className={'mt-[69px] flex flex-col items-center lg:items-end lg:mr-[5.6%]'}>
+                            <div className={'mt-[50px] flex flex-col items-center lg:items-end lg:mr-[5.6%]'}>
                                 <p className={'text-[#FFFEFF] text-[18px] font-[400]'}>
                                     کیف پول من
                                 </p>
@@ -226,7 +226,7 @@ const WalletUser = () => {
                     </div>
                 </div>
                 :
-                <LoadingMakeenLogo/>
+                <LoadingMakeenLogo bg={'#002256'}/>
             }
         </div>
     );

@@ -1,9 +1,13 @@
 'use client'
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import SideBarAdminPanel from "@/app/admin/components/SideBarAdminPanel";
 import NavbarAdminPanel from "@/app/admin/components/NavbarAdminPanel";
 import DoItemList from "@/app/admin/settingreserve/components/DoItemList";
 import AddNews from "@/app/admin/news/components/AddNews";
+import {useRouter} from "next/navigation";
+import axios from "axios";
+import Swal from "sweetalert2";
+import LoadingAdmin from "@/app/components/LoadingAdmin";
 
 const data = [
     {
@@ -45,8 +49,60 @@ const data = [
     },
 ]
 const News = () => {
+    const [protect, setProtect] = useState(false)
+    useEffect(() => {
+        handleProtect()
+    }, []);
+    const router =useRouter()
+    const handleProtect = async () => {
+
+        try {
+            const token = localStorage?.getItem('adminToken');
+            const response = await axios.get('https://www.cowork.v1r.ir/api/v1/user/me', {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    Accept: 'application/json',
+                }
+            })
+            // setData(response.data)
+            if (response.status == 200) {
+                setProtect(true)
+            } else {
+                setProtect(false)
+            }
+            // if (response.status===200) {
+            //     Swal.fire({
+            //         title: 'خوش آمدید',
+            //         text: "وارد پنل خود شدید",
+            //         icon: "success",
+            //         background: '#002256',
+            //         color: '#EEEFEE',
+            //         confirmButtonColor: "#FF792C",
+            //         confirmButtonText: 'باشه',
+            //         backdrop: '#002256'
+            //     })
+            // }
+        } catch (e) {
+            console.log(e)
+            Swal.fire({
+                title: "خطایی رخ داده",
+                text: "شما ادمین نیستید",
+                icon: "warning",
+                background: '#002256',
+                color: '#EEEFEE',
+                confirmButtonColor: "#FF792C",
+                confirmButtonText: 'باشه',
+                backdrop: '#002256'
+            })
+            router.push('/')
+        }
+
+    }
+
     return (
         <div className={'bg-[#F8F9FC] flex'}>
+            {protect?
+                <div className={'w-[100%] flex'}>
             <div className={'flex flex-col w-[81.25%]'}>
                 <NavbarAdminPanel/>
                 <div className={'w-[100%]  flex justify-center h-[1726px]'}>
@@ -131,6 +187,8 @@ const News = () => {
                 </div>
             </div>
             <SideBarAdminPanel/>
+                </div>:
+                <LoadingAdmin/>}
         </div>
     );
 };

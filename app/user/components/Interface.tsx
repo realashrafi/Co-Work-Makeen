@@ -103,7 +103,6 @@ const UserInterface = ({data}: any) => {
     const handleupdate = async (e: any) => {
         const token = localStorage?.getItem('userToken');
         e.preventDefault()
-
         try {
             const response = await axios.put(`https://www.cowork.v1r.ir/api/v1/user/${userID}`, {
                 first_name: first_name,
@@ -125,13 +124,13 @@ const UserInterface = ({data}: any) => {
             if (response.status==200){
                 Swal.fire({
                     title: "انجام شد",
-                    text: "حالا میتوانید خرید کنید",
+                    text: "",
                     icon: "success",
-                    background: '#002256',
+                    background: 'transparent',
                     color: '#EEEFEE',
                     confirmButtonColor: "#FF792C",
                     confirmButtonText: 'باشه',
-                    backdrop: '#002256'
+                    backdrop:'rgba(0,0,0,0.78)'
                 })
             }
         } catch (e) {
@@ -140,11 +139,11 @@ const UserInterface = ({data}: any) => {
     }
     // console.log('data',data)
     return (
-        <div className={'bg-[#0A2E65] w-[100%] h-[2040px]'}>
+        <div className={'bg-[#0A2E65] w-[100%] lg:h-[2040px]'}>
             <UserNavbar data={data}/>
-            <div className={'flex pt-[160px]'}>
+            <div className={'flex pt-14 lg:pt-[160px]'}>
                 <div data-aos={'fade-right'}
-                     className={'lg:w-[79.3%] w-[100%] h-[1752PX] bg-[#002256] rounded-[24px] mb-[132px]'}>
+                     className={'lg:w-[79.3%] w-[100%] h-[1800px] lg:h-[1752PX] bg-[#002256] rounded-[24px] mb-[132px]'}>
                     <div className={'flex mt-[28px] mr-[50px]  justify-end items-center'}>
                         <UploadImage data={data}/>
                     </div>
@@ -159,29 +158,29 @@ const UserInterface = ({data}: any) => {
                     </div>
                     <div
                         className={'w-[96.7%] mt-[25px] lg:h-[352px]   rounded-[12px]  border-[#0A2E65] border-[1px] mx-auto'}>
-                        <div className={'flex  lg:flex-nowrap justify-center flex-wrap'}>
-                            <div className={'ml-[1.3%] mr-[2.16%] lg:w-[22.7%]'}>
+                        <div className={'flex  lg:flex-nowrap justify-center flex-wrap-reverse'}>
+                            <div className={'ml-[1.3%] mr-[2.16%] w-[80%]  lg:w-[22.7%]'}>
                                 <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                    style={{direction: "rtl"}}>تاریخ تولد</p>
                                 <input value={dob} onChange={(e) => setDob(e.target.value)}
                                        className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] '}
                                        placeholder={'تاریخ تولد'}/>
                             </div>
-                            <div className={' mr-[2.16%] lg:w-[22.7%]'}>
+                            <div className={' mr-[2.16%] w-[80%] lg:w-[22.7%]'}>
                                 <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                    style={{direction: "rtl"}}>شماره موبایل</p>
                                 <input value={phone} onChange={(e) => setPhone(e.target.value)}
                                        className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] '}
                                        placeholder={'شماره موبایل'}/>
                             </div>
-                            <div className={' mr-[2.16%] lg:w-[22.7%]'}>
+                            <div className={' mr-[2.16%] w-[80%] lg:w-[22.7%]'}>
                                 <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                    style={{direction: "rtl"}}>نام ونام خانوادگی</p>
                                 <input value={last_name} onChange={(e) => setLast_name(e.target.value)}
                                        className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] '}
                                        placeholder={'نام ونام خانوادگی'}/>
                             </div>
-                            <div className={'  mr-[1.3%] lg:w-[22.7%]'}>
+                            <div className={'  mr-[1.3%] w-[80%] lg:w-[22.7%]'}>
                                 <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                    style={{direction: "rtl"}}>نام</p>
                                 <input value={first_name} onChange={(e) => setFirst_name(e.target.value)}
@@ -189,16 +188,16 @@ const UserInterface = ({data}: any) => {
                                        placeholder={'نام'}/>
                             </div>
                         </div>
-                        <div className={'flex lg:justify-end mt-[39px] lg:flex-nowrap justify-center flex-wrap'}>
+                        <div className={'flex lg:justify-end lg:mt-[39px] lg:flex-nowrap justify-center flex-wrap-reverse '}>
 
-                            <div className={' mr-[2.16%] lg:w-[22.7%]'}>
+                            <div className={' mr-[2.16%] w-[80%] lg:w-[22.7%]'}>
                                 <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                    style={{direction: "rtl"}}>کد ملی</p>
                                 <input value={national_code} onChange={(e) => setNational_code(e.target.value)}
                                        className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] '}
                                        placeholder={'کد ملی'}/>
                             </div>
-                            <div className={' mr-[2.16%] lg:w-[22.7%]'}>
+                            <div className={' mr-[2.16%] w-[80%] lg:w-[22.7%]'}>
                                 <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                    style={{direction: "rtl"}}>انتخاب جنسیت</p>
                                 <select value={gender}
@@ -211,7 +210,7 @@ const UserInterface = ({data}: any) => {
                                     <option value="female">زن</option>
                                 </select>
                             </div>
-                            <div className={'  mr-[1.3%] lg:w-[22.7%]'}>
+                            <div className={'  mr-[1.3%] w-[80%] lg:w-[22.7%]'}>
                                 <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                    style={{direction: "rtl"}}>ایمیل</p>
                                 <input value={email} onChange={(e) => setEmail(e.target.value)}
@@ -220,7 +219,7 @@ const UserInterface = ({data}: any) => {
                             </div>
 
                         </div>
-                        <div className={' lg:mr-[1.3%] w-[50%] mx-auto pb-4 lg:pb-0 lg:w-[22.7%]'}>
+                        <div className={' lg:mr-[1.3%] w-[80%] mx-auto pb-4 lg:pb-0 lg:w-[22.7%]'}>
                             <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                style={{direction: "rtl"}}>مدرک تحصیلی</p>
                             <select value={education} onChange={(e) => setEducation(e.target.value)}
@@ -272,14 +271,14 @@ const UserInterface = ({data}: any) => {
                         <p className={'text-[#FFFEFF] text-[18px] font-[500]'}>علاقه مندی ها</p>
                     </div>
                     <div
-                        className={'lg:w-[96.7%] mt-[25px] lg:h-[256px]  w-[90%]  rounded-[12px]  border-[#0A2E65] border-[1px] mx-auto'}>
+                        className={'lg:w-[96.7%] mt-[25px] lg:h-[256px]   w-[90%]  rounded-[12px]  border-[#0A2E65] border-[1px] mx-auto'}>
                         <div className={'flex justify-end text-[#FFFEFF] text-[18px] font-[500] pr-[24px] pt-[24px]'}>
                             انتخاب دسته بندی مورد علاقه شما
                         </div>
-                        <div className={'mx-[1.35%] mt-[16px] flex  justify-center lg:flex-nowrap flex-wrap '}>
+                        <div className={'mx-[1.35%]  mt-[16px] flex  justify-center lg:flex-nowrap flex-wrap '}>
                             {dataOfFav.slice(0, 4).map(item => (
                                 <button key={item.id}
-                                        className={' m-1 lg:w-[22.7%] w-[40%] lg:mx-[12px] focus:bg-[#FF792C] after:bg-[#FF792C] h-[48px] bg-[#0A2E65] rounded-[30px]  '}>
+                                        className={' m-1 lg:w-[22.7%] w-[80%] lg:mx-[12px] focus:bg-[#FF792C] after:bg-[#FF792C] h-[48px] bg-[#0A2E65] rounded-[30px]  '}>
                                     <div
                                         className={'flex justify-between text-[#FFFFFF] text-[14px] font-[400] mr-[24px] my-[12px] '}>
                                         <svg width="24" className={'ml-[24px]'} height="24" viewBox="0 0 24 24"
@@ -293,10 +292,10 @@ const UserInterface = ({data}: any) => {
                                 </button>
                             ))}
                         </div>
-                        <div className={'mx-[1.35%] mt-[26px] flex justify-center lg:flex-nowrap flex-wrap  '}>
+                        <div className={'mx-[1.35%] mb-2 lg:mt-[26px] flex justify-center lg:flex-nowrap flex-wrap  '}>
                             {dataOfFav.slice(4, 8).map(item => (
                                 <button key={item.id}
-                                        className={'m-1 lg:w-[22.7%] w-[40%]  lg:mx-[12px] h-[48px] bg-[#0A2E65] focus:bg-[#FF792C] rounded-[30px]  '}>
+                                        className={'m-1 lg:w-[22.7%] w-[80%]  lg:mx-[12px] h-[48px] bg-[#0A2E65] focus:bg-[#FF792C] rounded-[30px]  '}>
                                     <div
                                         className={'flex justify-between text-[#FFFFFF] text-[14px] font-[400] mr-[24px] my-[12px] '}>
                                         <svg width="24" className={'ml-[24px]'} height="24" viewBox="0 0 24 24"
@@ -312,7 +311,7 @@ const UserInterface = ({data}: any) => {
                         </div>
                     </div>
                     <div className={'flex mt-[58px] items-center ml-[5.6%]'}>
-                        <Link className={'w-[16.9%]'} href={''} onClick={handleupdate}>
+                        <Link className={'w-[40%] px-2 lg:w-[16.9%]'} href={''} onClick={handleupdate}>
                             <div
                                 className={'w-[100%] text-[#FFFEFF] text-[16px] font-[400] bg-[#44C0ED] justify-center h-[48px] flex items-center text-center rounded-[12px]'}>
                                 اعمال تغییرات

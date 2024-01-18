@@ -118,11 +118,11 @@ const DatePeaker = ({dateSelected,setDateSelected}:any) => {
                                   title: "در انتخاب خود کوشا باشید",
                                   text: "آخر هفته ها غیر فعال هستند",
                                   icon: "warning",
-                                  background: '#002256',
+                                  background: 'transparent',
                                   color: '#EEEFEE',
                                   confirmButtonColor: "#FF792C",
                                   confirmButtonText: 'باشه',
-                                  backdrop: ''
+                                  backdrop:'rgba(0,0,0,0.78)'
                               })
                           }
                       }}
@@ -174,11 +174,11 @@ const DatePeaker = ({dateSelected,setDateSelected}:any) => {
                             title: "ثبت شد",
                             text: "حالا میتوانید پرداخت کنید",
                             icon: "success",
-                            background: '#002256',
+                            background: 'transparent',
                             color: '#EEEFEE',
                             confirmButtonColor: "#FF792C",
                             confirmButtonText: 'باشه',
-                            backdrop: ''
+                            backdrop:'rgba(0,0,0,0.78)'
                         })
                     }}
                     className={'flex cursor-pointer justify-center items-center w-[100px] h-6 rounded-[5px] bg-[#13B86C] text-white text-sm font-bold'}>

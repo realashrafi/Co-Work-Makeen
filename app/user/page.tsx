@@ -79,7 +79,7 @@ const User = () => {
             {validate ?
                 <Interface data={data}/>
                 :
-                <LoadingMakeenLogo/>
+                <LoadingMakeenLogo bg={'#002256'}/>
             }
 
         </div>
