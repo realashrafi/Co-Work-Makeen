@@ -5,103 +5,14 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import Compressor from 'compressorjs';
 import useMe from "@/app/store/react-query/useMe";
-
-
-// const UploadImage = ({data}: any) => {
-//     const [showModal, setShowModal] = useState(false)
-//     const [selectedFile, setSelectedFile] = useState(null);
-//     const router = useRouter()
-//     const handleFileChange = (e: any) => {
-//         const file = e.target.files[0];
-//         setSelectedFile(file);
-//     };
-//     // const handleFileUpload = async (e: any) => {
-//     //     e.preventDefault()
-//     //     console.log(selectedFile)
-//     //     if (selectedFile) {
-//     //         const formData = new FormData();
-//     //         formData.append('image', selectedFile);
-//     //         try {
-//     //             const token = localStorage?.getItem('userToken');
-//     //             console.log(token)
-//     //             const response = await axios.post('https://www.cowork.v1r.ir/api/v1/user/set-picture/avatar',
-//     //                 {
-//     //                     formData
-//     //                 }, {
-//     //                     headers: {
-//     //                         Authorization: `Bearer ${token}`,
-//     //                         Accept: 'application/json',
-//     //                         'Content-Type': 'application/x-www-form-urlencoded'
-//     //                     }
-//     //                 }
-//     //             );
-//     //             console.log(response)
-//     //             if (response.status === 200) {
-//     //                 // آپلود موفقیت‌آمیز بوده است
-//     //                 console.log('آپلود موفقیت‌آمیز بوده است');
-//     //             } else {
-//     //                 // خطا در آپلود
-//     //                 console.error('خطا در آپلود');
-//     //             }
-//     //         } catch (error) {
-//     //             console.error('خطا در ارسال درخواست:', error);
-//     //         }
-//     //     }
-//     // };
-//     const handleFileUpload = async (e: any) => {
-//         e.preventDefault();
-//         console.log(selectedFile);
-//
-//         if (selectedFile) {
-//             const formData = new FormData();
-//             formData.append('picture', selectedFile);
-//
-//             try {
-//                 const token = localStorage?.getItem('userToken');
-//                 console.log(token);
-//
-//                 const response = await axios.post(
-//                     'https://www.cowork.v1r.ir/api/v1/user/set-picture/avatar',
-//                     formData, // از formData به عنوان بدنه درخواست استفاده کنید
-//                     {
-//                         headers: {
-//                             Authorization: `Bearer ${token}`,
-//                             Accept: 'application/json',
-//                         },
-//                     }
-//                 );
-//
-//                 window.location.reload()
-//                 console.log(response);
-//                 if (response.status === 200) {
-//                     // آپلود موفقیت‌آمیز بوده است
-//                     Swal.fire({
-//                         title: "انجام شد",
-//                         text: "عکس شما اپلود شد",
-//                         icon: "success",
-//                         background: '#002256',
-//                         color: '#EEEFEE',
-//                         confirmButtonColor: "#FF792C",
-//                         confirmButtonText: 'باشه',
-//                         backdrop: '#002256'
-//                     })
-//
-//                 } else {
-//                     // خطا در آپلود
-//                     console.error('خطا در آپلود');
-//                 }
-//             } catch (error) {
-//                 console.error('خطا در ارسال درخواست:', error);
-//             }
-//         }
-//     };
-
+import LoadingSmall from "@/app/components/LoadingSmall";
 
 const UploadImage = () => {
     const [showModal, setShowModal] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
-    const {data}=useMe()
-    console.log('upload',data)
+    const [loading, setLoading] = useState<any>(false)
+    const {data} = useMe()
+    console.log('upload', data)
     const handleFileChange = (e: any) => {
         const file = e.target.files[0];
         setSelectedFile(file);
@@ -109,6 +20,7 @@ const UploadImage = () => {
 
     const handleFileUpload = async (e: any) => {
         e.preventDefault();
+        setLoading(true)
         console.log(selectedFile);
 
         if (selectedFile) {
@@ -147,6 +59,7 @@ const UploadImage = () => {
                                 confirmButtonText: 'باشه',
                                 backdrop: 'rgba(0,0,0,0.78)'
                             });
+                            setLoading(false)
                         } else {
                             console.error('خطا در آپلود');
                         }
@@ -206,7 +119,7 @@ const UploadImage = () => {
                         border: 'none'
                     }
                 }}
-                isOpen={showModal} className={'w-[90%] mt-[34%] lg:mt-5 mx-auto lg:w-[38%] h-[235px]'}>
+                isOpen={showModal} className={'w-[90%] mt-[34%] lg:mt-32 mx-auto lg:w-[38%] h-[235px]'}>
                 <div className={'flex flex-col items-center'}>
                     <div className={'text-white self-end mr-4 mt-3'} onClick={() => setShowModal(false)}>X</div>
                     <div className="grid w-full max-w-xs items-center gap-1.5 mt-4" dir={'rtl'}>
@@ -219,8 +132,14 @@ const UploadImage = () => {
                 <p className={'text-white text-sm mt-2 self-center text-center'}>آپلود عکس ممکن است زمان بر باشد </p>
                 <p className={'text-white text-sm mt-2 self-center text-center'}> پس لطفا شکیبا باشید</p>
                 <div className={'flex justify-center items-center mt-3'}>
-                    <button className={'rounded-xl text-white px-10 py-2 bg-orange-500'}
-                            onClick={handleFileUpload}>آپلود
+                    <button disabled={selectedFile == null ? true : false}
+                            className={'disabled:opacity-30 rounded-xl text-white px-10 py-2 bg-orange-500'}
+                            onClick={handleFileUpload}>{loading ?
+                        <div
+                            className="animate-spin ease-linear rounded-full w-4 h-4 border-t-2 border-b-2 border-[#44C0ED]">
+
+                        </div>
+                        : "آپلود"}
                     </button>
                 </div>
             </ReactModal>

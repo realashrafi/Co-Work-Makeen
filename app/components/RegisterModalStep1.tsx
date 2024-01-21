@@ -54,7 +54,7 @@ const RegisterModalStep1 = ({statusLogin, statusRegister}: any) => {
                         right: 0,
                         bottom: 0,
                         backgroundColor: '#00000020',
-                        backdropFilter:'blur(5px)'
+                        backdropFilter: 'blur(5px)'
                     },
                     content: {
                         background: '#002256',
@@ -67,7 +67,8 @@ const RegisterModalStep1 = ({statusLogin, statusRegister}: any) => {
                     }
                 }}
                 isOpen={showModal} className={'w-[90%] mt-20 mx-auto lg:w-[38%] h-[465px]'}>
-                    <Image src={gifIcon} alt={''} className={'absolute opacity-50 lg:top-20 -top-[17%] scale-[90%] lg:-left-12'}/>
+                <Image src={gifIcon} alt={''}
+                       className={'absolute opacity-50 lg:top-20 -top-[17%] scale-[90%] lg:-left-12'}/>
                 <div className={' z-[2]'}>
 
                     <div className={'flex justify-end pr-[24px] mt-[24px]'}>
@@ -93,10 +94,11 @@ const RegisterModalStep1 = ({statusLogin, statusRegister}: any) => {
                                placeholder={'مثال 09367674845'}/>
                         {validation()}
                     </div>
-                    <RegisterModalStep2 number={number}
-                                        checked={checked}
-                                        statusLogin={statusLogin}
-                                        statusregister={statusRegister}
+                    <RegisterModalStep2
+                        number={number}
+                        checked={checked}
+                        statusLogin={statusLogin}
+                        statusregister={statusRegister}
                     />
                 </div>
             </ReactModal>

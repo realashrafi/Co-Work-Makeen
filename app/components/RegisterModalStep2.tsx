@@ -22,38 +22,43 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
     const [lastChecked, setLastChecked] = useState(checked)
     const [rolls, setRolls] = useState(false)
     const [validate, setValidate] = useState(false)
+    const [loadingStep1, setLoadingStep1] = useState<any>(false)
+    const [loadingStep2Login, setLoadingStep2Login] = useState<any>(false)
+    const [loadingStep2Register, setLoadingStep2Register] = useState<any>(false)
 
     const router = useRouter()
-    const finalCheck = ()=>{
-        if (number.length>10){
+    const finalCheck = () => {
+        if (number.length > 10) {
             !lastChecked
-        }
-        else lastChecked
+        } else lastChecked
     }
     const handleInput = (e: any) => {
-        const inputValue:any = e.target.value
+        const inputValue: any = e.target.value
         const numericValue =
-            inputValue.replace(/[^0-9]/g,'')
-        if (numericValue<= 5){
-            e.target.value=numericValue
-        }else {
-            e.target.value=numericValue.slice(0,5)
+            inputValue.replace(/[^0-9]/g, '')
+        if (numericValue <= 5) {
+            e.target.value = numericValue
+        } else {
+            e.target.value = numericValue.slice(0, 5)
         }
     }
     const handleSubmit = async (e: any) => {
         e.preventDefault()
+        setLoadingStep1(true)
         try {
-        const res= await axios.post('https://www.cowork.v1r.ir/api/v1/auth/user/check-phone-number', {
-            phone_number: number
-        })
+            const res = await axios.post('https://www.cowork.v1r.ir/api/v1/auth/user/check-phone-number', {
+                phone_number: number
+            })
             setUserExist(res.data.user_exits)
             setShowModal(true)
-        }catch (e) {
+            setLoadingStep1(false)
+        } catch (e) {
             console.log(e)
         }
     }
     const handleUserLogin = async (e: any) => {
         e.preventDefault()
+        setLoadingStep2Login(true)
         try {
             const response = await axios.post('https://www.cowork.v1r.ir/api/v1/auth/user/login', {
                 phone_number: number,
@@ -72,8 +77,9 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                     color: '#EEEFEE',
                     confirmButtonColor: "#FF792C",
                     confirmButtonText: '<button >باشه</button>',
-                    backdrop:'rgba(0,0,0,0.78)'
+                    backdrop: 'rgba(0,0,0,0.78)'
                 })
+                setLoadingStep2Login(false)
             }
         } catch (e) {
             console.log(e)
@@ -85,14 +91,16 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                 color: '#EEEFEE',
                 confirmButtonColor: "#FF792C",
                 confirmButtonText: '<button >باشه</button>',
-                backdrop:'rgba(0,0,0,0.78)'
+                backdrop: 'rgba(0,0,0,0.78)'
             })
             setShowModal(false)
+            setLoadingStep2Login(false)
         }
     }
 
     const handleRegisterNewMember = async (e: any) => {
         e.preventDefault()
+        setLoadingStep2Register(true)
         try {
             const response = await axios.post('https://www.cowork.v1r.ir/api/v1/auth/user/register', {
                 code: registerCode,
@@ -117,8 +125,9 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                     color: '#EEEFEE',
                     confirmButtonColor: "#FF792C",
                     confirmButtonText: '<button >باشه</button>',
-                    backdrop:'rgba(0,0,0,0.78)'
+                    backdrop: 'rgba(0,0,0,0.78)'
                 })
+                setLoadingStep2Register(false)
                 router.refresh()
             }
         } catch (e) {
@@ -131,16 +140,21 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                 color: '#EEEFEE',
                 confirmButtonColor: "#FF792C",
                 confirmButtonText: '<button >باشه</button>',
-                backdrop:'rgba(0,0,0,0.78)'
+                backdrop: 'rgba(0,0,0,0.78)'
             })
             setShowModal(false)
+            setLoadingStep2Register(false)
         }
     }
     return (
         <div>
             <div className={'flex justify-center  mt-[48px]'} onClick={handleSubmit}>
                 <button disabled={number.length > 10 ? lastChecked : !lastChecked}
-                        className={'w-[79%] disabled:opacity-50 h-10 bg-sky-400 rounded-xl flex items-center justify-center text-white text-base font-bold'}>ادامه
+                        className={'w-[79%] disabled:opacity-50 h-10 bg-sky-400 rounded-xl flex items-center justify-center text-white text-base font-bold'}>{loadingStep1 ?
+                    <div
+                        className="animate-spin ease-linear rounded-full w-4 h-4 border-t-2 border-b-2 border-orange-500">
+
+                    </div> : 'ادامه'}
                 </button>
             </div>
             {userExist ?
@@ -197,7 +211,11 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                         <RegisterModalStep3 number={number}/>
                         <button onClick={handleUserLogin}
                                 className={'flex w-[80%] mx-auto justify-center items-center bg-[#44C0ED] rounded-xl text-white h-10 mt-[56px] '}>
-                            ورود
+                            {loadingStep2Login ? <div
+                                    className="animate-spin ease-linear rounded-full w-4 h-4 border-t-2 border-b-2 border-orange-500">
+
+                                </div> :
+                                'ورود'}
                         </button>
                         {statusLogin?.userLoginStatus == 200 ? redirect('/') : ''}
                     </div>
@@ -224,8 +242,8 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                             border: 'none'
                         }
                     }}
-                    isOpen={showModal}  className={'w-[90%] mt-20 mx-auto lg:w-[38%] h-[530px]'}>
-                    <div >
+                    isOpen={showModal} className={'w-[90%] mt-20 mx-auto lg:w-[38%] h-[530px]'}>
+                    <div>
                         <div className={'flex justify-end pr-[24px] mt-[24px]'}>
                             <div className={'cursor-pointer text-white'} onClick={() => setShowModal(false)}>X</div>
                         </div>
@@ -270,10 +288,10 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                         </div>
                         {/*{}*/}
                         <div className={'flex justify-center'}>
-                        <button onClick={()=>setShowModalStep(true)} disabled={registerCode.length!==4}
-                                className={'self-end cursor-pointer w-[80%]  disabled:opacity-50 h-10 bg-sky-400 rounded-xl mt-[15px] flex justify-center items-center text-white text-base font-bold'}
-                        >ثبت
-                        </button>
+                            <button onClick={() => setShowModalStep(true)} disabled={registerCode.length !== 4}
+                                    className={'self-end cursor-pointer w-[80%]  disabled:opacity-50 h-10 bg-sky-400 rounded-xl mt-[15px] flex justify-center items-center text-white text-base font-bold'}
+                            >ثبت
+                            </button>
                         </div>
                         <ReactModal
                             style={{
@@ -359,7 +377,11 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                                 </div>
                                 <button onClick={handleRegisterNewMember} disabled={!rolls}
                                         className={'self-end cursor-pointer w-[89%] disabled:opacity-50 h-10 bg-sky-400 rounded-xl mt-[15px] flex justify-center items-center text-white text-base font-bold'}
-                                >ثبت
+                                >
+                                    {loadingStep2Register ? <div
+                                        className="animate-spin ease-linear rounded-full w-4 h-4 border-t-2 border-b-2 border-orange-500">
+
+                                    </div> : 'ثبت'}
                                 </button>
                             </div>
                         </ReactModal>

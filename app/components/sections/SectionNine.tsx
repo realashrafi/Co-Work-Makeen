@@ -11,7 +11,7 @@ import AOS from "aos";
 const SectionNine = () => {
     useEffect(() => {
         AOS.init({
-            duration: 800,
+            duration: 400,
             once: false,
         })
     }, []);

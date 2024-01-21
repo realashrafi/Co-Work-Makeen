@@ -14,9 +14,9 @@ const Section2Tariffs = () => {
     }, []);
     return (
         <section className={'bg-[#002256] flex flex-col   pt-[53px]'}>
-            <div data-aos={'fade-up'} data-aos-delay="400"
+            <div data-aos={'fade-up'}
                 className={'lg:w-[14%]  mx-auto  px-3 h-[53px] bg-[#FF792C] flex justify-center ml-[33%] items-center text-center rounded-[40px] -mb-[18px] lg:ml-[70%] z-10'}>
-                <p data-aos={'fade-up'} data-aos-delay="450" className={'text-[#FFFEFF] text-[14px]'}>دانشجویان مکینی</p>
+                <p data-aos={'fade-up'}  className={'text-[#FFFEFF] text-[14px]'}>دانشجویان مکینی</p>
             </div>
             <div data-aos={'fade-up'}  className={'bg-[#0A2E65] items-center justify-center mx-auto mt-2 lg:mt-0 lg:flex-nowrap flex-wrap-reverse  flex lg:w-[71%] w-[90%] h-[120px] rounded-[24px]'}>
                 <LoginForBuy orderData={1}/>
@@ -41,7 +41,7 @@ const Section2Tariffs = () => {
                     </svg>
                 </div>
             </div>
-            <div data-aos={'fade-up'} data-aos-delay="200" className={'bg-[#0A2E65] relative mt-[18px] items-center justify-center mx-auto flex-wrap-reverse lg:flex-nowrap flex lg:w-[71%] w-[90%] h-[120px] rounded-[24px]'}>
+            <div data-aos={'fade-up'}  className={'bg-[#0A2E65] relative mt-[18px] items-center justify-center mx-auto flex-wrap-reverse lg:flex-nowrap flex lg:w-[71%] w-[90%] h-[120px] rounded-[24px]'}>
                 {/*<div className={'absolute right-0 top:1/3 lg:-right-14 lg:top-0 flex flex-col items-center justify-center'}>*/}
                 {/*    <div className={'text-neutral-50 text-lg font-bold origin-top-left rotate-[-10.52deg]'} dir={'rtl'}>3 روز رایگان</div>*/}
                 {/*    <div className={'-mt-2'}>*/}
@@ -77,11 +77,11 @@ const Section2Tariffs = () => {
                 </div>
             </div>
 
-            <div data-aos={'fade-up'} data-aos-delay="400"
+            <div data-aos={'fade-up'}
                 className={'lg:w-[14%] mx-auto px-3 h-[53px] bg-[#44C0ED] mt-8 lg:mt-[66px] flex justify-center items-center text-center rounded-[40px] -mb-[18px] lg:ml-[70%] z-10'}>
-                <p data-aos={'fade-up'} data-aos-delay="450" className={'text-[#FFFEFF] text-[14px]'}>دانشجویان آزاد</p>
+                <p data-aos={'fade-up'}  className={'text-[#FFFEFF] text-[14px]'}>دانشجویان آزاد</p>
             </div>
-            <div data-aos={'fade-up'} data-aos-delay="300" className={'bg-[#0A2E65] items-center  flex-wrap-reverse justify-center lg:flex-nowrap mx-auto mt-1  flex lg:w-[71%] w-[90%] h-[120px] rounded-[24px]'}>
+            <div data-aos={'fade-up'}  className={'bg-[#0A2E65] items-center  flex-wrap-reverse justify-center lg:flex-nowrap mx-auto mt-1  flex lg:w-[71%] w-[90%] h-[120px] rounded-[24px]'}>
                <LoginForBuy orderData={1}/>
                 <div data-aos={'fade-up'} className={'lg:ml-[19%] ml-8 '}>
                     <p className={'text-[#44C0ED] text-[18px]'}>40 تومان</p>
@@ -94,9 +94,9 @@ const Section2Tariffs = () => {
                     <Image src={blueChair} alt={''}/>
                 </div>
             </div>
-            <div data-aos={'fade-up'} data-aos-delay="500"
+            <div data-aos={'fade-up'}
                 className={'bg-[#0A2E65] mt-[18px] relative justify-center lg:flex-nowrap flex-wrap-reverse items-center mx-auto flex lg:w-[71%] w-[90%] h-[120px] rounded-[24px]'}>
-                <div data-aos={'fade-down'} data-aos-delay="700"
+                <div data-aos={'fade-down'}
                     className={'absolute right-0 top:1/3 lg:-right-14 lg:top-0 flex flex-col items-center justify-center'}>
                     <div className={'text-neutral-50 text-lg font-bold origin-top-left rotate-[-10.52deg]'}
                          dir={'rtl'}>3 روز رایگان
