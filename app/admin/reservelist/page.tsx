@@ -114,15 +114,18 @@ const reserveListJalase = [
     },
 ]
 const ReserveList = () => {
-    const m = moment();
-    const [date, setDate] = useState<any>(m.format('YYYY-MM-DD'))
+    const initialDate = moment();
+    const [date, setDate] = useState<any>()
     const [list, setList] = useState<any>()
     const [protect, setProtect] = useState(false)
     const router = useRouter()
-
     useEffect(() => {
-        getCoworkData()
+        setDate(initialDate.format('YYYY-MM-DD'))
         handleProtect()
+    }, []);
+    useEffect(() => {
+        console.log('1')
+        getCoworkData()
     }, [date]);
     const handleProtect = async () => {
 
@@ -140,18 +143,6 @@ const ReserveList = () => {
             } else {
                 setProtect(false)
             }
-            // if (response.status===200) {
-            //     Swal.fire({
-            //         title: 'خوش آمدید',
-            //         text: "وارد پنل خود شدید",
-            //         icon: "success",
-            //         background: '#002256',
-            //         color: '#EEEFEE',
-            //         confirmButtonColor: "#FF792C",
-            //         confirmButtonText: 'باشه',
-            //         backdrop: '#002256'
-            //     })
-            // }
         } catch (e) {
             console.log(e)
             Swal.fire({
@@ -166,15 +157,9 @@ const ReserveList = () => {
             })
             router.push('/')
         }
-
     }
-
-
     const getCoworkData = async () => {
-
-
         try {
-
             const token = localStorage?.getItem('adminToken')
             const res = await axios.get(`https://www.cowork.v1r.ir/api/v1/reservation/cowork?date=${date}`,
                 {
@@ -190,15 +175,16 @@ const ReserveList = () => {
         }
     }
     const incDate = () => {
-        const new_date = m.add(1, 'day').format('YYYY-MM-DD')
+        const new1 = moment(date)
+        const new_date = new1.add(1, 'day').format('YYYY-MM-DD')
         setDate(new_date)
     }
     console.log(date)
     const decDate = () => {
-        const new_date = m.subtract(1, 'day').format('YYYY-MM-DD')
+        const new1 = moment(date)
+        const new_date = new1.subtract(1, 'day').format('YYYY-MM-DD')
         setDate(new_date)
     }
-    console.log(date)
     //@ts-ignore
     return (
         <div className={'bg-[#F8F9FC] flex'}>

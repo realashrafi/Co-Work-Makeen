@@ -2,7 +2,8 @@ import React from "react";
 import type {Metadata} from 'next'
 import './globals.css'
 import localFont from 'next/font/local'
-import {StoreProvider} from "@/app/store/StoreProvider";
+import {StoreProvider} from "@/app/store/redux/StoreProvider";
+import {ReactQueryProvider} from "@/app/store/react-query/ReactQueryProvider";
 
 const myFont = localFont({
     src: './static-Font/IRANYekanRegularFaNum.ttf',
@@ -20,12 +21,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children}: { children: React.ReactNode }) {
     return (
-        <StoreProvider>
-            <html lang="en">
-            <body className={myFont.className}>
-            {children}
-            </body>
-            </html>
-        </StoreProvider>
+        <ReactQueryProvider>
+            <StoreProvider>
+                <html lang="en">
+                <body className={myFont.className}>
+                {children}
+                </body>
+                </html>
+            </StoreProvider>
+        </ReactQueryProvider>
     )
 }

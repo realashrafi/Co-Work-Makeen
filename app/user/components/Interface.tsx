@@ -10,6 +10,7 @@ import {ImMenu} from "react-icons/im";
 import axios from "axios";
 import Swal from "sweetalert2";
 import UploadImage from "@/app/user/components/UploadImage";
+import useMe from "@/app/store/react-query/useMe";
 
 
 const dataOfFav = [
@@ -40,17 +41,18 @@ const dataOfFav = [
     },
 ]
 
-const UserInterface = ({data}: any) => {
+const UserInterface =  () => {
+    const {data} = useMe()
     const [visible, setVisible] = useState(false)
-    const [dob, setDob] = useState<any>()
-    const [phone, setPhone] = useState<any>()
-    const [last_name, setLast_name] = useState<any>()
-    const [first_name, setFirst_name] = useState<any>()
-    const [national_code, setNational_code] = useState<any>()
-    const [gender, setGender] = useState<any>()
-    const [email, setEmail] = useState<any>()
-    const [education, setEducation] = useState<any>()
-    const [userID, setUserID] = useState<any>()
+    const [dob, setDob] = useState<any>(data?.dob.slice(0, 10))
+    const [phone, setPhone] = useState<any>(data?.phone_number)
+    const [last_name, setLast_name] = useState<any>(data?.last_name)
+    const [first_name, setFirst_name] = useState<any>(data?.first_name)
+    const [national_code, setNational_code] = useState<any>(data?.national_code)
+    const [gender, setGender] = useState<any>(data?.gender)
+    const [email, setEmail] = useState<any>(data?.email)
+    const [education, setEducation] = useState<any>(data?.education)
+    const [userID, setUserID] = useState<any>(data?.id)
     useEffect(() => {
         AOS.init({
             duration: 800,
@@ -58,47 +60,30 @@ const UserInterface = ({data}: any) => {
         })
         // handleUseData()
         handleFetch()
-    }, []);
-// const handleUseData = ()=>{
-//     setUserID(data?.id)
-//     setFirst_name(data?.first_name)
-//     setLast_name(data?.last_name)
-//     setEmail(data?.email)
-//     setNational_code(data?.national_code)
-// }
-    const handleFetch = async () => {
-        const token = localStorage?.getItem('userToken');
-        try {
-            const response = await axios.get('https://www.cowork.v1r.ir/api/v1/user/me', {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    Accept: 'application/json',
-                }
-            })
-            console.log(response.data)
-            setUserID(response.data.id)
-            setGender(response.data.gender)
-            setPhone(response.data.phone_number)
-            setDob(response.data.dob.slice(0,10))
-            setFirst_name(response.data.first_name)
-            setLast_name(response.data.last_name)
-            setEducation(response.data.education)
-            setEmail(response.data.email)
-            setNational_code(response.data.national_code)
-        } catch (e) {
-            console.log(e)
-            // Swal.fire({
-            //     title: "خطایی رخ داده",
-            //     text: "لطفا وارد حساب کاربری خود شوید",
-            //     icon: "warning",
-            //     background: '#002256',
-            //     color: '#EEEFEE',
-            //     confirmButtonColor: "#FF792C",
-            //     confirmButtonText: 'باشه',
-            //     backdrop: '#002256'
-            // })
-            // router.push('/')
-        }
+    }, [data]);
+
+    const handleFetch =  () => {
+        // const token = localStorage?.getItem('userToken');
+        // try {
+        //     const response = await axios.get('https://www.cowork.v1r.ir/api/v1/user/me', {
+        //         headers: {
+        //             Authorization: `Bearer ${token}`,
+        //             Accept: 'application/json',
+        //         }
+        //     })
+            // console.log(response.data)
+            setUserID(data?.id)
+            setGender(data?.gender)
+            setPhone(data?.phone_number)
+            setDob(data?.dob.slice(0, 10))
+            setFirst_name(data?.first_name)
+            setLast_name(data?.last_name)
+            setEducation(data?.education)
+            setEmail(data?.email)
+            setNational_code(data?.national_code)
+        // } catch (e) {
+        //     console.log(e)
+        // }
     }
     const handleupdate = async (e: any) => {
         const token = localStorage?.getItem('userToken');
@@ -121,7 +106,7 @@ const UserInterface = ({data}: any) => {
                     Accept: 'application/json',
                 }
             })
-            if (response.status==200){
+            if (response.status == 200) {
                 Swal.fire({
                     title: "انجام شد",
                     text: "",
@@ -130,14 +115,14 @@ const UserInterface = ({data}: any) => {
                     color: '#EEEFEE',
                     confirmButtonColor: "#FF792C",
                     confirmButtonText: 'باشه',
-                    backdrop:'rgba(0,0,0,0.78)'
+                    backdrop: 'rgba(0,0,0,0.78)'
                 })
             }
         } catch (e) {
             console.log(e)
         }
     }
-    // console.log('data',data)
+     console.log('interface',data)
     return (
         <div className={'bg-[#0A2E65] w-[100%] lg:h-[2040px]'}>
             <UserNavbar data={data}/>
@@ -145,7 +130,7 @@ const UserInterface = ({data}: any) => {
                 <div data-aos={'fade-right'}
                      className={'lg:w-[79.3%] w-[100%] h-[1800px] lg:h-[1752PX] bg-[#002256] rounded-[24px] mb-[132px]'}>
                     <div className={'flex mt-[28px] mr-[50px]  justify-end items-center'}>
-                        <UploadImage data={data}/>
+                        <UploadImage />
                     </div>
                     <div className={'h-[32px] mt-[37px] items-center mr-[27px] flex'} style={{direction: "rtl"}}>
                         <svg width="32" className={'ml-[17px]'} height="32" viewBox="0 0 32 32" fill="none"
@@ -188,7 +173,8 @@ const UserInterface = ({data}: any) => {
                                        placeholder={'نام'}/>
                             </div>
                         </div>
-                        <div className={'flex lg:justify-end lg:mt-[39px] lg:flex-nowrap justify-center flex-wrap-reverse '}>
+                        <div
+                            className={'flex lg:justify-end lg:mt-[39px] lg:flex-nowrap justify-center flex-wrap-reverse '}>
 
                             <div className={' mr-[2.16%] w-[80%] lg:w-[22.7%]'}>
                                 <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}

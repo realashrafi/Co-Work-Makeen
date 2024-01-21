@@ -9,10 +9,10 @@ const Navbar = () => {
     return (
         <div>
             <div className={''}>
-                <div className={'flex justify-between px-3 w-full   lg:pl-[7.6%] pt-[35px]'}>
+                <div className={'flex justify-between   px-5 lg:px-3 w-full   lg:pl-[7.6%] pt-[35px]'}>
                     <DropDownNavbar/>
                     <NavbarLinks/>
-                    <Link className={'lg:mr-[8%] '} href={'/'}>
+                    <Link className={'lg:mr-[8%] scale-150 lg:mt-0  mt-5 lg:scale-100 '} href={'/'}>
                         <Image src={iconNavbar} alt={'iconNavbar'}/>
                     </Link>
                 </div>

@@ -10,7 +10,7 @@ import gifIcon from "@/app/components/data/movedIcon.gif";
 const AddSub = () => {
     const [showModalSub, setShowModalSub] = useState(false)
     return (
-        <div className={'mt-[26px]'} style={{zIndex: 2}}>
+        <div className={'my-2'} style={{zIndex: 2}}>
             <Link href={''} onClick={() => setShowModalSub(true)} style={{zIndex: 2}}>
                 <div className={'flex items-center ]'}>
                     <svg width="24" height="20" viewBox="0 0 24 20" fill="none"

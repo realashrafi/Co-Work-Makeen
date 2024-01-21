@@ -5,10 +5,11 @@ import {useEffect, useState} from "react";
 import Swal from "sweetalert2";
 import {useRouter} from "next/navigation";
 import LoadingMakeenLogo from "@/app/components/LoadingMakeenLogo";
+import useMe from "@/app/store/react-query/useMe";
 
 
 const User = () => {
-    const [data, setData] = useState<any>()
+    // const [data, setData] = useState<any>()
     const [validate, setValidate] = useState(false)
     const router = useRouter()
 
@@ -16,21 +17,6 @@ const User = () => {
         // @ts-ignore
         handleFetch()
     }, []);
-    // const handleFetch = (e: any) => {
-    //     const token = localStorage?.getItem('userToken');
-    //     e?.preventDefault()
-    //     axios.get('https://www.cowork.v1r.ir/api/v1/user/me', {
-    //         headers: {
-    //             Authorization: `Bearer ${token}`,
-    //             Accept: 'application/json',
-    //         }
-    //     })
-    //         // .then((res)=> {
-    //         //     res.status !== 200 ? redirect('/') : ''
-    //         // })
-    //         .then((res) => )
-    //         .catch((err) => console.error(err))
-    // }
     const handleFetch = async () => {
         try {
             const token = localStorage?.getItem('userToken');
@@ -40,24 +26,12 @@ const User = () => {
                     Accept: 'application/json',
                 }
             })
-            setData(response.data)
+            // setData(response.data)
             if (response.status == 200) {
                 setValidate(true)
             } else {
                 setValidate(false)
             }
-            // if (response.status===200) {
-            //     Swal.fire({
-            //         title: 'خوش آمدید',
-            //         text: "وارد پنل خود شدید",
-            //         icon: "success",
-            //         background: '#002256',
-            //         color: '#EEEFEE',
-            //         confirmButtonColor: "#FF792C",
-            //         confirmButtonText: 'باشه',
-            //         backdrop: '#002256'
-            //     })
-            // }
         } catch (e) {
             console.log(e)
             Swal.fire({
@@ -72,12 +46,12 @@ const User = () => {
             })
             router.push('/')
         }
-
     }
+
     return (
         <div>
             {validate ?
-                <Interface data={data}/>
+                <Interface />
                 :
                 <LoadingMakeenLogo bg={'#002256'}/>
             }

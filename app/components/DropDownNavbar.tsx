@@ -49,9 +49,9 @@ const DropDownNavbar = () => {
     const statusRegister = {userRegisterStatus, setUserRegisterStatus}
 
     return (
-        <div className=" w-[150px] ">
+        <div className=" mt-2 w-[150px] ">
             <div
-                className={' w-[100%]   h-[32px] bg-[#44C0ED]  rounded-xl'}>
+                className={' w-[150px]   h-[32px] bg-[#44C0ED]  rounded-xl'}>
                 {exist ?
                     <NavbarBuy/>
                     :

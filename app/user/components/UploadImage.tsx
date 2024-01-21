@@ -4,6 +4,7 @@ import ReactModal from "react-modal";
 import axios from "axios";
 import Swal from "sweetalert2";
 import Compressor from 'compressorjs';
+import useMe from "@/app/store/react-query/useMe";
 
 
 // const UploadImage = ({data}: any) => {
@@ -96,10 +97,11 @@ import Compressor from 'compressorjs';
 //     };
 
 
-const UploadImage = ({data}: any) => {
+const UploadImage = () => {
     const [showModal, setShowModal] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
-
+    const {data}=useMe()
+    console.log('upload',data)
     const handleFileChange = (e: any) => {
         const file = e.target.files[0];
         setSelectedFile(file);
@@ -143,7 +145,7 @@ const UploadImage = ({data}: any) => {
                                 color: '#EEEFEE',
                                 confirmButtonColor: '#FF792C',
                                 confirmButtonText: 'باشه',
-                                backdrop:'rgba(0,0,0,0.78)'
+                                backdrop: 'rgba(0,0,0,0.78)'
                             });
                         } else {
                             console.error('خطا در آپلود');
@@ -158,6 +160,7 @@ const UploadImage = ({data}: any) => {
             }
         }
     };
+
     return (
         <div>
             <div className={'relative cursor-pointer'} onClick={() => setShowModal(true)}>
@@ -191,7 +194,7 @@ const UploadImage = ({data}: any) => {
                         right: 0,
                         bottom: 0,
                         backgroundColor: '#00000020',
-                        backdropFilter:'blur(5px)'
+                        backdropFilter: 'blur(5px)'
                     },
                     content: {
                         background: '#002256',
@@ -216,7 +219,9 @@ const UploadImage = ({data}: any) => {
                 <p className={'text-white text-sm mt-2 self-center text-center'}>آپلود عکس ممکن است زمان بر باشد </p>
                 <p className={'text-white text-sm mt-2 self-center text-center'}> پس لطفا شکیبا باشید</p>
                 <div className={'flex justify-center items-center mt-3'}>
-                    <button className={'rounded-xl text-white px-10 py-2 bg-orange-500'} onClick={handleFileUpload}>آپلود</button>
+                    <button className={'rounded-xl text-white px-10 py-2 bg-orange-500'}
+                            onClick={handleFileUpload}>آپلود
+                    </button>
                 </div>
             </ReactModal>
         </div>

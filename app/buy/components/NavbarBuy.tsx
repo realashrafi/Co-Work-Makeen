@@ -47,7 +47,7 @@ const DropDownNavbar = () => {
                     className={'w-[21px] text-white  h-[21px] my-auto'}/>
             </summary>
             <div tabIndex={0}
-                 className="dropdown-content  z-50 card card-compact mt-[16px] w-[310px]  p-2 shadow bg-[#002256] text-primary-content">
+                 className="dropdown-content  z-50 card card-compact mt-[16px] w-[280px] sm:w-[310px]  p-2 shadow bg-[#002256] text-primary-content">
                 <div className={'flex items-center pt-[25px] justify-end'}>
                     <p className={'text-white text-sm font-bold mr-[18px]'}>{me?.first_name} {me?.last_name}</p>
                     {me?.profile_picture ==null ?

@@ -3,7 +3,18 @@ import React, {useEffect, useState} from 'react';
 import {useRouter} from "next/navigation";
 import axios from "axios";
 import Swal from "sweetalert2";
-import LoadingMakeenLogo from "@/app/components/LoadingMakeenLogo";
+import DatePicker, {DateObject} from "react-multi-date-picker"
+//@ts-ignore
+import transition from "react-element-popper/animations/transition"
+import gregorian from "react-date-object/calendars/gregorian";
+import gregorian_fa from "react-date-object/locales/gregorian_fa";
+
+//persian calendar & locale
+import persian from "react-date-object/calendars/persian";
+import persian_fa from "react-date-object/locales/persian_fa";
+import persian_en from "react-date-object/locales/persian_en";
+import gregorian_en from "react-date-object/locales/gregorian_en";
+
 
 const CompleteInformation = () => {
     const router = useRouter()
@@ -17,6 +28,7 @@ const CompleteInformation = () => {
     const [gender, setGender] = useState<any>()
     const [education, setEducation] = useState<any>()
     const [validate, setValidate] = useState(false)
+    const [state, setState] = useState({ format: "MM-DD-YYYY" })
     useEffect(() => {
         //@ts-ignore
         handleFetch()
@@ -57,6 +69,7 @@ const CompleteInformation = () => {
         }
     }
     const handleupdate = async (e: any) => {
+
         const token = localStorage?.getItem('userToken');
         e.preventDefault()
         try {
@@ -64,13 +77,14 @@ const CompleteInformation = () => {
                 first_name: first_name,
                 last_name: last_name,
                 email: email,
-                dob: dob,
+                //@ts-ignore
+                dob: state.gregorian,
                 gender: gender,
                 national_code: national_code,
                 education: education,
-                password: "12345678",
-                password_confirmation: "12345678",
-                current_password: "12345678"
+                // password: "12345678",
+                // password_confirmation: "12345678",
+                // current_password: "12345678"
             }, {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -94,7 +108,19 @@ const CompleteInformation = () => {
             console.log(e)
         }
     }
-    console.log(me)
+    //@ts-ignore
+    const convert = (date, format = state.format="YYYY-MM-DD"):any => {
+        let object = { date, format }
+        setState({
+            //@ts-ignore
+            gregorian: new DateObject(object).convert(gregorian, gregorian_en).format("YYYY-MM-DD"),
+            persian: new DateObject(object).format(),
+            ...object
+        })
+    //@ts-ignore
+        setDob(state.gregorian)
+    }
+    console.log(dob)
     return (
          <div className={'flex w-[100%] flex-col  '}>
             <div className={'flex justify-between lg:mr-[87px] lg:px-[48px] px-2 '}>
@@ -115,10 +141,27 @@ const CompleteInformation = () => {
             <div className={'flex justify-between lg:mr-[87px] lg:px-[48px] px-2 mt-[54px]'}>
                 <div className={'w-[45%]'}>
                     <p className={'text-white text-sm font-normal'} dir={'rtl'}>*تاریخ تولد :</p>
-                    <input type="text" onChange={(e) => setDob(e.target.value)} value={dob}
-                           className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'}
-                           placeholder={'تاریخ تولد'} dir={'rtl'}/>
+                    <DatePicker
+                        animations={[
+                            transition({
+                                from: 35,
+                                transition: "all 400ms cubic-bezier(0.335, 0.010, 0.030, 1.360)",
+                            }),
+                        ]}
+                        //@ts-ignore
+                        value={state.date}
+                        //@ts-ignore
+                        onChange={convert}
+                        inputClass="custom-input"
+                        calendar={persian}
+                        locale={persian_fa}
+                        calendarPosition="bottom-center"
+                    />
+                    {/*<input type="text" onChange={(e) => setDob(e.target.value)} value={dob}*/}
+                    {/*       className={'w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white'}*/}
+                    {/*       placeholder={'تاریخ تولد'} dir={'rtl'}/>*/}
                 </div>
+
                 <div className={'w-[45%]'}>
                     <p className={'text-white text-sm font-normal'} dir={'rtl'}>*کد ملی :</p>
                     <input type="text" onChange={(e) => setNational_code(e.target.value)} value={national_code}

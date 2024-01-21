@@ -9,7 +9,7 @@ const ModalCancelReserve = ({item}: any) => {
     return (
         <div>
             <button onClick={() => setShowModal(true)} disabled={item}
-                    className={'bg-[#002256] disabled:bg-[#0B2855] disabled:opacity-[40%] w-[] text-[#44C0ED] rounded-[12px] lg:ml-[16px] h-[30px] px-[10px] text-[11px] '}>امکان
+                    className={'bg-[#002256] disabled:bg-[#0B2855] disabled:opacity-[40%] w-fit text-[#44C0ED] rounded-[12px] lg:ml-[16px] h-[30px] px-[10px] text-[11px] '}>امکان
                 لغو رزرو
             </button>
             <ReactModal

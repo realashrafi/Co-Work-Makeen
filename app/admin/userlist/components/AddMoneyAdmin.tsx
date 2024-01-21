@@ -7,8 +7,9 @@ import {headers} from "next/headers";
 import Swal from "sweetalert2";
 import Image from "next/image";
 import gifIcon from "@/app/components/data/movedIcon.gif";
-
-const AddMoney = ({data}: any) => {
+//@ts-ignore
+import Toastify from 'toastify-js'
+const AddMoney = ({id,balance,fullName}: any) => {
     const [showModalMoney, setShowModalMoney] = useState(false)
     const [profit, setProfit] = useState<any>()
     const addMoney = async (e: any) => {
@@ -18,7 +19,7 @@ const AddMoney = ({data}: any) => {
         let config = {
             method: 'put',
             maxBodyLength: Infinity,
-            url: `https://www.cowork.v1r.ir/api/v1/user/${data?.id}/add-balance/${profit}`,
+            url: `https://www.cowork.v1r.ir/api/v1/user/${id}/add-balance/${profit}`,
             headers: {
                 'Accept': 'application/json',
                 'Authorization': `Bearer ${token}`
@@ -31,7 +32,7 @@ const AddMoney = ({data}: any) => {
                 console.log(JSON.stringify(response.data));
                 Swal.fire({
                     title: "انجام شد",
-                    text: "در کیف پول شما نشست",
+                    text: `در کیف پول ${fullName} نشست`,
                     icon: "success",
                     background: 'transparent',
                     color: '#EEEFEE',
@@ -40,8 +41,15 @@ const AddMoney = ({data}: any) => {
                     backdrop:'rgba(0,0,0,0.78)'
                 })
                 window.location.reload()
+                // Toastify({
+                //     text: "This is a toast",
+                //     className: "info",
+                //     style: {
+                //         background: "linear-gradient(to right, #00b09b, #96c93d)",
+                //     }
+                // }).showToast();
             })
-                //@ts-ignore
+            //@ts-ignore
             .catch((error) => {
                 console.log(error);
             });
@@ -61,23 +69,15 @@ const AddMoney = ({data}: any) => {
     }
     return (
         <div style={{zIndex: 2}}>
-            <Link href={''} onClick={() => setShowModalMoney(true)}>
-                <div className={'flex my-2 items-center ]'}>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M17.5 0.000373278C17.0536 0.00691877 16.5603 0.102917 15.9464 0.262187C14.1853 0.715999 4.05357 3.45632 4.05357 3.45632C4.03571 3.46068 4.01786 3.46723 4 3.47377C2.39509 4.06504 1.38393 4.62139 0.767857 5.42865C0.15625 6.23155 0.0200891 7.1959 0.0178571 8.34352C0.0178571 8.35006 0.0178571 8.35443 0.0178571 8.36097V8.71006C0.0111606 8.77987 0 8.84969 0 8.91951V20.8582C0 22.584 1.44866 24 3.21429 24H20.7857C22.5513 24 24 22.584 24 20.8582V8.83224C24 7.0519 22.3705 5.56829 20.5714 5.56829H3.42857C2.78795 5.56829 2.21205 5.74719 1.73214 6.03955C2.14732 5.53992 2.9308 5.06866 4.35714 4.53848C4.37277 4.53194 4.37723 4.52758 4.39286 4.52103C4.45759 4.50358 14.529 1.78289 16.2321 1.34435C16.7991 1.19817 17.2232 1.12181 17.5179 1.11745C17.8125 1.11308 17.9509 1.15672 18.0179 1.20472C18.0848 1.25272 18.1406 1.34653 18.1964 1.57126C18.2522 1.79598 18.2857 2.13852 18.2857 2.58361V4.45121H19.4286V2.58361C19.4286 2.09925 19.3973 1.68907 19.3036 1.30944C19.2098 0.929814 19.0268 0.556728 18.6964 0.31455C18.3661 0.072372 17.9464 -0.00617221 17.5 0.000373278ZM3.42857 6.68536H20.5714C21.6853 6.68536 22.8571 7.76753 22.8571 8.83224V20.8582C22.8571 21.9797 21.933 22.8829 20.7857 22.8829H3.21429C2.06473 22.8829 1.14286 21.9818 1.14286 20.8582V9.73986L1.16071 8.81478C1.1942 8.43515 1.39286 7.89407 1.76786 7.4708C2.17634 7.00826 2.73437 6.68536 3.42857 6.68536ZM19.7143 13.3878C18.9241 13.3878 18.2857 14.0118 18.2857 14.7841C18.2857 15.5565 18.9241 16.1805 19.7143 16.1805C20.5022 16.1805 21.1429 15.5565 21.1429 14.7841C21.1429 14.0118 20.5022 13.3878 19.7143 13.3878Z"
-                            fill="#00B570"/>
-                    </svg>
-                    <p className={'text-[#FFFEFF] mx-[8px] text-[16px] '}>افزایش موجودی</p>
-                    <svg width="11" height="15" viewBox="0 0 11 15" fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M10.0529 0.000277263C9.81505 0.00559788 9.58974 0.0800865 9.42345 0.206451L0.26822 7.01684C-0.0894065 7.28287 -0.0894065 7.71384 0.26822 7.97987L9.42345 14.7903C9.65233 14.9685 9.99386 15.0403 10.3157 14.9778C10.6358 14.9153 10.8861 14.7291 10.9702 14.491C11.0542 14.2516 10.9577 13.9975 10.7181 13.8272L2.21013 7.49836L10.7181 1.16948C10.9881 0.97395 11.0703 0.674666 10.9237 0.415285C10.7753 0.157235 10.4302 -0.00770383 10.0529 0.000277263Z"
-                            fill="white"/>
-                    </svg>
+                <div
+                    className={'w-fit mr-[3.5%] ml-3 flex justify-between items-center'}>
+                    <p className={'w-[120px] text-neutral-500 relative right-5 text-[11px] font-bold'}>موجودی
+                        : {balance} تومان</p>
+                    <div className={'w-[2px] mx-2 h-[30px] bg-[#BFBFBF] rounded'}></div>
+                    <div onClick={()=>setShowModalMoney(true)}
+                        className={'w-[67px] h-[24px] cursor-pointer bg-[#01B574] flex justify-center items-center rounded-3xl text-white text-xs font-bold'}>شارژ
+                    </div>
                 </div>
-            </Link>
             <ReactModal
                 style={{
                     overlay: {
@@ -88,10 +88,10 @@ const AddMoney = ({data}: any) => {
                         right: 0,
                         bottom: 0,
                         backgroundColor: '#00000020',
-                        backdropFilter:'blur(5px)'
+                        backdropFilter: 'blur(5px)'
                     },
                     content: {
-                        background: '#002256',
+                        background: '#0C1E41',
                         overflow: 'auto',
                         WebkitOverflowScrolling: 'touch',
                         borderRadius: '24px',
@@ -100,7 +100,7 @@ const AddMoney = ({data}: any) => {
                         border: 'none'
                     }
                 }}
-                isOpen={showModalMoney} className={'transition-transform w-[90%] mt-5 mx-auto lg:w-[38%] h-[609px] '}>
+                isOpen={showModalMoney} className={'transition-transform w-[90%] mt-20 mx-auto lg:w-[38%] h-[609px] '}>
                 <div>
                     <Image src={gifIcon} alt={''} className={'absolute lg:opacity-60 opacity-25 lg:top-20 -top-[17%] scale-[90%] lg:-left-12'}/>
                     <div className={'lg:w-[80%] border-b-[1px] border-[#CCCCCC22] py-8 mx-auto   items-center flex'}>
@@ -113,7 +113,7 @@ const AddMoney = ({data}: any) => {
                     <div
                         className={'lg:w-[383px] w-[90%] flex-col flex justify-center items-center h-[87px] bg-[#026AE1] mx-auto mt-[42px] border-b-[6px] border-[#44C0ED] rounded-[12px]'}>
                         <p className={'text-[#FFFEFF] text-[12px] '}>: موجودی کیف پول </p>
-                        <p className={'text-[#FFFEFF] mt-[10px] text-[12px] '}>{data?.balance} تومان</p>
+                        <p className={'text-[#FFFEFF] mt-[10px] text-[12px] '}>{balance} تومان</p>
                     </div>
                     <div className={'lg:w-[383px] w-[90%] mt-[49px] h-[76px] flex flex-col mx-auto justify-between'}>
                         <p className={'text-[#FFFEFF] text-[14px] '} dir={'rtl'}>مبلغ مورد نظرت را انتخاب یا وارد کن</p>

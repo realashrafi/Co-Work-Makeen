@@ -20,14 +20,14 @@ const Section1Tariffs = () => {
             <div className={' '}>
                 <Navbar/>
             </div>
-            <div className={'flex  lg:flex-nowrap flex-wrap w-full'}>
-                <div  className={'lg:w-1/2  pt-[65px]  w-[88%] mx-auto lg:pl-[110px] flex relative'}>
+            <div  className={'flex  lg:flex-nowrap flex-wrap w-full'}>
+                <div data-aos={'fade-right'} className={'lg:w-1/2  pt-[65px]  w-[88%] mx-auto lg:pl-[110px] flex relative'}>
                     <Image width={377} height={503} className={'rounded-[18px] z-[2] '} src={imgLeft} alt={''}/>
                     <div className={' z-[1] relative lg:left-[-20px] lg:pt-[407px]'}>
                         <Image src={DesignCircle} className={'  '} width={212} height={96} alt={''}/>
                     </div>
                 </div>
-                <div  className={'lg:w-1/2 lg:-mt-0  -mt-36'}>
+                <div data-aos={'fade-down'} className={'mx-auto lg:w-1/2 lg:-mt-0  -mt-36'}>
                     <div className={'lg:w-[550px] '}>
                         <h2 className={'text-[22px] mr-[33%] mx-auto lg:mx-0 text-[#FF792C]  pt-[173px]'} style={{direction: "rtl"}}>صندلی
                             کوورک </h2>

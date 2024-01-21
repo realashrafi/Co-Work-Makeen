@@ -107,14 +107,14 @@ const Section1HomeAdmin = () => {
                                     backgroundColor: '#FF792C',
                                     borderRadius: 10,
                                     barPercentage: 0.5,
-                                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 67, null, null],
+                                    data: [reserves?.values[0].students, reserves?.values[1].students, reserves?.values[2].students, reserves?.values[3].students, reserves?.values[4].students, reserves?.values[5].students, reserves?.values[6].students, reserves?.values[7].students, reserves?.values[8].students, reserves?.values[9].students, reserves?.values[10].students, reserves?.values[11].students],
                                 },
                                 {
                                     label: 'غیر مکینی',
                                     borderRadius: 10,
                                     barPercentage: 0.5,
                                     backgroundColor: '#026AE1',
-                                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 78, null, null],
+                                    data: [reserves?.values[0].not_student, reserves?.values[1].not_student, reserves?.values[2].not_student, reserves?.values[3].not_student, reserves?.values[4].not_student, reserves?.values[5].not_student, reserves?.values[6].not_student, reserves?.values[7].not_student, reserves?.values[8].not_student, reserves?.values[9].not_student, reserves?.values[10].not_student, reserves?.values[11].not_student],
                                 },
                             ],
                         }}

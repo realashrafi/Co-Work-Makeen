@@ -31,7 +31,7 @@ const RegisterModalStep1 = ({statusLogin, statusRegister}: any) => {
     return (
         <div>
             <div className={'cursor-pointer pt-[5px] group'} onClick={() => setShowModal(true)}>
-                <div className={'flex justify-center items-center  '}>
+                <div className={'flex lg:justify-center justify-evenly items-center  '}>
                     <div className="text-white text-sm font-normal mr-[1%] group-hover:text-orange-500 -mt-[3px]">ثبت
                         نام
                     </div>

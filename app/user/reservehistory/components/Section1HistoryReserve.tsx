@@ -75,22 +75,39 @@ const historyData = [
 const Section1HistoryReserve = () => {
     const [length, setLength] = useState(3)
     const [reserveData, setReserveData] = useState<any>()
+    const [url, setUrl] = useState<any>('https://www.cowork.v1r.ir/api/v1/reservation')
+    const [props, setProps] = useState<any>()
     useEffect(() => {
         getHistory()
-    }, []);
+    }, [url]);
     const getHistory = async () => {
         try {
             const token = localStorage?.getItem('userToken');
-            const res = await axios.get('https://www.cowork.v1r.ir/api/v1/reservation/cowork', {
+            const res = await axios.get(url, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     Accept: 'application/json',
                 }
             })
             setReserveData(res.data.data)
+            setProps(res.data.links)
         } catch (e) {
             console.log(e)
         }
+    }
+    const pagination = () => {
+        console.log('props',props)
+        return (
+            <div className={'flex justify-center mt-3'}>
+                {/*// @ts-ignore*/}
+                {props?.slice(1,props.length-1).map(item => (
+                    <div key={item.label} onClick={()=>setUrl(item.url)}
+                         className={'cursor-pointer text-orange-500 w-4  mx-2  rounded-full flex justify-center  items-center'}>
+                        {item.label}
+                    </div>
+                ))}
+            </div>
+        )
     }
     const showButton = () => {
         if (length !== 3) {
@@ -149,8 +166,8 @@ const Section1HistoryReserve = () => {
                                  className={'w-[100%] h-[52px] border-[#FF792C] px-2 border-r-[2px] flex items-center  my-1 bg-[#0A2E65] rounded-[5px]'}>
                                 <div className={' justify-between w-[100%] lg:w-[89%] h-[100%] flex items-center'}>
                                     <p className={'lg:mr-[6.14%] ml-2 text-[#C9C9C9] text-[14px]'}>{item.id}</p>
-                                    <p className={'text-[#C9C9C9] text-[14px]'}>{item.date}</p>
-                                    <p className={'text-[#C9C9C9] text-[14px]'}>کوورک</p>
+                                    <p className={'text-[#C9C9C9] text-[14px]'}>{item.j_date}</p>
+                                    <p className={'text-[#C9C9C9] text-[14px]'}>{item.type == "long-term" ? 'بلند مدت' : 'کوورک'}</p>
                                     <p className={'text-[#C9C9C9] text-[14px]'}> {item.price} تومان </p>
                                     <p className={'lg:ml-[3.5%] mr-2 text-[#C9C9C9] text-[14px]'}>{item.status == 'reserved' ? 'پرداخت شده' : item.status}</p>
                                 </div>
@@ -159,6 +176,7 @@ const Section1HistoryReserve = () => {
                         ))}
                     </div>
                 </div>}
+            {pagination()}
             {showButton()}
         </div>
     );

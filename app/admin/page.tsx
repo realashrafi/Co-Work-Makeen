@@ -1,7 +1,7 @@
 'use client'
 import React, {useState} from 'react';
 import Link from "next/link";
-import {adminLogin, responseData} from "@/app/store/adminLoginSlice";
+import {adminLogin, responseData} from "@/app/store/redux/adminLoginSlice";
 import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
 import {redirect} from 'next/navigation'
