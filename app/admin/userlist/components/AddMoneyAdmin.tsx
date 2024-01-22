@@ -8,14 +8,13 @@ import Swal from "sweetalert2";
 import Image from "next/image";
 import gifIcon from "@/app/components/data/movedIcon.gif";
 //@ts-ignore
-import Toastify from 'toastify-js'
-const AddMoney = ({id,balance,fullName}: any) => {
+const AddMoney = ({id, balance, first_name, last_name}: any) => {
     const [showModalMoney, setShowModalMoney] = useState(false)
     const [profit, setProfit] = useState<any>()
     const addMoney = async (e: any) => {
         e.preventDefault()
         const axios = require('axios');
-        const token = localStorage?.getItem('userToken');
+        const token = localStorage?.getItem('adminToken');
         let config = {
             method: 'put',
             maxBodyLength: Infinity,
@@ -32,22 +31,15 @@ const AddMoney = ({id,balance,fullName}: any) => {
                 console.log(JSON.stringify(response.data));
                 Swal.fire({
                     title: "انجام شد",
-                    text: `در کیف پول ${fullName} نشست`,
+                    text: `در کیف پول ${first_name + ' ' + last_name} نشست`,
                     icon: "success",
                     background: 'transparent',
                     color: '#EEEFEE',
                     confirmButtonColor: "#FF792C",
                     confirmButtonText: 'باشه',
-                    backdrop:'rgba(0,0,0,0.78)'
+                    backdrop: 'rgba(0,0,0,0.78)'
                 })
                 window.location.reload()
-                // Toastify({
-                //     text: "This is a toast",
-                //     className: "info",
-                //     style: {
-                //         background: "linear-gradient(to right, #00b09b, #96c93d)",
-                //     }
-                // }).showToast();
             })
             //@ts-ignore
             .catch((error) => {
@@ -69,15 +61,15 @@ const AddMoney = ({id,balance,fullName}: any) => {
     }
     return (
         <div style={{zIndex: 2}}>
-                <div
-                    className={'w-fit mr-[3.5%] ml-3 flex justify-between items-center'}>
-                    <p className={'w-[120px] text-neutral-500 relative right-5 text-[11px] font-bold'}>موجودی
-                        : {balance} تومان</p>
-                    <div className={'w-[2px] mx-2 h-[30px] bg-[#BFBFBF] rounded'}></div>
-                    <div onClick={()=>setShowModalMoney(true)}
-                        className={'w-[67px] h-[24px] cursor-pointer bg-[#01B574] flex justify-center items-center rounded-3xl text-white text-xs font-bold'}>شارژ
-                    </div>
+            <div
+                className={'w-fit mr-[3.5%] ml-3 flex justify-between items-center'}>
+                <p className={'w-[120px] text-neutral-500 relative right-5 text-[11px] font-bold'}>موجودی
+                    : {balance} تومان</p>
+                <div className={'w-[2px] mx-2 h-[30px] bg-[#BFBFBF] rounded'}></div>
+                <div onClick={() => setShowModalMoney(true)}
+                     className={'w-[67px] h-[24px] cursor-pointer bg-[#01B574] flex justify-center items-center rounded-3xl text-white text-xs font-bold'}>شارژ
                 </div>
+            </div>
             <ReactModal
                 style={{
                     overlay: {
@@ -102,7 +94,8 @@ const AddMoney = ({id,balance,fullName}: any) => {
                 }}
                 isOpen={showModalMoney} className={'transition-transform w-[90%] mt-20 mx-auto lg:w-[38%] h-[609px] '}>
                 <div>
-                    <Image src={gifIcon} alt={''} className={'absolute lg:opacity-60 opacity-25 lg:top-20 -top-[17%] scale-[90%] lg:-left-12'}/>
+                    <Image src={gifIcon} alt={''}
+                           className={'absolute lg:opacity-60 opacity-25 lg:top-20 -top-[17%] scale-[90%] lg:-left-12'}/>
                     <div className={'lg:w-[80%] border-b-[1px] border-[#CCCCCC22] py-8 mx-auto   items-center flex'}>
                         <div className={'flex lg:pr-[33px] pl-4  text-[#FFFEFF] text-[16px] '}
                              style={{direction: 'rtl'}}>
@@ -115,7 +108,8 @@ const AddMoney = ({id,balance,fullName}: any) => {
                         <p className={'text-[#FFFEFF] text-[12px] '}>: موجودی کیف پول </p>
                         <p className={'text-[#FFFEFF] mt-[10px] text-[12px] '}>{balance} تومان</p>
                     </div>
-                    <div className={'lg:w-[383px] w-[90%] mt-[49px] h-[76px] flex flex-col mx-auto justify-between'}>
+                    <div className={'flex items-center text-white justify-center mt-[16px]'}>{first_name} {last_name}</div>
+                    <div className={'lg:w-[383px] w-[90%] mt-[33px] h-[76px] flex flex-col mx-auto justify-between'}>
                         <p className={'text-[#FFFEFF] text-[14px] '} dir={'rtl'}>مبلغ مورد نظرت را انتخاب یا وارد کن</p>
                         <input value={profit}
                                className={'h-[44px] rounded-[12px] text-[#FFFEFF] bg-[#0A2E65] text-center'}

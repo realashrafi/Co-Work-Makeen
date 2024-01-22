@@ -7,69 +7,74 @@ import Swal from "sweetalert2";
 import {useRouter} from "next/navigation";
 import LoadingAdmin from "@/app/components/LoadingAdmin";
 import AddMoneyAdmin from "@/app/admin/userlist/components/AddMoneyAdmin";
+import ChangeBan from "@/app/admin/userlist/components/ChangeBan";
+import useUserList from "@/app/store/react-query/useUserList";
 
-const userList = [
-    {
-        id: 1,
-        fullName: 'محسن عزیزی',
-        callNumber: '0936875492',
-        status: true,
-        age: '26',
-        ability: 'طراح',
-        lovers: 'هنر',
-        balance:500
-    }, {
-        id: 2,
-        fullName: 'علی احمدی',
-        callNumber: '0936875492',
-        status: true,
-        age: '18',
-        ability: 'برنامه نویس',
-        lovers: 'کامپیوتر',
-        balance:430
-    }, {
-        id: 3,
-        fullName: 'مریم حیدری',
-        callNumber: '0936875492',
-        status: false,
-        age: '29',
-        ability: 'طراح',
-        lovers: 'هنر',
-        balance:500
-    }, {
-        id: 4,
-        fullName: 'شهاب رمضانی',
-        callNumber: '0936875492',
-        status: true,
-        age: '26',
-        ability: 'برنامه نویس',
-        lovers: 'هنر',
-        balance:500
-    }, {
-        id: 5,
-        fullName: 'فاطمه حسینی',
-        callNumber: '0936875492',
-        status: true,
-        age: '22',
-        ability: 'برنامه نویس',
-        lovers: 'کامپیوتر',
-        balance:500
-    }, {
-        id: 6,
-        fullName: 'لیلا خانی',
-        callNumber: '0936875492',
-        status: false,
-        age: '20',
-        ability: 'طراح',
-        lovers: 'هنر',
-        balance:500
-    },
-]
+// const userList = [
+//     {
+//         id: 1,
+//         fullName: 'محسن عزیزی',
+//         callNumber: '0936875492',
+//         status: true,
+//         age: '26',
+//         ability: 'طراح',
+//         lovers: 'هنر',
+//         balance:500
+//     }, {
+//         id: 2,
+//         fullName: 'علی احمدی',
+//         callNumber: '0936875492',
+//         status: true,
+//         age: '18',
+//         ability: 'برنامه نویس',
+//         lovers: 'کامپیوتر',
+//         balance:430
+//     }, {
+//         id: 3,
+//         fullName: 'مریم حیدری',
+//         callNumber: '0936875492',
+//         status: false,
+//         age: '29',
+//         ability: 'طراح',
+//         lovers: 'هنر',
+//         balance:500
+//     }, {
+//         id: 4,
+//         fullName: 'شهاب رمضانی',
+//         callNumber: '0936875492',
+//         status: true,
+//         age: '26',
+//         ability: 'برنامه نویس',
+//         lovers: 'هنر',
+//         balance:500
+//     }, {
+//         id: 5,
+//         fullName: 'فاطمه حسینی',
+//         callNumber: '0936875492',
+//         status: true,
+//         age: '22',
+//         ability: 'برنامه نویس',
+//         lovers: 'کامپیوتر',
+//         balance:500
+//     }, {
+//         id: 6,
+//         fullName: 'لیلا خانی',
+//         callNumber: '0936875492',
+//         status: false,
+//         age: '20',
+//         ability: 'طراح',
+//         lovers: 'هنر',
+//         balance:500
+//     },
+// ]
 // @ts-ignore
 const UserList = () => {
+    const {data} =useUserList()
     const [protect, setProtect] = useState(false)
+    console.log('Quser',data)
     useEffect(() => {
         handleProtect()
+        // getUserList()
     }, []);
     const router = useRouter()
     const handleProtect = async () => {
@@ -88,18 +93,6 @@ const UserList = () => {
             } else {
                 setProtect(false)
             }
-            // if (response.status===200) {
-            //     Swal.fire({
-            //         title: 'خوش آمدید',
-            //         text: "وارد پنل خود شدید",
-            //         icon: "success",
-            //         background: '#002256',
-            //         color: '#EEEFEE',
-            //         confirmButtonColor: "#FF792C",
-            //         confirmButtonText: 'باشه',
-            //         backdrop: '#002256'
-            //     })
-            // }
         } catch (e) {
             console.log(e)
             Swal.fire({
@@ -114,8 +107,23 @@ const UserList = () => {
             })
             router.push('/')
         }
-
     }
+    // const getUserList = async () => {
+    //   try {
+    //       const token = localStorage?.getItem('adminToken');
+    //       const res = await axios.get('https://www.cowork.v1r.ir/api/v1/user',{
+    //           headers:{
+    //               Accept: 'application/json',
+    //               Authorization: `Bearer ${token}`
+    //           }
+    //       })
+    //       console.log('userList',res)
+    //   }catch (e) {
+    //       console.log(e)
+    //   }
+    // }
+
+
     return (
         <div className={'bg-[#F8F9FC] flex'}>
             {protect ?
@@ -239,23 +247,23 @@ const UserList = () => {
                                         <p className={'text-[#222222] text-base font-normal mr-[12%]'}>مالی</p>
                                     </div>
                                     <div className={'w-[97.16%] flex  flex-col  mx-auto  '} dir={'rtl'}>
-                                        {userList.map(item => (
+                                        {/*//@ts-ignore*/}
+                                        {data?.map(item => (
                                             <div
                                                 className={'odd:bg-[#026AE114] even:bg-[#FF792C14] mb-[5px] w-[100%] h-[40px] flex  items-center '}
                                                 key={item.id}>
-                                                <p className={'text-[#222222] text-sm font-normal w-[120px] mr-[1%]'}>{item.fullName}</p>
-                                                <p className={'text-[#222222] text-sm font-normal w-[83px] mr-[5.3%]'}>{item.callNumber}</p>
+                                                <div className={'text-[#222222] mr-1 text-sm font-normal'}>{item.id}</div>
+                                                <p className={'text-[#222222] text-sm font-normal w-[120px] mr-[1%]'}>{item.first_name} {item.last_name}</p>
+                                                <p className={'text-[#222222] text-sm font-normal w-[83px] mr-[5.3%]'}>{item.phone_number}</p>
                                                 <button
-                                                    className={'text-[#222222] text-sm font-normal text-center  w-[76px] h-[24px] mr-[7%]'}>{item.status ?
-                                                    <div
-                                                        className={'w-[67px] h-[24px] bg-[#01B574] rounded-[12px] flex items-center justify-center text-white'}>فعال</div> :
-                                                    <div
-                                                        className={'w-[67px] h-[24px] bg-[#C92C35] rounded-[12px] flex items-center justify-center text-white'}>غیرفعال</div>}
+                                                    className={'text-[#222222] text-sm font-normal text-center  w-[76px] h-[24px] mr-[7%]'}>{item.is_ban ?
+                                                    <ChangeBan id={item.id} bg={'#C92C35'} lable={'غیرفعال'}/> :
+                                                    <ChangeBan id={item.id} bg={'#01B574'} lable={'فعال'}/>}
                                                 </button>
                                                 <p className={'text-[#222222] text-sm font-normal w-[26px] mr-[6%]'}>{item.age}</p>
-                                                <p className={'text-[#222222] text-sm font-normal text-center w-[75px] mr-[6%]'}>{item.ability}</p>
-                                                <p className={'text-[#222222] text-sm font-normal text-center w-[60px] mr-[7%]'}>{item.lovers}</p>
-                                                <AddMoneyAdmin fullName={item.fullName} balance={item.balance} id={item.id}/>
+                                                <p className={'text-[#222222] text-sm font-normal text-center w-[75px] mr-[6%]'}>{item.education}</p>
+                                                <p className={'text-[#222222] text-sm font-normal text-center w-[60px] mr-[7%]'}>{item.education_major}</p>
+                                                <AddMoneyAdmin first_name={item.first_name} last_name={item.last_name} balance={item.balance} id={item.id}/>
                                             </div>
                                         ))}
                                     </div>
