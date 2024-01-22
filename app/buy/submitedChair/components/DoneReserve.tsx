@@ -11,7 +11,7 @@ const DoneReserve = () => {
             <div className={'w-[90%] mx-auto rounded-xl  mt-[43px] flex flex-col h-[776px] bg-[#0A2E65]'}>
                 <div className={'relative'}>
                     <div
-                        className="absolute -bottom-7 w-[100%] lg:right-[22%] lg:w-[458px] h-14 bg-[#13B86C] rounded-3xl flex justify-center items-center">
+                        className="absolute z-[2] -bottom-7 w-[100%] lg:right-[22%] lg:w-[458px] h-14 bg-[#13B86C] rounded-3xl flex justify-center items-center">
                         <div className="text-white text-base font-normal mr-[8px]" dir={'rtl'}>رزرو شما با موفقیت ثبت شد .
                         </div>
                         <svg width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -20,25 +20,25 @@ const DoneReserve = () => {
                                   fill="#FFFEFF"/>
                         </svg>
                     </div>
-                    <Image src={doneImage} alt={''}/>
+                    <Image className={'brightness-75'} src={doneImage} alt={''}/>
                 </div>
                 <div
-                    className="w-[65%] mx-auto h-10 bg-[#0A2E65] items-center rounded-xl shadow-md flex justify-between px-[24px] mt-[83px]">
+                    className="w-[65%]  mx-auto h-10 bg-[#0A2E65]  items-center rounded-xl shadow-xl flex justify-between px-[24px] mt-[83px]">
                     <div className={'text-white text-sm font-bold'}>روزانه کوورک</div>
                     <div className={'text-white text-sm font-bold'}>نوع اشتراک</div>
                 </div>
                 <div
-                    className="w-[65%] mx-auto h-10 bg-[#0A2E65] items-center rounded-xl shadow-md flex justify-between px-[24px] mt-[8px]">
+                    className="w-[65%] mx-auto h-10 bg-[#0A2E65] items-center rounded-xl shadow-xl flex justify-between px-[24px] mt-[8px]">
                 <div className={'text-white text-sm font-bold'}>3 روز</div>
                     <div className={'text-white text-sm font-bold'}>تعداد روزهای انتخابی</div>
                 </div>
                 <div
-                    className="w-[65%] mx-auto h-10 bg-[#0A2E65] items-center rounded-xl shadow-md flex justify-between px-[24px] mt-[8px]">
+                    className="w-[65%] mx-auto h-10 bg-[#0A2E65] items-center rounded-xl shadow-xl flex justify-between px-[24px] mt-[8px]">
                     <div className={'text-white text-sm font-bold'}>80 تومان</div>
                     <div className={'text-white text-sm font-bold'}>مبلغ پرداختی</div>
                 </div>
                 <div
-                    className="w-[65%] mx-auto h-10 bg-[#0A2E65] items-center rounded-xl shadow-md flex justify-between px-[24px] mt-[8px]">
+                    className="w-[65%] mx-auto h-10 bg-[#0A2E65] items-center rounded-xl shadow-xl flex justify-between px-[24px] mt-[8px]">
                     <div className={'text-white text-sm font-bold'}>1402/07/14</div>
                     <div className={'text-white text-sm font-bold'}>تاریخ خرید</div>
                 </div>
