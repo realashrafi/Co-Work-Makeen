@@ -257,8 +257,8 @@ const UserList = () => {
                                                 <p className={'text-[#222222] text-sm font-normal w-[83px] mr-[5.3%]'}>{item.phone_number}</p>
                                                 <button
                                                     className={'text-[#222222] text-sm font-normal text-center  w-[76px] h-[24px] mr-[7%]'}>{item.is_ban ?
-                                                    <ChangeBan id={item.id} bg={'#C92C35'} lable={'غیرفعال'}/> :
-                                                    <ChangeBan id={item.id} bg={'#01B574'} lable={'فعال'}/>}
+                                                    <ChangeBan id={item.id} bg={item.is_ban} lable={'غیرفعال'}/> :
+                                                    <ChangeBan id={item.id} bg={item.is_ban} lable={'فعال'}/>}
                                                 </button>
                                                 <p className={'text-[#222222] text-sm font-normal w-[26px] mr-[6%]'}>{item.age}</p>
                                                 <p className={'text-[#222222] text-sm font-normal text-center w-[75px] mr-[6%]'}>{item.education}</p>

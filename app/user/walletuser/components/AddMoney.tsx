@@ -18,7 +18,7 @@ const AddMoney = ({data}: any) => {
         let config = {
             method: 'put',
             maxBodyLength: Infinity,
-            url: `https://www.cowork.v1r.ir/api/v1/user/${data?.id}/add-balance/${profit}`,
+            // url: `https://www.cowork.v1r.ir/api/v1/user/${data?.id}/add-balance/${profit}`,
             headers: {
                 'Accept': 'application/json',
                 'Authorization': `Bearer ${token}`
@@ -43,7 +43,17 @@ const AddMoney = ({data}: any) => {
             })
                 //@ts-ignore
             .catch((error) => {
-                console.log(error);
+                console.log('errrr',error);
+                Swal.fire({
+                    title: 'خطا',
+                    text: "دسترسی ندارید",
+                    icon: "error",
+                    background: 'transparent',
+                    color: '#EEEFEE',
+                    confirmButtonColor: "#FF792C",
+                    confirmButtonText: 'باشه',
+                    backdrop:'rgba(0,0,0,0.78)'
+                })
             });
         // try {
         //     const token = localStorage?.getItem('userToken');

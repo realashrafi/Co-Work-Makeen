@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from "axios";
 
 const ChangeBan = ({id,bg,lable}:any) => {
     const changeBan =async ()=>{
@@ -30,7 +29,7 @@ const ChangeBan = ({id,bg,lable}:any) => {
     return (
         <div>
             <div onClick={changeBan}
-                className={`w-[67px] h-[24px] bg-[${bg}] rounded-[12px] flex items-center justify-center text-white`}>{lable}
+                className={`w-[67px] h-[24px] bg-[${bg?'#026AE1':'#01B574'}] rounded-[12px] flex items-center justify-center text-white`}>{lable}
             </div>
         </div>
     );
