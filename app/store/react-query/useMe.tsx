@@ -2,7 +2,6 @@ import {useQuery} from "react-query";
 import axios from "axios";
 
 function useMe() {
-    // @ts-ignore
     const {data} = useQuery({
         queryKey: ['Me'],
         queryFn: async function () {
