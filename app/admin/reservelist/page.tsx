@@ -118,6 +118,7 @@ const ReserveList = () => {
     const [date, setDate] = useState<any>()
     const [list, setList] = useState<any>()
     const [protect, setProtect] = useState(false)
+    const [loadingCo, setLoadingCo] = useState<any>(false)
     const router = useRouter()
     useEffect(() => {
         setDate(initialDate.format('YYYY-MM-DD'))
@@ -170,6 +171,7 @@ const ReserveList = () => {
                 })
             console.log('ressAdmin', res)
             setList(res)
+            setLoadingCo(false)
         } catch (e) {
             console.log(e)
         }
@@ -177,12 +179,14 @@ const ReserveList = () => {
     const incDate = () => {
         const new1 = moment(date)
         const new_date = new1.add(1, 'day').format('YYYY-MM-DD')
+        setLoadingCo(true)
         setDate(new_date)
     }
     console.log(date)
     const decDate = () => {
         const new1 = moment(date)
         const new_date = new1.subtract(1, 'day').format('YYYY-MM-DD')
+        setLoadingCo(true)
         setDate(new_date)
     }
     //@ts-ignore
@@ -323,7 +327,7 @@ const ReserveList = () => {
                                 </span></p>
                                     </div>
                                     <div className={'w-[97.16%] flex items-center flex-col  mx-auto  '} dir={'rtl'}>
-                                        {list?.data == undefined ?
+                                        { loadingCo ?
                                             <LoadingSmall/>
                                             :
                                             list?.data.length == 0 ?
