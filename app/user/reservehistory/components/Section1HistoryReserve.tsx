@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import ModalCancelReserve from "@/app/user/reservehistory/components/ModalCancelReserve";
 import axios from "axios";
 import IconEmptyWallet from "@/app/user/walletuser/data/IconEmptyWallet";
+import CalenderReserves from "@/app/user/reservehistory/components/CalenderReserves";
 
 const historyData = [
     {
@@ -96,12 +97,12 @@ const Section1HistoryReserve = () => {
         }
     }
     const pagination = () => {
-        console.log('props',props)
+        console.log('props', props)
         return (
             <div className={'flex justify-center mt-3'}>
                 {/*// @ts-ignore*/}
-                {props?.slice(1,props.length-1).map(item => (
-                    <div key={item.label} onClick={()=>setUrl(item.url)}
+                {props?.slice(1, props.length - 1).map(item => (
+                    <div key={item.label} onClick={() => setUrl(item.url)}
                          className={'cursor-pointer text-orange-500 w-4  mx-2  rounded-full flex justify-center  items-center'}>
                         {item.label}
                     </div>
@@ -135,15 +136,16 @@ const Section1HistoryReserve = () => {
                 </div>
                 :
                 <div>
-                    <div className={'flex  justify-between '}>
+                    <div className={'flex  px-3 items-center lg:px-0 justify-between '}>
+                        <CalenderReserves/>
                         <select
-                            className={'lg:w-[15%] lg:mr-[27px] text-center mt-[45px] ml-8 lg:ml-[66.3%]  h-[30px] bg-[#FF792C] text-[12px] text-[#FFFFEF] rounded-[12px]'}
+                            className={'lg:w-[15%] lg:ml-[33%] lg:mr-[27px] text-center mt-[45px]  h-[30px] bg-[#FF792C] text-[12px] text-[#FFFFEF] rounded-[12px]'}
                             style={{direction: "rtl"}}>
                             <option>بر اساس جدیدترین</option>
                             <option>بر اساس جدیدترین</option>
                             <option>بر اساس جدیدترین</option>
                         </select>
-                        <p className={' w-[121px]  mt-[45px]  mr-[65px]  text-[#FFFEFF] text-[18px] font-[500] '}
+                        <p className={' lg:w-[121px]  mt-[45px]  lg:mr-[65px]  text-[#FFFEFF] text-[18px] font-[500] '}
                            style={{direction: "rtl"}}>
                             تاریخچه رزرو ها
                         </p>

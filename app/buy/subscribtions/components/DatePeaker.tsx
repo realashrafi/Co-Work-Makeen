@@ -45,26 +45,7 @@ const DatePeaker = ({dateSelected,setDateSelected}:any) => {
 
     const countdownNumbers = CountDownFunction(Number(currentDate.format().slice(8, 10)));
 
-    // const reserveLongterm = async (e: any) => {
-    //     e.preventDefault()
-    //     try {
-    //         const token = localStorage?.getItem('userToken');
-    //         const res = await axios.post('https://www.cowork.v1r.ir/api/v1/reservation/cowork/reserve/long-term',
-    //             {
-    //                 dates: dateSelected
-    //             },
-    //             {
-    //                 headers: {
-    //                     Authorization: `Bearer ${token}`,
-    //                     Accept: 'application/json',
-    //                 }
-    //             })
-    //         console.log(res)
-    //
-    //     } catch (e) {
-    //         console.log(e)
-    //     }
-    // }
+
     return (
         <div className={'relative w-[100%] flex flex-col mt-[10px] text-white bg-[#002256] rounded-[13px] px-[4px]'}>
             <div className={'flex items-center lg:w-[70%] justify-around mx-auto mt-[16px]'} dir={'rtl'}>

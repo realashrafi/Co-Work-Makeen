@@ -68,4 +68,8 @@
     right: 2px;
     top: 2px;
 }
-
+.rmdp-range {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    color: #13B86C !important;
+}
