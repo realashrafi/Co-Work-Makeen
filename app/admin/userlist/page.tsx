@@ -262,7 +262,7 @@ const UserList = () => {
                                                 </button>
                                                 <p className={'text-[#222222] text-sm font-normal w-[26px] mr-[6%]'}>{item.age}</p>
                                                 <p className={'text-[#222222] text-sm font-normal text-center w-[75px] mr-[6%]'}>{item.education}</p>
-                                                <p className={'text-[#222222] text-sm font-normal text-center w-[60px] mr-[7%]'}>{item.education_major}</p>
+                                                <p className={'text-[#222222] text-sm font-normal text-center w-[60px] mr-[7%]'}>{item.latest_favorite}</p>
                                                 <AddMoneyAdmin first_name={item.first_name} last_name={item.last_name} balance={item.balance} id={item.id}/>
                                             </div>
                                         ))}

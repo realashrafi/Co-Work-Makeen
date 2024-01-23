@@ -140,6 +140,7 @@ const DropDownNavbar = () => {
                      onClick={() => {
                          localStorage.setItem('userToken', '')
                          localStorage.setItem('loginStatus', '')
+                         window.location.reload()
                          Swal.fire({
                              title: "خارج شدید",
                              text: "موفقیت امیز بود",
@@ -150,7 +151,6 @@ const DropDownNavbar = () => {
                              confirmButtonText: 'باشه',
                              backdrop:'rgba(0,0,0,0.78)'
                          })
-                         window.location.reload()
                      }}>
                     <p className={'text-right text-white text-sm font-normal '}>خروج از حساب کاربری</p>
                     <svg className={'ml-[24px]'} width="16" height="16" viewBox="0 0 16 16" fill="none"
