@@ -11,6 +11,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import UploadImage from "@/app/user/components/UploadImage";
 import useMe from "@/app/store/react-query/useMe";
+import LoadingSmall from "@/app/components/LoadingSmall";
 
 
 const dataOfFav = [
@@ -41,10 +42,10 @@ const dataOfFav = [
     },
 ]
 
-const UserInterface =  () => {
+const UserInterface = () => {
     const {data} = useMe()
     const [visible, setVisible] = useState(false)
-    const [dob, setDob] = useState<any>(data?.dob.slice(0, 10))
+    const [dob, setDob] = useState<any>(data?.dob)
     const [phone, setPhone] = useState<any>(data?.phone_number)
     const [last_name, setLast_name] = useState<any>(data?.last_name)
     const [first_name, setFirst_name] = useState<any>(data?.first_name)
@@ -53,6 +54,7 @@ const UserInterface =  () => {
     const [email, setEmail] = useState<any>(data?.email)
     const [education, setEducation] = useState<any>(data?.education)
     const [userID, setUserID] = useState<any>(data?.id)
+    const [loading, setLoading] = useState<any>(false)
     useEffect(() => {
         AOS.init({
             duration: 800,
@@ -62,7 +64,7 @@ const UserInterface =  () => {
         handleFetch()
     }, [data]);
 
-    const handleFetch =  () => {
+    const handleFetch = () => {
         // const token = localStorage?.getItem('userToken');
         // try {
         //     const response = await axios.get('https://www.cowork.v1r.ir/api/v1/user/me', {
@@ -71,22 +73,23 @@ const UserInterface =  () => {
         //             Accept: 'application/json',
         //         }
         //     })
-            // console.log(response.data)
-            setUserID(data?.id)
-            setGender(data?.gender)
-            setPhone(data?.phone_number)
-            setDob(data?.dob.slice(0, 10))
-            setFirst_name(data?.first_name)
-            setLast_name(data?.last_name)
-            setEducation(data?.education)
-            setEmail(data?.email)
-            setNational_code(data?.national_code)
+        // console.log(response.data)
+        setUserID(data?.id)
+        setGender(data?.gender)
+        setPhone(data?.phone_number)
+        setDob(data?.dob.slice(0, 10))
+        setFirst_name(data?.first_name)
+        setLast_name(data?.last_name)
+        setEducation(data?.education)
+        setEmail(data?.email)
+        setNational_code(data?.national_code)
         // } catch (e) {
         //     console.log(e)
         // }
     }
     const handleupdate = async (e: any) => {
         const token = localStorage?.getItem('userToken');
+        setLoading(true)
         e.preventDefault()
         try {
             const response = await axios.put(`https://www.cowork.v1r.ir/api/v1/user/${userID}`, {
@@ -107,6 +110,7 @@ const UserInterface =  () => {
                 }
             })
             if (response.status == 200) {
+                setLoading(false)
                 Swal.fire({
                     title: "انجام شد",
                     text: "",
@@ -119,10 +123,21 @@ const UserInterface =  () => {
                 })
             }
         } catch (e) {
+            setLoading(false)
+            Swal.fire({
+                title: "خطا",
+                text: "کنسول را چک کنید",
+                icon: "error",
+                background: 'transparent',
+                color: '#EEEFEE',
+                confirmButtonColor: "#FF792C",
+                confirmButtonText: 'باشه',
+                backdrop: 'rgba(0,0,0,0.78)'
+            })
             console.log(e)
         }
     }
-     console.log('interface',data)
+    console.log('interface', data)
     return (
         <div className={'bg-[#0A2E65] w-[100%] lg:h-[2040px]'}>
             <UserNavbar data={data}/>
@@ -130,7 +145,7 @@ const UserInterface =  () => {
                 <div data-aos={'fade-right'}
                      className={'lg:w-[79.3%] w-[100%] h-[1800px] lg:h-[1752PX] bg-[#002256] rounded-[24px] mb-[132px]'}>
                     <div className={'flex mt-[28px] mr-[50px]  justify-end items-center'}>
-                        <UploadImage />
+                        <UploadImage/>
                     </div>
                     <div className={'h-[32px] mt-[37px] items-center mr-[27px] flex'} style={{direction: "rtl"}}>
                         <svg width="32" className={'ml-[17px]'} height="32" viewBox="0 0 32 32" fill="none"
@@ -300,7 +315,7 @@ const UserInterface =  () => {
                         <Link className={'w-[40%] px-2 lg:w-[16.9%]'} href={''} onClick={handleupdate}>
                             <div
                                 className={'w-[100%] text-[#FFFEFF] text-[16px] font-[400] bg-[#44C0ED] justify-center h-[48px] flex items-center text-center rounded-[12px]'}>
-                                اعمال تغییرات
+                                {loading?<LoadingSmall/>:'اعمال تغییرات'}
                             </div>
                         </Link>
                         <div className={'text-[#FFFEFF] ml-[5.6%] text-[16px] font-[400]'}>

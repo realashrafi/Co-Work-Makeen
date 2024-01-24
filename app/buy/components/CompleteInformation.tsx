@@ -104,8 +104,18 @@ const CompleteInformation = () => {
                 })
                 router.back()
             }
-        } catch (e) {
+        } catch (e:any) {
             console.log(e)
+            Swal.fire({
+                title: `${e.response.data.message} خطا`,
+                text:`کنسول را چک کنید`,
+                icon: "error",
+                background: 'transparent',
+                color: '#EEEFEE',
+                confirmButtonColor: "#FF792C",
+                confirmButtonText: 'باشه',
+                backdrop: 'rgba(0,0,0,0.78)'
+            })
         }
     }
     //@ts-ignore
@@ -284,7 +294,7 @@ const CompleteInformation = () => {
             </div>
             <div className={'flex justify-end lg:mr-[87px] lg:px-[48px] px-2 mt-[77px]'}>
                 <div
-                    className={'lg:w-[408px] w-[280px] lg:mx-0 mx-auto h-12 rounded-xl flex justify-center items-center text-stone-50 text-lg font-medium bg-[#026AE1]'}
+                    className={'lg:w-[408px] cursor-pointer  w-[280px] lg:mx-0 mx-auto h-12 rounded-xl flex justify-center items-center text-stone-50 text-lg font-medium bg-[#026AE1]'}
                     onClick={handleupdate}>ثبت
                 </div>
             </div>

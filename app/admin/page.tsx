@@ -25,7 +25,30 @@ const Admin = () => {
             setUsername('');
             setPassword('');
             localStorage.setItem('adminToken',res.data.token)
+            if (res.status==200){
+                Swal.fire({
+                    title: `وارد شدید`,
+                    text: "خوش آمدید",
+                    icon: "success",
+                    background: 'transparent',
+                    color: '#EEEFEE',
+                    confirmButtonColor: "#FF792C",
+                    confirmButtonText: '<button >باشه</button>',
+                    backdrop: 'rgba(0,0,0,0.78)'
+                })
+            }
         } catch (error) {
+            Swal.fire({
+                title: `خطا`,
+                //@ts-ignore
+                text: `${error?.response.data.message}`,
+                icon: "error",
+                background: 'transparent',
+                color: '#EEEFEE',
+                confirmButtonColor: "#FF792C",
+                confirmButtonText: '<button >باشه</button>',
+                backdrop: 'rgba(0,0,0,0.78)'
+            })
             console.log(error);
         }
         // dispatch(adminLogin(data))

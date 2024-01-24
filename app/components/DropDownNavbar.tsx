@@ -39,8 +39,21 @@ const DropDownNavbar = () => {
                 setValidate(true)
             }
             setExist(true)
+            if (response.status==500){
+                Swal.fire({
+                    title: "خطا",
+                    text: "خطای غیر منتظره ای رخ داده است لطفا بعدا دوباره امتحان کنید",
+                    icon: "error",
+                    background: 'transparent',
+                    color: '#EEEFEE',
+                    confirmButtonColor: "#FF792C",
+                    confirmButtonText: 'باشه',
+                    backdrop:'rgba(0,0,0,0.78)'
+                })
+            }
         } catch (e) {
             console.log(e)
+
             setValidate(true)
             setExist(false)
         }

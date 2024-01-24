@@ -3,19 +3,25 @@ import React, {useState} from 'react';
 import Image from "next/image";
 import gifIcon from "@/app/components/data/movedIcon.gif";
 import ReactModal from "react-modal";
-import { Calendar, DateObject } from "react-multi-date-picker";
+import {Calendar, DateObject} from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian"
 import persian_fa from "react-date-object/locales/persian_fa"
 import weekends from "react-multi-date-picker/plugins/highlight_weekends";
 import useCalendarData from "@/app/store/react-query/useCalendarData";
 
 const CalenderReserves = () => {
-    const {data}=useCalendarData()
-    const reserved:any= []
+    const {data} = useCalendarData()
+    const reserved: any = []
     //@ts-ignore
-    data?.data.map(item=>{
+    data?.data.map(item => {
         return reserved.push(
-            [new DateObject({ calendar: persian, locale: persian_fa}).setDay(item.days_after_first_day_of_this_month).format(), new DateObject({ calendar: persian, locale: persian_fa}).setDay(item.days_after_first_day_of_this_month).format()],
+            [new DateObject({
+                calendar: persian,
+                locale: persian_fa
+            }).setDay(item.days_after_first_day_of_this_month).format(), new DateObject({
+                calendar: persian,
+                locale: persian_fa
+            }).setDay(item.days_after_first_day_of_this_month).format()],
         )
     })
     // const reservedc = [
@@ -24,35 +30,43 @@ const CalenderReserves = () => {
     // ];
 
     const inService = [
-        [new DateObject({ calendar: persian, locale: persian_fa}).setDay(12).format(), new DateObject({ calendar: persian, locale: persian_fa}).setDay(13).format()],
-        [new DateObject({ calendar: persian, locale: persian_fa}).setDay(27).format(), new DateObject({ calendar: persian, locale: persian_fa}).setDay(27).format()],
+        [new DateObject({calendar: persian, locale: persian_fa}).setDay(12).format(), new DateObject({
+            calendar: persian,
+            locale: persian_fa
+        }).setDay(13).format()],
+        [new DateObject({calendar: persian, locale: persian_fa}).setDay(27).format(), new DateObject({
+            calendar: persian,
+            locale: persian_fa
+        }).setDay(27).format()],
     ];
 
 
-const handle = () => {
-  setShowModal(true)
-    setValues([...reserved])
-}
+    const handle = () => {
+        setShowModal(true)
+        setValues([...reserved])
+    }
+
     function isReserved(strDate: string | number) {
         //@ts-ignore
         return reserved.some(([start, end]) => strDate >= start && strDate <= end);
     }
 
-    function isInService(strDate:string | number) {
+    function isInService(strDate: string | number) {
         return inService.some(([start, end]) => strDate >= start && strDate <= end);
     }
+
     const [showModal, setShowModal] = useState(false)
     const [values, setValues] = useState<any>();
 
-    const style: any = {color: '#EEEFEE', marginTop:24,border: 'none', boxShadow: "none"}
+    const style: any = {color: '#EEEFEE', marginTop: 24, border: 'none', boxShadow: "none"}
 // console.log('cal',reservedc)
-console.log('cal2',reserved)
-console.log('data',data)
+    console.log('cal2', reserved)
+    console.log('data', data)
     // @ts-ignore
     return (
-        <div style={{}}>
+        <div>
             <div onClick={handle}
-                className="w-36 cursor-pointer px-3 mt-[45px] lg:ml-[65px] h-10 bg-[#0A2E65] flex items-center justify-around rounded-[10px]">
+                 className="w-36 cursor-pointer px-3 mt-[45px] lg:ml-[65px] h-10 bg-[#0A2E65] flex items-center justify-around rounded-[10px]">
                 <p className={'text-orange-500 text-sm font-bold'}>تقویم جاری</p>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                      xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
