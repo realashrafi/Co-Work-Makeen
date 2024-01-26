@@ -7,73 +7,7 @@ import CalenderReserves from "@/app/user/reservehistory/components/CalenderReser
 import LoadingSmall from "@/app/components/LoadingSmall";
 import LoadingMakeenLogo from "@/app/components/LoadingMakeenLogo";
 
-const historyData = [
-    {
-        id: 1,
-        num: '1603',
-        date: '19 آبان 1402',
-        sub: 'روزانه کوورک',
-        sum: '30',
-        status: 'پرداخت شده',
-        disable: false
-    }, {
-        id: 2,
-        num: '1602',
-        date: '16 آبان 1402',
-        sub: 'روزانه اتاق جلسات',
-        sum: '30',
-        status: 'پرداخت شده',
-        disable: false
-    }, {
-        id: 3,
-        num: '1601',
-        date: '18 مهر 1402',
-        sub: 'اشتراک بلند مدت کوورک',
-        sum: '500',
-        status: 'پرداخت شده',
-        disable: true
-    }, {
-        id: 4,
-        num: '1601',
-        date: '18 مهر 1402',
-        sub: 'اشتراک بلند مدت کوورک',
-        sum: '500',
-        status: 'پرداخت شده',
-        disable: true
-    }, {
-        id: 5,
-        num: '1601',
-        date: '18 مهر 1402',
-        sub: 'اشتراک بلند مدت کوورک',
-        sum: '500',
-        status: 'پرداخت شده',
-        disable: true
-    }, {
-        id: 6,
-        num: '1601',
-        date: '18 مهر 1402',
-        sub: 'اشتراک بلند مدت کوورک',
-        sum: '500',
-        status: 'پرداخت شده',
-        disable: true
-    }, {
-        id: 7,
-        num: '1601',
-        date: '18 مهر 1402',
-        sub: 'اشتراک بلند مدت کوورک',
-        sum: '500',
-        status: 'پرداخت شده',
-        disable: true
-    }, {
-        id: 8,
-        num: '1601',
-        date: '18 مهر 1402',
-        sub: 'اشتراک بلند مدت کوورک',
-        sum: '500',
-        status: 'پرداخت شده',
-        disable: true
-    },
-]
+
 
 const Section1HistoryReserve = () => {
     const [length, setLength] = useState(3)
