@@ -4,6 +4,8 @@ import ModalCancelReserve from "@/app/user/reservehistory/components/ModalCancel
 import axios from "axios";
 import IconEmptyWallet from "@/app/user/walletuser/data/IconEmptyWallet";
 import CalenderReserves from "@/app/user/reservehistory/components/CalenderReserves";
+import LoadingSmall from "@/app/components/LoadingSmall";
+import LoadingMakeenLogo from "@/app/components/LoadingMakeenLogo";
 
 const historyData = [
     {
@@ -78,6 +80,7 @@ const Section1HistoryReserve = () => {
     const [reserveData, setReserveData] = useState<any>()
     const [url, setUrl] = useState<any>('https://www.cowork.v1r.ir/api/v1/reservation')
     const [props, setProps] = useState<any>()
+    const [loading, setLoading] = useState(false)
     useEffect(() => {
         getHistory()
     }, [url]);
@@ -92,6 +95,7 @@ const Section1HistoryReserve = () => {
             })
             setReserveData(res.data.data)
             setProps(res.data.links)
+            setLoading(false)
         } catch (e) {
             console.log(e)
         }
@@ -102,7 +106,10 @@ const Section1HistoryReserve = () => {
             <div className={'flex justify-center mt-3'}>
                 {/*// @ts-ignore*/}
                 {props?.slice(1, props.length - 1).map(item => (
-                    <div key={item.label} onClick={() => setUrl(item.url)}
+                    <div key={item.label} onClick={() => {
+                        setUrl(item.url)
+                        setLoading(true)
+                    }}
                          className={'cursor-pointer text-orange-500 w-4  mx-2  rounded-full flex justify-center  items-center'}>
                         {item.label}
                     </div>
@@ -162,20 +169,23 @@ const Section1HistoryReserve = () => {
                     <div
                         className={'flex flex-col mt-[16px] h-[190px] overflow-auto mx-auto w-[95%]  lg:justify-start lg:w-[88.27%]'}
                         style={{direction: "rtl"}}>
-                        {/*// @ts-ignore*/}
-                        {reserveData?.slice(0, length).map(item => (
-                            <div key={item.id}
-                                 className={'w-[100%] h-[52px] border-[#FF792C] px-2 border-r-[2px] flex items-center  my-1 bg-[#0A2E65] rounded-[5px]'}>
-                                <div className={' justify-between w-[100%] lg:w-[89%] h-[100%] flex items-center'}>
-                                    <p className={'lg:mr-[6.14%] ml-2 text-[#C9C9C9] text-[14px]'}>{item.id}</p>
-                                    <p className={'text-[#C9C9C9] text-[14px]'}>{item.j_date}</p>
-                                    <p className={'text-[#C9C9C9] text-[14px]'}>{item.type == "long-term" ? 'بلند مدت' : 'کوورک'}</p>
-                                    <p className={'text-[#C9C9C9] text-[14px]'}> {item.price} تومان </p>
-                                    <p className={'lg:ml-[3.5%] mr-2 text-[#C9C9C9] text-[14px]'}>{item.status == 'reserved' ? 'پرداخت شده' : item.status}</p>
+                        {loading ? <LoadingMakeenLogo/>
+                            :
+                            reserveData?.slice(0, length).map(
+                                // @ts-ignore
+                                item => (
+                                <div key={item.id}
+                                     className={'w-[100%] h-[52px] border-[#FF792C] px-2 border-r-[2px] flex items-center  my-1 bg-[#0A2E65] rounded-[5px]'}>
+                                    <div className={' justify-between w-[100%] lg:w-[89%] h-[100%] flex items-center'}>
+                                        <p className={'lg:mr-[6.14%] ml-2 text-[#C9C9C9] text-[14px]'}>{item.id}</p>
+                                        <p className={'text-[#C9C9C9] text-[14px]'}>{item.j_date}</p>
+                                        <p className={'text-[#C9C9C9] text-[14px]'}>{item.type == "long-term" ? 'بلند مدت' : 'کوورک'}</p>
+                                        <p className={'text-[#C9C9C9] text-[14px]'}> {item.price} تومان </p>
+                                        <p className={'lg:ml-[3.5%] mr-2 text-[#C9C9C9] text-[14px]'}>{item.status == 'reserved' ? 'پرداخت شده' : item.status}</p>
+                                    </div>
+                                    <ModalCancelReserve item={item.disable}/>
                                 </div>
-                                <ModalCancelReserve item={item.disable}/>
-                            </div>
-                        ))}
+                            ))}
                     </div>
                 </div>}
             {pagination()}
