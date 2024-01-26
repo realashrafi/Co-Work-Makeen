@@ -10,75 +10,15 @@ import AddMoneyAdmin from "@/app/admin/userlist/components/AddMoneyAdmin";
 import ChangeBan from "@/app/admin/userlist/components/ChangeBan";
 import useUserList from "@/app/store/react-query/useUserList";
 
-// const userList = [
-//     {
-//         id: 1,
-//         fullName: 'محسن عزیزی',
-//         callNumber: '0936875492',
-//         status: true,
-//         age: '26',
-//         ability: 'طراح',
-//         lovers: 'هنر',
-//         balance:500
-//     }, {
-//         id: 2,
-//         fullName: 'علی احمدی',
-//         callNumber: '0936875492',
-//         status: true,
-//         age: '18',
-//         ability: 'برنامه نویس',
-//         lovers: 'کامپیوتر',
-//         balance:430
-//     }, {
-//         id: 3,
-//         fullName: 'مریم حیدری',
-//         callNumber: '0936875492',
-//         status: false,
-//         age: '29',
-//         ability: 'طراح',
-//         lovers: 'هنر',
-//         balance:500
-//     }, {
-//         id: 4,
-//         fullName: 'شهاب رمضانی',
-//         callNumber: '0936875492',
-//         status: true,
-//         age: '26',
-//         ability: 'برنامه نویس',
-//         lovers: 'هنر',
-//         balance:500
-//     }, {
-//         id: 5,
-//         fullName: 'فاطمه حسینی',
-//         callNumber: '0936875492',
-//         status: true,
-//         age: '22',
-//         ability: 'برنامه نویس',
-//         lovers: 'کامپیوتر',
-//         balance:500
-//     }, {
-//         id: 6,
-//         fullName: 'لیلا خانی',
-//         callNumber: '0936875492',
-//         status: false,
-//         age: '20',
-//         ability: 'طراح',
-//         lovers: 'هنر',
-//         balance:500
-//     },
-// ]
-// @ts-ignore
 const UserList = () => {
-    const {data} =useUserList()
     const [protect, setProtect] = useState(false)
-    console.log('Quser',data)
+    const {data} =useUserList()
+
     useEffect(() => {
         handleProtect()
-        // getUserList()
     }, []);
     const router = useRouter()
     const handleProtect = async () => {
-
         try {
             const token = localStorage?.getItem('adminToken');
             const response = await axios.get('https://www.cowork.v1r.ir/api/v1/user/me', {
