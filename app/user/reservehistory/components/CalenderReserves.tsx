@@ -15,13 +15,14 @@ const CalenderReserves = () => {
     //@ts-ignore
     data?.data.map(item => {
         return reserved.push(
-            [new DateObject({
-                calendar: persian,
-                locale: persian_fa
-            }).setDay(item.days_after_first_day_of_this_month).format(), new DateObject({
-                calendar: persian,
-                locale: persian_fa
-            }).setDay(item.days_after_first_day_of_this_month).format()],
+            [item.j_date,item.j_date],
+            // [new DateObject({
+            //     calendar: persian,
+            //     locale: persian_fa
+            // }).setDay(item.days_after_first_day_of_this_month).format(), new DateObject({
+            //     calendar: persian,
+            //     locale: persian_fa
+            // }).setDay(item.days_after_first_day_of_this_month).format()],
         )
     })
     // const reservedc = [
@@ -59,7 +60,7 @@ const CalenderReserves = () => {
     const [values, setValues] = useState<any>();
 
     const style: any = {color: '#EEEFEE', marginTop: 24, border: 'none', boxShadow: "none"}
-// console.log('cal',reservedc)
+    // console.log('cal', reservedc)
     console.log('cal2', reserved)
     console.log('data', data)
     // @ts-ignore
