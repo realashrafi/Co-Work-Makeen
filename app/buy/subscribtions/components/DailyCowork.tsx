@@ -60,6 +60,7 @@ const DailyCowork = () => {
             })
             window.location.assign('/buy/submitedChair')
             if (res.status == 422) {
+                window.location.reload()
                 Swal.fire({
                     title: "خطا",
                     text: `${res.data.message}`,
@@ -73,6 +74,7 @@ const DailyCowork = () => {
             }
         } catch (res: any) {
             console.log('catch', res)
+            window.location.reload()
             Swal.fire({
                 title: "خطا",
                 text: `${res?.response.data.message}`,
@@ -174,7 +176,7 @@ const DailyCowork = () => {
                                 className={'text-white lg:border-none border-[#0A2E65] border-[1px] text-sm font-normal'}
                                 dir={'rtl'}>{item.open} الی {item.close}</div>
                             <div className={'text-white  text-sm font-normal'}>{item.j_date}</div>
-                            <div className={'text-white  text-sm font-normal'}></div>
+                            <div className={'text-white  text-sm font-normal'}>{item.day_of_week}</div>
                             <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
                                  xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                                 <rect width="30" height="30" fill="url(#pattern0)"/>
