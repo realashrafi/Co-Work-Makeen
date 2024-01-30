@@ -1,136 +1,210 @@
 'use client'
-import React from 'react';
+import React, {useState} from 'react';
+import {useQuery} from "react-query";
+import axios from "axios";
+import Swal from "sweetalert2";
+import LoadingMakeenLogo from "@/app/components/LoadingMakeenLogo";
 
 const DailyCowork = () => {
-    const days = [
-        {
-            id: 1,
-            day: 'شنبه',
-            date: '1402/07/13',
-            peak: '8 الی 16',
-            allChair: '25',
-            chairForSale: '10',
-            soldChair: '15',
-            checked: true
-        }, {
-            id: 2,
-            day: 'یکشنبه',
-            date: '1402/07/13',
-            peak: '8 الی 16',
-            allChair: '25',
-            chairForSale: '10',
-            soldChair: '15',
-            checked: true
-        }, {
-            id: 3,
-            day: 'دوشنبه',
-            date: '1402/07/13',
-            peak: '8 الی 16',
-            allChair: '25',
-            chairForSale: '10',
-            soldChair: '15',
-            checked: true
-        }, {
-            id: 4,
-            day: 'سه شنبه',
-            date: '1402/07/13',
-            peak: '8 الی 16',
-            allChair: '25',
-            chairForSale: '10',
-            soldChair: '15',
-            checked: false
-        }, {
-            id: 5,
-            day: 'چهارشنبه ',
-            date: '1402/07/13',
-            peak: '8 الی 16',
-            allChair: '25',
-            chairForSale: '10',
-            soldChair: '15',
-            checked: false
-        }, {
-            id: 6,
-            day: 'پنجشنبه',
-            date: '1402/07/13',
-            peak: '8 الی 16',
-            allChair: '25',
-            chairForSale: '10',
-            soldChair: '15',
-            checked: false
-        }, {
-            id: 7,
-            day: 'شنبه',
-            date: '1402/07/13',
-            peak: '8 الی 16',
-            allChair: '25',
-            chairForSale: '10',
-            soldChair: '15',
-            checked: true
-        }, {
-            id: 8,
-            day: 'یکشنبه',
-            date: '1402/07/13',
-            peak: '8 الی 16',
-            allChair: '25',
-            chairForSale: '10',
-            soldChair: '15',
-            checked: true
-        }, {
-            id: 9,
-            day: 'دوشنبه',
-            date: '1402/07/13',
-            peak: '8 الی 16',
-            allChair: '25',
-            chairForSale: '10',
-            soldChair: '15',
-            checked: true
-        }, {
-            id: 10,
-            day: 'سه شنبه',
-            date: '1402/07/13',
-            peak: '8 الی 16',
-            allChair: '25',
-            chairForSale: '10',
-            soldChair: '15',
-            checked: true
-        }, {
-            id: 11,
-            day: 'چهارشنبه ',
-            date: '1402/07/13',
-            peak: '8 الی 16',
-            allChair: '25',
-            chairForSale: '10',
-            soldChair: '15',
-            checked: true
-        }, {
-            id: 12,
-            day: 'پنجشنبه',
-            date: '1402/07/13',
-            peak: '8 الی 16',
-            allChair: '25',
-            chairForSale: '10',
-            soldChair: '15',
-            checked: true
+    const day = ['شنبه', 'یکشنبه', 'دوشنبه', 'سه شنبه', 'چهارشنبه', 'پنجشنبه', 'جمعه']
+    // const days = [
+    //     {
+    //         id: 1,
+    //         day: 'شنبه',
+    //         date: '1402/07/13',
+    //         peak: '8 الی 16',
+    //         allChair: '25',
+    //         chairForSale: '10',
+    //         soldChair: '15',
+    //         checked: true
+    //     }, {
+    //         id: 2,
+    //         day: 'یکشنبه',
+    //         date: '1402/07/14',
+    //         peak: '8 الی 16',
+    //         allChair: '25',
+    //         chairForSale: '10',
+    //         soldChair: '15',
+    //         checked: false
+    //     }, {
+    //         id: 3,
+    //         day: 'دوشنبه',
+    //         date: '1402/07/15',
+    //         peak: '8 الی 16',
+    //         allChair: '25',
+    //         chairForSale: '10',
+    //         soldChair: '15',
+    //         checked: false
+    //     }, {
+    //         id: 4,
+    //         day: 'سه شنبه',
+    //         date: '1402/07/16',
+    //         peak: '8 الی 16',
+    //         allChair: '25',
+    //         chairForSale: '10',
+    //         soldChair: '15',
+    //         checked: false
+    //     }, {
+    //         id: 5,
+    //         day: 'چهارشنبه',
+    //         date: '1402/07/17',
+    //         peak: '8 الی 16',
+    //         allChair: '25',
+    //         chairForSale: '10',
+    //         soldChair: '15',
+    //         checked: false
+    //     }, {
+    //         id: 6,
+    //         day: 'پنجشنبه',
+    //         date: '1402/07/18',
+    //         peak: '8 الی 16',
+    //         allChair: '25',
+    //         chairForSale: '10',
+    //         soldChair: '15',
+    //         checked: false
+    //     }, {
+    //         id: 7,
+    //         day: 'شنبه',
+    //         date: '1402/07/13',
+    //         peak: '8 الی 16',
+    //         allChair: '25',
+    //         chairForSale: '10',
+    //         soldChair: '15',
+    //         checked: true
+    //     }, {
+    //         id: 8,
+    //         day: 'یکشنبه',
+    //         date: '1402/07/13',
+    //         peak: '8 الی 16',
+    //         allChair: '25',
+    //         chairForSale: '10',
+    //         soldChair: '15',
+    //         checked: true
+    //     }, {
+    //         id: 9,
+    //         day: 'دوشنبه',
+    //         date: '1402/07/13',
+    //         peak: '8 الی 16',
+    //         allChair: '25',
+    //         chairForSale: '10',
+    //         soldChair: '15',
+    //         checked: true
+    //     }, {
+    //         id: 10,
+    //         day: 'سه شنبه',
+    //         date: '1402/07/13',
+    //         peak: '8 الی 16',
+    //         allChair: '25',
+    //         chairForSale: '10',
+    //         soldChair: '15',
+    //         checked: true
+    //     }, {
+    //         id: 11,
+    //         day: 'چهارشنبه ',
+    //         date: '1402/07/13',
+    //         peak: '8 الی 16',
+    //         allChair: '25',
+    //         chairForSale: '10',
+    //         soldChair: '15',
+    //         checked: true
+    //     }, {
+    //         id: 12,
+    //         day: 'پنجشنبه',
+    //         date: '1402/07/13',
+    //         peak: '8 الی 16',
+    //         allChair: '25',
+    //         chairForSale: '10',
+    //         soldChair: '15',
+    //         checked: true
+    //     },
+    // ]
+    const [selectedDay, setSelectedDay] = useState<any>([])
+    const [selectedDay2, setSelectedDay2] = useState<any>([])
+    const [weeks, setWeeks] = useState<any>('this-week')
+    // @ts-ignore
+    const {data, isLoading,refetch} = useQuery({
+        queryKey: ['reserveDailyCowork'],
+        queryFn: async function () {
+            const token = localStorage?.getItem('userToken')
+            const res = axios.get(`https://www.cowork.v1r.ir/api/v1/reservation/cowork/status/${weeks}`, {
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            return res
         },
-    ]
-    const selectedDay = [
-        {
-            id: 1,
-            date: 'شنبه 1402/07/13',
-        }, {
-            id: 2,
-            date: 'یکشنبه 1402/07/13',
-        }, {
-            id: 3,
-            date: 'دوشنبه 1402/07/13',
-        },
+        
+    })
+    if (isLoading) return <LoadingMakeenLogo/>
+    // const handleDay = (index:any) => {
+    //     if (data?.data[index] === 0) {
+    //         return 'شنبه'
+    //     } if (data?.data[index] === 1) {
+    //         return 'یکشنبه'
+    //     }
+    // }
+    const reserveDailyCowork = async (e: any) => {
+        e.preventDefault()
+        try {
+            const token = localStorage?.getItem('userToken');
+            const res = await axios.post('https://www.cowork.v1r.ir/api/v1/reservation/cowork/reserve/long-term',
+                {
+                    dates: selectedDay2
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        Accept: 'application/json',
+                    }
+                })
+            console.log(res)
+            Swal.fire({
+                title: "انجام شد",
+                text: "خرید شما موفق بود",
+                icon: "success",
+                background: '#002256',
+                color: '#EEEFEE',
+                confirmButtonColor: "#FF792C",
+                confirmButtonText: 'باشه',
+                backdrop: '#002256'
+            })
+            window.location.assign('/buy/submitedChair')
+            if (res.status == 422) {
+                Swal.fire({
+                    title: "خطا",
+                    text: `${res.data.message}`,
+                    icon: "warning",
+                    background: '#002256',
+                    color: '#EEEFEE',
+                    confirmButtonColor: "#FF792C",
+                    confirmButtonText: 'باشه',
+                    backdrop: '#002256'
+                })
+            }
+        } catch (res: any) {
+            console.log('catch', res)
+            Swal.fire({
+                title: "خطا",
+                text: `${res?.response.data.message}`,
+                icon: "warning",
+                background: '#002256',
+                color: '#EEEFEE',
+                confirmButtonColor: "#FF792C",
+                confirmButtonText: 'باشه',
+                backdrop: '#002256'
+            })
+        }
+    }
+    console.log('days', data)
+    console.log('selectedDay2', selectedDay2)
 
-    ]
     return (
         <div className={'lg:w-[80%] flex  flex-col items-center mx-auto'}>
             <div className={'text-white text-base font-bold mt-[32px]'}>خرید اشتراک روزانه کوورک</div>
             <div className={'text-orange-500 text-sm font-normal mt-[8px]'}>هزینه روزانه 30 تومان</div>
-            <div className={'w-[100%] flex lg:justify-between justify-center mx-auto  flex-wrap  lg:flex-nowrap items-center mt-[70px]'}>
+            <div
+                className={'w-[100%] flex lg:justify-between justify-center mx-auto  flex-wrap  lg:flex-nowrap items-center mt-[70px]'}>
                 <div className={'flex  items-center w-[90%]'}>
                     <div className={'text-white text-sm font-bold '}>تعداد صندلی های پر شده</div>
                     <div className={'w-4 h-4 rounded-full bg-[#FF792C] ml-2'}></div>
@@ -144,20 +218,27 @@ const DailyCowork = () => {
                     <div className={'w-4 h-4 rounded-full bg-[#FFFEFF] ml-2'}></div>
                 </div>
             </div>
-            <div className={'flex lg:flex-nowrap flex-wrap-reverse items-center justify-between mt-[36px]'}>
+            <div className={'flex lg:w-[99%] lg:flex-nowrap flex-wrap-reverse items-center justify-between mt-[36px]'}>
                 <div className={'text-sky-400 text-xs font-bold'}>
                     بیشتر
                 </div>
                 <svg width="3" height="22" viewBox="0 0 3 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path id="Line 203" d="M1.5 1L1.5 21" stroke="#44C0ED" strokeWidth="2" strokeLinecap="round"/>
                 </svg>
-                <div className={'lg:w-[60%] flex lg:flex-nowrap flex-wrap justify-center '} dir={'rtl'}>
-                    {selectedDay.slice(0, 3).map(item => (
+                <div className={'lg:w-[60%] flex  flex-wrap justify-center '} dir={'rtl'}>
+                    {/*// @ts-ignore*/}
+                    {selectedDay?.slice().map(item => (
                         <div dir={'ltr'}
-                            className={'w-[146px] lg:my-0 my-1 h-8 bg-[#002256] rounded-[32px] justify-evenly flex items-center mx-[2px]'}
-                            key={item.id}>
-                            <div className={'text-white text-xs font-normal'}>{item.date}</div>
-                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
+                             className={'w-[146px] lg:my-0 my-1 h-8 bg-[#002256] rounded-[32px] justify-evenly flex items-center mx-[2px]'}
+                            //@ts-ignore
+                             key={item.id}>
+                            {/*// @ts-ignore*/}
+                            <div className={'text-white text-xs font-normal'}>{item.j_date}</div>
+                            <svg onClick={() => {
+                                //@ts-ignore
+                                setSelectedDay(selectedDay.filter(id => item.id == id))
+                                window.location.reload()
+                            }} className={'cursor-pointer'} width="10" height="10" viewBox="0 0 10 10" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path id="Vector"
                                       d="M0.181522 9.81848C0.0652937 9.70222 0 9.54455 0 9.38015C0 9.21575 0.0652937 9.05809 0.181522 8.94182L4.12709 4.99626L0.181522 1.05069C0.0685877 0.933761 0.00609703 0.777152 0.00750961 0.614594C0.00892219 0.452037 0.0741255 0.296539 0.189075 0.181589C0.304025 0.0666393 0.459523 0.00143602 0.622081 2.3437e-05C0.784638 -0.00138914 0.941247 0.0611015 1.05818 0.174036L5.00374 4.1196L8.94931 0.174036C9.06624 0.0611015 9.22285 -0.00138914 9.38541 2.3437e-05C9.54796 0.00143602 9.70346 0.0666393 9.81841 0.181589C9.93336 0.296539 9.99856 0.452037 9.99998 0.614594C10.0014 0.777152 9.9389 0.933761 9.82596 1.05069L5.8804 4.99626L9.82596 8.94182C9.9389 9.05875 10.0014 9.21536 9.99998 9.37792C9.99856 9.54048 9.93336 9.69598 9.81841 9.81093C9.70346 9.92588 9.54796 9.99108 9.38541 9.99249C9.22285 9.9939 9.06624 9.93141 8.94931 9.81848L5.00374 5.87291L1.05818 9.81848C0.941913 9.93471 0.784247 10 0.61985 10C0.455453 10 0.297786 9.93471 0.181522 9.81848Z"
@@ -180,27 +261,31 @@ const DailyCowork = () => {
                 </svg>
             </div>
             <div className={'flex flex-col mt-[50px] '}>
-                {days.slice(0, 6).map(item => (
-                    <div key={item.id} className={'flex lg:w-[100%]  h-[56px] my-1'}>
+                {/*//@ts-ignore*/}
+                {data?.data.slice(0, 6).map((item, index) => (
+                    <div key={item.id}
+                         className={`${!item.is_reservable ? 'opacity-30' : ''} flex lg:w-[100%]  h-[56px]  my-1`}>
                         <div className={'flex justify-around lg:w-[180px] w-[30%] bg-[#002256] rounded-l-full'}>
                             <div className={'flex items-center text-sm font-bold text-[#FF792C]'}>
-                                {item.soldChair}
+                                {item.reservedChairs}
                                 <div className="w-4 h-4 bg-[#FF792C] rounded-full lg:ml-[8px]"/>
                             </div>
                             <div className={'flex items-center text-sm font-bold text-[#44C0ED]'}>
-                                {item.chairForSale}
+                                {item.remainingChairs}
                                 <div className="w-4 h-4 bg-[#44C0ED] rounded-full lg:ml-[8px]"/>
                             </div>
                             <div className={'flex items-center text-sm font-bold text-[#EEEFEE]'}>
-                                {item.allChair}
+                                {item.totalChairs}
                                 <div className="w-4 h-4 bg-[#EEEFEE] rounded-full lg:ml-[8px]"/>
                             </div>
                         </div>
                         <div
                             className={'flex lg:w-[435px] w-[80%] relative items-center justify-around bg-[#002256] rounded-r-[14px] border-[#0A2E65] border-l-[2px]'}>
-                            <div className={'text-white lg:border-none border-[#0A2E65] border-[1px] text-sm font-normal'} dir={'rtl'}>{item.peak}</div>
-                            <div className={'text-white  text-sm font-normal'}>{item.date}</div>
-                            <div className={'text-white  text-sm font-normal'}>{item.day}</div>
+                            <div
+                                className={'text-white lg:border-none border-[#0A2E65] border-[1px] text-sm font-normal'}
+                                dir={'rtl'}>{item.open} الی {item.close}</div>
+                            <div className={'text-white  text-sm font-normal'}>{item.j_date}</div>
+                            <div className={'text-white  text-sm font-normal'}></div>
                             <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
                                  xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                                 <rect width="30" height="30" fill="url(#pattern0)"/>
@@ -212,13 +297,23 @@ const DailyCowork = () => {
                                            xlinkHref="data:image/png;base64,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"/>
                                 </defs>
                             </svg>
-                            <div
-                                className={`absolute right-0 rounded-full w-1 h-[30px]  ${item.checked ? 'bg-[#44C0ED]' : ''}`}></div>
+                            {/*<div*/}
+                            {/*    className={`absolute right-0 rounded-full w-1 h-[30px]  ${item.checked ? 'bg-[#44C0ED]' : ''}`}></div>*/}
                         </div>
                         <div className={'flex items-center ml-4 lg:ml-[20px]'}>
                             <label
                                 className="cursor-pointer  duration-300 relative overflow-hidden w-[30px] h-[30px] flex justify-center items-center  rounded-lg bg-[#002256] ">
-                                <input className="peer  hidden" type="checkbox" checked={item.checked}/>
+                                <input className="peer  hidden" type="checkbox" disabled={!item.is_reservable}
+                                       onClick={() => {
+                                           if (item.is_reservable == true) {
+                                               setSelectedDay([...selectedDay, {
+                                                   id: item.date,
+                                                   date: item.date,
+                                                   j_date: item.j_date
+                                               }])
+                                               setSelectedDay2([...selectedDay2,item.date])
+                                           }
+                                       }}/>
                                 <div
                                     className="w-[30px] h-[30px]   opacity-0 peer-checked:opacity-100 bg-[#44C0ED] scale-0 transition-all z-20 duration-300  peer-checked:transition-all rounded-md top-2 left-2 peer-checked:scale-100 peer-checked:duration-300 peer-checked:bg-[#44C0ED]">
                                 </div>
@@ -228,14 +323,20 @@ const DailyCowork = () => {
                 ))}
             </div>
             <div className={'flex w-[100%] justify-start items-center mt-[65px] '}>
-                <div
-                    className="w-[170px] h-[45px] bg-[#002256] rounded-[15px] flex justify-center items-center text-white text-sm font-bold ">هفته
+                <button onClick={()=> {
+                    setWeeks('next-week')
+                    refetch()
+                }}
+                    className={`w-[170px] h-[45px] bg-[#002256] rounded-[15px] flex justify-center items-center ${weeks=='next-week'?'text-[#44C0ED]':'text-white'} text-sm font-bold `}>هفته
                     بعد
-                </div>
-                <div
-                    className="w-[170px] h-[45px]  rounded-[15px] flex justify-center items-center text-sm font-bold text-[#44C0ED]">هفته
+                </button>
+                <button onClick={()=> {
+                    setWeeks('this-week')
+                    refetch()
+                }}
+                    className={`w-[170px] h-[45px]  rounded-[15px] flex justify-center items-center text-sm font-bold ${weeks=='this-week'?'text-[#44C0ED]':'text-white'}`}>هفته
                     جاری
-                </div>
+                </button>
             </div>
             <div className={'flex justify-end w-[85%] mt-[16px]'}>
                 <div className="text-right"><span
@@ -254,13 +355,13 @@ const DailyCowork = () => {
                 <div>
                     <span
                         className="text-white text-sm font-bold">مبلغ قابل پرداخت : </span><span
-                        className="text-white text-base font-bold ">180</span><span
-                        className="text-white text-sm font-bold"> </span><span
-                        className="text-white text-sm font-normal">تومان</span>
+                    className="text-white text-base font-bold ">180</span><span
+                    className="text-white text-sm font-bold"> </span><span
+                    className="text-white text-sm font-normal">تومان</span>
                 </div>
             </div>
-            <button
-                className={'flex justify-center items-center text-white text-lg font-medium bg-[#026AE1] w-[40%] lg:w-[408px] h-12 rounded-xl mt-[40px]'}>
+            <button onClick={reserveDailyCowork}
+                    className={'flex justify-center items-center text-white text-lg font-medium bg-[#026AE1] w-[40%] lg:w-[408px] h-12 rounded-xl mt-[40px]'}>
                 پرداخت
             </button>
         </div>
