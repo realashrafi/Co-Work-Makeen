@@ -4,14 +4,17 @@ import Image from "next/image";
 import blueChair from '../components/data/desk-chair.png'
 import LoginForBuy from "@/app/buy/components/LoginForBuy";
 import AOS from "aos";
+import usePriceDefault from "@/app/store/react-query/usePriceDefault";
 
 const Section2Tariffs = () => {
+    const {priceDefault}=usePriceDefault()
     useEffect(() => {
         AOS.init({
             duration: 400,
             once: false,
         })
     }, []);
+    console.log('priceDefault',priceDefault)
     return (
         <section className={'bg-[#002256] flex flex-col   pt-[53px]'}>
             <div data-aos={'fade-up'}
@@ -21,7 +24,7 @@ const Section2Tariffs = () => {
             <div data-aos={'fade-up'}  className={'bg-[#0A2E65] items-center justify-center mx-auto mt-2 lg:mt-0 lg:flex-nowrap flex-wrap-reverse  flex lg:w-[71%] w-[90%] h-[120px] rounded-[24px]'}>
                 <LoginForBuy orderData={1}/>
                 <div data-aos={'fade-up'} className={'lg:ml-[19%] ml-8 '}>
-                    <p className={'text-[#FF792C]  text-[18px]'}>30 تومان</p>
+                    <p className={'text-[#FF792C]  text-[18px]'}>{priceDefault?.data.coWork.price.student.perDay} تومان</p>
                 </div>
                 <div data-aos={'fade-up'} className={'flex flex-col lg:ml-[14%]'} style={{direction: "rtl"}}>
                     <p className={'text-[16px] text-[#FFFFFF] '}>اشتراک روزانه</p>
@@ -55,7 +58,7 @@ const Section2Tariffs = () => {
                 {/*</div>*/}
                 <LoginForBuy orderData={2}/>
                 <div data-aos={'fade-up'} className={'lg:ml-[18%] ml-8'}>
-                    <p className={'text-[#FF792C] text-[18px]'}>500 تومان</p>
+                    <p className={'text-[#FF792C] text-[18px]'}>{priceDefault?.data.coWork.price.student.perMonth} تومان</p>
                 </div>
                 <div data-aos={'fade-up'} className={'flex flex-col lg:ml-[14%]'} style={{direction: "rtl"}}>
                     <p className={'text-[16px] text-[#FFFFFF] '}> اشتراک بلند مدت</p>
@@ -84,7 +87,7 @@ const Section2Tariffs = () => {
             <div data-aos={'fade-up'}  className={'bg-[#0A2E65] items-center  flex-wrap-reverse justify-center lg:flex-nowrap mx-auto mt-1  flex lg:w-[71%] w-[90%] h-[120px] rounded-[24px]'}>
                <LoginForBuy orderData={1}/>
                 <div data-aos={'fade-up'} className={'lg:ml-[19%] ml-8 '}>
-                    <p className={'text-[#44C0ED] text-[18px]'}>40 تومان</p>
+                    <p className={'text-[#44C0ED] text-[18px]'}>{priceDefault?.data.coWork.price.normal.perDay} تومان</p>
                 </div>
                 <div data-aos={'fade-up'} className={'flex flex-col lg:ml-[14%]'} style={{direction: "rtl"}}>
                     <p className={'text-[16px] text-[#FFFFFF] '}>اشتراک روزانه</p>
@@ -112,7 +115,7 @@ const Section2Tariffs = () => {
                 </div>
                 <LoginForBuy orderData={2}/>
                 <div data-aos={'fade-up'} className={'lg:ml-[18%] ml-8'}>
-                    <p className={'text-[#44C0ED] text-[18px]'}>650 تومان</p>
+                    <p className={'text-[#44C0ED] text-[18px]'}>{priceDefault?.data.coWork.price.normal.perMonth} تومان</p>
                 </div>
                 <div data-aos={'fade-up'} className={'flex flex-col ml-8 lg:ml-[14%]'} style={{direction: "rtl"}}>
                     <p className={'text-[16px] text-[#FFFFFF] '}> اشتراک بلند مدت</p>

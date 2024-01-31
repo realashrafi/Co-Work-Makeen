@@ -3,9 +3,11 @@ import React, {useState} from 'react';
 import DatePeaker from "@/app/buy/subscribtions/components/DatePeaker";
 import axios from "axios";
 import Swal from "sweetalert2";
+import usePrice from "@/app/store/react-query/usePrice";
 
 const LongTermCowork = () => {
-    const [dateSelected, setDateSelected] = useState<any>()
+    const [dateSelected, setDateSelected] = useState<any>([])
+    const {price}=usePrice()
     const reserveLongterm = async (e: any) => {
         e.preventDefault()
         try {
@@ -61,7 +63,7 @@ const LongTermCowork = () => {
     return (
         <div className={'w-[90%] flex flex-col items-center mx-auto'}>
             <div className={'text-white text-base font-bold mt-[32px]'}>خرید اشتراک بلند مدت کوورک</div>
-            <div className={'text-white text-xs font-normal mt-[8px]'}>هزینه بلند مدت 450 تومان</div>
+            <div className={'text-white text-xs font-normal mt-[8px]'}>هزینه بلند مدت {price?.data.perMonth} تومان</div>
             <div className={'w-[100%] flex justify-end mt-[40px]'}>
                 <div><span className="text-orange-500 text-sm font-bold ">توجه :</span><span
                     className="text-white text-sm font-bold "> </span><span
@@ -108,7 +110,7 @@ const LongTermCowork = () => {
                     </div>
                 </div>
                 <input className="w-[122px] h-8 bg-[#002256] rounded-lg px-[16px]" dir={'rtl'}
-                       placeholder={'تعداد روز :'}/>
+                       placeholder={'تعداد روز :'} value={`تعداد روز :${dateSelected?.length}`}/>
             </div>
             <div className={'flex justify-center lg:scale-100 scale-[85%]'}>
             <DatePeaker dateSelected={dateSelected} setDateSelected={setDateSelected} />
@@ -132,7 +134,7 @@ const LongTermCowork = () => {
             </div>
             <div className={'flex w-full justify-end mt-[12px]'}>
                 <div><span className="text-white text-sm font-bold ">مبلغ قابل پرداخت : </span><span
-                    className="text-white text-base font-bold fo">450</span><span
+                    className="text-white text-base font-bold fo">{price?.data.perDay * dateSelected?.length}</span><span
                     className="text-white text-sm font-bold "> </span><span
                     className="text-white text-sm font-normal ">تومان</span></div>
             </div>

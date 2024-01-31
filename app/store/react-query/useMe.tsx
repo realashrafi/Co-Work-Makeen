@@ -14,7 +14,6 @@ function useMe() {
             })
             return res.data
         },
-        refetchOnWindowFocus:false
     })
     return {data}
 }

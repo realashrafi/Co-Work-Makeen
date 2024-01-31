@@ -7,8 +7,10 @@ import Image from "next/image";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import LoginForBuy from "@/app/buy/components/LoginForBuy";
+import usePriceDefault from "@/app/store/react-query/usePriceDefault";
 
 const Section3Tariffs = () => {
+    const {priceDefault}=usePriceDefault()
     useEffect(() => {
         AOS.init({
             duration: 800,
@@ -54,7 +56,7 @@ const Section3Tariffs = () => {
                             <LoginForBuy orderData={4}/>
                         </div>
                         <div className={'lg:ml-[23%] ml-8 mt-[57px] '}>
-                            <p className={'text-[18px] text-[#FFFEFF]'}>20 تومان</p>
+                            <p className={'text-[18px] text-[#FFFEFF]'}>{priceDefault?.data.sessionRoom.price.normal.perHour} تومان</p>
                         </div>
                         <div className={'lg:w-[13%] w-fit lg:ml-[18%] pt-[45px] flex-col'} style={{direction: "rtl"}}>
                             <p className={'text-[16px] text-[#FFFFFF]'}>اشتراک ساعتی</p>
@@ -73,7 +75,7 @@ const Section3Tariffs = () => {
                             <LoginForBuy orderData={3}/>
                         </div>
                         <div className={'lg:ml-[23%] ml-8 mt-[57px] '}>
-                            <p className={'text-[18px] text-[#FFFEFF]'}>100 تومان</p>
+                            <p className={'text-[18px] text-[#FFFEFF]'}>{priceDefault?.data.sessionRoom.price.normal.perDay} تومان</p>
                         </div>
                         <div className={'lg:w-[13%] lg:ml-[18%] pt-[45px] flex-col'} style={{direction: "rtl"}}>
                             <p className={'text-[16px] text-[#FFFFFF]'}>اشتراک روزانه</p>

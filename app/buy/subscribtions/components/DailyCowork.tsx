@@ -4,14 +4,16 @@ import {useQuery} from "react-query";
 import axios from "axios";
 import Swal from "sweetalert2";
 import LoadingMakeenLogo from "@/app/components/LoadingMakeenLogo";
+import usePrice from "@/app/store/react-query/usePrice";
 
 const DailyCowork = () => {
     const day = ['شنبه', 'یکشنبه', 'دوشنبه', 'سه شنبه', 'چهارشنبه', 'پنجشنبه', 'جمعه']
     const [selectedDay, setSelectedDay] = useState<any>([])
     const [selectedDay2, setSelectedDay2] = useState<any>([])
     const [weeks, setWeeks] = useState<any>('this-week')
+    const {price} =usePrice()
     // @ts-ignore
-    const {data, isLoading,refetch} = useQuery({
+    const {data :data, isLoading,refetch} = useQuery({
         queryKey: ['reserveDailyCowork'],
         queryFn: async function () {
             const token = localStorage?.getItem('userToken')
@@ -23,7 +25,6 @@ const DailyCowork = () => {
             })
             return res
         },
-        
     })
     if (isLoading) return <LoadingMakeenLogo/>
     // const handleDay = (index:any) => {
@@ -33,6 +34,8 @@ const DailyCowork = () => {
     //         return 'یکشنبه'
     //     }
     // }
+
+    console.log('price',price?.data.perDay)
     const reserveDailyCowork = async (e: any) => {
         e.preventDefault()
         try {
@@ -93,7 +96,7 @@ const DailyCowork = () => {
     return (
         <div className={'lg:w-[80%] flex  flex-col items-center mx-auto'}>
             <div className={'text-white text-base font-bold mt-[32px]'}>خرید اشتراک روزانه کوورک</div>
-            <div className={'text-orange-500 text-sm font-normal mt-[8px]'}>هزینه روزانه 30 تومان</div>
+            <div className={'text-orange-500 text-sm font-normal mt-[8px]'}>هزینه روزانه {price?.data.perDay} تومان</div>
             <div
                 className={'w-[100%] flex lg:justify-between  mx-auto  flex-wrap  lg:flex-nowrap items-center mt-2 lg:mt-[70px]'}>
                 <div className={'flex  items-center  lg:mx-0 mx-auto lg:w-[90%]'}>
@@ -238,7 +241,7 @@ const DailyCowork = () => {
                     className="text-white text-sm font-normal ">لغو رزرو</span><span
                     className="text-white text-sm font-normal "> را از</span><span
                     className="text-orange-500 text-sm font-normal "> </span><span
-                    className="text-orange-500 text-sm font-bold ">اینجا</span><span
+                    className="text-orange-500 text-sm font-bold cursor-pointer">اینجا</span><span
                     className="text-orange-500 text-sm font-normal "> </span><span
                     className="text-white text-sm font-normal ">مشاهده کنید</span></div>
             </div>
@@ -246,7 +249,7 @@ const DailyCowork = () => {
                 <div>
                     <span
                         className="text-white text-sm font-bold">مبلغ قابل پرداخت : </span><span
-                    className="text-white text-base font-bold ">180</span><span
+                    className="text-white text-base font-bold ">{price?.data.perDay * selectedDay.length}</span><span
                     className="text-white text-sm font-bold"> </span><span
                     className="text-white text-sm font-normal">تومان</span>
                 </div>
