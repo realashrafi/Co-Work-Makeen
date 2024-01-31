@@ -7,7 +7,7 @@ import iconNavbar from "@/public/images/logo-makeen 8.png";
 import SidebarBuy from '../components/SidebarBuy';
 import ComponentsRenderByOrders from "@/app/buy/subscribtions/components/ComponentsRenderByOrders";
 import HeaderBuy from "@/app/buy/components/HeaderBuy";
-import {useRouter, useSearchParams} from "next/navigation";
+import {usePathname, useRouter, useSearchParams} from "next/navigation";
 import axios from "axios";
 import Swal from "sweetalert2";
 import DropDownNavbar from "@/app/components/DropDownNavbar";
@@ -20,6 +20,10 @@ const Page = () => {
     const [order, setOrder] = useState(Number(orderData))
     const [me, setMe] = useState<any>()
     const [validate, setValidate] = useState(false)
+
+    if (order !== 1 && order !== 2 && order !== 3 && order !== 4){
+        router.push('/404')
+    }
     useEffect(() => {
         //@ts-ignore
         handleFetch()
@@ -48,7 +52,7 @@ const Page = () => {
                     color: '#EEEFEE',
                     confirmButtonColor: "#FF792C",
                     confirmButtonText: 'باشه',
-                    backdrop:'rgba(0,0,0,0.78)'
+                    backdrop: 'rgba(0,0,0,0.78)'
                 })
                 router.push('/buy')
             }
@@ -67,6 +71,8 @@ const Page = () => {
             router.push('/')
         }
     }
+
+
     return (
         <div>
             {validate ? <div className={'bg-[#0A2E65] pb-[64px]'}>
