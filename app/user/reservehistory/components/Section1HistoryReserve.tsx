@@ -113,7 +113,7 @@ const Section1HistoryReserve = () => {
                                     <div className={' justify-between w-[100%] lg:w-[89%] h-[100%] flex items-center'}>
                                         <p className={'lg:mr-[6.14%] ml-2 text-[#C9C9C9] text-[14px]'}>{item.id}</p>
                                         <p className={'text-[#C9C9C9] text-[14px]'}>{item.j_date}</p>
-                                        <p className={'text-[#C9C9C9] text-[14px]'}>{item.type == "long-term" ? 'بلند مدت' : 'کوورک'}</p>
+                                        <p className={'text-[#C9C9C9] text-[14px]'}>{item.fa_type}</p>
                                         <p className={'text-[#C9C9C9] text-[14px]'}> {item.price} تومان </p>
                                         <p className={'lg:ml-[3.5%] mr-2 text-[#C9C9C9] text-[14px]'}>{item.status == 'reserved' ? 'پرداخت شده' : item.status}</p>
                                     </div>
