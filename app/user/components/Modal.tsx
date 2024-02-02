@@ -31,7 +31,7 @@ const Modal = () => {
         })
     }
     return (
-        <div className={''} data-aos={'fade-right'}>
+        <div className={''} >
             <Link className={''} href={''}>
                 <div onClick={() => setShowModal(true)}
                      className={'w-[253px] mb-[31px] rounded-[12px] flex items-center h-[43px] mr-[12px] hover:bg-[#002256] ml-[32px] '}
