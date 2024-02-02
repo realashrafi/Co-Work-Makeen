@@ -121,7 +121,7 @@ const UploadImage = () => {
                 }}
                 isOpen={showModal} className={'w-[90%] mt-[34%] lg:mt-32 mx-auto lg:w-[38%] h-[235px]'}>
                 <div className={'flex flex-col items-center'}>
-                    <div className={'text-white self-end mr-4 mt-3'} onClick={() => setShowModal(false)}>X</div>
+                    <div className={'text-xl cursor-pointer text-white self-end mr-4 mt-3'} onClick={() => setShowModal(false)}>X</div>
                     <div className="grid w-full max-w-xs items-center gap-1.5 mt-4" dir={'rtl'}>
                         <label
                             className="text-sm text-white font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">تصویر</label>
