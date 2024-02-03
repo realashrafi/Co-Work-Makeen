@@ -22,7 +22,7 @@ const SectionOne = () => {
                     <div className="text-zinc-100 text-[28px] sm:text-[32px] font-bold ">فضای کار اشتراکی مکین</div>
                     <p data-aos={'fade-down'} className={'py-2 text-[16px]'}>محیطی حرفه ای برای حرفه ای ها</p>
                     <Link href={'/tariffs'} data-aos={'zoom-in'} data-aos-duration="2000"
-                          className={'mt-3 bg-[#FF792C] flex justify-center items-center text-white w-[264px] h-[48px] rounded-full text-[20px]'}>
+                          className={'mt-3 hover:animate-pulse hover:bg-[#44C0ED] bg-[#FF792C] flex justify-center items-center text-white w-[264px] h-[48px] rounded-full text-[20px]'}>
                         <span data-aos={''} data-aos-duration="2000">
                         رزرو صندلی
                         </span>
