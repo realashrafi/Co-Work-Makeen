@@ -72,7 +72,7 @@ const DropDownNavbar = () => {
                     </svg>
                 </div>
                 <div className={'flex flex-col items-end py-[6px]'}>
-                    <Link href={'/user'} className={'cursor-pointer flex justify-end items-center mr-[31px] my-[6px]'}>
+                    <Link href={'/user'} className={'cursor-pointer transition-transform hover:scale-110 flex justify-end items-center mr-[31px] my-[6px]'}>
                         <p className={'text-right text-white text-sm font-normal '}>داشبورد من</p>
                         <svg className={'ml-[24px]'} width="15" height="15" viewBox="0 0 15 15" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
@@ -87,7 +87,7 @@ const DropDownNavbar = () => {
                             </g>
                         </svg>
                     </Link>
-                    <Link href={'/tariffs'} className={'cursor-pointer flex justify-end items-center mr-[31px] my-[6px]'}>
+                    <Link href={'/tariffs'} className={'cursor-pointer transition-transform hover:scale-110 flex justify-end items-center mr-[31px] my-[6px]'}>
                         <p className={'text-right text-white text-sm font-normal '}>خرید اشتراک</p>
                         <svg className={'ml-[24px]'} width="17" height="13" viewBox="0 0 17 13" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
@@ -96,7 +96,7 @@ const DropDownNavbar = () => {
                                   fill="#FFFEFF"/>
                         </svg>
                     </Link>
-                    <Link href={'/user/walletuser'} className={'cursor-pointer flex justify-end items-center mr-[31px] my-[6px]'}>
+                    <Link href={'/user/walletuser'} className={'cursor-pointer transition-transform hover:scale-110 flex justify-end items-center mr-[31px] my-[6px]'}>
                         <p className={'text-right text-white text-sm font-normal '}>کیف پول من</p>
                         <svg className={'ml-[24px]'} width="16" height="16" viewBox="0 0 16 16" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
@@ -105,7 +105,7 @@ const DropDownNavbar = () => {
                                   fill="#FFFEFF"/>
                         </svg>
                     </Link>
-                    <Link href={'/user/reservehistory'} className={'cursor-pointer flex justify-end items-center mr-[31px] my-[6px]'}>
+                    <Link href={'/user/reservehistory'} className={'cursor-pointer transition-transform hover:scale-110 flex justify-end items-center mr-[31px] my-[6px]'}>
                         <p className={'text-right text-white text-sm font-normal '}>تاریخچه رزرو</p>
                         <svg className={'ml-[24px]'} width="16" height="16" viewBox="0 0 16 16" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
@@ -114,7 +114,7 @@ const DropDownNavbar = () => {
                                   fill="#FFFEFF"/>
                         </svg>
                     </Link>
-                    <Link href={'/user/notifications'} className={'cursor-pointer flex justify-end items-center mr-[31px] my-[6px]'}>
+                    <Link href={'/user/notifications'} className={'cursor-pointer transition-transform hover:scale-110 flex justify-end items-center mr-[31px] my-[6px]'}>
                         <p className={'text-right text-white text-sm font-normal '}>اعلانات</p>
                         <svg className={'ml-[24px]'} width="15" height="16" viewBox="0 0 15 16" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
@@ -124,7 +124,7 @@ const DropDownNavbar = () => {
                         </svg>
                     </Link>
                 </div>
-                <div className={'flex justify-center '}>
+                <div className={'flex justify-center  '}>
                     <svg width="253" height="1" viewBox="0 0 253 1" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <line y1="0.5" x2="252.854" y2="0.5" stroke="url(#paint0_linear_2169_1853)"/>
                         <defs>
@@ -136,11 +136,11 @@ const DropDownNavbar = () => {
                         </defs>
                     </svg>
                 </div>
-                <div  className={'cursor-pointer flex justify-end items-center mr-[31px] mb-[64px] my-[12px]'}
+                <div  className={'cursor-pointer transition-transform hover:scale-110 flex justify-end items-center mr-[31px] mb-[64px] my-[12px]'}
                      onClick={() => {
                          localStorage.setItem('userToken', '')
                          localStorage.setItem('loginStatus', '')
-                         window.location.reload()
+                         window.location.assign('/')
                          Swal.fire({
                              title: "خارج شدید",
                              text: "موفقیت امیز بود",
