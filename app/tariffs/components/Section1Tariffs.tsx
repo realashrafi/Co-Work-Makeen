@@ -22,9 +22,9 @@ const Section1Tariffs = () => {
             </div>
             <div  className={'flex  lg:flex-nowrap flex-wrap w-full'}>
                 <div data-aos={'fade-right'} className={'lg:w-1/2  pt-[65px]  w-[88%] mx-auto lg:pl-[110px] flex relative'}>
-                    <Image width={377} height={503} className={'rounded-[18px] z-[2] '} src={imgLeft} alt={''}/>
+                    <Image width={377} height={503} className={'rounded-[18px] brightness-[80%] z-[2] '} src={imgLeft} alt={''}/>
                     <div className={' z-[1] relative lg:left-[-20px] lg:pt-[407px]'}>
-                        <Image src={DesignCircle} className={'  '} width={212} height={96} alt={''}/>
+                        <Image src={DesignCircle}  width={212} height={96} alt={''}/>
                     </div>
                 </div>
                 <div data-aos={'fade-down'} className={'mx-auto lg:w-1/2 lg:-mt-0  -mt-36'}>

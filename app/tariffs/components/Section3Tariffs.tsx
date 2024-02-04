@@ -22,9 +22,9 @@ const Section3Tariffs = () => {
             {/*<div*/}
             {/*    className={'w-[13%] h-[56px] self-end mt-[28px]  border-r-0 border-[3px] border-[#FF792C] rounded-l-full'}></div>*/}
             <div data-aos={'fade-up'}
-                 className="w-[170px]  absolute right-0 lg:-top-20 h-[219px] opacity-50 bg-[#FF792C] rounded-l-full blur-[100px]"/>
+                 className="w-[170px] animate-[pulse_10s_ease-in-out_infinite] absolute right-0 lg:-top-20 h-[219px] opacity-50 bg-[#FF792C] rounded-l-full blur-[100px]"/>
             <div data-aos={'fade-down'}
-                 className="w-[170px]   absolute left-0 lg:top-20 h-[219px] opacity-50 bg-[#FF792C] rounded-r-full blur-[100px]"/>
+                 className="w-[170px]  animate-[pulse_10s_ease-in-out_infinite]  absolute left-0 lg:top-20 h-[219px] opacity-50 bg-[#FF792C] rounded-r-full blur-[100px]"/>
             <div className={'flex w-full relative mx-auto lg:pt-[123px]'}>
                 <div className={'lg:w-1/19 lg:mr-[7%] '}>
                     <div data-aos={'fade-down'} className={'lg:w-[550px]  -mr-12 lg:pr-[5%]'}>

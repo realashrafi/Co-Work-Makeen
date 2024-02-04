@@ -28,19 +28,18 @@ const ImagePre = ({me}: any) => {
                     background: '#002256',
                     overflow: 'auto',
                     WebkitOverflowScrolling: 'touch',
-                    borderRadius: '24px',
                     outline: 'none',
                     padding: '0px',
                     border: 'none',
                 }
-            }} isOpen={showModal} className={'w-[90%] mt-20 mx-auto lg:w-[38%] '}>
+            }} isOpen={showModal} className={'w-[90%] mt-20 mx-auto rounded-xl lg:w-[38%] '}>
                 <Image src={gifIcon} alt={''}
                        className={'absolute opacity-50 lg:top-20 -top-[17%] scale-[90%] lg:-left-12'}/>
                 <div className={'relative'}>
-                    <div className={'text-orange-500 cursor-pointer absolute hover:scale-110 right-4 top-4 '} onClick={()=>setShowModal(false)}>X</div>
+                    <div className={'text-orange-500 cursor-pointer absolute transition-transform hover:rotate-90 right-4 top-4 '} onClick={()=>setShowModal(false)}>X</div>
                     <img
                         src={me?.profile_picture}
-                        className={'w-[100%] h-[100%] '}
+                        className={'w-[100%]  h-[100%] '}
                         alt={''}
                     />
                 </div>

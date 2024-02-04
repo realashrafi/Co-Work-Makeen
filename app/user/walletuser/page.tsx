@@ -205,7 +205,8 @@ const WalletUser = () => {
                                     <ButtonsOfWallet data={data}/>
                                     <div className={'flex flex-col mr-[10%] mt-[38px]'}>
                                         <div
-                                            className={'border-r-[2px] text-[#FFFEFF] text-[14px] pr-4 pl-[18px] flex items-center border-[#44C0ED]'} dir={'rtl'}>
+                                            className={'border-r-[2px] text-[#FFFEFF] text-[14px] pr-4 pl-[18px] flex items-center border-[#44C0ED]'}
+                                            dir={'rtl'}>
                                             {date.format()}
                                         </div>
                                         <div className={'w-[108px] h-[108px] mt-[28px] '}>
@@ -220,7 +221,8 @@ const WalletUser = () => {
                             </div>
                             {helpEmpty()}
                         </div>
-                        <button className={'absolute right-4'} onClick={() => setVisible(true)}><ImMenu
+                        <button className={'fixed hover:animate-pulse  transition-transform z-[10] right-4'}
+                                onClick={() => setVisible(!visible)}><ImMenu
                             className={'mt-4 scale-150 text-white'}/></button>
                         <SideBarUser visible={visible} setVisible={setVisible}/>
                     </div>

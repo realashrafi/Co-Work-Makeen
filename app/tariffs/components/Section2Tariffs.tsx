@@ -21,7 +21,7 @@ const Section2Tariffs = () => {
                 className={'lg:w-[14%]  mx-auto  px-3 h-[53px] bg-[#FF792C] flex justify-center ml-[33%] items-center text-center rounded-[40px] -mb-[18px] lg:ml-[70%] z-10'}>
                 <p data-aos={'fade-up'}  className={'text-[#FFFEFF] text-[14px]'}>دانشجویان مکینی</p>
             </div>
-            <div data-aos={'fade-up'}  className={'bg-[#0A2E65] items-center justify-center mx-auto mt-2 lg:mt-0 lg:flex-nowrap flex-wrap-reverse  flex lg:w-[71%] w-[90%] h-[120px] rounded-[24px]'}>
+            <div data-aos={'fade-up'}  className={'bg-[#0A2E65] items-center justify-center  mx-auto mt-2 lg:mt-0 lg:flex-nowrap flex-wrap-reverse  flex lg:w-[71%] w-[90%] h-[120px] rounded-[24px]'}>
                 <LoginForBuy orderData={1}/>
                 <div data-aos={'fade-up'} className={'lg:ml-[19%] ml-8 '}>
                     <p className={'text-[#FF792C]  text-[18px]'}>{priceDefault?.data.coWork.price.student.perDay} تومان</p>

@@ -151,7 +151,8 @@ const Notifications = () => {
                             </div>
                             {rendering()}
                         </div>
-                        <button className={'absolute right-4'} onClick={() => setVisible(true)}><ImMenu
+                        <button className={'fixed hover:animate-pulse  transition-transform z-[10] right-4'}
+                                onClick={() => setVisible(!visible)}><ImMenu
                             className={'mt-4 scale-150 text-white'}/></button>
                         <SideBarUser visible={visible} setVisible={setVisible}/>
                     </div>
