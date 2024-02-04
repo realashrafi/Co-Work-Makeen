@@ -102,7 +102,7 @@ function ParallaxElement() {
                     <SwiperSlide key={item.id} className={'flex items-center  '}>
                         <div className={'flex lg:px-[15%] items-center mt-[30%] lg:mt-[5%]'}>
                             <div className={'flex relative flex-col items-center -mt-[20px]'}>
-                                <svg className={'absolute z-1 lg:w-[244px] lg:visible invisible'} height="172"
+                                <svg className={'absolute animate-[spin_11s_ease-out_infinite] z-1 lg:w-[244px] lg:visible invisible'} height="172"
                                      viewBox="0 0 244 172" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <g id="Group 536">
