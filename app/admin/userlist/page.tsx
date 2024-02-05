@@ -12,7 +12,8 @@ import useUserList from "@/app/store/react-query/useUserList";
 
 const UserList = () => {
     const [protect, setProtect] = useState(false)
-    const {data} =useUserList()
+    const {data,refetch} =useUserList()
+    console.log('data',data)
 
     useEffect(() => {
         handleProtect()
@@ -162,7 +163,7 @@ const UserList = () => {
                                         </div>
                                     </div>
                                     <div
-                                        className={'w-[97.16%] h-[37px] flex items-center  mb-[10px] mt-[18px] mx-auto '}
+                                        className={'w-[97.16%] h-[37px] flex items-center justify-between mb-[10px] mt-[18px] mx-auto '}
                                         dir={'rtl'}>
                                         <p className={'text-[#222222] text-base font-normal '}>نام و نام خانوادگی</p>
                                         <p className={'text-[#222222] text-base font-normal mr-[3%]'}>شماره تماس</p>
@@ -184,25 +185,25 @@ const UserList = () => {
 </svg>
 
                                 </span></p>
-                                        <p className={'text-[#222222] text-base font-normal mr-[12%]'}>مالی</p>
+                                        <p className={'text-[#222222] text-base font-normal ml-12 mr-[12%]'}>مالی</p>
                                     </div>
                                     <div className={'w-[97.16%] flex  flex-col  mx-auto  '} dir={'rtl'}>
                                         {/*//@ts-ignore*/}
-                                        {data?.map(item => (
+                                        {data?.data.map(item => (
                                             <div
                                                 className={'odd:bg-[#026AE114] even:bg-[#FF792C14] mb-[5px] w-[100%] h-[40px] flex  items-center '}
                                                 key={item.id}>
                                                 <div className={'text-[#222222] mr-1 text-sm font-normal'}>{item.id}</div>
                                                 <p className={'text-[#222222] text-sm font-normal w-[120px] mr-[1%]'}>{item.first_name} {item.last_name}</p>
-                                                <p className={'text-[#222222] text-sm font-normal w-[83px] mr-[5.3%]'}>{item.phone_number}</p>
+                                                <p className={'text-[#222222] text-sm font-normal text-center w-[83px] mr-[2.3%]'}>{item.phone_number}</p>
                                                 <button
-                                                    className={'text-[#222222] text-sm font-normal text-center  w-[76px] h-[24px] mr-[7%]'}>{item.is_ban ?
-                                                    <ChangeBan id={item.id} bg={item.is_ban} lable={'غیرفعال'}/> :
-                                                    <ChangeBan id={item.id} bg={item.is_ban} lable={'فعال'}/>}
+                                                    className={'text-[#222222] text-sm self-center font-normal text-center  w-[76px] h-[24px] mr-[9%]'}>{item.is_ban ?
+                                                    <ChangeBan id={item.id} refetch={refetch} bg={item.is_ban} lable={'غیرفعال'}/> :
+                                                    <ChangeBan id={item.id} refetch={refetch} bg={item.is_ban} lable={'فعال'}/>}
                                                 </button>
                                                 <p className={'text-[#222222] text-sm font-normal w-[26px] mr-[6%]'}>{item.age}</p>
-                                                <p className={'text-[#222222] text-sm font-normal text-center w-[75px] mr-[6%]'}>{item.education}</p>
-                                                <p className={'text-[#222222] text-sm font-normal text-center w-[60px] mr-[7%]'}>{item.latest_favorite}</p>
+                                                <p className={'text-[#222222] flex justify-start w-[200px] text-sm font-normal text-center  mr-[6%]'}>{item.education}</p>
+                                                {/*<p className={'text-[#222222] text-sm font-normal text-center w-[60px] mr-[7%]'}>{item.latest_favorite[0]}</p>*/}
                                                 <AddMoneyAdmin first_name={item.first_name} last_name={item.last_name} balance={item.balance} id={item.id}/>
                                             </div>
                                         ))}

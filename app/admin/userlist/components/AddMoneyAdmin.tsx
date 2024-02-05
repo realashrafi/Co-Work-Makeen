@@ -63,7 +63,7 @@ const AddMoney = ({id, balance, first_name, last_name}: any) => {
         <div style={{zIndex: 2}}>
             <div
                 className={'w-fit mr-[3.5%] ml-3 flex justify-between items-center'}>
-                <p className={'w-[120px] text-neutral-500 relative right-5 text-[11px] font-bold'}>موجودی
+                <p className={'w-[120px] text-neutral-500 relative right-5 text-[11px] ml-2  font-bold'}>موجودی
                     : {balance} تومان</p>
                 <div className={'w-[2px] mx-2 h-[30px] bg-[#BFBFBF] rounded'}></div>
                 <div onClick={() => setShowModalMoney(true)}

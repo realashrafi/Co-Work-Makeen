@@ -20,7 +20,7 @@ const SectionSeven = () => {
             <div data-aos={'fade-up'}
                  className="w-[170px] absolute z-10  right-0 -top-40 h-[219px] opacity-60 bg-[#FF792C] rounded-l-full blur-[140px]"/>
             <div data-aos={'fade-up'}
-                 className="w-[170px] absolute z-10 left-0 -top-32 h-[219px] opacity-60   bg-[#FF792C] rounded-r-full blur-[140px]"/>
+                 className="w-[170px] absolute z-10 left-0 -top-32 h-[219px] opacity-60 bg-[#FF792C] rounded-r-full blur-[140px]"/>
             <div data-aos={''} data-aos-delay={10} className={'flex relative flex-col  pt-[130px]'}>
                 <h1 className={'text-orange-500 absolute  inset-2 text-[22px] font-bold'}>نظرات بچه های کوورک</h1>
                 <ParallaxElement />

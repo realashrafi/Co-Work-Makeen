@@ -3,7 +3,7 @@ import {useQuery} from "react-query";
 import axios from "axios";
 
 const UseUserList = () => {
-    const {data} = useQuery({
+    const {data ,refetch} = useQuery({
         queryKey: ['userList'],
         queryFn: async function () {
             const token = localStorage?.getItem('adminToken');
@@ -13,10 +13,10 @@ const UseUserList = () => {
                     Authorization: `Bearer ${token}`
                 }
             })
-            return res.data
+            return res
         },
     })
-    return {data}
+    return {data,refetch}
 };
 
 export default UseUserList;
