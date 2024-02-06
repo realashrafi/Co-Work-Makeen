@@ -5,7 +5,7 @@ const Section1ContactUs = () => {
     return (
         <div>
             <Navbar/>
-            <div className={'lg:w-[76.6%] h-[869px]  bg-[#0A2E65] rounded-[8px] mx-auto lg:mt-[64px]'}>
+            <div className={'lg:w-[76.6%] h-[869px]  bg-[#0A2E65] mt-10 rounded-[8px] mx-auto lg:mt-[64px]'}>
                 <p className={'text-[#FF792C] text-[16px] pt-[16px] text-center'}>تماس با ما</p>
                 <p className={'text-[#FFFEFF] text-[16px] pt-[33px] text-center'}>شما میتوانید در این قسمت با ما در تماس
                     باشید

@@ -55,7 +55,7 @@ const Section3Tariffs = () => {
                             <div className={'lg:-ml-[64px]'}></div>
                             <LoginForBuy orderData={4}/>
                         </div>
-                        <div className={'lg:ml-[23%] ml-8 mt-[57px] '}>
+                        <div className={'lg:ml-[23%] flex justify-center lg:w-fit w-[100%]  mt-[57px] '}>
                             <p className={'text-[18px] text-[#FFFEFF]'}>{priceDefault?.data.sessionRoom.price.normal.perHour} تومان</p>
                         </div>
                         <div className={'lg:w-[13%] w-fit lg:ml-[18%] pt-[45px] flex-col'} style={{direction: "rtl"}}>
@@ -74,7 +74,7 @@ const Section3Tariffs = () => {
                             <div className={'lg:-ml-[64px]'}></div>
                             <LoginForBuy orderData={3}/>
                         </div>
-                        <div className={'lg:ml-[23%] ml-8 mt-[57px] '}>
+                        <div className={'lg:ml-[23%] flex justify-center lg:w-fit w-[100%]  mt-[57px] '}>
                             <p className={'text-[18px] text-[#FFFEFF]'}>{priceDefault?.data.sessionRoom.price.normal.perDay} تومان</p>
                         </div>
                         <div className={'lg:w-[13%] lg:ml-[18%] pt-[45px] flex-col'} style={{direction: "rtl"}}>

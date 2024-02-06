@@ -100,7 +100,7 @@ const Section2Tariffs = () => {
             <div data-aos={'fade-up'}
                 className={'bg-[#0A2E65] mt-[18px] relative justify-center lg:flex-nowrap flex-wrap-reverse items-center mx-auto flex lg:w-[71%] w-[90%] h-[120px] rounded-[24px]'}>
                 <div data-aos={'fade-down'}
-                    className={'absolute right-0 top:1/3 lg:-right-14 lg:top-0 flex flex-col items-center justify-center'}>
+                    className={'z-[10] absolute right-0 top:1/3 lg:-right-14 lg:top-0 flex flex-col items-center justify-center'}>
                     <div className={'text-neutral-50 text-lg font-bold origin-top-left rotate-[-10.52deg]'}
                          dir={'rtl'}>3 روز رایگان
                     </div>
@@ -119,7 +119,7 @@ const Section2Tariffs = () => {
                 </div>
                 <div data-aos={'fade-up'} className={'flex flex-col ml-8 lg:ml-[14%]'} style={{direction: "rtl"}}>
                     <p className={'text-[16px] text-[#FFFFFF] '}> اشتراک بلند مدت</p>
-                    <p className={'text-[14px] text-[#FFFFFF] '}> برای 30 یک روز قابل استفاده است</p>
+                    <p className={'text-[14px] text-[#FFFFFF] '}> برای 30  روز قابل استفاده است</p>
                 </div>
                 <div data-aos={'fade-up'} className={'lg:ml-6 ml-8 lg:mr-6'}>
                     <Image src={blueChair} alt={''}/>
