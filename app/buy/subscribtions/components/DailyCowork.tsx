@@ -8,9 +8,7 @@ import usePrice from "@/app/store/react-query/usePrice";
 import LoadingMinimal from "@/app/components/LoadingMinimal";
 
 const DailyCowork = () => {
-    const day = ['شنبه', 'یکشنبه', 'دوشنبه', 'سه شنبه', 'چهارشنبه', 'پنجشنبه', 'جمعه']
     const [selectedDay, setSelectedDay] = useState<any>([])
-    const [selectedDay2, setSelectedDay2] = useState<any>([])
     const [weeks, setWeeks] = useState<any>('this-week')
     const [loading, setLoading] = useState(true)
     const [data, setData] = useState<any>()
@@ -50,14 +48,19 @@ const DailyCowork = () => {
     // if (isLoading) return <LoadingMakeenLogo/>
 
 
-    console.log('data', data)
+    console.log('selectedDate : ', selectedDay)
     const reserveDailyCowork = async (e: any) => {
+        let dates: any = []
+        //@ts-ignore
+        selectedDay.map(i => {
+            return dates.push(i.date)
+        })
         e.preventDefault()
         try {
             const token = localStorage?.getItem('userToken');
             const res = await axios.post('https://www.cowork.v1r.ir/api/v1/reservation/cowork/reserve/long-term',
                 {
-                    dates: selectedDay2
+                    dates: dates
                 },
                 {
                     headers: {
@@ -65,7 +68,6 @@ const DailyCowork = () => {
                         Accept: 'application/json',
                     }
                 })
-            console.log(res)
             Swal.fire({
                 title: "انجام شد",
                 text: "خرید شما موفق بود",
@@ -78,7 +80,6 @@ const DailyCowork = () => {
             })
             window.location.assign('/buy/submitedChair')
             if (res.status == 422) {
-                window.location.reload()
                 Swal.fire({
                     title: "خطا",
                     text: `${res.data.message}`,
@@ -91,7 +92,6 @@ const DailyCowork = () => {
                 })
             }
         } catch (res: any) {
-            console.log('catch', res)
             Swal.fire({
                 title: "خطا",
                 text: `${res?.response.data.message}`,
@@ -102,11 +102,9 @@ const DailyCowork = () => {
                 confirmButtonText: 'باشه',
                 backdrop: '#002256'
             })
-            window.location.reload()
+
         }
     }
-    // console.log('days', data)
-    console.log('selectedDay2', selectedDay2)
 
     return (
         <div className={'lg:w-[80%] flex  flex-col items-center mx-auto'}>
@@ -137,7 +135,7 @@ const DailyCowork = () => {
                 </svg>
                 <div className={'lg:w-[60%] flex  flex-wrap justify-center '} dir={'rtl'}>
                     {/*// @ts-ignore*/}
-                    {selectedDay?.slice().map(item => (
+                    {selectedDay?.map(item => (
                         <div dir={'ltr'}
                              className={'w-[146px] lg:my-0 my-1 h-8 bg-[#002256] rounded-[32px] justify-evenly flex items-center mx-[2px]'}
                             //@ts-ignore
@@ -146,8 +144,14 @@ const DailyCowork = () => {
                             <div className={'text-white text-xs font-normal'}>{item.j_date}</div>
                             <svg onClick={() => {
                                 //@ts-ignore
-                                setSelectedDay(selectedDay.filter(id => item.id == id))
-                                window.location.reload()
+                                const selectedDays = [...selectedDay]
+                                let findItemIndex = selectedDays.findIndex(o => {
+                                    return o.id === item.id
+                                })
+                                selectedDays.splice(findItemIndex, 1)
+                                setSelectedDay(selectedDays)
+                                // setSelectedDay(selectedDay.filter(id => item.id == id))
+                                // window.location.reload()
                             }} className={'cursor-pointer'} width="10" height="10" viewBox="0 0 10 10" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path id="Vector"
@@ -219,14 +223,24 @@ const DailyCowork = () => {
                                 <label
                                     className="cursor-pointer  duration-300 relative overflow-hidden w-[30px] h-[30px] flex justify-center items-center  rounded-lg bg-[#002256] ">
                                     <input className="peer  hidden" type="checkbox" disabled={!item.is_reservable}
-                                           onClick={() => {
+                                           onChange={() => {
+                                               const newSelectedDate = [...selectedDay]
                                                if (item.is_reservable == true) {
-                                                   setSelectedDay([...selectedDay, {
-                                                       id: item.date,
-                                                       date: item.date,
-                                                       j_date: item.j_date
-                                                   }])
-                                                   setSelectedDay2([...selectedDay2, item.date])
+                                                   //@ts-ignore
+                                                   let findDate = newSelectedDate.findIndex(o => {
+                                                       return item.date === o.date
+                                                   })
+                                                   if (findDate == -1) {
+                                                       newSelectedDate.push({
+                                                           id: item.date,
+                                                           date: item.date,
+                                                           j_date: item.j_date
+                                                       })
+                                                       setSelectedDay(newSelectedDate)
+                                                   } else {
+                                                       newSelectedDate.splice(findDate, 1)
+                                                       setSelectedDay(newSelectedDate)
+                                                   }
                                                }
                                            }}/>
                                     <div
@@ -278,8 +292,8 @@ const DailyCowork = () => {
                     className="text-white text-sm font-normal">تومان</span>
                 </div>
             </div>
-            <button onClick={reserveDailyCowork}
-                    className={'flex justify-center items-center text-white text-lg font-medium bg-[#026AE1] w-[40%] lg:w-[408px] h-12 rounded-xl mt-[40px]'}>
+            <button onClick={reserveDailyCowork} disabled={selectedDay.length==0}
+                    className={'flex justify-center  disabled:opacity-50 items-center text-white text-lg font-medium bg-[#026AE1] w-[40%] lg:w-[408px] h-12 rounded-xl mt-[40px]'}>
                 پرداخت
             </button>
         </div>
