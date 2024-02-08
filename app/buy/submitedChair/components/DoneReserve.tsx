@@ -1,13 +1,38 @@
-import React from 'react';
+'use client'
+import React, {useEffect, useState} from 'react';
 import Image from "next/image";
 import doneImage from './data/doneImage.png'
+import LoadingMakeenLogo from "@/app/components/LoadingMakeenLogo";
+import ProgressBar from "@ramonak/react-progress-bar";
 
 const DoneReserve = () => {
+    const [Ftype, setFtype] = useState<any>()
+    const [FLDay, setFLDay] = useState<any>()
+    const [Fprice, setFprice] = useState<any>()
+    const [Fcreated_at, setFcreated_at] = useState<any>('')
+    const [loading, setLoading] = useState(true)
+    const [complete, setComplete] = useState(0)
+    useEffect(() => {
+        setTimeout(()=>setComplete(10),100)
+        setFtype(localStorage?.getItem('Ftype'))
+        setTimeout(()=>setComplete(25),200)
+        setFLDay(localStorage?.getItem('FLDay'))
+        setTimeout(()=>setComplete(50),300)
+        setFprice(localStorage?.getItem('Fprice'))
+        setTimeout(()=>setComplete(75),400)
+        //@ts-ignore
+        setFcreated_at(localStorage?.getItem('Fcreated_at').slice(0,10))
+        setTimeout(()=>setComplete(85),500)
+        setTimeout(()=>setComplete(100),600)
+        setTimeout(()=>setLoading(false),1500)
+    }, []);
     return (
         <div className={'flex flex-col w-[100%]'}>
             <div className={'flex justify-center  '}>
                 <div className={'text-white text-base font-bold'}>فاکتور شما</div>
             </div>
+            {loading?
+                <ProgressBar className={'w-[80%] mt-10 mx-auto '}  barContainerClassName="bg-[#0A2E65]"  completed={complete} customLabel="در حال چاپ" />:
             <div className={'w-[90%] mx-auto rounded-xl  mt-[43px] flex flex-col h-[776px] bg-[#0A2E65]'}>
                 <div className={'relative'}>
                     <div
@@ -24,22 +49,22 @@ const DoneReserve = () => {
                 </div>
                 <div
                     className="w-[65%]  mx-auto h-10 bg-[#0A2E65]  items-center rounded-xl shadow-xl flex justify-between px-[24px] mt-[83px]">
-                    <div className={'text-white text-sm font-bold'}>روزانه کوورک</div>
+                    <div className={'text-white text-sm font-bold'}>{Ftype}</div>
                     <div className={'text-white text-sm font-bold'}>نوع اشتراک</div>
                 </div>
                 <div
                     className="w-[65%] mx-auto h-10 bg-[#0A2E65] items-center rounded-xl shadow-xl flex justify-between px-[24px] mt-[8px]">
-                <div className={'text-white text-sm font-bold'}>3 روز</div>
+                <div className={'text-white text-sm font-bold'}>{FLDay} روز</div>
                     <div className={'text-white text-sm font-bold'}>تعداد روزهای انتخابی</div>
                 </div>
                 <div
                     className="w-[65%] mx-auto h-10 bg-[#0A2E65] items-center rounded-xl shadow-xl flex justify-between px-[24px] mt-[8px]">
-                    <div className={'text-white text-sm font-bold'}>80 تومان</div>
+                    <div className={'text-white text-sm font-bold'}>{Fprice} تومان</div>
                     <div className={'text-white text-sm font-bold'}>مبلغ پرداختی</div>
                 </div>
                 <div
                     className="w-[65%] mx-auto h-10 bg-[#0A2E65] items-center rounded-xl shadow-xl flex justify-between px-[24px] mt-[8px]">
-                    <div className={'text-white text-sm font-bold'}>1402/07/14</div>
+                    <div className={'text-white text-sm font-bold'}>{Fcreated_at.slice(0.10)}</div>
                     <div className={'text-white text-sm font-bold'}>تاریخ خرید</div>
                 </div>
                 <div
@@ -56,7 +81,7 @@ const DoneReserve = () => {
                         </g>
                     </svg>
                 </div>
-            </div>
+            </div>}
         </div>
     );
 };

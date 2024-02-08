@@ -8,6 +8,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import LoginForBuy from "@/app/buy/components/LoginForBuy";
 import usePriceDefault from "@/app/store/react-query/usePriceDefault";
+import Atropos from "atropos/react";
 
 const Section3Tariffs = () => {
     const {priceDefault}=usePriceDefault()
@@ -38,12 +39,14 @@ const Section3Tariffs = () => {
                         </p>
                     </div>
                 </div>
+                <Atropos className={'my-atropos'} highlight={false} shadow={false}>
                 <div data-aos={'fade-up'} className={' lg:visible invisible w-full  mx-auto lg:mr-[10%]'}>
                     <Image src={img} className={'z-20'} alt={''}/>
                     <div className={'mt-2  lg:ml-[7px]'}>
                         <Image src={designElement} alt={''}/>
                     </div>
                 </div>
+                </Atropos>
             </div>
             <div data-aos={'fade-up'}
                 className={'lg:w-[71%]  w-[90%] lg:h-[294px] pb-12 lg:pb-0 justify-center flex-wrap-reverse mx-auto rounded-[24px]  mt-[50px] bg-[#0A2E65] flex'}>

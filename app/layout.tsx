@@ -1,6 +1,7 @@
 import React from "react";
 import type {Metadata} from 'next'
 import './globals.css'
+import 'atropos/css'
 import localFont from 'next/font/local'
 import {StoreProvider} from "@/app/store/redux/StoreProvider";
 import {ReactQueryProvider} from "@/app/store/react-query/ReactQueryProvider";

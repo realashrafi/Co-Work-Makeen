@@ -7,6 +7,7 @@ import telegramIcon from '../data/telegramIcon.png'
 import inistagramIcon from '../data/inistagramIcon.png'
 import Link from "next/link";
 import AOS from "aos";
+import Atropos from "atropos/react";
 //Footer
 const SectionNine = () => {
     useEffect(() => {
@@ -28,13 +29,19 @@ const SectionNine = () => {
             </div>
             <div data-aos={'fade-down'} className={'flex pt-[4px] mr-[30px] '}>
                 <div>
+                    <Atropos highlight={false} shadow={false} className={'my-atropos'}>
                     <Image src={baleIcon} alt={''}/>
+                     </Atropos>
                 </div>
                 <div className={'pr-[40px] pl-[10px] pt-[20px]'}>
+                    <Atropos highlight={false} shadow={false} className={'my-atropos'}>
                     <Image src={telegramIcon} alt={''}/>
+                       </Atropos>
                 </div>
                 <div className={'pt-[20px]'}>
+                    <Atropos highlight={false} shadow={false} className={'my-atropos'}>
                     <Image src={inistagramIcon} alt={''}/>
+                        </Atropos>
                 </div>
 
             </div>

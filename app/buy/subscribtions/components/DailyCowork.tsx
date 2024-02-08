@@ -68,6 +68,10 @@ const DailyCowork = () => {
                         Accept: 'application/json',
                     }
                 })
+                localStorage.setItem('Ffa_type',res.data.fa_type)
+                localStorage.setItem('FLDay',res.data.length)
+                localStorage.setItem('Fprice',res.data[0].price)
+                localStorage.setItem('Fcreated_at',res.data[0].created_at)
             Swal.fire({
                 title: "انجام شد",
                 text: "خرید شما موفق بود",
