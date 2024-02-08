@@ -18,13 +18,13 @@ const ChangeBan = ({id, bg, lable, refetch}: any) => {
                     'Authorization': `Bearer ${token}`,
                 }
             })
-            console.log('res',res)
+            //console.log('res',res)
             refetch()
             if (res.status === 204) {
                 setTimeout(()=>setLoading(false),1000)
             }
         } catch (e) {
-            console.log(e)
+            //console.log(e)
         }
         // let config = {
         //     method: 'post',

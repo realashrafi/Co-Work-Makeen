@@ -49,11 +49,11 @@ const Admin = () => {
                 confirmButtonText: '<button >باشه</button>',
                 backdrop: 'rgba(0,0,0,0.78)'
             })
-            console.log(error);
+            //console.log(error);
         }
         // dispatch(adminLogin(data))
     }
-    // console.log(response)
+    // //console.log(response)
     return (
         <div className={'bg-[#F1EFEF] flex flex-col items-center w-[100%] h-[1000px]'}>
             <div

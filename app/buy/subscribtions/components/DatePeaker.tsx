@@ -149,7 +149,7 @@ const DatePeaker = ({dateSelected,setDateSelected}:any) => {
                         value?.map(item => {
                             return cData.push(new DateObject(item).convert(gregorian, gregorian_en).format("YYYY-MM-DD"))
                         })
-                        console.log(cData)
+                        //console.log(cData)
                         setDateSelected(cData)
                         Swal.fire({
                             title: "ثبت شد",

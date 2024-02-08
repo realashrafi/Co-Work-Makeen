@@ -34,10 +34,10 @@ const DropDownNavbar = () => {
             })
             setMe(response.data)
         } catch (e) {
-            console.log(e)
+            //console.log(e)
         }
     }
-    // console.log(me)
+    // //console.log(me)
     return (
         <details className="dropdown  w-[150px] ">
             <summary

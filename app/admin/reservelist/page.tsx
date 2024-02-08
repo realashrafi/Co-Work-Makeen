@@ -27,7 +27,7 @@ const ReserveList = () => {
         handleProtect()
     }, []);
     useEffect(() => {
-        console.log('1')
+        //console.log('1')
         getCoworkData()
         getSessionData()
     }, [date,date2]);
@@ -48,7 +48,7 @@ const ReserveList = () => {
                 setProtect(false)
             }
         } catch (e) {
-            console.log(e)
+            //console.log(e)
             Swal.fire({
                 title: "خطایی رخ داده",
                 text: "شما ادمین نیستید",
@@ -72,11 +72,11 @@ const ReserveList = () => {
                         Authorization: `Bearer ${token}`
                     }
                 })
-            console.log('ressAdmin', res)
+            //console.log('ressAdmin', res)
             setList(res)
             setLoadingCo(false)
         } catch (e) {
-            console.log(e)
+            //console.log(e)
         }
     }
     const getSessionData = async () => {
@@ -89,11 +89,11 @@ const ReserveList = () => {
                         Authorization: `Bearer ${token}`
                     }
                 })
-            console.log('ressAdminSession', res)
+            //console.log('ressAdminSession', res)
             setListSess(res)
             setLoadingSe(false)
         } catch (e) {
-            console.log(e)
+            //console.log(e)
         }
     }
     const incDate = () => {
@@ -102,7 +102,7 @@ const ReserveList = () => {
         setLoadingCo(true)
         setDate(new_date)
     }
-    console.log(date)
+    //console.log(date)
     const decDate = () => {
         const new1 = moment(date)
         const new_date = new1.subtract(1, 'day').format('YYYY-MM-DD')
@@ -115,7 +115,7 @@ const ReserveList = () => {
         setLoadingSe(true)
         setDate2(new_date)
     }
-    console.log(date)
+    //console.log(date)
     const decDate2 = () => {
         const new1 = moment(date2)
         const new_date = new1.subtract(1, 'day').format('YYYY-MM-DD')

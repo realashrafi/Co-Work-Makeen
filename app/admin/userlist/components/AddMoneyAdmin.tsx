@@ -28,7 +28,7 @@ const AddMoney = ({id, balance, first_name, last_name}: any) => {
         axios.request(config)
             //@ts-ignore
             .then((response) => {
-                console.log(JSON.stringify(response.data));
+                //console.log(JSON.stringify(response.data));
                 Swal.fire({
                     title: "انجام شد",
                     text: `در کیف پول ${first_name + ' ' + last_name} نشست`,
@@ -43,7 +43,7 @@ const AddMoney = ({id, balance, first_name, last_name}: any) => {
             })
             //@ts-ignore
             .catch((error) => {
-                console.log(error);
+                //console.log(error);
             });
         // try {
         //     const token = localStorage?.getItem('userToken');
@@ -54,9 +54,9 @@ const AddMoney = ({id, balance, first_name, last_name}: any) => {
         //                 Accept: 'application/json',
         //             }
         //         })
-        //     console.log(res)
+        //     //console.log(res)
         // } catch (e) {
-        //     console.log(e)
+        //     //console.log(e)
         // }
     }
     return (

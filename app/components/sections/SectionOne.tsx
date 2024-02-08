@@ -27,7 +27,7 @@ const SectionOne = () => {
                              highlight={false}>
                         <Link href={'/tariffs'} data-aos={'zoom-in'} data-aos-duration="2000"
                               className={'mt-3 hover:animate-pulse hover:bg-[#44C0ED] bg-[#FF792C] flex justify-center items-center text-white w-[264px] h-[48px] rounded-full text-[20px]'}>
-                        <span data-aos={''} data-aos-duration="2000">
+                        <span data-atropos-offset="8" data-aos={''} data-aos-duration="2000">
                         رزرو صندلی
                         </span>
                         </Link>

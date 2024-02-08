@@ -9,7 +9,7 @@ import DropDownNavbar from "@/app/components/DropDownNavbar";
 const UserNavbar = ({data}: any) => {
     const date = new DateObject({calendar:persian})
 
-    // console.log(date.format( ))
+    // //console.log(date.format( ))
     return (
         <div className={'fixed w-[100%]   z-[3] '}>
             <div className={'flex items-center px-2 w-[100%] justify-between  lg:h-[156px] lg:w-[79.93%] bg-[#0A2E65] '}>

@@ -60,9 +60,9 @@ const CalenderReserves = () => {
     const [values, setValues] = useState<any>();
 
     const style: any = {color: '#EEEFEE', marginTop: 24, border: 'none', boxShadow: "none"}
-    // console.log('cal', reservedc)
-    console.log('cal2', reserved)
-    console.log('data', data)
+    // //console.log('cal', reservedc)
+    //console.log('cal2', reserved)
+    //console.log('data', data)
     // @ts-ignore
     return (
         <div>

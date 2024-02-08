@@ -8,7 +8,7 @@ export const adminLogin: any = createAsyncThunk('type/loginAdmin',
             const response = await axios.post(URL, initialData);
             return response.data
         } catch (err) {
-            console.log(err)
+            //console.log(err)
         }
     })
  const adminReducer = createSlice({

@@ -12,7 +12,7 @@ const UploadImage = () => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [loading, setLoading] = useState<any>(false)
     const {data} = useMe()
-    console.log('upload', data)
+    //console.log('upload', data)
     const handleFileChange = (e: any) => {
         const file = e.target.files[0];
         setSelectedFile(file);
@@ -21,12 +21,12 @@ const UploadImage = () => {
     const handleFileUpload = async (e: any) => {
         e.preventDefault();
         setLoading(true)
-        console.log(selectedFile);
+        //console.log(selectedFile);
 
         if (selectedFile) {
             try {
                 const token = localStorage?.getItem('userToken');
-                console.log(token);
+                //console.log(token);
 
                 new Compressor(selectedFile, {
                     quality: 0.5, // میزان کیفیت فایل خروجی
@@ -46,7 +46,7 @@ const UploadImage = () => {
                         );
 
                         window.location.reload();
-                        console.log(response);
+                        //console.log(response);
 
                         if (response.status === 200) {
                             Swal.fire({

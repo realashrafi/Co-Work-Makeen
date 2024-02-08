@@ -21,11 +21,11 @@ const DailySession = () => {
                     'Authorization': `Bearer ${token}`
                 }
             })
-            console.log('res', res)
+            //console.log('res', res)
             setDays(res.data)
             setLoading(false)
         } catch (e) {
-            console.log(e)
+            //console.log(e)
 
         }
     }
@@ -83,7 +83,7 @@ const DailySession = () => {
 
         }
     }
-    console.log(selectedDay)
+    //console.log(selectedDay)
     return (
         <div className={'w-[80%] flex flex-col items-center mx-auto'}>
             <div className={'text-white text-base font-bold mt-[32px]'}>رزرو روزانه اتاق جلسات</div>

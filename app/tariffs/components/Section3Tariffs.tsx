@@ -52,7 +52,7 @@ const Section3Tariffs = () => {
                 className={'lg:w-[71%]  w-[90%] lg:h-[294px] pb-12 lg:pb-0 justify-center flex-wrap-reverse mx-auto rounded-[24px]  mt-[50px] bg-[#0A2E65] flex'}>
                 <div data-aos={'fade-up'} className={'lg:w-[82%] w-[98%]'}>
                     <div data-aos={'fade-up'}
-                        className={'lg:h-[50%] pb-12 lg:pb-0 lg:w-[100%] w-[90%] flex-wrap-reverse  lg:flex-nowrap justify-center  flex '}>
+                        className={'lg:h-[50%] lg:-mr-0 mx-auto  pb-12 lg:pb-0 lg:w-[100%] w-[90%] flex-wrap-reverse  lg:flex-nowrap justify-center  flex '}>
                         <div
                             className={'lg:w-[26%] px-3 w-fit  flex items-center justify-center h-[48px] bg-[#FF792C]  mt-[49px] rounded-[10px] lg:ml-[6%] '}>
                             <div className={'lg:-ml-[64px]'}></div>
@@ -71,7 +71,7 @@ const Section3Tariffs = () => {
                         <rect width="826" height="1" fill="#002256"/>
                     </svg>
                     <div data-aos={'fade-up'}
-                        className={'lg:h-[50%] lg:w-[100%] w-[90%] flex-wrap-reverse  lg:flex-nowrap justify-center  flex '}>
+                        className={'lg:h-[50%] lg:-mr-0  mx-auto  lg:w-[100%] w-[90%] flex-wrap-reverse  lg:flex-nowrap justify-center  flex '}>
                         <div
                             className={'lg:w-[26%] lg:px-0 px-3 flex items-center justify-center h-[48px] bg-[#FF792C]  mt-[49px] rounded-[10px] lg:ml-[6%] '}>
                             <div className={'lg:-ml-[64px]'}></div>

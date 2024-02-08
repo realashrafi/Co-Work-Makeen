@@ -73,7 +73,7 @@ const UserInterface = () => {
         //             Accept: 'application/json',
         //         }
         //     })
-        // console.log(response.data)
+        // //console.log(response.data)
         setUserID(data?.id)
         setGender(data?.gender)
         setPhone(data?.phone_number)
@@ -84,7 +84,7 @@ const UserInterface = () => {
         setEmail(data?.email)
         setNational_code(data?.national_code)
         // } catch (e) {
-        //     console.log(e)
+        //     //console.log(e)
         // }
     }
     const handleupdate = async (e: any) => {
@@ -134,10 +134,10 @@ const UserInterface = () => {
                 confirmButtonText: 'باشه',
                 backdrop: 'rgba(0,0,0,0.78)'
             })
-            console.log(e)
+            //console.log(e)
         }
     }
-    console.log('interface', data)
+    //console.log('interface', data)
     return (
         <div className={'bg-[#0A2E65] w-[100%] lg:h-[2040px]'}>
             <UserNavbar data={data}/>

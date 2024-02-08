@@ -53,7 +53,7 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
             setShowModal(true)
             setLoadingStep1(false)
         } catch (e) {
-            console.log(e)
+            //console.log(e)
         }
     }
     const handleUserLogin = async (e: any) => {
@@ -82,7 +82,7 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                 setLoadingStep2Login(false)
             }
         } catch (e) {
-            console.log(e)
+            //console.log(e)
             Swal.fire({
                 title: `خطا`,
                 text: "شماره تلفن یا رمز عبور اشتباه است",
@@ -112,7 +112,7 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
             })
             // statusRegister.setUserRegisterStatus(response.status)
             localStorage.setItem('userToken', response.data.token)
-            console.log(response.status)
+            //console.log(response.status)
             if (response?.status == 200) {
                 //@ts-ignore
                 // localStorage.setItem('loginStatus', 200)
@@ -131,7 +131,7 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
                 router.refresh()
             }
         } catch (e) {
-            console.log(e)
+            //console.log(e)
             Swal.fire({
                 title: `خطا`,
                 text: "اطلاعات بدرستی وارد نشده",

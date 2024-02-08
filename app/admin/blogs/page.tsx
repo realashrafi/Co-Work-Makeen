@@ -66,7 +66,7 @@ handleProtect()
             //     })
             // }
         } catch (e) {
-            console.log(e)
+            //console.log(e)
             Swal.fire({
                 title: "خطایی رخ داده",
                 text: "شما ادمین نیستید",

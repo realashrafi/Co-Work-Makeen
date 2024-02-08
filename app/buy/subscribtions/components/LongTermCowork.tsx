@@ -50,7 +50,7 @@ const LongTermCowork = () => {
                 })
             }
         } catch (res:any) {
-            console.log('catch',res)
+            //console.log('catch',res)
             Swal.fire({
                 title: "خطا",
                 text: `${res?.response.data.message}`,

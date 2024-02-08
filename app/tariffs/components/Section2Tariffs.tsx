@@ -14,7 +14,7 @@ const Section2Tariffs = () => {
             once: false,
         })
     }, []);
-    console.log('priceDefault',priceDefault)
+    //console.log('priceDefault',priceDefault)
     return (
         <section className={'bg-[#002256] flex flex-col   pt-[53px]'}>
             <div data-aos={'fade-up'}

@@ -65,7 +65,7 @@ const WalletUser = () => {
             //     })
             // }
         } catch (e) {
-            console.log(e)
+            //console.log(e)
             Swal.fire({
                 title: "خطایی رخ داده",
                 text: "لطفا وارد حساب کاربری خود شوید",
@@ -96,12 +96,12 @@ const WalletUser = () => {
         axios.request(config)
             //@ts-ignore
             .then((response) => {
-                console.log(response.data);
+                //console.log(response.data);
                 setTransactions(response.data)
             })
             //@ts-ignore
             .catch((error) => {
-                console.log(error);
+                //console.log(error);
             });
     }
     const showButton = () => {
@@ -177,7 +177,7 @@ const WalletUser = () => {
             )
         }
     }
-    // console.log('data',data)
+    // //console.log('data',data)
     return (
         <div>
             {validate ?

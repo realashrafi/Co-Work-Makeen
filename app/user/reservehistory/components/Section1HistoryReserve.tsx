@@ -33,11 +33,11 @@ const Section1HistoryReserve = () => {
             setProps(res.data.links)
             setLoading(false)
         } catch (e) {
-            console.log(e)
+            //console.log(e)
         }
     }
     const pagination = () => {
-        console.log('props', props)
+        //console.log('props', props)
         return (
             <div className={'flex justify-center mt-3'}>
                 {/*// @ts-ignore*/}

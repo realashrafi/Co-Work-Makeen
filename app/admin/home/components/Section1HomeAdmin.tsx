@@ -20,10 +20,10 @@ const Section1HomeAdmin = () => {
                         'Authorization': `Bearer ${token}`
                     }
                 })
-            console.log('trans', res)
+            //console.log('trans', res)
             setTransactios(res.data)
         } catch (e) {
-            console.log(e)
+            //console.log(e)
         }
     }
     const getReserve = async () => {
@@ -36,10 +36,10 @@ const Section1HomeAdmin = () => {
                         'Authorization': `Bearer ${token}`
                     }
                 })
-            console.log('reserve', res)
+            //console.log('reserve', res)
             setReserves(res.data)
         } catch (e) {
-            console.log(e)
+            //console.log(e)
         }
     }
 

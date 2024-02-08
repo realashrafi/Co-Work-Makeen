@@ -32,7 +32,7 @@ const DropDownNavbar = () => {
                     Accept: 'application/json',
                 }
             })
-            console.log(response)
+            //console.log(response)
             if (response.status == 200) {
                 setValidate(false)
             } else {
@@ -52,7 +52,7 @@ const DropDownNavbar = () => {
                 })
             }
         } catch (e) {
-            console.log(e)
+            //console.log(e)
 
             setValidate(true)
             setExist(false)

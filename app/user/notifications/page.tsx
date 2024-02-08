@@ -75,7 +75,7 @@ const Notifications = () => {
             //     })
             // }
         } catch (e) {
-            console.log(e)
+            //console.log(e)
             Swal.fire({
                 title: "خطایی رخ داده",
                 text: "لطفا وارد حساب کاربری خود شوید",

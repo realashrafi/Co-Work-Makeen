@@ -28,7 +28,7 @@ const AddMoney = ({data}: any) => {
         axios.request(config)
             //@ts-ignore
             .then((response) => {
-                console.log(JSON.stringify(response.data));
+                //console.log(JSON.stringify(response.data));
                 Swal.fire({
                     title: "انجام شد",
                     text: "در کیف پول شما نشست",
@@ -43,7 +43,7 @@ const AddMoney = ({data}: any) => {
             })
                 //@ts-ignore
             .catch((error) => {
-                console.log('errrr',error);
+                //console.log('errrr',error);
                 Swal.fire({
                     title: 'خطا',
                     text: "دسترسی ندارید",
@@ -64,9 +64,9 @@ const AddMoney = ({data}: any) => {
         //                 Accept: 'application/json',
         //             }
         //         })
-        //     console.log(res)
+        //     //console.log(res)
         // } catch (e) {
-        //     console.log(e)
+        //     //console.log(e)
         // }
     }
     return (

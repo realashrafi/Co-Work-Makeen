@@ -13,7 +13,7 @@ import useUserList from "@/app/store/react-query/useUserList";
 const UserList = () => {
     const [protect, setProtect] = useState(false)
     const {data,refetch} =useUserList()
-    console.log('data',data)
+    //console.log('data',data)
 
     useEffect(() => {
         handleProtect()
@@ -35,7 +35,7 @@ const UserList = () => {
                 setProtect(false)
             }
         } catch (e) {
-            console.log(e)
+            //console.log(e)
             Swal.fire({
                 title: "خطایی رخ داده",
                 text: "شما ادمین نیستید",
@@ -58,9 +58,9 @@ const UserList = () => {
     //               Authorization: `Bearer ${token}`
     //           }
     //       })
-    //       console.log('userList',res)
+    //       //console.log('userList',res)
     //   }catch (e) {
-    //       console.log(e)
+    //       //console.log(e)
     //   }
     // }
 

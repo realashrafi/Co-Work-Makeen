@@ -54,7 +54,7 @@ const CompleteInformation = () => {
                 setValidate(false)
             }
         } catch (e) {
-            console.log(e)
+            //console.log(e)
             Swal.fire({
                 title: "خطایی رخ داده",
                 text: "لطفا وارد حساب کاربری خود شوید",
@@ -105,7 +105,7 @@ const CompleteInformation = () => {
                 router.back()
             }
         } catch (e:any) {
-            console.log(e)
+            //console.log(e)
             Swal.fire({
                 title: `${e.response.data.message} خطا`,
                 text:`کنسول را چک کنید`,
@@ -130,7 +130,7 @@ const CompleteInformation = () => {
     //@ts-ignore
         setDob(state.gregorian)
     }
-    console.log(dob)
+    //console.log(dob)
     return (
          <div className={'flex w-[100%] flex-col  '}>
             <div className={'flex justify-between lg:mr-[87px] lg:px-[48px] px-2 '}>

@@ -41,11 +41,11 @@ const Section2HomeAdmin = () => {
                         'Authorization': `Bearer ${token}`
                     }
                 })
-            console.log('today', res)
+            //console.log('today', res)
             setToday(res.data)
 
         } catch (e) {
-            console.log(e)
+            //console.log(e)
         }
     }
     const pers=today?.filedPercentage

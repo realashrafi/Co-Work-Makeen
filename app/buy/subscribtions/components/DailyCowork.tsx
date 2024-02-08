@@ -28,7 +28,7 @@ const DailyCowork = () => {
             setData(res.data)
             setLoading(false)
         } catch (e) {
-            console.log(e)
+            //console.log(e)
         }
     }
     // @ts-ignore
@@ -48,7 +48,7 @@ const DailyCowork = () => {
     // if (isLoading) return <LoadingMakeenLogo/>
 
 
-    console.log('selectedDate : ', selectedDay)
+    //console.log('selectedDate : ', selectedDay)
     const reserveDailyCowork = async (e: any) => {
         let dates: any = []
         //@ts-ignore
