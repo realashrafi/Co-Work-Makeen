@@ -10,9 +10,9 @@ const SectionSix = () => {
     return (
         <section
             className={'bg-[#002256] lg:pt-[180px] pt-12 pb-12 lg:pb-[120px] flex lg:flex-nowrap flex-wrap justify-center'}>
-            <Atropos className="my-atropos" highlight={false}>
+            <Atropos  highlight={false}>
                 <div
-                    className="relative group cursor-pointer  -mx-[15px] rounded-[18px] duration-500 my-2 lg:my-0 lg:scale-[85%] w-[275px] h-[275px] bg-[#44C0ED] ">
+                    className="relative group cursor-pointer   rounded-[18px] duration-500 my-2 lg:my-0 lg:scale-[85%] w-[275px] h-[275px] bg-[#44C0ED] ">
                     <div className="">
                         <div
                             className="absolute bottom-24 flex justify-center  duration-500 group-hover:-translate-y-14">
@@ -34,9 +34,9 @@ const SectionSix = () => {
                     </div>
                 </div>
             </Atropos>
-            <Atropos className="my-atropos" highlight={false}>
+            <Atropos  highlight={false}>
                 <div
-                    className="relative group cursor-pointer -mx-[15px] rounded-[18px] duration-500 my-2 lg:my-0 lg:scale-[85%] w-[275px] h-[275px] bg-[#FF792C] ">
+                    className="relative group cursor-pointer  rounded-[18px] duration-500 my-2 lg:my-0 lg:scale-[85%] w-[275px] h-[275px] bg-[#FF792C] ">
                     <div className="">
                         <div
                             className="absolute bottom-28 flex justify-center  duration-500 group-hover:-translate-y-14">
@@ -60,9 +60,9 @@ const SectionSix = () => {
                     </div>
                 </div>
             </Atropos>
-            <Atropos className="my-atropos" highlight={false}>
+            <Atropos  highlight={false}>
                 <div
-                    className="relative group cursor-pointer -mx-[15px] rounded-[18px] duration-500 my-2 lg:my-0 lg:scale-[85%] w-[275px] h-[275px] bg-[#026AE1] ">
+                    className="relative group cursor-pointer  rounded-[18px] duration-500 my-2 lg:my-0 lg:scale-[85%] w-[275px] h-[275px] bg-[#026AE1] ">
                     <div className="">
                         <div
                             className="absolute bottom-24 flex justify-center  duration-500 group-hover:-translate-y-14">
