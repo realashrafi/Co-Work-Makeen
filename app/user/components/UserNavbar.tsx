@@ -22,13 +22,13 @@ const UserNavbar = ({data}: any) => {
                         <div className={'w-[13px] h-[13px] rounded-full bg-[#FF792C] absolute top-0 right-0'}></div>
                     </div>
                 </Link>
-                <div className={'flex items-center  ml-[40%] lg:ml-[30%] mr-[1%]  h-[56px]'}>
-                    <p className={'h-[56px] text-[14px]  text-[#FFFEFF]  pt-[15px] border-r-[2px] border-[#002256]  lg:pr-[40px] lg:mr-[35px]'}>
+                <div className={'flex items-center  lg:ml-[30%] lg:mr-[1%]  h-[56px]'}>
+                    <p className={'h-[56px] text-[14px] pr-2 text-[#FFFEFF]   pt-[18px] border-r-[2px] border-[#002256]  lg:pr-[40px] lg:mr-[35px]'}>
                         {date.format()}
                     </p>
                     <IconHandShake/>
-                    <p className={'lg:visible invisible lg:ml-[17px] flex-wrap text-[16px]  text-[#FFFEFF] '}>
-                        {data?.first_name} {data?.last_name} عزیز ، خوش اومدی </p>
+                    <p className={' lg:ml-[17px] flex-wrap text-[14px] lg:text-[16px]  w-fit text-[#FFFEFF] '}>
+                        {data?.first_name} <span className={'lg:visible invisible absolute lg:relative'}>{data?.last_name}</span> عزیز ، خوش اومدی </p>
                 </div>
 
             </div>

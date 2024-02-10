@@ -5,6 +5,7 @@ import Modal from "@/app/user/components/Modal";
 import {usePathname} from "next/navigation";
 import Image from "next/image";
 import logoMakeen from "@/app/user/components/data/logo-makeen.png";
+import Atropos from "atropos/react";
 
 const SideBarUser = ({visible,setVisible}:any) => {
     const pathName = usePathname()
@@ -13,22 +14,25 @@ const SideBarUser = ({visible,setVisible}:any) => {
         <div
             className={`flex-col transition-all lg:w-[20%] rounded-xl pr-[1%]  flex items-center lg:visible ${visible ? '' : 'invisible'} lg:top-0 -top-24 right-0 fixed pt-32 lg:pt-[11px] bg-[#0A2E65]`}>
             {/*<button className={'relative lg:invisible top-20 left-32 w-4 h-4'} onClick={() => setVisible(false)}>X</button>*/}
-            <Link href={'/'} className={'lg:mt-[10%]  cursor-pointer mt-[14%] ml-[5%] lg:mb-[25%] '} >
+            <Link href={'/'} className={'lg:mt-[10%]  cursor-pointer mt-[14%] ml-[5%] lg:mb-[25%] z-10 '} >
                 <Image src={logoMakeen} className={'z-10 cursor-pointer'} alt={''}/>
             </Link>
+            <Atropos shadow={false} highlight={false}>
             <Link className={''} href={'/user'}>
                 <div
                     className={`w-[253px] mb-[31px] ${pathName === '/user' ? 'bg-[#026AE1]' : ''} rounded-[12px]  flex items-center h-[43px] mr-[12px] hover:bg-[#002256] ml-[32px] `}
                     style={{direction: "rtl"}}>
-                    <svg width="17" className={'mr-[31px]'} height="22" viewBox="0 0 17 22" fill="none"
+                    <svg data-atropos-offset="8" width="17" className={'mr-[31px]'} height="22" viewBox="0 0 17 22" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path fillRule="evenodd" clipRule="evenodd"
                               d="M8.5 0C7.27622 0 6.10257 0.500445 5.23723 1.39124C4.37189 2.28204 3.88574 3.49022 3.88574 4.75C3.88574 6.00978 4.37189 7.21796 5.23723 8.10876C6.10257 8.99955 7.27622 9.5 8.5 9.5C9.72378 9.5 10.8974 8.99955 11.7628 8.10876C12.6281 7.21796 13.1143 6.00978 13.1143 4.75C13.1143 3.49022 12.6281 2.28204 11.7628 1.39124C10.8974 0.500445 9.72378 0 8.5 0ZM5.34288 4.75C5.34288 3.88805 5.6755 3.0614 6.26758 2.4519C6.85965 1.84241 7.66268 1.5 8.5 1.5C9.33732 1.5 10.1403 1.84241 10.7324 2.4519C11.3245 3.0614 11.6571 3.88805 11.6571 4.75C11.6571 5.61195 11.3245 6.4386 10.7324 7.0481C10.1403 7.65759 9.33732 8 8.5 8C7.66268 8 6.85965 7.65759 6.26758 7.0481C5.6755 6.4386 5.34288 5.61195 5.34288 4.75ZM8.5 11C6.2531 11 4.18203 11.526 2.64815 12.414C1.13662 13.29 5.43044e-05 14.616 5.43044e-05 16.25V16.352C-0.000917118 17.514 -0.00188862 18.972 1.24056 20.014C1.85159 20.526 2.70741 20.891 3.8634 21.131C5.02134 21.373 6.5319 21.5 8.5 21.5C10.4681 21.5 11.9777 21.373 13.1376 21.131C14.2936 20.891 15.1484 20.526 15.7604 20.014C17.0029 18.972 17.0009 17.514 16.9999 16.352V16.25C16.9999 14.616 15.8634 13.29 14.3528 12.414C12.818 11.526 10.7479 11 8.5 11ZM1.45719 16.25C1.45719 15.399 2.06141 14.475 3.36215 13.722C4.64054 12.982 6.45516 12.5 8.50097 12.5C10.5448 12.5 12.3595 12.982 13.6379 13.722C14.9396 14.475 15.5428 15.399 15.5428 16.25C15.5428 17.558 15.504 18.294 14.8395 18.85C14.4801 19.152 13.8778 19.447 12.8481 19.661C11.8213 19.875 10.4176 20 8.5 20C6.58241 20 5.17773 19.875 4.15191 19.661C3.12221 19.447 2.51992 19.152 2.1605 18.851C1.49604 18.294 1.45719 17.558 1.45719 16.25Z"
                               fill="#FFFEFF"/>
                     </svg>
-                    <p className={'text-[14px] font-[400] text-[#FFFEFF] mr-[20px]'}>اطلاعات کاربری</p>
+                    <p data-atropos-offset="8" className={'text-[14px] font-[400] text-[#FFFEFF] mr-[20px]'}>اطلاعات کاربری</p>
                 </div>
             </Link>
+            </Atropos>
+            <Atropos shadow={false} highlight={false}>
             <Link className={''} href={'/user/reservehistory'}>
                 <div
                     className={`w-[253px] mb-[31px] ${pathName === '/user/reservehistory' ? 'bg-[#026AE1]' : ''} rounded-[12px] flex items-center h-[43px] mr-[12px] hover:bg-[#002256] ml-[32px] `}
@@ -45,24 +49,28 @@ const SideBarUser = ({visible,setVisible}:any) => {
                     <p className={'text-[14px] font-[400] text-[#FFFEFF] mr-[20px]'}>تاریخچه رزرو</p>
                 </div>
             </Link>
+            </Atropos>
+            <Atropos shadow={false} highlight={false}>
             <Link className={''} href={'/user/walletuser'}>
                 <div
                     className={`${pathName === '/user/walletuser' ? 'bg-[#026AE1]' : ''} w-[253px] mb-[31px] rounded-[12px] flex items-center h-[43px] mr-[12px] hover:bg-[#002256] ml-[32px] `}
                     style={{direction: "rtl"}}>
-                    <svg width="24" className={'mr-[31px]'} height="24" viewBox="0 0 24 24" fill="none"
+                    <svg data-atropos-offset="8" width="24" className={'mr-[31px]'} height="24" viewBox="0 0 24 24" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M18.9688 0.000202478C18.8164 0.00410845 18.6562 0.0236403 18.5 0.0627019L2.25 4.34392C0.9375 4.68766 0 5.89078 0 7.25014V21C0 22.6445 1.35547 24 3 24H21C22.6445 24 24 22.6445 24 21V8.00013C24 6.35562 22.6445 5.00016 21 5.00016H7.625L19 2.00019V4.00017H21V2.00019C21 0.875195 20.043 -0.0154224 18.9688 0.000202478ZM3 7.00014H21C21.5664 7.00014 22 7.43373 22 8.00013V21C22 21.5664 21.5664 22 21 22H3C2.43359 22 2 21.5664 2 21V8.00013C2 7.43373 2.43359 7.00014 3 7.00014ZM18.5 13.0001C17.6719 13.0001 17 13.672 17 14.5001C17 15.3282 17.6719 16.0001 18.5 16.0001C19.3281 16.0001 20 15.3282 20 14.5001C20 13.672 19.3281 13.0001 18.5 13.0001Z"
                             fill="#F8F9FC"/>
                     </svg>
-                    <p className={'text-[14px] font-[400] text-[#FFFEFF] mr-[20px]'}>کیف پول</p>
+                    <p data-atropos-offset="8" className={'text-[14px] font-[400] text-[#FFFEFF] mr-[20px]'}>کیف پول</p>
                 </div>
             </Link>
+            </Atropos>
+            <Atropos shadow={false} highlight={false}>
             <Link className={''} href={'/user/connectadmin'}>
                 <div
                     className={`${pathName === '/user/connectadmin' ? 'bg-[#026AE1]' : ''} w-[253px] mb-[31px] rounded-[12px] flex items-center h-[43px] mr-[12px] hover:bg-[#002256] ml-[32px] `}
                     style={{direction: "rtl"}}>
-                    <svg width="26" className={'mr-[31px]'} height="26" viewBox="0 0 26 26" fill="none"
+                    <svg data-atropos-offset="8" width="26" className={'mr-[31px]'} height="26" viewBox="0 0 26 26" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M13.0027 25C15.6199 24.9994 18.1652 24.1432 20.2507 22.5618C22.3361 20.9804 23.8474 18.7605 24.5542 16.2405C25.2609 13.7205 25.1245 11.0386 24.1655 8.60332C23.2066 6.16808 21.4778 4.11311 19.2426 2.75159C17.0074 1.39006 14.3883 0.796629 11.7845 1.06173C9.18074 1.32683 6.73502 2.43593 4.82007 4.22001C2.90512 6.00408 1.62595 8.3653 1.17749 10.9438C0.729029 13.5224 1.13587 16.1768 2.33602 18.5027L1.00269 25L7.50002 23.6667C9.14802 24.5187 11.02 25 13.0027 25Z"
@@ -71,22 +79,25 @@ const SideBarUser = ({visible,setVisible}:any) => {
                             d="M7.00293 13H7.01626V13.0133H7.00293V13ZM13.0029 13H13.0163V13.0133H13.0029V13ZM19.0029 13H19.0163V13.0133H19.0029V13Z"
                             stroke="#FFFEFF" strokeWidth="2.25" strokeLinejoin="round"/>
                     </svg>
-                    <p className={'text-[14px] font-[400] text-[#FFFEFF] mr-[20px]'}>ارتباط با پشتیبانی</p>
+                    <p data-atropos-offset="8" className={'text-[14px] font-[400] text-[#FFFEFF] mr-[20px]'}>ارتباط با پشتیبانی</p>
                 </div>
             </Link>
+            </Atropos>
+            <Atropos shadow={false} highlight={false}>
             <Link className={''} href={'/user/notifications'}>
                 <div
                     className={`${pathName === '/user/notifications' ? 'bg-[#026AE1]' : ''} w-[253px] mb-[31px] rounded-[12px] flex items-center h-[43px] mr-[12px] hover:bg-[#002256] ml-[32px] `}
                     style={{direction: "rtl"}}>
-                    <svg width="24" className={'mr-[31px]'} height="24" viewBox="0 0 24 24" fill="none"
+                    <svg data-atropos-offset="8" width="24" className={'mr-[31px]'} height="24" viewBox="0 0 24 24" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M11.5179 0.0104277C6.12441 0.244733 1.99173 4.51869 1.99173 9.46491V13.9373L0.223338 17.2186C0.220227 17.2246 0.217186 17.2306 0.214215 17.2367C-0.497213 18.6321 0.654427 20.3076 2.32665 20.3076H7.99672C7.99672 22.3359 9.80097 24 12 24C14.1991 24 16.0034 22.3359 16.0034 20.3076H21.6721C23.3443 20.3076 24.4975 18.6324 23.7859 17.2367C23.7829 17.2306 23.7798 17.2246 23.7767 17.2186L22.0083 13.9373V9.23053C22.0083 3.99586 17.2466 -0.238323 11.5179 0.0104277ZM11.6117 1.85421C16.2289 1.65372 20.0067 5.02259 20.0067 9.23053V14.1537C20.0065 14.2963 20.0422 14.437 20.1109 14.5648L21.9745 18.0239C22.0943 18.2608 21.9556 18.4614 21.6721 18.4614H2.32665C2.04313 18.4614 1.9056 18.2612 2.02561 18.0239V18.0227L3.88914 14.5648C3.95785 14.437 3.99353 14.2963 3.99339 14.1537V9.46491C3.99339 5.46452 7.31578 2.04083 11.6117 1.85421ZM9.99838 20.3076H14.0017C14.0017 21.3379 13.1171 22.1538 12 22.1538C10.883 22.1538 9.99838 21.3379 9.99838 20.3076Z"
                             fill="#FFFEFF"/>
                     </svg>
-                    <p className={'text-[14px] font-[400] text-[#FFFEFF] mr-[20px]'}>اعلانات</p>
+                    <p data-atropos-offset="8" className={'text-[14px] font-[400] text-[#FFFEFF] mr-[20px]'}>اعلانات</p>
                 </div>
             </Link>
+            </Atropos>
             <Modal/>
         </div>
     );

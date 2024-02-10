@@ -18,7 +18,7 @@ const Section1HistoryReserve = () => {
     const [firstLoad, setFirstLoad] = useState(true)
     useEffect(() => {
         getHistory()
-        setTimeout(()=>setFirstLoad(false),2000)
+        setTimeout(() => setFirstLoad(false), 2000)
     }, [url]);
     const getHistory = async () => {
         try {
@@ -72,7 +72,7 @@ const Section1HistoryReserve = () => {
 
     return (
         <div>
-            {firstLoad ? <LoadingMinimal/> :
+            {firstLoad ? <div className={'mt-10'}><LoadingMinimal/></div> :
                 reserveData?.length === 0 ?
                     <div className={'w-[100%] -mt-24 '}>
                         <p className={'text-[#FFFEFF] text-[16px] font-[400] text-center mt-[180px]'}>

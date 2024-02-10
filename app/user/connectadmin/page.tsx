@@ -73,7 +73,7 @@ const ConnectAdmin = () => {
             {validate ? <div className={'bg-[#0A2E65] h-[2040px] '}>
                     <UserNavbar data={data}/>
                     <div className={'flex pt-14 lg:pt-[160px]'}>
-                        <div data-aos={'fade-right'}
+                        <div data-aos={'fade-up'}
                              className={'lg:w-[79.3%] w-[100%] flex-col h-[1752PX] bg-[#002256] rounded-[24px] mb-[132px]'}>
                             <div className={'flex mt-[40px] mr-[24px]'} style={{direction: "rtl"}}>
                                 <div className={'text-[#FFFEFF] text-[16px] font-[400] '}>

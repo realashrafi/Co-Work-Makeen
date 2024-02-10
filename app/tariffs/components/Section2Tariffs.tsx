@@ -10,8 +10,8 @@ const Section2Tariffs = () => {
     const {priceDefault}=usePriceDefault()
     useEffect(() => {
         AOS.init({
-            duration: 400,
-            once: false,
+            duration: 200,
+            once: true,
         })
     }, []);
     //console.log('priceDefault',priceDefault)

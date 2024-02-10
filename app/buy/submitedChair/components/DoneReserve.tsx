@@ -4,6 +4,7 @@ import Image from "next/image";
 import doneImage from './data/doneImage.png'
 import LoadingMakeenLogo from "@/app/components/LoadingMakeenLogo";
 import ProgressBar from "@ramonak/react-progress-bar";
+import AOS from "aos";
 
 const DoneReserve = () => {
     const [Ftype, setFtype] = useState<any>()
@@ -13,8 +14,12 @@ const DoneReserve = () => {
     const [loading, setLoading] = useState(true)
     const [complete, setComplete] = useState(0)
     useEffect(() => {
+        AOS.init({
+            duration: 200,
+            once: true,
+        })
         setTimeout(()=>setComplete(10),100)
-        setFtype(localStorage?.getItem('Ftype'))
+        setFtype(localStorage?.getItem('Ffa_type'))
         setTimeout(()=>setComplete(25),200)
         setFLDay(localStorage?.getItem('FLDay'))
         setTimeout(()=>setComplete(50),300)
@@ -27,16 +32,16 @@ const DoneReserve = () => {
         setTimeout(()=>setLoading(false),1500)
     }, []);
     return (
-        <div className={'flex flex-col w-[100%]'}>
+        <div data-aos={'fade-up'} className={'flex flex-col w-[100%]'}>
             <div className={'flex justify-center  '}>
                 <div className={'text-white text-base font-bold'}>فاکتور شما</div>
             </div>
             {loading?
                 <ProgressBar className={'w-[80%] mt-10 mx-auto '}  barContainerClassName="bg-[#0A2E65]"  completed={complete} customLabel="در حال چاپ" />:
-            <div className={'w-[90%] mx-auto rounded-xl  mt-[43px] flex flex-col h-[776px] bg-[#0A2E65]'}>
-                <div className={'relative'}>
+            <div data-aos={'fade-up'} className={'w-[90%] mx-auto rounded-xl  mt-[43px] flex flex-col h-[776px] bg-[#0A2E65]'}>
+                <div data-aos={'fade-up'} className={'relative'}>
                     <div
-                        className="absolute z-[2] -bottom-7 w-[100%] lg:right-[22%] lg:w-[458px] h-14 bg-[#13B86C] rounded-3xl flex justify-center items-center">
+                        className="absolute z-[2] -bottom-7 w-[100%] lg:right-[22%] lg:w-[458px] h-14 bg-[#13B86C] rounded-md lg:rounded-3xl flex justify-center items-center">
                         <div className="text-white text-base font-normal mr-[8px]" dir={'rtl'}>رزرو شما با موفقیت ثبت شد .
                         </div>
                         <svg width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -47,27 +52,27 @@ const DoneReserve = () => {
                     </div>
                     <Image className={'brightness-75'} src={doneImage} alt={''}/>
                 </div>
-                <div
+                <div data-aos={'fade-down'}
                     className="w-[65%]  mx-auto h-10 bg-[#0A2E65]  items-center rounded-xl shadow-xl flex justify-between px-[24px] mt-[83px]">
                     <div className={'text-white text-sm font-bold'}>{Ftype}</div>
                     <div className={'text-white text-sm font-bold'}>نوع اشتراک</div>
                 </div>
-                <div
+                <div data-aos={'fade-down'}
                     className="w-[65%] mx-auto h-10 bg-[#0A2E65] items-center rounded-xl shadow-xl flex justify-between px-[24px] mt-[8px]">
                 <div className={'text-white text-sm font-bold'}>{FLDay} روز</div>
                     <div className={'text-white text-sm font-bold'}>تعداد روزهای انتخابی</div>
                 </div>
-                <div
+                <div data-aos={'fade-down'}
                     className="w-[65%] mx-auto h-10 bg-[#0A2E65] items-center rounded-xl shadow-xl flex justify-between px-[24px] mt-[8px]">
                     <div className={'text-white text-sm font-bold'}>{Fprice} تومان</div>
                     <div className={'text-white text-sm font-bold'}>مبلغ پرداختی</div>
                 </div>
-                <div
+                <div data-aos={'fade-down'}
                     className="w-[65%] mx-auto h-10 bg-[#0A2E65] items-center rounded-xl shadow-xl flex justify-between px-[24px] mt-[8px]">
                     <div className={'text-white text-sm font-bold'}>{Fcreated_at.slice(0.10)}</div>
                     <div className={'text-white text-sm font-bold'}>تاریخ خرید</div>
                 </div>
-                <div
+                <div data-aos={'fade-down'}
                     className="w-[195px] h-[45px] bg-[#13B86C] mx-auto mt-[61px] flex justify-center items-center rounded-3xl">
                     <div className={'text-white text-sm font-bold mr-[7px]'}>ذخیره</div>
                     <svg width="26" height="29" viewBox="0 0 26 29" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -22,10 +22,10 @@ const LongTermCowork = () => {
                         Accept: 'application/json',
                     }
                 })
-            localStorage.setItem('Ftype',res.data.type)
-            localStorage.setItem('FLDay',res.data.length)
-            localStorage.setItem('Fprice',res.data[0].price)
-            localStorage.setItem('Fcreated_at',res.data[0].created_at)
+            localStorage.setItem('Ffa_type', res.data.reservation_type)
+            localStorage.setItem('FLDay', res.data.reservation_count)
+            localStorage.setItem('Fprice', res.data.price_paid)
+            localStorage.setItem('Fcreated_at', res.data.j_date)
             Swal.fire({
                 title: "انجام شد",
                 text: "خرید شما موفق بود",

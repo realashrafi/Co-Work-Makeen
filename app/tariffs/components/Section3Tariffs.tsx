@@ -14,8 +14,8 @@ const Section3Tariffs = () => {
     const {priceDefault}=usePriceDefault()
     useEffect(() => {
         AOS.init({
-            duration: 800,
-            once: false,
+            duration: 200,
+            once: true,
         })
     }, []);
     return (

@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import LoadingMakeenLogo from "@/app/components/LoadingMakeenLogo";
 import usePrice from "@/app/store/react-query/usePrice";
 import LoadingMinimal from "@/app/components/LoadingMinimal";
+import AOS from "aos";
 
 const DailyCowork = () => {
     const [selectedDay, setSelectedDay] = useState<any>([])
@@ -13,6 +14,12 @@ const DailyCowork = () => {
     const [loading, setLoading] = useState(true)
     const [data, setData] = useState<any>()
     const {price} = usePrice()
+    useEffect(() => {
+        AOS.init({
+            duration: 300,
+            once: true,
+        })
+    }, []);
     useEffect(() => {
         handleGet()
     }, [weeks]);
@@ -68,10 +75,10 @@ const DailyCowork = () => {
                         Accept: 'application/json',
                     }
                 })
-                localStorage.setItem('Ffa_type',res.data.fa_type)
-                localStorage.setItem('FLDay',res.data.length)
-                localStorage.setItem('Fprice',res.data[0].price)
-                localStorage.setItem('Fcreated_at',res.data[0].created_at)
+            localStorage.setItem('Ffa_type', res.data.reservation_type)
+            localStorage.setItem('FLDay', res.data.reservation_count)
+            localStorage.setItem('Fprice', res.data.price_paid)
+            localStorage.setItem('Fcreated_at', res.data.j_date)
             Swal.fire({
                 title: "انجام شد",
                 text: "خرید شما موفق بود",
@@ -140,8 +147,8 @@ const DailyCowork = () => {
                 <div className={'lg:w-[60%] flex  flex-wrap justify-center '} dir={'rtl'}>
                     {/*// @ts-ignore*/}
                     {selectedDay?.map(item => (
-                        <div dir={'ltr'}
-                             className={'w-[146px] lg:my-0 my-1 h-8 bg-[#002256] rounded-[32px] justify-evenly flex items-center mx-[2px]'}
+                        <div data-aos={'fade-down'} dir={'ltr'}
+                             className={'w-[130px] lg:my-0 my-1 h-8 bg-[#002256] rounded-[32px] justify-evenly flex items-center mx-[2px]'}
                             //@ts-ignore
                              key={item.id}>
                             {/*// @ts-ignore*/}
@@ -184,7 +191,7 @@ const DailyCowork = () => {
                     :
                     //@ts-ignore
                     data?.slice(0, 6).map((item, index) => (
-                        <div key={item.id}
+                        <div data-aos={'fade-down'} key={item.id}
                              className={`${!item.is_reservable ? 'opacity-30' : ''}  flex lg:w-[100%]  h-[56px]  my-1`}>
                             <div
                                 className={'flex justify-around lg:w-[180px] w-[30%] bg-[#002256] rounded-l-xl lg:rounded-l-full'}>
@@ -225,7 +232,7 @@ const DailyCowork = () => {
                             </div>
                             <div className={'flex items-center ml-4 lg:ml-[20px]'}>
                                 <label
-                                    className="cursor-pointer  duration-300 relative overflow-hidden w-[30px] h-[30px] flex justify-center items-center  rounded-lg bg-[#002256] ">
+                                    className={`cursor-pointer  duration-300 relative overflow-hidden w-[30px] h-[30px] flex justify-center items-center  rounded-lg ${item.is_reservable?'bg-[#002256]':'bg-orange-500'} `}>
                                     <input className="peer  hidden" type="checkbox" disabled={!item.is_reservable}
                                            onChange={() => {
                                                const newSelectedDate = [...selectedDay]

@@ -3,16 +3,26 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import LoadingMinimal from "@/app/components/LoadingMinimal";
 import Swal from "sweetalert2";
+import {PiWarningCircleFill} from "react-icons/pi";
+import FullTypoGraphi from "@/app/components/FullTypoGraphi";
+import usePrice from "@/app/store/react-query/usePrice";
+import usePriceDefault from "@/app/store/react-query/usePriceDefault";
+import AOS from "aos";
 
 const DailySession = () => {
     const [selectedDay, setSelectedDay] = useState<any>([])
     const [week, setWeek] = useState<string>('this-week')
     const [days, setDays] = useState<any>()
     const [loading, setLoading] = useState(true)
+    const {priceDefault}=usePriceDefault()
     useEffect(() => {
         getInformation()
     }, [week]);
     const getInformation = async () => {
+        AOS.init({
+            duration: 700,
+            once: true,
+        })
         try {
             const token = localStorage?.getItem('userToken')
             const res = await axios.get(`https://www.cowork.v1r.ir/api/v1/reservation/session-room/status/${week}/daily`, {
@@ -29,7 +39,7 @@ const DailySession = () => {
 
         }
     }
-    const handleReserve = async (e:any) => {
+    const handleReserve = async (e: any) => {
         let dates: any = []
         //@ts-ignore
         selectedDay.map(i => {
@@ -37,15 +47,19 @@ const DailySession = () => {
         })
         e.preventDefault()
         try {
-            const token =localStorage?.getItem('userToken')
+            const token = localStorage?.getItem('userToken')
             const res = await axios.post('https://www.cowork.v1r.ir/api/v1/reservation/session-room/reserve/daily', {
-                dates:dates
-            },{
+                dates: dates
+            }, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     Accept: 'application/json',
                 }
             })
+            localStorage.setItem('Ffa_type', res.data.reservation_type)
+            localStorage.setItem('FLDay', res.data.reservation_count)
+            localStorage.setItem('Fprice', res.data.price_paid)
+            localStorage.setItem('Fcreated_at', res.data.j_date)
             Swal.fire({
                 title: "انجام شد",
                 text: "خرید شما موفق بود",
@@ -85,24 +99,24 @@ const DailySession = () => {
     }
     //console.log(selectedDay)
     return (
-        <div className={'w-[80%] flex flex-col items-center mx-auto'}>
+        <div className={'lg:w-[80%] w-[95%] flex flex-col items-center mx-auto'}>
             <div className={'text-white text-base font-bold mt-[32px]'}>رزرو روزانه اتاق جلسات</div>
-            <div className={'text-orange-500 text-sm font-normal mt-[8px]'}>هزینه روزانه 100 تومان</div>
-            <div className={'flex flex-col mx-auto   lg:w-[90%] w-[110%] justify-center mt-[48px]'}>
+            <div className={'text-orange-500 text-sm font-normal mt-[8px]'}>هزینه روزانه {priceDefault?.data.sessionRoom.price.normal.perDay} تومان</div>
+            <div className={'flex flex-col mx-auto lg:w-[90%] w-[100%] justify-center mt-[48px]'}>
                 {loading ? <LoadingMinimal/> :
                     //@ts-ignore
                     days?.slice(0, 6).map(item => (
-                        <div key={item.id}
-                             className={`${!item.is_reservable ? 'opacity-30' : ''}  flex lg:w-[100%]  h-[56px]  my-1`}>
+                        <div data-aos={'fade-down'} key={item.id}
+                             className={`${!item.is_reservable ? 'opacity-30' : ''}  flex lg:w-[100%] w-[100%]  h-[56px]  my-1`}>
                             <div
-                                className={'flex  text-center justify-between items-center lg:px-[10%] w-[90%] px-3 lg:w-[450px] bg-[#002256] rounded-l-3xl'}>
+                                className={'flex  text-center justify-between items-center lg:px-[10%] w-[90%] px-3 lg:w-[450px] bg-[#002256] rounded-l-xl lg:rounded-l-3xl'}>
                                 <div className={'text-white text-sm font-normal '}
                                      dir={'rtl'}>{item.open} الی {item.close}</div>
                                 <div className={'text-white text-sm font-normal '}>{item.j_date}</div>
                                 <div className={'text-white text-sm font-normal '}>{item.day_of_week}</div>
                             </div>
                             <div
-                                className={'flex w-[10%] px-1 lg:w-[150px] bg-[#002256] justify-center items-center border-l-2 border-[#0A2E65] rounded-r-3xl'}>
+                                className={'flex w-[10%] px-2 lg:w-[150px] bg-[#002256] justify-center items-center border-l-2 border-[#0A2E65] rounded-r-xl lg:rounded-r-3xl'}>
                                 <svg width="32" height="30" viewBox="0 0 32 30" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path id="Vector"
@@ -110,34 +124,37 @@ const DailySession = () => {
                                           fill="#FFFEFF"/>
                                 </svg>
                             </div>
-                            <div className={'flex items-center ml-[20px]'}>
-                                <label
-                                    className="cursor-pointer  duration-300 relative overflow-hidden w-[30px] h-[30px] flex justify-center items-center  rounded-lg bg-[#002256] ">
-                                    <input className="peer  hidden" disabled={!item.is_reservable} type="checkbox"
-                                           onChange={() => {
-                                               //@ts-ignore
-                                               const newselectedData = [...selectedDay]
-                                               if (item.is_reservable == true) {
-                                                   let findDate = newselectedData.findIndex(o => {
-                                                       return item.date === o.date
-                                                   })
-                                                   if (findDate == -1) {
-                                                       newselectedData.push({
-                                                           id: item.date,
-                                                           date: item.date
+                            <div className={'flex lg:w-[130px] w-[140px] justify-center items-center ml-[20px]'}>
+                                {item.is_reservable ?
+                                    <label
+                                        className="cursor-pointer  duration-300 relative overflow-hidden w-[30px] h-[30px] flex justify-center items-center  rounded-lg bg-[#002256] ">
+                                        <input className="peer  hidden" disabled={!item.is_reservable} type="checkbox"
+                                               onChange={() => {
+                                                   //@ts-ignore
+                                                   const newselectedData = [...selectedDay]
+                                                   if (item.is_reservable == true) {
+                                                       let findDate = newselectedData.findIndex(o => {
+                                                           return item.date === o.date
                                                        })
-                                                       setSelectedDay(newselectedData)
-                                                   } else {
-                                                       newselectedData.splice(findDate, 1)
-                                                       setSelectedDay(newselectedData)
+                                                       if (findDate == -1) {
+                                                           newselectedData.push({
+                                                               id: item.date,
+                                                               date: item.date
+                                                           })
+                                                           setSelectedDay(newselectedData)
+                                                       } else {
+                                                           newselectedData.splice(findDate, 1)
+                                                           setSelectedDay(newselectedData)
+                                                       }
                                                    }
-                                               }
-                                           }}
-                                    />
-                                    <div
-                                        className="w-[30px] h-[30px]   opacity-0 peer-checked:opacity-100 bg-[#44C0ED] scale-0 transition-all z-20 duration-300  peer-checked:transition-all rounded-md top-2 left-2 peer-checked:scale-100 peer-checked:duration-300 peer-checked:bg-[#44C0ED]">
-                                    </div>
-                                </label>
+                                               }}
+                                        />
+                                        <div
+                                            className="w-[30px] h-[30px]   opacity-0 peer-checked:opacity-100 bg-[#44C0ED] scale-0 transition-all z-20 duration-300  peer-checked:transition-all rounded-md top-2 left-2 peer-checked:scale-100 peer-checked:duration-300 peer-checked:bg-[#44C0ED]">
+                                        </div>
+                                    </label> :
+                                    <FullTypoGraphi/>
+                                }
                             </div>
                         </div>
                     ))}
@@ -167,7 +184,7 @@ const DailySession = () => {
                     className="text-white text-sm font-normal ">لغو رزرو</span><span
                     className="text-white text-sm font-normal "> را از</span><span
                     className="text-orange-500 text-sm font-normal "> </span><span
-                    className="text-orange-500 text-sm font-bold ">اینجا</span><span
+                    className="text-orange-500 text-sm font-bold cursor-pointer">اینجا</span><span
                     className="text-orange-500 text-sm font-normal "> </span><span
                     className="text-white text-sm font-normal ">مشاهده کنید</span></div>
             </div>

@@ -14,6 +14,7 @@ import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import persian_en from "react-date-object/locales/persian_en";
 import gregorian_en from "react-date-object/locales/gregorian_en";
+import AOS from "aos";
 
 
 const CompleteInformation = () => {
@@ -30,6 +31,10 @@ const CompleteInformation = () => {
     const [validate, setValidate] = useState(false)
     const [state, setState] = useState({ format: "MM-DD-YYYY" })
     useEffect(() => {
+        AOS.init({
+            duration: 200,
+            once: true,
+        })
         //@ts-ignore
         handleFetch()
     }, []);
@@ -132,7 +137,7 @@ const CompleteInformation = () => {
     }
     //console.log(dob)
     return (
-         <div className={'flex w-[100%] flex-col  '}>
+         <div data-aos={'fade-up'} className={'flex w-[100%] mt-4 lg:mt-0 flex-col  '}>
             <div className={'flex justify-between lg:mr-[87px] lg:px-[48px] px-2 '}>
                 <div className={'w-[45%]'}>
                     <p className={'text-white text-sm font-normal'} dir={'rtl'}>*نام خانوادگی :</p>
@@ -162,7 +167,7 @@ const CompleteInformation = () => {
                         value={state.date}
                         //@ts-ignore
                         onChange={convert}
-                        inputClass="custom-input"
+                        inputClass="w-[100%] h-10 bg-[#0A2E65] rounded-xl mt-[16px] px-[16px] text-white"
                         calendar={persian}
                         locale={persian_fa}
                         calendarPosition="bottom-center"

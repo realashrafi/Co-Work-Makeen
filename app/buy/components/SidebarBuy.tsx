@@ -1,13 +1,20 @@
 'use client'
-import React from 'react';
+import React, {useEffect} from 'react';
 import {usePathname} from "next/navigation";
 import Link from "next/link";
+import AOS from "aos";
 const SidebarBuy = () => {
     const pathname = usePathname()
+    useEffect(() => {
+        AOS.init({
+            duration: 200,
+            once: true,
+        })
+    }, []);
     return (
-        <div className={'flex flex-col'}>
+        <div data-aos={'fade-down'} className={'flex lg:w-[25%] w-full flex-col'}>
             <Link href={''}
-                className={`${pathname=== '/buy'?'bg-[#0B99DE]':''} my-[8px] flex items-center justify-end rounded-l-full pr-[18.7%]  w-[319px] h-[53px]`}>
+                className={`${pathname=== '/buy'?'bg-[#0B99DE]':''} my-[8px] flex items-center justify-center lg:justify-end lg:rounded-l-full lg:pr-[18.7%]  lg:w-[319px] h-[53px]`}>
                 <div className={'flex items-center '}>
                     <p className={` text-base font-normal ${pathname=== '/buy'?'text-white':'text-[#FF792C]'}`}>تکمیل اطلاعات</p>
                     <svg className={'ml-[24px]'} width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -19,7 +26,7 @@ const SidebarBuy = () => {
                 </div>
             </Link>
             <Link href={''}
-                className={`${pathname=== '/buy/subscribtions'?'bg-[#0B99DE]':''} my-[8px] flex items-center justify-end rounded-l-full pr-[18.7%]  w-[319px] h-[53px]`}>
+                className={`${pathname=== '/buy/subscribtions'?'bg-[#0B99DE]':''} my-[8px] flex items-center justify-center lg:justify-end lg:rounded-l-full  lg:pr-[18.7%]  lg:w-[319px] h-[53px]`}>
                 <div className={'flex items-center '}>
                     <p className={` text-base font-normal ${pathname=== '/buy/subscribtions'?'text-white':'text-[#FF792C]'} `}>خرید اشتراک</p>
                     <svg className={'ml-[24px]'} width="24" height="17" viewBox="0 0 24 17" fill="none"
@@ -31,7 +38,7 @@ const SidebarBuy = () => {
                 </div>
             </Link>
             <Link href={''}
-                className={`${pathname=== '/buy/submitedChair'?'bg-[#0B99DE]':''} my-[8px] flex items-center justify-end rounded-l-full pr-[18.7%]  w-[319px] h-[53px]`}>
+                className={`${pathname=== '/buy/submitedChair'?'bg-[#0B99DE]':''} my-[8px] flex items-center justify-center lg:justify-end lg:rounded-l-full lg:pr-[18.7%]  lg:w-[319px] h-[53px]`}>
                 <div className={'flex items-center '}>
                     <p className={'text-white text-base font-normal '}>ثبت صندلی</p>
                     <svg className={'ml-[24px]'} width="24" height="24" viewBox="0 0 24 24" fill="none"

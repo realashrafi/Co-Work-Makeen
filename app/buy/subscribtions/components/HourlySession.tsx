@@ -4,6 +4,9 @@ import axios from "axios";
 import LoadingMinimal from "@/app/components/LoadingMinimal";
 import Atropos from "atropos/react";
 import Swal from "sweetalert2";
+import usePriceDefault from "@/app/store/react-query/usePriceDefault";
+import FullTypoGraphi from "@/app/components/FullTypoGraphi";
+import AOS from "aos";
 
 const HourlySession = () => {
     const [week, setWeek] = useState('this-week')
@@ -14,6 +17,13 @@ const HourlySession = () => {
     const [peakdayName, setPeakdayName] = useState<any>()
     const [days, setDays] = useState<any>()
     const [selectedDay, setSelectedDay] = useState<any>([])
+    const {priceDefault}=usePriceDefault()
+    useEffect(() => {
+        AOS.init({
+            duration: 200,
+            once: true,
+        })
+    }, []);
     useEffect(() => {
         getWeekDay()
         handlePeaksDay()
@@ -84,11 +94,10 @@ const HourlySession = () => {
                     }
                 })
             //console.log(res)
-            localStorage.setItem('Ffa_type', res.data.fa_type)
-            localStorage.setItem('FLDay', res.data.length)
-            //@ts-ignore
-            localStorage.setItem('Fprice', res.data[0][price])
-            localStorage.setItem('Fcreated_at', res.data[0].created_at)
+            localStorage.setItem('Ffa_type', res.data.reservation_type)
+            localStorage.setItem('FLDay', res.data.reservation_count)
+            localStorage.setItem('Fprice', res.data.price_paid)
+            localStorage.setItem('Fcreated_at', res.data.j_date)
             Swal.fire({
                 title: "انجام شد",
                 text: "خرید شما موفق بود",
@@ -99,7 +108,7 @@ const HourlySession = () => {
                 confirmButtonText: 'باشه',
                 backdrop: '#002256'
             })
-            // window.location.assign('/buy/submitedChair')
+            window.location.assign('/buy/submitedChair')
             if (res.status == 422) {
                 Swal.fire({
                     title: "خطا",
@@ -127,10 +136,10 @@ const HourlySession = () => {
     }
     // //console.log('selectedDay',selectedDay)
     return (
-        <div className={'w-[80%] flex flex-col items-center mx-auto'}>
+        <div className={'lg:w-[80%] flex flex-col items-center mx-auto'}>
             <div className={'text-white text-base font-bold mt-[32px]'}>رزرو ساعتی اتاق جلسات</div>
-            <div className={'text-orange-500 text-sm font-normal mt-[8px]'}>هزینه هر ساعت 20 تومان</div>
-            <div className={'flex justify-center items-center mt-[33px]'}>
+            <div className={'text-orange-500 text-sm font-normal mt-[8px]'}>هزینه هر ساعت {priceDefault?.data.sessionRoom.price.normal.perHour} تومان</div>
+            <div className={'flex justify-center items-center mt-4 lg:mt-[33px]'}>
                 <div className={'text-white text-sm font-bold mr-[8px]'} dir={'rtl'}>انتخاب روزهای هفته :</div>
                 <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path id="Vector"
@@ -144,8 +153,8 @@ const HourlySession = () => {
                 {loadingWeek ? <LoadingMinimal/> :
                     //@ts-ignore
                     daysweek?.map(i => (
-                        <Atropos key={i.date} highlight={false} shadow={false}>
-                            <button disabled={!i.is_reservable} onClick={() => {
+                        <Atropos data-aos={'fade-down'} key={i.date} highlight={false} shadow={false}>
+                            <button  onClick={() => {
                                 setPeakDayDate(i.date)
                                 setPeakdayName(i.day_of_week)
                                 setLoading(true)
@@ -162,17 +171,17 @@ const HourlySession = () => {
                 {loading ? <LoadingMinimal/> :
                     //@ts-ignore
                     days?.map(item => (
-                        <div key={item.index}
+                        <div data-aos={'fade-up'} key={item.index}
                              className={`${item.is_reservable ? '':'opacity-50'} flex w-[100%] h-[56px] my-[4px]`}>
                             <div
-                                className={'flex  text-center justify-between items-center px-1 lg:px-[10%] w-[80%] lg:w-[450px] bg-[#002256] rounded-l-3xl'}>
+                                className={'flex  text-center justify-between items-center  px-2 lg:px-[5%] w-[80%] lg:w-[450px] bg-[#002256] rounded-l-xl lg:rounded-l-3xl'}>
                                 <div className={'text-[#44C0ED] text-sm font-normal '}
-                                     dir={'rtl'}>{item.end} الی {item.start}</div>
+                                     dir={'rtl'}>{item.start} الی {item.end}</div>
                                 <div className={'text-white text-sm font-normal '}>{item.j_date}</div>
                                 <div className={'text-white text-sm font-normal '}>{item.day_of_week}</div>
                             </div>
                             <div
-                                className={'flex w-[20%] px-1 lg:w-[150px] bg-[#002256] justify-center items-center border-l-2 border-[#0A2E65] rounded-r-3xl'}>
+                                className={'flex w-[20%] px-2 lg:w-[150px] bg-[#002256] justify-center items-center border-l-2 border-[#0A2E65] rounded-r-xl lg:rounded-r-3xl'}>
                                 <svg width="32" height="30" viewBox="0 0 32 30" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path id="Vector"
@@ -180,7 +189,8 @@ const HourlySession = () => {
                                           fill="#FFFEFF"/>
                                 </svg>
                             </div>
-                            <div className={'flex items-center ml-[20px]'}>
+                            <div className={'flex lg:w-[130px] w-[140px] justify-center items-center ml-[20px]'}>
+                                {item.is_reservable?
                                 <label
                                     className="cursor-pointer  duration-300 relative overflow-hidden w-[30px] h-[30px] flex justify-center items-center  rounded-lg bg-[#002256] ">
                                     <input className="peer  hidden" type="checkbox"
@@ -191,6 +201,7 @@ const HourlySession = () => {
                                         className="w-[30px] h-[30px] opacity-0 peer-checked:opacity-100 bg-[#44C0ED] scale-0 transition-all z-20 duration-300  peer-checked:transition-all rounded-md top-2 left-2 peer-checked:scale-100 peer-checked:duration-300 peer-checked:bg-[#44C0ED]">
                                     </div>
                                 </label>
+                                :<FullTypoGraphi/>}
                             </div>
                         </div>
                     ))}
