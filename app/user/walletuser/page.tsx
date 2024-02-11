@@ -153,10 +153,10 @@ const WalletUser = () => {
                         <p className={'text-[#FFFFEF] text-[14px] lg:mr-[13.57%] font-[400]'}>مجموع</p>
                         <p className={'text-[#FFFFEF] text-[14px] lg:mr-[15.85%] font-[400]'}>وضعیت</p>
                     </div>
-                    <div className={'flex flex-col mt-[16px] h-[190px] overflow-auto w-[95%] mx-auto lg:w-[88.27%]'} style={{direction: "rtl"}}>
+                    <div className={'flex flex-col mt-[16px] overflow-auto w-[95%] mx-auto lg:w-[88.27%]'} style={{direction: "rtl"}}>
                         {/*// @ts-ignore*/}
                         {transactions?.slice(0, length).map(item => (
-                            <div key={item.id}
+                            <div data-aos={'fade-down'} key={item.id}
                                  className={'w-[100%] h-[52px] border-[#FF792C] border-r-[2px] flex items-center mb-[8px] bg-[#0A2E65] rounded-[5px]'}>
                                 <div className={' justify-between lg:w-[89%] w-[100%] h-[100%] flex items-center'}>
                                     <p className={'lg:mr-[6.14%] ml-2 text-[#C9C9C9] mr-1 text-[14px]'}>{item.id}</p>
@@ -181,11 +181,11 @@ const WalletUser = () => {
     return (
         <div>
             {validate ?
-                <div className={'bg-[#0A2E65] h-[2040px] '}>
+                <div className={'bg-[#0A2E65] pb-5 '}>
                     <UserNavbar data={data}/>
                     <div className={'flex pt-14 lg:pt-[160px]'}>
                         <div data-aos={'fade-up'}
-                             className={'lg:w-[79.3%] w-full  flex-col items-center justify-center h-[1752PX] bg-[#002256] rounded-[24px] mb-[132px]'}>
+                             className={'lg:w-[79.3%] w-full  flex-col items-center justify-center pb-5 bg-[#002256] rounded-[24px] mb-[132px]'}>
                             <div className={'mt-[50px] flex flex-col items-center lg:items-end lg:mr-[5.6%]'}>
                                 <p className={'text-[#FFFEFF] text-[18px] font-[400]'}>
                                     کیف پول من

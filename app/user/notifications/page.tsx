@@ -12,6 +12,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import {useRouter} from "next/navigation";
 import LoadingMakeenLogo from "@/app/components/LoadingMakeenLogo";
+import Atropos from "atropos/react";
 
 const notifications = [
     {
@@ -28,6 +29,24 @@ const notifications = [
         status: false
     }, {
         id: 3,
+        title: 'همین حالا تخفیف کوورک بگیر!',
+        content: 'کاربر گرامی ، شما فقط تا پایان چهارشنبه 30 آبان فرصت دارید تا از 50% تخفیف استفاده کنید.',
+        seen: 'true',
+        status: true
+    }, {
+        id: 4,
+        title: 'همین حالا تخفیف کوورک بگیر!',
+        content: 'کاربر گرامی ، شما فقط تا پایان چهارشنبه 30 آبان فرصت دارید تا از 50% تخفیف استفاده کنید.',
+        seen: 'true',
+        status: true
+    }, {
+        id: 5,
+        title: 'همین حالا تخفیف کوورک بگیر!',
+        content: 'کاربر گرامی ، شما فقط تا پایان چهارشنبه 30 آبان فرصت دارید تا از 50% تخفیف استفاده کنید.',
+        seen: 'true',
+        status: true
+    }, {
+        id: 6,
         title: 'همین حالا تخفیف کوورک بگیر!',
         content: 'کاربر گرامی ، شما فقط تا پایان چهارشنبه 30 آبان فرصت دارید تا از 50% تخفیف استفاده کنید.',
         seen: 'true',
@@ -102,24 +121,26 @@ const Notifications = () => {
         } else {
             return (
                 <div dir={'rtl'}
-                     className={'w-[95%] flex lg:flex-nowrap flex-wrap lg:justify-start justify-center mx-auto'}>
+                     className={'w-[95%] flex pt-2 flex-wrap lg:justify-start justify-center mx-auto'}>
                     {notifications.filter((item) => item.seen.includes(seen)
                     ).map((item) => (
-                        <div dir={'rtl'}
-                             className={`flex ${item.status ? 'bg-[#CBE4FF]' : 'bg-[#FFE7DA]'} rounded-[12px] w-[258px] h-[196px] m-[1.5%]`}
-                             key={item.id}>
-                            <div>
+                        <Atropos key={item.id} className={'m-2'} highlight={false} shadow={false}>
+                        <div data-aos={'fade-up'} dir={'rtl'}
+                             className={`flex ${item.status ? 'bg-[#CBE4FF]' : 'bg-[#FFE7DA]'} rounded-[12px] w-[258px] h-[196px] `}
+                             >
+                            <div data-atropos-offset="2">
                                 <div
-                                    className={`w-[24px] ${item.status ? 'bg-[#007AFF]' : 'bg-[#FF792C]'} mx-[10px] text-[#FFFEFF] text-[16px] mt-[18px] h-[24px] rounded-[5px] flex justify-center items-center`}>
+                                     className={`w-[24px] ${item.status ? 'bg-[#007AFF]' : 'bg-[#FF792C]'} mx-[10px] text-[#FFFEFF] text-[16px] mt-[18px] h-[24px] rounded-[5px] flex justify-center items-center`}>
                                     !
                                 </div>
                             </div>
                             <div className={'flex flex-col w-[80%]'}>
-                                <p className={'text-[#A53A2B] mt-[20px] text-[14px] '}>{item.title}</p>
-                                <p className={'text-[#3A3A3A] pl-[8px] mt-[20px] text-[12px]'}>{item.content}</p>
-                                <AddSub status={item.status}/>
+                                <p data-atropos-offset="2" className={'text-[#A53A2B] mt-[20px] text-[14px] '}>{item.title}</p>
+                                <p data-atropos-offset="2" className={'text-[#3A3A3A] pl-[8px] mt-[20px] text-[12px]'}>{item.content}</p>
+                                <AddSub atropos={'5'} status={item.status}/>
                             </div>
                         </div>
+                        </Atropos>
                     ))}
                 </div>
             )

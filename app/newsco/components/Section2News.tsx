@@ -1,6 +1,8 @@
+'use client'
 import React from 'react';
 import Image from "next/image";
 import { MdOutlineUpdate } from "react-icons/md";
+import Atropos from "atropos/react";
 const data = [
     {
         id: 1,
@@ -34,13 +36,14 @@ const Section2News = () => {
             <div
                 className={'lg:w-[85%] flex lg:h-[541px] bg-[#0A2E65] justify-center lg:flex-nowrap flex-wrap rounded-[12px] mx-auto pt-[40px] pb[40px] lg:pr-[20px] lg:pl-[20px]'}>
                 {data.map(card => (
-                    <div key={card.id} className={'flex-col lg:w-[32.3%] lg:mx-[16px] my-4 w-[90%] bg-[#002256] h-[461px] rounded-[12px]'}>
+                    <Atropos key={card.id} highlight={false} shadow={false} className={'lg:w-[32.3%] my-4 h-[461px] rounded-[12px] w-[90%] lg:mx-[16px]'}>
+                    <div  className={'flex-col   bg-[#002256] h-[461px] rounded-[12px]'}>
                         <div className={'w-[100%] rounded-t-[12px] h-[266px]'}>
                             <Image src={card.img} width={372} height={266} alt={''}/>
                         </div>
-                        <div className={'pt-[15px] text-[#0B99DE] text-[18px] pr-[25px]'} style={{direction:"rtl"}}>{card.title}</div>
-                        <div className={'pt-[16px]  text-[#FFFEFF] text-[16px] px-[25px]'} style={{direction:"rtl"}}>{card.content}</div>
-                        <div className={' flex justify-between pt-[10%] px-[25px]'}>
+                        <div data-atropos-offset="4" className={'pt-[15px] text-[#0B99DE] text-[18px] pr-[25px]'} style={{direction:"rtl"}}>{card.title}</div>
+                        <div data-atropos-offset="4" className={'pt-[16px]  text-[#FFFEFF] text-[16px] px-[25px]'} style={{direction:"rtl"}}>{card.content}</div>
+                        <div data-atropos-offset="4" className={' flex justify-between pt-[10%] px-[25px]'}>
                             <div className={'flex items-center text-white text-xs font-normal'} dir={'rtl'}><MdOutlineUpdate className={' w-5 h-5 ml-[5px]'}/>{card.date}</div>
                             <div>
                                 <svg width="104" height="24" viewBox="0 0 104 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -50,6 +53,7 @@ const Section2News = () => {
                             </div>
                         </div>
                     </div>
+                    </Atropos>
                 ))}
             </div>
         </div>

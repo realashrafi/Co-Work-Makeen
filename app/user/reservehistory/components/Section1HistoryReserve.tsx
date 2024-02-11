@@ -7,6 +7,7 @@ import CalenderReserves from "@/app/user/reservehistory/components/CalenderReser
 import LoadingSmall from "@/app/components/LoadingSmall";
 import LoadingMakeenLogo from "@/app/components/LoadingMakeenLogo";
 import LoadingMinimal from "@/app/components/LoadingMinimal";
+import AOS from "aos";
 
 
 const Section1HistoryReserve = () => {
@@ -16,6 +17,12 @@ const Section1HistoryReserve = () => {
     const [props, setProps] = useState<any>()
     const [loading, setLoading] = useState(false)
     const [firstLoad, setFirstLoad] = useState(true)
+    useEffect(() => {
+        AOS.init({
+            duration: 200,
+            once: true,
+        })
+    }, []);
     useEffect(() => {
         getHistory()
         setTimeout(() => setFirstLoad(false), 2000)
@@ -105,14 +112,13 @@ const Section1HistoryReserve = () => {
                             <p className={'text-[#FFFFEF] text-[14px] lg:mr-[15.85%] font-[400]'}>وضعیت</p>
                         </div>
                         <div
-                            className={'flex flex-col mt-[16px] h-[190px] overflow-auto mx-auto w-[95%]  lg:justify-start lg:w-[88.27%]'}
+                            className={'flex flex-col mt-[16px]  overflow-auto mx-auto w-[95%]  lg:justify-start lg:w-[88.27%]'}
                             style={{direction: "rtl"}}>
                             {loading ? <LoadingMakeenLogo/>
                                 :
-                                reserveData?.slice(0, length).map(
                                     // @ts-ignore
-                                    item => (
-                                        <div key={item.id}
+                                reserveData?.slice(0, length).map(item => (
+                                        <div data-aos={'fade-down'} key={item.id}
                                              className={'w-[100%] h-[52px] border-[#FF792C] px-2 border-r-[2px] flex items-center  my-1 bg-[#0A2E65] rounded-[5px]'}>
                                             <div
                                                 className={' justify-between w-[100%] lg:w-[89%] h-[100%] flex items-center'}>

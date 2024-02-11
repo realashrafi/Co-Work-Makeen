@@ -11,7 +11,7 @@ const Section3News = () => {
                 <p className={'text-[#FFFEFF] text-[22px] border-r-[2px] pr-[13px] border-[#FF792C]'}>ورکشاپ ها</p>
             </div>
             <div className={'lg:h-[753px] lg:w-[85%] justify-center lg:flex-nowrap flex-wrap flex mx-auto '}>
-                <div className={'lg:w-[54%] w-[90%] rounded-[12px] bg-[#0A2E65] pb-6 lg:h-[753px] my-4 lg:my-0'}>
+                <div className={'lg:w-[54%] w-[90%] hover:shadow-xl rounded-[12px] bg-[#0A2E65] pb-6 lg:h-[753px] my-4 lg:my-0'}>
                     <Image src={img1} alt={''}/>
                     <p className={'text-lg font-medium text-[#44C0ED] pt-[34px] px-4 lg:pr-[25px]'} style={{direction: "rtl"}}>سومین
                         دوره ی کارگاه سواد بصری
@@ -35,7 +35,7 @@ const Section3News = () => {
                     </div>
                 </div>
                 <div className={'w-[90%] lg:w-[49%] flex-col lg:-mr-[2.3%] lg:ml-[5.3%]'}>
-                    <div className={'lg:w-[95%] h-[368px]  rounded-[7px] bg-[#0A2E65]'}>
+                    <div className={'lg:w-[95%] h-[368px] hover:shadow-xl rounded-[7px] bg-[#0A2E65]'}>
                         <Image src={img2}  alt={''}/>
                         <p className={'text-[20px] text-[#44C0ED] pt-[15px] pr-[25px]'}
                            style={{direction: "rtl"}}>برگزاری جلسه اول سواد بصری
@@ -57,7 +57,7 @@ const Section3News = () => {
                             </svg>
                         </div>
                     </div>
-                    <div className={'lg:w-[95%] h-[368px] rounded-[7px] bg-[#0A2E65] mt-[16px] '}>
+                    <div className={'lg:w-[95%] hover:shadow-xl h-[368px] rounded-[7px] bg-[#0A2E65] mt-[16px] '}>
                         <Image src={img3} alt={''}/>
                         <p className={'text-[20px] text-[#44C0ED] pt-[15px] pr-[25px]'} style={{direction: "rtl"}}>سومین
                             دوره ی کارگاه سواد بصری

@@ -40,7 +40,7 @@ const DoneReserve = () => {
                 <ProgressBar className={'w-[80%] mt-10 mx-auto '}  barContainerClassName="bg-[#0A2E65]"  completed={complete} customLabel="در حال چاپ" />:
             <div data-aos={'fade-up'} className={'w-[90%] mx-auto rounded-xl  mt-[43px] flex flex-col h-[776px] bg-[#0A2E65]'}>
                 <div data-aos={'fade-up'} className={'relative'}>
-                    <div
+                    <div data-aos={'fade-up'}
                         className="absolute z-[2] -bottom-7 w-[100%] lg:right-[22%] lg:w-[458px] h-14 bg-[#13B86C] rounded-md lg:rounded-3xl flex justify-center items-center">
                         <div className="text-white text-base font-normal mr-[8px]" dir={'rtl'}>رزرو شما با موفقیت ثبت شد .
                         </div>
@@ -50,7 +50,7 @@ const DoneReserve = () => {
                                   fill="#FFFEFF"/>
                         </svg>
                     </div>
-                    <Image className={'brightness-75'} src={doneImage} alt={''}/>
+                    <Image  className={'brightness-75'} src={doneImage} alt={''}/>
                 </div>
                 <div data-aos={'fade-down'}
                     className="w-[65%]  mx-auto h-10 bg-[#0A2E65]  items-center rounded-xl shadow-xl flex justify-between px-[24px] mt-[83px]">
