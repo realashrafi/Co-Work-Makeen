@@ -17,9 +17,9 @@ const UserNavbar = ({data}: any) => {
                     <DropDownNavbar/>
                 </div>
                 <Link className={'lg:ml-[5.2%]'} href={'/user/notifications'}>
-                    <div className={'lg:visible invisible relative'}>
-                        <Image src={notifLogo} width={24} height={24} alt={'userImage'}/>
-                        <div className={'w-[13px] h-[13px] rounded-full bg-[#FF792C] absolute top-0 right-0'}></div>
+                    <div className={'lg:visible invisible group mt-2 relative'}>
+                        <Image src={notifLogo} width={24} height={24} className={'group-hover:rotate-[20deg] transition-all'} alt={'userImage'}/>
+                        <div className={'w-[13px] h-[13px] rounded-full group-hover:bg-[#44C0ED] bg-[#FF792C] absolute transition-all group-hover:top-0 group-hover:-right-1 -top-1 right-0'}></div>
                     </div>
                 </Link>
                 <div className={'flex items-center  lg:ml-[30%] lg:mr-[1%]  h-[56px]'}>
@@ -28,7 +28,7 @@ const UserNavbar = ({data}: any) => {
                     </p>
                     <IconHandShake/>
                     <p className={' lg:ml-[17px] flex-wrap text-[14px] lg:text-[16px]  w-fit text-[#FFFEFF] '}>
-                        {data?.first_name} <span className={'lg:visible invisible absolute lg:relative'}>{data?.last_name}</span> عزیز ، خوش اومدی </p>
+                        {data?.first_name} {data?.last_name} <span className={'lg:visible invisible absolute lg:relative'}>عزیز ، خوش اومدی</span> </p>
                 </div>
 
             </div>

@@ -144,7 +144,7 @@ const UserInterface = () => {
             <div className={'flex pt-14 lg:pt-[160px]'}>
                 <div data-aos={'fade-up'}
                      className={'lg:w-[79.3%] w-[100%] h-[1800px] lg:h-[1752PX] bg-[#002256] rounded-[24px] mb-[132px]'}>
-                    <div className={'flex mt-[28px] mr-[50px]  justify-end items-center'}>
+                    <div className={'flex mt-[28px] lg:mr-[50px] justify-center  lg:justify-end items-center'}>
                         <UploadImage/>
                     </div>
                     <div className={'h-[32px] mt-[37px] items-center mr-[27px] flex'} style={{direction: "rtl"}}>
@@ -323,8 +323,9 @@ const UserInterface = () => {
                         </div>
                     </div>
                 </div>
-                <button className={'fixed hover:animate-pulse  transition-transform z-[10] right-4'} onClick={() => setVisible(!visible)}><ImMenu
-                    className={'mt-4 lg:invisible scale-150 text-white'}/></button>
+                <button className={'fixed hover:animate-pulse  transition-transform z-[10] right-4'} onClick={() => setVisible(!visible)}>
+                    <ImMenu className={`mt-4 lg:invisible transition-all ${visible?'scale-x-150 scale-y-125':'scale-150'} text-white`}/>
+                </button>
                 <SideBarUser visible={visible} setVisible={setVisible}/>
             </div>
         </div>

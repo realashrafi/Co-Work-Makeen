@@ -155,7 +155,7 @@ const Notifications = () => {
                              className={'lg:w-[79.3%] w-[100%] flex-col h-[1752PX] bg-[#002256] rounded-[24px] mb-[132px]'}>
                             <div className={'flex w-[100%] justify-end'}>
                                 <div
-                                    className={'lg:w-[32.9%]   w-full flex justify-around items-center h-[52px] bg-[#0A2E65] rounded-[12px] mt-[40px]  lg:mr-[37px]'}>
+                                    className={'lg:w-[32.9%] mx-4 lg:mx-0  w-full flex justify-around items-center h-[52px] bg-[#0A2E65] rounded-[12px] mt-[40px]  lg:mr-[37px]'}>
                                     <div onClick={() => {
                                         setSeen('true')
                                     }}
@@ -174,7 +174,7 @@ const Notifications = () => {
                         </div>
                         <button className={'fixed hover:animate-pulse  transition-transform z-[10] right-4'}
                                 onClick={() => setVisible(!visible)}><ImMenu
-                            className={'mt-4 lg:invisible scale-150 text-white'}/></button>
+                            className={`mt-4 lg:invisible transition-all ${visible?'scale-x-150 scale-y-125':'scale-150'} text-white`}/></button>
                         <SideBarUser visible={visible} setVisible={setVisible}/>
                     </div>
                 </div>

@@ -5,7 +5,6 @@ import {useEffect, useState} from "react";
 import Swal from "sweetalert2";
 import {useRouter} from "next/navigation";
 import LoadingMakeenLogo from "@/app/components/LoadingMakeenLogo";
-import useMe from "@/app/store/react-query/useMe";
 
 
 const User = () => {

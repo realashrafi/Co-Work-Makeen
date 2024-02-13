@@ -28,25 +28,26 @@ const data = [
         dateCreate: '1402/07/12',
         hourCreate: '15 : 20',
         status: false,
-    }, {
-        id: 4,
-        title: 'چرا برنامه نویسی ؟',
-        dateCreate: '1402/07/12',
-        hourCreate: '15 : 20',
-        status: true,
-    }, {
-        id: 5,
-        title: 'چرا برنامه نویسی ؟',
-        dateCreate: '1402/07/12',
-        hourCreate: '15 : 20',
-        status: true,
-    }, {
-        id: 6,
-        title: 'چرا برنامه نویسی ؟',
-        dateCreate: '1402/07/12',
-        hourCreate: '15 : 20',
-        status: true,
     },
+    // {
+    //     id: 4,
+    //     title: 'چرا برنامه نویسی ؟',
+    //     dateCreate: '1402/07/12',
+    //     hourCreate: '15 : 20',
+    //     status: true,
+    // }, {
+    //     id: 5,
+    //     title: 'چرا برنامه نویسی ؟',
+    //     dateCreate: '1402/07/12',
+    //     hourCreate: '15 : 20',
+    //     status: true,
+    // }, {
+    //     id: 6,
+    //     title: 'چرا برنامه نویسی ؟',
+    //     dateCreate: '1402/07/12',
+    //     hourCreate: '15 : 20',
+    //     status: true,
+    // },
 ]
 const News = () => {
     const [protect, setProtect] = useState(false)

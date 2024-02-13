@@ -222,7 +222,7 @@ const WalletUser = () => {
                         </div>
                         <button className={'fixed hover:animate-pulse  transition-transform z-[10] right-4'}
                                 onClick={() => setVisible(!visible)}><ImMenu
-                            className={'mt-4 lg:invisible scale-150 text-white'}/></button>
+                            className={`mt-4 lg:invisible transition-all ${visible?'scale-x-150 scale-y-125':'scale-150'} text-white`}/></button>
                         <SideBarUser visible={visible} setVisible={setVisible}/>
                     </div>
                 </div>
