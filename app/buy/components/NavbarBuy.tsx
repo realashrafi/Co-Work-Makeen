@@ -42,7 +42,7 @@ const DropDownNavbar = () => {
         <details className="dropdown  w-[150px] ">
             <summary onClick={()=>setToggle(!toggle)}
                 className={`lg:px-[18px] transition-all px-2 cursor-pointer flex justify-between h-[32px]  ${toggle?' bg-orange-500 ':'bg-[#44C0ED]'} items-center  rounded-xl`}>
-                <FaAngleDown className={`${toggle && 'rotate-180'} transition-all w-[14px] text-white h-[18px] my-auto`}/>
+                <FaAngleDown className={`${toggle && 'rotate-180 bottom-[2px]'} relative transition-all w-[14px] text-white h-[18px] my-auto`}/>
                 <div className={'text-white  text-[10px]'}>پنل کاربری</div>
                 <IoPersonOutline
                     className={`w-[21px]  text-white  h-[21px] my-auto`}/>

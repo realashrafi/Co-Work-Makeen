@@ -13,7 +13,7 @@ const Section2ContactUs = () => {
                         آدرس:
                     </p>
                     <p className={'lg:w-[90%] w-[90%] text-[14px] text-[#FFFEFF] text-center'}>
-                        تهران ، مترو علم و صنعت ، خیابان فرجام ، پلاک 45 ، طبقه پنجم
+                         تهران ، مترو علم و صنعت ، بزرگراه رسالت ، پلاک 520
                     </p>
                 </div>
                 <div className={'flex pt-[12px] lg:w-[30%] justify-between   items-center mx-auto lg:pr-20'}>

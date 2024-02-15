@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 // @ts-ignore
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -8,6 +8,7 @@ import Link from "next/link";
 import Atropos from 'atropos/react';
 
 const SectionOne = () => {
+    const [toggle, setToggle] = useState(false)
     useEffect(() => {
         AOS.init({
             duration: 800,
@@ -33,7 +34,6 @@ const SectionOne = () => {
                     </Atropos>
                 </div>
             </div>
-
         </section>
     );
 };

@@ -19,15 +19,15 @@ const Section1ContactUs = () => {
                     باشید
                 </p>
                 <div data-aos={'fade-up'} className={'lg:w-[66%] w-[90%] lg:flex-nowrap flex-wrap flex justify-between mx-auto mt-[39px] h-[56px]'}>
-                    <input className={'lg:w-[48%] w-[90%] mx-auto h-[56px] bg-[#002256] rounded-[12px] px-[16px] text-[#F8F9FC]'}
+                    <input className={'lg:w-[49%] lg:-ml-[1px] w-[90%] mx-auto h-[56px]  bg-[#002256] rounded-[12px] px-[16px] text-[#F8F9FC]'}
                            placeholder={'ایمیل'} type={'text'} style={{direction: "rtl"}}/>
-                    <input className={'lg:w-[48%] w-[90%] lg:mt-0 mt-2 mx-auto h-[56px] bg-[#002256] rounded-[12px] px-[16px] text-[#F8F9FC]'}
+                    <input className={'lg:w-[49%] lg:-mr-[1px] w-[90%] lg:mt-0 mt-2 mx-auto  h-[56px] bg-[#002256] rounded-[12px] px-[16px] text-[#F8F9FC]'}
                            placeholder={'نام و نام خانوادگی'} type={'text'} style={{direction: "rtl"}}/>
                 </div>
                 <textarea data-aos={'fade-up'}
                     className={'lg:w-[66%] w-[80%]  mx-[10%] lg:mx-[17%] h-[188px] bg-[#002256] rounded-[12px] mt-20 lg:mt-[24px] p-[16px] text-[#F8F9FC]'}
                     placeholder={'پیام های خود را در اینجا بنویسید'} style={{direction: "rtl"}}/>
-                <div className={'lg:w-[37%] w-[50%] h-[48px] rounded-[12px] hover:bg-[#FF792C] bg-[#44C0ED] mx-auto mt-[24px]'}>
+                <div className={'lg:w-[37%] cursor-pointer  w-[50%] h-[48px]  rounded-[12px] hover:bg-[#FF792C] bg-[#44C0ED] mx-auto mt-[24px]'}>
                     <p className={'text-[18px] text-[#FFFEFF]  text-center p-[9px]'}>ثبت تماس</p>
                 </div>
                 <div data-aos={'fade-up'} className={'mt-[40px] rounded-b-[12px]'}>

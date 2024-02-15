@@ -4,6 +4,7 @@ import React, {useState, useEffect} from 'react';
 // @ts-ignore
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Atropos from "atropos/react";
 const SectionFour = () => {
     const [lights, setLights] = useState(['#FF792C', '#C1C1C1', '#C1C1C1', '#C1C1C1'])
     useEffect(() => {
@@ -30,14 +31,15 @@ const SectionFour = () => {
 
     return (
         <section className={'bg-[#002256]  pt-[150px]'}>
-            <div className={'flex flex-wrap lg:flex-nowrap bg-[#F8F9FC] rounded-[12px]'}>
+            <div className={'flex flex-wrap-reverse lg:flex-nowrap bg-[#F8F9FC] rounded-[12px]'}>
                 <div className={'lg:w-1/2 w-[100%] pt-11 lg:pt-0 lg:mt-[8%] flex lg:justify-end mx-auto justify-center '}>
                     <div className={'lg:pl-[100px] w-[100%]   flex flex-col   h-[544px] '}>
+                <Atropos data-aos={'fade-up'} shadow={false} highlight={false}>
                         <div className={'flex justify-center items-center '}>
                             <div
                                 className={`lg:w-[236px] w-1/3 h-[66px] items-center mt-[20px] flex justify-center relative left-4 lg:left-0 lg:-mr-[20px] border-2 rounded-l-full border-[${lights[0]}]`}>
 
-                                <svg width="45px" height="45px" viewBox="0 -0.5 25 25" fill="none"
+                                <svg className={`${lights[0]==='#FF792C'&&'lg:scale-110'} transition-all`} width="45px" height="45px" viewBox="0 -0.5 25 25" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M15.014 8.46835C14.7204 8.17619 14.2455 8.17737 13.9533 8.47099C13.6612 8.76462 13.6624 9.23949 13.956 9.53165L15.014 8.46835ZM16.971 12.5317C17.2646 12.8238 17.7395 12.8226 18.0317 12.529C18.3238 12.2354 18.3226 11.7605 18.029 11.4683L16.971 12.5317ZM18.029 12.5317C18.3226 12.2395 18.3238 11.7646 18.0317 11.471C17.7395 11.1774 17.2646 11.1762 16.971 11.4683L18.029 12.5317ZM13.956 14.4683C13.6624 14.7605 13.6612 15.2354 13.9533 15.529C14.2455 15.8226 14.7204 15.8238 15.014 15.5317L13.956 14.4683ZM17.5 12.75C17.9142 12.75 18.25 12.4142 18.25 12C18.25 11.5858 17.9142 11.25 17.5 11.25V12.75ZM3.5 11.25C3.08579 11.25 2.75 11.5858 2.75 12C2.75 12.4142 3.08579 12.75 3.5 12.75V11.25ZM13.956 9.53165L16.971 12.5317L18.029 11.4683L15.014 8.46835L13.956 9.53165ZM16.971 11.4683L13.956 14.4683L15.014 15.5317L18.029 12.5317L16.971 11.4683ZM17.5 11.25H3.5V12.75H17.5V11.25Z"
@@ -69,13 +71,15 @@ const SectionFour = () => {
                                 </svg>
                             </div>
                             <div
-                                className={'text-neutral-700 text-base font-medium h-[66px] w-1/3 lg:w-[236px] mt-[20px] lg:ml-[20px] flex items-center'}>
+                                className={`${lights[0]==='#FF792C'&&'lg:text-lg'} transition-all text-neutral-700 text-base font-medium h-[66px] w-1/3 lg:w-[236px] mt-[20px] lg:ml-[20px] flex items-center`}>
                                 ثبت نام در سایت
                             </div>
                         </div>
+                </Atropos>
+                        <Atropos data-aos={'fade-up'} shadow={false} highlight={false}>
                         <div  className={'flex items-center justify-center lg:justify-start '}>
                             <div
-                                className={'text-neutral-700 text-base font-medium h-[66px] w-1/3 lg:w-[236px] mt-[20px] lg:-mr-[20px] flex items-center justify-end lg:pr-[40px]'}>
+                                className={`${lights[1]==='#FF792C'&&'lg:text-lg'} transition-all text-neutral-700 text-base font-medium h-[66px] w-1/3 lg:w-[236px] mt-[20px] lg:-mr-[20px] flex items-center justify-end lg:pr-[40px]`}>
                                 تکمیل فرم و ارسال
                             </div>
                             <div className={'relative z-[2]'}>
@@ -93,7 +97,7 @@ const SectionFour = () => {
                             </div>
                             <div
                                 className={`lg:w-[236px] w-1/3 h-[66px] mt-[20px] flex justify-center items-center relative right-4 lg:right-0 lg:-ml-[20px] border-2 rounded-r-full border-[${lights[1]}]`}>
-                                <svg width="46" height="50" viewBox="0 0 46 50" fill="none"
+                                <svg className={`${lights[1]==='#FF792C'&&'lg:scale-110'} transition-all`} width="46" height="50" viewBox="0 0 46 50" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <g id="Group 485">
                                         <g id="Group 484">
@@ -116,10 +120,12 @@ const SectionFour = () => {
 
                             </div>
                         </div>
-                        <div  className={'flex items-center justify-center'}>
+                        </Atropos>
+                        <Atropos data-aos={'fade-up'} shadow={false} highlight={false}>
+                        <div  className={'flex items-center lg:ml-0 ml-1 justify-center'}>
                             <div
                                 className={`lg:w-[236px] w-1/3 h-[66px] mt-[20px] flex justify-center items-center relative left-4 lg:left-0 lg:-mr-[20px] border-2 rounded-l-full border-[${lights[2]}]`}>
-                                <svg width="49" height="38" viewBox="0 0 49 38" fill="none"
+                                <svg className={`${lights[2]==='#FF792C'&&'lg:scale-110'} transition-all`} width="49" height="38" viewBox="0 0 49 38" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <g id="Group 487">
                                         <rect id="Rectangle 692" x="1.5" y="1.5" width="46" height="35" rx="3.5"
@@ -146,13 +152,15 @@ const SectionFour = () => {
                                 </svg>
                             </div>
                             <div
-                                className={'text-neutral-700 text-base font-medium h-[66px]   lg:w-[236px] mt-[20px]  lg:ml-[20px] flex items-center'}>
+                                className={`${lights[2]==='#FF792C'&&'lg:text-lg'} transition-all text-neutral-700 text-base font-medium h-[66px]   lg:w-[236px] mt-[20px]  lg:ml-[20px] flex items-center`}>
                                 تایید مدارک و پرداخت
                             </div>
                         </div>
+                        </Atropos>
+                        <Atropos data-aos={'fade-up'} shadow={false} highlight={false}>
                         <div  className={'flex justify-center lg:justify-start items-center'}>
                             <div
-                                className={'text-neutral-700 text-right text-base font-medium h-[66px] w-1/3   lg:w-[236px] mt-[20px]  lg:-mr-[20px] flex items-center justify-end lg:pr-[40px]'}>
+                                className={`${lights[3]==='#FF792C'&&'lg:text-lg '} transition-all text-neutral-700 text-right text-base font-medium h-[66px] w-1/3   lg:w-[236px] mt-[20px]  lg:-mr-[20px] flex items-center justify-end lg:pr-[40px]`}>
                                 مراجعه حضوری و استقرار
                             </div>
                             <div className={'relative z-[2]'}>
@@ -170,7 +178,7 @@ const SectionFour = () => {
                             </div>
                             <div
                                 className={`w-1/3 lg:w-[236px] h-[66px] mt-[20px] flex justify-center items-center relative right-4 lg:right-0 lg:-ml-[20px] border-2 rounded-r-full border-[${lights[3]}]`}>
-                                <svg width="48px" height="48px" viewBox="0 0 24 24" fill="none"
+                                <svg className={`${lights[3]==='#FF792C'&&'lg:scale-110'} transition-all`} width="48px" height="48px" viewBox="0 0 24 24" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M6 15.5C6 14.9477 6.44772 14.5 7 14.5H17C17.5523 14.5 18 14.9477 18 15.5C18 16.6046 17.1046 17.5 16 17.5H8C6.89543 17.5 6 16.6046 6 15.5Z"
@@ -185,18 +193,19 @@ const SectionFour = () => {
                                 </svg>
                             </div>
                         </div>
+                        </Atropos>
                     </div>
                 </div>
                 <div className={'lg:w-1/2 flex w-[90%] lg:justify-end justify-center lg:mr-[200px]'}>
                     <div className={'w-[322px]  lg:h-[704px]  relative'}>
-                        <h2 className={'h-[43px]  w-[302px] text-center text-indigo-800 text-opacity-20 text-[25px] font-extrabold capitalize tracking-[9px] z-40 left-[-125px] top-[130px] -rotate-90  absolute'}>Cowork
+                        <h2  className={'h-[43px]  w-[302px] text-center text-indigo-800 text-opacity-20 text-[25px] font-bold capitalize tracking-[9px] z-40 left-[-125px] top-[150px] -rotate-90  absolute'}>Cowork
                             Makeen</h2>
-                        <div
-                            className={'ml-[49px] w-[273px] h-[400px] pt-28 lg:pt-0 lg:h-[704px] justify-center flex flex-col bg-[#002256] relative lg:bottom-[15px] -bottom-[15px] rounded-t-full lg:rounded-t-none lg:rounded-b-full'}>
-                            <h2 className={'w-[197px] h-[78.68px] text-center text-[#FF792C] text-[22px] font-extrabold mb-[45px] mx-auto'}>مسیر
+                        <div data-aos={'fade-down'}
+                            className={'ml-[49px] w-[273px] h-[400px] pt-28 lg:pt-0 lg:h-[704px] justify-center flex flex-col bg-[#002256] relative bottom-[15px]  rounded-b-full lg:rounded-t-none lg:rounded-b-full'}>
+                            <h2 data-aos={'fade-down'} className={'w-[197px] h-[78.68px] text-center text-[#FF792C] text-[22px] font-bold mb-[45px] mx-auto'}>مسیر
                                 پیوستن به
                                 فضای کار اشتراکی</h2>
-                            <p className={'pb-56 mx-auto w-[244px] h-[50.73px] text-center text-white text-lg font-medium'}>شما میتونید
+                            <p data-aos={'fade-down'} className={'pb-56 mx-auto w-[244px] h-[50.73px] text-center text-white text-lg font-medium'}>شما میتونید
                                 با 4 قدم از فضای کوورک مکین لذت ببرید</p>
                         </div>
                     </div>
