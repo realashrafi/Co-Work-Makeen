@@ -1,10 +1,6 @@
-![فضای کار اشتراکی مکین - Google Chrome 2_16_2024 1_23_34 PM](https://github.com/realashrafi/Co-Work-Makeen/assets/141350745/27e6db13-abe4-49ba-907d-9d6577d9d96c)Sure, here's a README template for your project:
 
----
 
 # Co-Working Mkeen Space Seat Reservation System
-
-![فضای کار اشتراکی مکین - Google Chrome 2_16_2024 1_23_34 PM](https://github.com/realashrafi/Co-Work-Makeen/assets/141350745/7d0dc11d-6558-4ddf-b6dc-89088ed6a506)
 
 
 Welcome to the Co-Working Space Seat Reservation System project! This project aims to provide a platform for reserving seats in a shared workspace environment.
@@ -17,6 +13,10 @@ Welcome to the Co-Working Space Seat Reservation System project! This project ai
 - **Notifications:** Users receive notifications about their reservations, upcoming bookings, and seat availability changes.
 - **Admin Dashboard:** Admin dashboard for managing seats, users, reservations, and workspace settings.
 - **Integration with React & Next.js:** Utilizes the latest features and advancements in React and Next.js for a modern and efficient development experience.
+
+## Preview 
+
+![فضای کار اشتراکی مکین - Google Chrome 2_16_2024 1_23_34 PM](https://github.com/realashrafi/Co-Work-Makeen/assets/141350745/7d0dc11d-6558-4ddf-b6dc-89088ed6a506)
 
 ## Getting Started
 
