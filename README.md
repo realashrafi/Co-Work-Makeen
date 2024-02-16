@@ -1,9 +1,11 @@
 
 
-# Co-Working Mkeen Space Seat Reservation System
+# Co-Work Makeen: Co-Working Space Seat Reservation System
+
+![فضای کار اشتراکی مکین - Google Chrome 2_16_2024 1_23_34 PM](https://github.com/realashrafi/Co-Work-Makeen/assets/141350745/7d0dc11d-6558-4ddf-b6dc-89088ed6a506)
 
 
-Welcome to the Co-Working Space Seat Reservation System project! This project aims to provide a platform for reserving seats in a shared workspace environment.
+Welcome to the Co-Work Makeen project! This project aims to provide a platform for reserving seats in a shared workspace environment.
 
 ## Features
 
@@ -14,22 +16,18 @@ Welcome to the Co-Working Space Seat Reservation System project! This project ai
 - **Admin Dashboard:** Admin dashboard for managing seats, users, reservations, and workspace settings.
 - **Integration with React & Next.js:** Utilizes the latest features and advancements in React and Next.js for a modern and efficient development experience.
 
-## Preview 
-
-![فضای کار اشتراکی مکین - Google Chrome 2_16_2024 1_23_34 PM](https://github.com/realashrafi/Co-Work-Makeen/assets/141350745/7d0dc11d-6558-4ddf-b6dc-89088ed6a506)
-
 ## Getting Started
 
-To get started with the Co-Working Space Seat Reservation System project, follow these steps:
+To get started with the Co-Work Makeen project, follow these steps:
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/yourusername/coworking-space-reservation.git
+   git clone https://github.com/realashrafi/Co-Work-Makeen.git
    ```
 
 2. **Install Dependencies:**
    ```bash
-   cd coworking-space-reservation
+   cd Co-Work-Makeen
    npm install
    ```
 
@@ -43,8 +41,11 @@ To get started with the Co-Working Space Seat Reservation System project, follow
 
 ## Contributing
 
-Contributions to the Co-Working Space Seat Reservation System project are welcome! If you have any ideas, suggestions, or improvements, feel free to open an issue or submit a pull request.
+Contributions to the Co-Work Makeen project are welcome! If you have any ideas, suggestions, or improvements, feel free to open an issue or submit a pull request.
 
+## License
+
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
