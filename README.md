@@ -43,10 +43,4 @@ To get started with the Co-Work Makeen project, follow these steps:
 
 Contributions to the Co-Work Makeen project are welcome! If you have any ideas, suggestions, or improvements, feel free to open an issue or submit a pull request.
 
-## License
 
-This project is licensed under the [MIT License](LICENSE).
-
----
-
-Feel free to customize this template further to match the specific details and requirements of your project. If you have any questions or need further assistance, don't hesitate to ask!
