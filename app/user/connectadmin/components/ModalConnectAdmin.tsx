@@ -49,9 +49,9 @@ const ModalConnectAdmin = () => {
                       </Link>
                       <p className={'text-[#FFFEFF] ml-[165px] mt-[45px] text-[16px] text-center'}>ارتباط با پشتیبانی</p>
                   </div>
-                   <div className={'w-[100%] flex pt-[56px]'}>
-                        <textarea className={'lg:w-[70.67%] w-[90%] lg:h-[227px] h-[370px]  mx-auto bg-[#0A2E65] text-[#FFFEFF] text-[16px] rounded-[24px] p-[20px]'} dir='rtl' placeholder={'پیام خود را بنویسید...'}>
-
+                   <div className={'w-[100%] flex flex-col pt-[36px]'}>
+                       <input type="text" className={'lg:w-[70.67%] w-[90%]  h-[60px]  mx-auto bg-[#0A2E65] text-[#FFFEFF] text-[16px] rounded-[24px] p-[20px]'} dir='rtl' placeholder={'عنوان پیام خود را بنویسید...'}/>
+                        <textarea className={'lg:w-[70.67%] mt-3 w-[90%] lg:h-[227px] h-[370px]  mx-auto bg-[#0A2E65] text-[#FFFEFF] text-[16px] rounded-[24px] p-[20px]'} dir='rtl' placeholder={'متن پیام خود را بنویسید...'}>
                     </textarea>
                    </div>
                     <div className={'w-[100%] flex lg:-mt-0 -mt-8 lg:pt-[76px]'}>

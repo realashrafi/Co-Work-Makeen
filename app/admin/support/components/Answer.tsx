@@ -59,11 +59,13 @@ const Answer = () => {
                         پاسخ به کاربر
                     </div>
                 </div>
-                <div className={'flex '}>
+                <div className={'flex flex-col'}>
+                    <input type="text" dir={'rtl'} className={'mt-5 text-sky-950 text-sm font-normal p-4 w-[70%] mx-auto  h-[60px] bg-white rounded-3xl'}
+                           placeholder={'عنوان پیام خود را بنویسید...'}/>
                     <textarea
                         name="" id="" dir={'rtl'}
-                        className={'mt-[60px] text-sky-950 text-sm font-normal p-4 w-[70%] mx-auto  h-[214.35px] bg-white rounded-3xl'}
-                        placeholder={'پیام خود را بنویسید...'}
+                        className={'mt-5 text-sky-950 text-sm font-normal p-4 w-[70%] mx-auto  h-[214.35px] bg-white rounded-3xl'}
+                        placeholder={'متن پیام خود را بنویسید...'}
                     />
                 </div>
                 <div className={'flex w-[70%] flex-col items-end mx-auto mt-[25px]'}>
