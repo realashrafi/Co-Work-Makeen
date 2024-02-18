@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 }
 const News = () => {
     return (
-        <section className={'bg-[#002256]'}>
+        <section className={'bg-[#002256]'} >
             <Section1News/>
             <Section2News/>
             <Section3News/>
