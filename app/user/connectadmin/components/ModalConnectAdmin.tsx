@@ -4,13 +4,56 @@ import Link from "next/link";
 import ReactModal from "react-modal"
 import Image from "next/image";
 import gifIcon from "@/app/components/data/movedIcon.gif";
+import axios from "axios";
+import Swal from "sweetalert2";
 
-const ModalConnectAdmin = () => {
+const ModalConnectAdmin = ({refetch}:any) => {
     const [showModal, setShowModal] = useState(false)
-
+    const [title, setTitle] = useState('')
+    const [message, setMessage] = useState('')
+    const sendTicket = async () => {
+        const token=localStorage?.getItem('userToken')
+        try {
+            const res = await axios.post('https://www.cowork.v1r.ir/api/v1/tickets/user', {
+                title:title,
+                message:message
+            }, {
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                }
+            })
+            console.log(res)
+            Swal.fire({
+                title: "تیکت شما ارسال شد",
+                text: `در سریع ترین زمان ممکن پاسخ میدهیم`,
+                icon: "success",
+                background: '#002256',
+                color: '#EEEFEE',
+                confirmButtonColor: "#FF792C",
+                confirmButtonText: 'باشه',
+                backdrop: '#002256'
+            })
+            setMessage('')
+            setTitle('')
+            setShowModal(false)
+            refetch()
+        } catch (res:any) {
+            Swal.fire({
+                title: "خطایی رخ داده",
+                text: `${res.data.message}`,
+                icon: "warning",
+                background: '#002256',
+                color: '#EEEFEE',
+                confirmButtonColor: "#FF792C",
+                confirmButtonText: 'باشه',
+                backdrop: '#002256'
+            })
+        }
+    }
     return (
         <div className={'mr-[24px]'}>
-            <Link onClick={() => setShowModal(true)}  href={''}>
+            <Link onClick={() => setShowModal(true)} href={''}>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                      xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -28,7 +71,7 @@ const ModalConnectAdmin = () => {
                         right: 0,
                         bottom: 0,
                         backgroundColor: '#00000020',
-                        backdropFilter:'blur(5px)'
+                        backdropFilter: 'blur(5px)'
                     },
                     content: {
                         background: '#002256',
@@ -37,29 +80,44 @@ const ModalConnectAdmin = () => {
                         borderRadius: '24px',
                         outline: 'none',
                         padding: '0px',
-                        border:'none'
+                        border: 'none'
                     }
                 }}
                 isOpen={showModal} className={'w-[90%] mt-20 mx-auto lg:w-[40%] h-[609px]'}>
-                <Image src={gifIcon} alt={''} className={'absolute opacity-25 lg:opacity-60 lg:top-20 -top-[17%] scale-[90%] lg:-left-20 '}/>
+                <Image src={gifIcon} alt={''}
+                       className={'absolute opacity-25 lg:opacity-60 lg:top-20 -top-[17%] scale-[90%] lg:-left-20 '}/>
                 <div className={'w-[100%]  flex-col '}>
-                  <div className={'flex justify-between  border-[#0A2E65] mx-[24px] pb-[24px] border-b-[1px] '}>
-                      <Link className={'ml-[21px] mt-[45px]'} onClick={()=>setShowModal(false)} href={''}>
-                          x
-                      </Link>
-                      <p className={'text-[#FFFEFF] ml-[165px] mt-[45px] text-[16px] text-center'}>ارتباط با پشتیبانی</p>
-                  </div>
-                   <div className={'w-[100%] flex flex-col pt-[36px]'}>
-                       <input type="text" className={'lg:w-[70.67%] w-[90%]  h-[60px]  mx-auto bg-[#0A2E65] text-[#FFFEFF] text-[16px] rounded-[24px] p-[20px]'} dir='rtl' placeholder={'عنوان پیام خود را بنویسید...'}/>
-                        <textarea className={'lg:w-[70.67%] mt-3 w-[90%] lg:h-[227px] h-[370px]  mx-auto bg-[#0A2E65] text-[#FFFEFF] text-[16px] rounded-[24px] p-[20px]'} dir='rtl' placeholder={'متن پیام خود را بنویسید...'}>
-                    </textarea>
-                   </div>
-                    <div className={'w-[100%] flex lg:-mt-0 -mt-8 lg:pt-[76px]'}>
-                        <Link
-                            className={'w-[38%] mx-auto  h-[48px] text-[#FFFEFF] flex justify-center items-center bg-[#44C0ED] rounded-[24px]'}
-                            href={''}>
-                            ارسال
+                    <div className={'flex justify-between  border-[#0A2E65] mx-[24px] pb-[24px] border-b-[1px] '}>
+                        <Link className={'ml-[21px] font-bold text-white mt-[45px]'} onClick={() => setShowModal(false)}
+                              href={''}>
+                            X
                         </Link>
+                        <p className={'text-[#FFFEFF] ml-[165px] mt-[45px] text-[16px] text-center'}>ارتباط با
+                            پشتیبانی</p>
+                    </div>
+                    <div className={'w-[100%] flex flex-col pt-[36px]'}>
+                        <input
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            type="text"
+                            className={'outline-none lg:w-[70.67%] w-[90%]  h-[60px]  mx-auto bg-[#0A2E65] text-[#FFFEFF] text-[16px] rounded-[24px] p-[20px]'}
+                            dir='rtl'
+                            placeholder={'عنوان پیام خود را بنویسید...'}/>
+                        <textarea
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
+                            className={'outline-none lg:w-[70.67%] mt-3 w-[90%] lg:h-[227px] h-[370px]  mx-auto bg-[#0A2E65] text-[#FFFEFF] text-[16px] rounded-[24px] p-[20px]'}
+                            dir='rtl'
+                            placeholder={'متن پیام خود را بنویسید...'}>
+                    </textarea>
+                    </div>
+                    <div className={'w-[100%] flex lg:-mt-0 -mt-8 lg:pt-[76px]'}>
+                        <button
+                            onClick={sendTicket}
+                            disabled={title.length === 0 || message.length === 0}
+                            className={'w-[38%] mx-auto disabled:opacity-50 h-[48px] text-[#FFFEFF] flex justify-center items-center bg-[#44C0ED] rounded-[24px]'}>
+                            ارسال
+                        </button>
                     </div>
                 </div>
             </ReactModal>
