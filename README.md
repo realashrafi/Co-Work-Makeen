@@ -1,37 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+
+# Co-Work Makeen: Co-Working Space Seat Reservation System
+
+![فضای کار اشتراکی مکین - Google Chrome 2_16_2024 1_23_34 PM](https://github.com/realashrafi/Co-Work-Makeen/assets/141350745/7d0dc11d-6558-4ddf-b6dc-89088ed6a506)
+
+
+Welcome to the Co-Work Makeen project! This project aims to provide a platform for reserving seats in a shared workspace environment.
+
+## Features
+
+- **Real-Time Seat Availability:** Users can view real-time availability of seats and make reservations accordingly.
+- **User Authentication:** Secure user authentication system to ensure only authorized users can make reservations.
+- **Interactive Seat Map:** Interactive seat map displaying available and reserved seats for easy selection.
+- **Notifications:** Users receive notifications about their reservations, upcoming bookings, and seat availability changes.
+- **Admin Dashboard:** Admin dashboard for managing seats, users, reservations, and workspace settings.
+- **Integration with React & Next.js:** Utilizes the latest features and advancements in React and Next.js for a modern and efficient development experience.
 
 ## Getting Started
 
-First, run the development server:
+To get started with the Co-Work Makeen project, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/realashrafi/Co-Work-Makeen.git
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Install Dependencies:**
+   ```bash
+   cd Co-Work-Makeen
+   npm install
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. **Run the Development Server:**
+   ```bash
+   npm run dev
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+4. **Open in Your Browser:**
+   Visit `http://localhost:3000` in your web browser to access the application.
 
-## Learn More
+## Contributing
 
-To learn more about Next.js, take a look at the following resources:
+Contributions to the Co-Work Makeen project are welcome! If you have any ideas, suggestions, or improvements, feel free to open an issue or submit a pull request.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-"# Co-Work-Makeen" 
