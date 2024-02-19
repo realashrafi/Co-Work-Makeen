@@ -50,6 +50,6 @@ Provide instructions on how to use the application or any specific usage guideli
 
 ## Contact
 
-- **Author**: Ashrafi
-- **Email**: ashrafi@example.com
+- **Author**: Realashrafi
+- **Email**: Aliashrafi18116@gmail.com 
 - **LinkedIn**: [Ashrafi's LinkedIn Profile](https://www.linkedin.com/in/realashrafi/)
