@@ -55,9 +55,9 @@ const Notifications = () => {
         handleFetch()
     }, []);
     const router = useRouter()
-    const token = localStorage?.getItem('userToken');
 
     const handleFetch = async () => {
+        const token = localStorage?.getItem('userToken');
         try {
             const response = await axios.get('https://www.cowork.v1r.ir/api/v1/user/me', {
                 headers: {
@@ -89,6 +89,7 @@ const Notifications = () => {
     const {data: notifications, refetch} = useQuery({
         queryKey: ['notifications'],
         queryFn: async function () {
+            const token = localStorage?.getItem('userToken');
             const res = await axios.get('https://www.cowork.v1r.ir/api/v1/tickets/user/notice', {
                 headers: {
                     'Accept': 'application/json',
@@ -115,7 +116,7 @@ const Notifications = () => {
             return (
                 <div dir={'rtl'}
                      className={'w-[95%] flex pt-2 flex-wrap lg:justify-start justify-center mx-auto'}>
-                    {empty === 0 ? <div>
+                    {empty === 0 ? <div className={'flex flex-col mx-auto'}>
                             <p className={'text-[#FFFEFF] text-[16px] font-[400] text-center mt-[120px]'}>
                                 ! اعلان جدیدی جهت نمایش وجود ندارد
                             </p>
@@ -128,7 +129,7 @@ const Notifications = () => {
                             return (
                                 <Atropos key={item.id} className={'m-2'} highlight={false} shadow={false}>
                                     <div data-aos={'fade-up'} dir={'rtl'}
-                                         className={`flex ${item.is_read ? 'bg-[#CBE4FF]' : 'bg-[#FFE7DA]'} rounded-[12px] w-[258px] h-[196px] `}
+                                         className={`flex ${item.is_read ? 'bg-[#CBE4FF]' : 'bg-[#FFE7DA]'} rounded-[12px] w-[258px] h-[196px] overflow-auto`}
                                     >
                                         <div data-atropos-offset="2">
                                             <div

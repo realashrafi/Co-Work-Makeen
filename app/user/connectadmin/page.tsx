@@ -31,8 +31,9 @@ const ConnectAdmin = () => {
         handleFetch()
     }, []);
     const router = useRouter()
-    const token = localStorage?.getItem('userToken');
     const handleFetch = async () => {
+        const token = localStorage?.getItem('userToken');
+
         try {
             const response = await axios.get('https://www.cowork.v1r.ir/api/v1/user/me', {
                 headers: {
@@ -64,6 +65,7 @@ const ConnectAdmin = () => {
     const {data: sendedList,refetch} = useQuery({
         queryKey: ['userTokenSended'],
         queryFn: async function () {
+            const token = localStorage?.getItem('userToken');
             const res = await axios.get('https://www.cowork.v1r.ir/api/v1/tickets/user/ticket', {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -101,9 +103,9 @@ const ConnectAdmin = () => {
                                         {//@ts-ignore
                                             sendedList?.map((i)=>{
                                         return(
-                                        <Atropos key={i.id} className={'m-2 w-[]'} highlight={false} shadow={false}>
+                                        <Atropos key={i.id} className={'m-2 w-[] '} highlight={false} shadow={false}>
                                         <div data-aos={'fade-up'} dir={'rtl'}
-                                             className={`flex ${i.is_read ? 'bg-[#CBE4FF]' : 'bg-[#FFE7DA]'} rounded-[12px] w-[258px] h-[196px] `}
+                                             className={`flex ${i.is_read ? 'bg-[#CBE4FF]' : 'bg-[#FFE7DA]'} rounded-[12px] w-[258px] h-[196px] overflow-auto`}
                                         >
                                             <div data-atropos-offset="2">
                                                 <div

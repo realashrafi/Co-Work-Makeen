@@ -65,15 +65,6 @@ const UserInterface = () => {
     }, [data]);
 
     const handleFetch = () => {
-        // const token = localStorage?.getItem('userToken');
-        // try {
-        //     const response = await axios.get('https://www.cowork.v1r.ir/api/v1/user/me', {
-        //         headers: {
-        //             Authorization: `Bearer ${token}`,
-        //             Accept: 'application/json',
-        //         }
-        //     })
-        // //console.log(response.data)
         setUserID(data?.id)
         setGender(data?.gender)
         setPhone(data?.phone_number)
@@ -83,9 +74,6 @@ const UserInterface = () => {
         setEducation(data?.education)
         setEmail(data?.email)
         setNational_code(data?.national_code)
-        // } catch (e) {
-        //     //console.log(e)
-        // }
     }
     const handleupdate = async (e: any) => {
         const token = localStorage?.getItem('userToken');
@@ -100,9 +88,6 @@ const UserInterface = () => {
                 gender: gender,
                 national_code: national_code,
                 education: education,
-                // password: "12345678",
-                // password_confirmation: "12345678",
-                // current_password: "12345678"
             }, {
                 headers: {
                     Authorization: `Bearer ${token}`,

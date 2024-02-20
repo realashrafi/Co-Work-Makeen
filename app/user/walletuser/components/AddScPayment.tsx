@@ -6,9 +6,72 @@ import Link from "next/link";
 import LoginForBuy from "@/app/buy/components/LoginForBuy";
 import Image from "next/image";
 import gifIcon from "@/app/components/data/movedIcon.gif";
+import axios from "axios";
+import Compressor from "compressorjs";
+import Swal from "sweetalert2";
 
 const AddSub = () => {
     const [showModalSub, setShowModalSub] = useState(false)
+    const [selectedFile, setSelectedFile] = useState(null)
+    const [message, setMessage] = useState('')
+    const [loading, setLoading] = useState(false)
+    const fileChange = (e:any) => {
+      const file=e.target.files[0];
+      setSelectedFile(file)
+    }
+    const fileUpload =async (e:any) => {
+        setLoading(true)
+        if (selectedFile) {
+            try {
+                const token = localStorage?.getItem('userToken');
+                //console.log(token);
+
+                new Compressor(selectedFile, {
+                    quality: 0.5, // میزان کیفیت فایل خروجی
+                    success: async (compressedFile) => {
+                        const formData = new FormData();
+                        formData.append('picture', compressedFile);
+                        formData.append('title', 'ارسال فیش بانکی');
+                        formData.append('message', message);
+                        const response = await axios.post(
+                            'https://www.cowork.v1r.ir/api/v1/tickets/user',
+                            formData,
+                            {
+                                headers: {
+                                    Authorization: `Bearer ${token}`,
+                                    Accept: 'application/json',
+                                },
+                            }
+                        );
+
+                        window.location.reload();
+                        //console.log(response);
+
+                        if (response.status === 200) {
+                            Swal.fire({
+                                title: 'انجام شد',
+                                text: 'عکس شما اپلود شد',
+                                icon: 'success',
+                                background: 'transparent',
+                                color: '#EEEFEE',
+                                confirmButtonColor: '#FF792C',
+                                confirmButtonText: 'باشه',
+                                backdrop: 'rgba(0,0,0,0.78)'
+                            });
+                            setLoading(false)
+                        } else {
+                            console.error('خطا در آپلود');
+                        }
+                    },
+                    error: (err) => {
+                        console.error('خطا در فشرده‌سازی:', err.message);
+                    },
+                });
+            } catch (error) {
+                console.error('خطا در ارسال درخواست:', error);
+            }
+        }
+    }
     return (
         <div className={'my-2'} style={{zIndex: 2}}>
             <Link href={''} onClick={() => setShowModalSub(true)} style={{zIndex: 2}}>
@@ -59,34 +122,30 @@ const AddSub = () => {
                         </Link>
                         <p className={'text-[#FFFEFF] ml-[165px] mt-[45px] text-[16px] text-center'}>ارسال فیش واریزی</p>
                     </div>
-                    <div className={'w-[100%] flex pt-[56px]'}>
-                        <div
-                            className={'lg:w-[70.67%] w-[90%] lg:h-[227px] h-[370px] flex justify-center items-center mx-auto bg-[#0A2E65] text-[#FFFEFF] text-[16px] rounded-[24px] p-[20px]'}
-                            dir='rtl' placeholder={'پیام خود را بنویسید...'}>
-                            <div
-                                className="w-[102px] cursor-pointer flex justify-center items-center h-[102px] border-dashed border border-white">
-                                <input type="file" className={'bg-transparent w-[39px] h-[39px] rounded-full flex justify-center items-center'}>
-
-                                </input>
-                                {/*<div*/}
-                                {/*    className={'bg-white w-[39px] h-[39px] rounded-full flex justify-center items-center'}>*/}
-                                {/*    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"*/}
-                                {/*         xmlns="http://www.w3.org/2000/svg">*/}
-                                {/*        <path id="Vector"*/}
-                                {/*              d="M8.883 0.00699997L9 0C9.24493 3.23106e-05 9.48134 0.0899562 9.66437 0.252715C9.84741 0.415475 9.96434 0.639749 9.993 0.883L10 1V8H17C17.2449 8.00003 17.4813 8.08996 17.6644 8.25272C17.8474 8.41547 17.9643 8.63975 17.993 8.883L18 9C18 9.24493 17.91 9.48134 17.7473 9.66437C17.5845 9.84741 17.3603 9.96434 17.117 9.993L17 10H10V17C9.99997 17.2449 9.91004 17.4813 9.74728 17.6644C9.58453 17.8474 9.36025 17.9643 9.117 17.993L9 18C8.75507 18 8.51866 17.91 8.33563 17.7473C8.15259 17.5845 8.03566 17.3603 8.007 17.117L8 17V10H1C0.755067 9.99997 0.518663 9.91004 0.335628 9.74728C0.152593 9.58453 0.0356572 9.36025 0.00699997 9.117L0 9C3.23106e-05 8.75507 0.0899562 8.51866 0.252715 8.33563C0.415475 8.15259 0.639749 8.03566 0.883 8.007L1 8H8V1C8.00003 0.755067 8.08996 0.518663 8.25272 0.335628C8.41547 0.152593 8.63975 0.0356572 8.883 0.00699997Z"*/}
-                                {/*              fill="#002256"/>*/}
-                                {/*    </svg>*/}
-
-                                {/*</div>*/}
-                            </div>
-                        </div>
+                    <div className={'w-[100%] flex flex-col '}>
+                        <input
+                            value={'ارسال فیش بانکی'}
+                            type="text" dir={'rtl'}
+                            className={'mt-5 text-white text-sm font-normal p-4 w-[70%] mx-auto  h-[60px] bg-[#0A2E65] rounded-3xl'}
+                            />
+                        <input onChange={fileChange}
+                            type="file" dir={'rtl'}
+                            className={'mt-5 file:bg-[#0A2E70] file:rounded-xl file:border-none text-white text-sm font-normal p-4 w-[70%] mx-auto  h-[60px] bg-[#0A2E65] rounded-3xl'}
+                            />
+                        <textarea onChange={(e)=>setMessage(e.target.value)}
+                            name="" id="" dir={'rtl'} value={message}
+                            className={'mt-5 text-white text-sm font-normal p-4 w-[70%] mx-auto  h-[214.35px] bg-[#0A2E65] rounded-3xl'}
+                            placeholder={'متن پیام خود را بنویسید...'}
+                        />
                     </div>
-                    <div className={'w-[100%] flex lg:-mt-0 -mt-8 lg:pt-[76px]'}>
-                        <Link
-                            className={'w-[38%] mx-auto  h-[48px] text-[#FFFEFF] flex justify-center items-center bg-[#44C0ED] rounded-[24px]'}
-                            href={''}>
-                            ارسال
-                        </Link>
+                    <div className={'w-[100%] justify-center flex lg:-mt-0 -mt-8 lg:pt-[35px]'}>
+                        <button onClick={fileUpload} className={'w-48 h-10 bg-blue-400 rounded-2xl text-white'}>{loading ?
+                            <div
+                                className="animate-spin ease-linear rounded-full w-4 h-4 border-t-2 border-b-2 border-[#44C0ED]">
+
+                            </div>
+                            : "ارسال"}
+                        </button>
                     </div>
                 </div>
             </ReactModal>
