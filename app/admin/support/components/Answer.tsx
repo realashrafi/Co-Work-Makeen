@@ -5,7 +5,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import LoadingMinimal from "@/app/components/LoadingMinimal";
 
-const Answer = ({id,setLoading,loading}: any) => {
+const Answer = ({id,setLoading,loading,refetch}: any) => {
     const [showModal, setShowModal] = useState(false)
     const [message, setMessage] = useState('')
     const [title, setTitle] = useState('')
@@ -13,6 +13,7 @@ const Answer = ({id,setLoading,loading}: any) => {
     const [to_email, setTo_email] = useState(false)
     const replayTicket = async () => {
         setLoading(true)
+        refetch()
         try {
             const token = localStorage?.getItem('adminToken');
             const res = await axios.post(`https://www.cowork.v1r.ir/api/v1/tickets/admin/${id}/reply`, {

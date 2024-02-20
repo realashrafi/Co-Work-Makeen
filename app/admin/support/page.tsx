@@ -14,23 +14,38 @@ import Swal from "sweetalert2";
 import LoadingAdmin from "@/app/components/LoadingAdmin";
 import LoadingMinimal from "@/app/components/LoadingMinimal";
 import {BiDownload} from "react-icons/bi";
+import {useQuery} from "react-query";
 
 const Support = () => {
     const [protect, setProtect] = useState(false)
     const [data, setData] = useState<any>([])
     const [links, setLinks] = useState<any>()
-    const [url, setUrl] = useState('https://www.cowork.v1r.ir/api/v1/tickets/admin')
+    const [url, setUrl] = useState('https://www.cowork.v1r.ir/api/v1/tickets/admin?page=1')
     const [loadingDeleteTicket, setLoadingDeleteTicket] = useState(false)
     const [loading, setLoading] = useState(false)
     const [reRender, setRerender] = useState(false)
     useEffect(() => {
         handleProtect()
     }, []);
-    useEffect(() => {
-        getData()
-    }, [loadingDeleteTicket, loading, url]);
+    // useEffect(() => {
+    //     getData()
+    // }, [loadingDeleteTicket, loading, url]);
     const router = useRouter()
-
+    const {data: suport,refetch} = useQuery({
+        queryKey: ['suportAdmin'],
+        queryFn: async function () {
+            const token = localStorage?.getItem('adminToken');
+            const response = await axios.get(url, {
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            setRerender(false)
+            return response.data
+        }
+    })
+    console.log('suport',suport)
     const handleProtect = async () => {
         try {
             const token = localStorage?.getItem('adminToken');
@@ -61,27 +76,28 @@ const Support = () => {
             router.push('/')
         }
     }
-    const getData = async () => {
-        try {
-            const token = localStorage?.getItem('adminToken');
-            const response = await axios.get(url, {
-                headers: {
-                    'Accept': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                }
-            })
-            if (response.status === 200) {
-                setData(response.data)
-                setLinks(response.data.meta.links)
-                setRerender(false)
-            }
-            console.log(response)
-        } catch (e) {
-            setRerender(false)
-            console.log(e)
-        }
-    }
+    // const getData = async () => {
+    //     try {
+    //         const token = localStorage?.getItem('adminToken');
+    //         const response = await axios.get(url, {
+    //             headers: {
+    //                 'Accept': 'application/json',
+    //                 'Authorization': `Bearer ${token}`
+    //             }
+    //         })
+    //         if (response.status === 200) {
+    //             setData(response.data)
+    //             setLinks(response.data.meta.links)
+    //             setRerender(false)
+    //         }
+    //         console.log(response)
+    //     } catch (e) {
+    //         setRerender(false)
+    //         console.log(e)
+    //     }
+    // }
     const deleteTicket = async (props: number) => {
+        refetch()
         setLoadingDeleteTicket(true)
         try {
             const token = localStorage?.getItem('adminToken');
@@ -203,10 +219,22 @@ const Support = () => {
                                         </select>
                                     </div>
                                 </div>
-                                <div className={'flex  w-[828px] mx-auto justify-center  mt-[50px] flex-wrap'}>
+                                <div className={' flex justify-center items-center mt-3'}>
+                                    {//@ts-ignore
+                                        suport?.meta.links.slice(1, suport?.meta.links.length - 1).map(i => (
+                                            <div key={i.label} onClick={() => {
+                                                setUrl(i.url)
+                                                refetch()
+                                                setRerender(true)
+                                            }}
+                                                 className={'cursor-pointer text-orange-500 w-4  mx-2  rounded-full flex justify-center  items-center'}>
+                                                {i.label}</div>
+                                        ))}
+                                </div>
+                                <div className={'flex  w-[828px] mx-auto justify-center  mt-[20px] flex-wrap'}>
                                     {reRender ? <LoadingMinimal/> :
                                         //@ts-ignore
-                                        data.data?.map(item => (
+                                        suport?.data.map(item => (
                                             <div
                                                 className={'m-[25px] w-[344px] pb-2 flex flex-col h-[321px] rounded-[10px] bg-slate-50 border border-sky-950 border-opacity-5'}
                                                 key={item.id}>
@@ -225,9 +253,9 @@ const Support = () => {
                                                     className={'w-[85%] h-[150px]  mt-[25px] mx-auto text-justify text-black text-sm font-normal overflow-auto'}
                                                     dir={'rtl'}>
                                                     {item.media_link !== null ? 'فاکتور ارسال شده' :
-                                                        <span>{item.title}</span>}  {item.message}
-                                                        </div>
-                                                        <div className={'flex items-center ml-[15px] mt-[10px]'}>
+                                                        <span>{item.title}</span>} {item.message}
+                                                </div>
+                                                <div className={'flex items-center ml-[15px] mt-[10px]'}>
                                                     <button className={'flex items-center '} dir={'rtl'}
                                                             onClick={() => deleteTicket(item.id)}>
                                                         <p className={'ml-[5px] text-justify text-red-500 text-sm font-normal'}>{loadingDeleteTicket ? '...' : 'حذف'}</p>
@@ -246,7 +274,7 @@ const Support = () => {
                                                             </defs>
                                                         </svg>
                                                     </button>
-                                                    <Answer id={item.id} loading={loading} setLoading={setLoading}/>
+                                                    <Answer id={item.id} loading={loading} refetch={refetch} setLoading={setLoading}/>
                                                     <div
                                                         onClick={() => {
                                                             window.location.assign(item.media_link)
@@ -258,17 +286,6 @@ const Support = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                        ))}
-                                </div>
-                                <div className={' flex justify-center items-center'}>
-                                    {//@ts-ignore
-                                        links?.slice(1, links.length - 1).map(i => (
-                                            <div key={i.label} onClick={() => {
-                                                setUrl(i.url)
-                                                setRerender(true)
-                                            }}
-                                                 className={'cursor-pointer text-orange-500 w-4  mx-2  rounded-full flex justify-center  items-center'}>
-                                                {i.label}</div>
                                         ))}
                                 </div>
                             </div>

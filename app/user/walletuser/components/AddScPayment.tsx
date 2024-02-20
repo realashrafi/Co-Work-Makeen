@@ -30,7 +30,7 @@ const AddSub = () => {
                     quality: 0.5, // میزان کیفیت فایل خروجی
                     success: async (compressedFile) => {
                         const formData = new FormData();
-                        formData.append('picture', compressedFile);
+                        formData.append('image', compressedFile);
                         formData.append('title', 'ارسال فیش بانکی');
                         formData.append('message', message);
                         const response = await axios.post(
@@ -45,7 +45,7 @@ const AddSub = () => {
                         );
 
                         window.location.reload();
-                        //console.log(response);
+                        // console.log(response);
 
                         if (response.status === 200) {
                             Swal.fire({
