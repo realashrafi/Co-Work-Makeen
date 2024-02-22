@@ -138,7 +138,7 @@ const AddSub = () => {
                             placeholder={'متن پیام خود را بنویسید...'}
                         />
                     </div>
-                    <div className={'w-[100%] justify-center flex lg:-mt-0 -mt-8 lg:pt-[35px]'}>
+                    <div className={'w-[100%] justify-center flex lg:-mt-0 -mt-8 lg:pt-[35px] z-50'}>
                         <button onClick={fileUpload} className={'w-48 h-10 bg-blue-400 rounded-2xl text-white'}>{loading ?
                             <div
                                 className="animate-spin ease-linear rounded-full w-4 h-4 border-t-2 border-b-2 border-[#44C0ED]">

@@ -111,7 +111,7 @@ const ModalConnectAdmin = ({refetch}:any) => {
                             placeholder={'متن پیام خود را بنویسید...'}>
                     </textarea>
                     </div>
-                    <div className={'w-[100%] flex lg:-mt-0 -mt-8 lg:pt-[76px]'}>
+                    <div className={'w-[100%] flex lg:-mt-0 -mt-8 lg:pt-[76px] z-50'}>
                         <button
                             onClick={sendTicket}
                             disabled={title.length === 0 || message.length === 0}
