@@ -39,7 +39,7 @@ const RegisterModalStep1 = ({statusLogin, statusRegister}: any) => {
                          xmlns="http://www.w3.org/2000/svg">
                         <path id="Line 202" d="M1.25 0.99707L1.25 21.0033" stroke="#FF792C" strokeLinecap="round"/>
                     </svg>
-                    <div style={{}}
+                    <div
                          className="text-white text-sm font-normal ml-[1%] -mt-[3px] group-hover:text-orange-500">ورود
                     </div>
                 </div>

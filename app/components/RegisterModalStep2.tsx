@@ -8,7 +8,6 @@ import axios from "axios";
 import {redirect, useRouter} from 'next/navigation'
 import Swal from "sweetalert2";
 
-
 const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any) => {
     const [showModal, setShowModal] = useState(false)
     const [showModalStep, setShowModalStep] = useState(false)
@@ -25,7 +24,6 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
     const [loadingStep1, setLoadingStep1] = useState<any>(false)
     const [loadingStep2Login, setLoadingStep2Login] = useState<any>(false)
     const [loadingStep2Register, setLoadingStep2Register] = useState<any>(false)
-
     const router = useRouter()
     const finalCheck = () => {
         if (number.length > 10) {
@@ -69,6 +67,7 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
             if (response?.status == 200) {
                 //@ts-ignore
                 // localStorage.setItem('loginStatus', 200)
+                // const sound = new Howl({})
                 Swal.fire({
                     title: `${response.data.user.first_name} عزیز وارد شدید `,
                     text: "میتوانید از قسمت ورود به حساب کاربری خود وارد شوید",
@@ -148,12 +147,10 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
     }
     return (
         <div>
-            <div className={'flex justify-center  mt-[48px]'} onClick={handleSubmit}>
+            <div className={'flex justify-center mt-[48px]'} onClick={handleSubmit}>
                 <button disabled={number.length > 10 ? lastChecked : !lastChecked}
                         className={'w-[79%] disabled:opacity-50 h-10 bg-sky-400 rounded-xl flex items-center justify-center text-white text-base font-bold'}>{loadingStep1 ?
-                    <div
-                        className="animate-spin ease-linear rounded-full w-4 h-4 border-t-2 border-b-2 border-orange-500">
-
+                    <div className="animate-spin ease-linear rounded-full w-4 h-4 border-t-2 border-b-2 border-orange-500">
                     </div> : 'ادامه'}
                 </button>
             </div>
