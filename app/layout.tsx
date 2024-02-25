@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     description: 'فضای کار اشتراکی مکین',
     manifest:"/manifest.webmanifest"
 }
+
 // export const metadata: Metadata = {
 //     manifest: "/manifest.json", // we are accessing our manifest file here
 //     title: "فضای کار اشتراکی مکین",
