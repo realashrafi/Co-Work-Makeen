@@ -7,25 +7,26 @@ import shahin from '../components/data/shahin-mlki.png'
 import {buildStyles, CircularProgressbar} from "react-circular-progressbar";
 import Link from "next/link";
 import axios from "axios";
+import {useQuery} from "react-query";
 
-const userNotifications = [
-    {
-        id: 1,
-        image: ali_rahmani,
-        name: 'علی رحمانی',
-        count: 1
-    }, {
-        id: 2,
-        image: maryam,
-        name: 'مریم اکبری',
-        count: 2
-    }, {
-        id: 3,
-        image: shahin,
-        name: 'شاهین ملکی',
-        count: 1
-    }
-]
+// const userNotifications = [
+//     {
+//         id: 1,
+//         image: ali_rahmani,
+//         name: 'علی رحمانی',
+//         count: 1
+//     }, {
+//         id: 2,
+//         image: maryam,
+//         name: 'مریم اکبری',
+//         count: 2
+//     }, {
+//         id: 3,
+//         image: shahin,
+//         name: 'شاهین ملکی',
+//         count: 1
+//     }
+// ]
 const Section2HomeAdmin = () => {
     const [today, setToday] = useState<any>()
     useEffect(() => {
@@ -48,7 +49,21 @@ const Section2HomeAdmin = () => {
             //console.log(e)
         }
     }
-    const pers=today?.filedPercentage
+    const pers = today?.filedPercentage
+    const {data: userNotifications} = useQuery({
+        queryKey: ['userNotifications'],
+        queryFn: async function () {
+            const token = localStorage?.getItem('adminToken')
+            const response = await axios.get('https://www.cowork.v1r.ir/api/v1/tickets/admin/latest-tickets', {
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            return response
+        }
+    })
+    console.log(userNotifications)
     return (
         <div className={' w-[96%] flex justify-between mt-[59px] mx-auto'}>
             <div
@@ -82,7 +97,8 @@ const Section2HomeAdmin = () => {
             <div
                 className="flex flex-col  w-[36.57%] h-[240px] bg-white rounded-xl border border-sky-950 border-opacity-10 backdrop-blur-[71.48px] ">
                 <div className={'flex justify-between  mt-[16px] items-center '}>
-                    <Link href={'/admin/support'} className={'text-sky-600 text-[10px] ml-[18px] font-normal'}>مشاهده همه</Link>
+                    <Link href={'/admin/support'} className={'text-sky-600 text-[10px] ml-[18px] font-normal'}>مشاهده
+                        همه</Link>
                     <div className={'flex justify-end items-center mr-[18px]'}>
                         <p className={'text-zinc-900 text-xs font-medium mr-[8px]'}>پیام های ارتباط با پشتیبانی</p>
                         <div
@@ -105,18 +121,21 @@ const Section2HomeAdmin = () => {
                     </div>
                 </div>
                 <div className={'flex flex-col mt-[11px] items-center'}>
-                    {userNotifications.map(item => (
-                        <div
-                            className={'w-[88.2%] h-12 mb-[12px] bg-neutral-100 rounded-[5px] justify-between px-[24px] flex items-center'}
-                            key={item.id}>
+                    {//@ts-ignore
+                        userNotifications?.data.map(item => (
                             <div
-                                className={'w-[15px] h-[15px] bg-orange-500 rounded-full text-white text-sm font-bold flex items-center justify-center'}>{item.count}</div>
-                            <div className={'flex items-center'}>
-                                <h1 className={'text-zinc-800 text-sm font-normal mr-[12px]'}>{item.name}</h1>
-                                <Image src={item.image} alt={''}/>
+                                className={'w-[88.2%] h-12 mb-[12px] bg-neutral-100 rounded-[5px] justify-between px-[24px] flex items-center'}
+                                key={item.id}>
+                                <div
+                                    className={'w-[15px] h-[15px] bg-orange-500 rounded-full text-white text-sm font-bold flex items-center justify-center'}>{item.unread_tickets}</div>
+                                <div className={'flex items-center'}>
+                                    <h1 className={'text-zinc-800 text-sm font-normal mr-[12px]'}>{item.name}</h1>
+                                    <img className={'w-[36px] h-[36px] rounded-full'}
+                                         src={item.profile_picture === null ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Windows_10_Default_Profile_Picture.svg/768px-Windows_10_Default_Profile_Picture.svg.png' : item.profile_picture}
+                                         alt={'پروفایل کاربر'}/>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
                 </div>
             </div>
             <div
@@ -149,7 +168,8 @@ const Section2HomeAdmin = () => {
                                 className="text-center text-neutral-700 text-[10px] font-normal ">ظرفیت
                                 صندلی پر شده
                             </div>
-                            <div className=" text-neutral-700 text-[10px] font-normal text-right" dir={'rtl'}>{today?.reservedChairs} صندلی
+                            <div className=" text-neutral-700 text-[10px] font-normal text-right"
+                                 dir={'rtl'}>{today?.reservedChairs} صندلی
                             </div>
                         </div>
                         <div
@@ -158,7 +178,8 @@ const Section2HomeAdmin = () => {
                                 className="text-center text-neutral-700 text-[10px] font-normal ">ظرفیت
                                 صندلی خالی
                             </div>
-                            <div className=" text-neutral-700 text-[10px] font-normal text-right" dir={'rtl'}>{today?.remainingChairs} صندلی
+                            <div className=" text-neutral-700 text-[10px] font-normal text-right"
+                                 dir={'rtl'}>{today?.remainingChairs} صندلی
                             </div>
                         </div>
                     </div>

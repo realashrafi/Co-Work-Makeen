@@ -78,26 +78,6 @@ const Support = () => {
             router.push('/')
         }
     }
-    // const getData = async () => {
-    //     try {
-    //         const token = localStorage?.getItem('adminToken');
-    //         const response = await axios.get(url, {
-    //             headers: {
-    //                 'Accept': 'application/json',
-    //                 'Authorization': `Bearer ${token}`
-    //             }
-    //         })
-    //         if (response.status === 200) {
-    //             setData(response.data)
-    //             setLinks(response.data.meta.links)
-    //             setRerender(false)
-    //         }
-    //         console.log(response)
-    //     } catch (e) {
-    //         setRerender(false)
-    //         console.log(e)
-    //     }
-    // }
     const deleteTicket = async (props: number) => {
         setLoadingDeleteTicket(true)
         try {
