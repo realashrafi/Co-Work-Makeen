@@ -11,7 +11,7 @@ const AddSub = ({status}:any) => {
     return (
         <div>
             <div onClick={()=>setShowModalSub(true)}
-                className={`w-[96px] cursor-pointer h-[40px] ${status?'bg-[#007AFF]':'bg-[#FF792C]'} rounded-[10px] text-[#FFFEFF] text-[12px] flex justify-center items-center mt-[15px]`}>
+                className={`w-[96px] cursor-pointer h-[40px] ${status==='1'?'bg-[#007AFF]':'bg-[#FF792C]'} rounded-[10px] text-[#FFFEFF] text-[12px] flex justify-center items-center mt-[15px]`}>
                 خرید اشتراک
             </div>
             <ReactModal
