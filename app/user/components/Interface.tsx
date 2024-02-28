@@ -12,7 +12,13 @@ import Swal from "sweetalert2";
 import UploadImage from "@/app/user/components/UploadImage";
 import useMe from "@/app/store/react-query/useMe";
 import LoadingSmall from "@/app/components/LoadingSmall";
-
+import DatePicker, {DateObject} from "react-multi-date-picker";
+import persian from "react-date-object/calendars/persian";
+import persian_fa from "react-date-object/locales/persian_fa";
+//@ts-ignore
+import transition from "react-element-popper/animations/transition"
+import gregorian from "react-date-object/calendars/gregorian";
+import gregorian_en from "react-date-object/locales/gregorian_en";
 
 const dataOfFav = [
     {
@@ -55,6 +61,8 @@ const UserInterface = () => {
     const [education, setEducation] = useState<any>(data?.education)
     const [userID, setUserID] = useState<any>(data?.id)
     const [loading, setLoading] = useState<any>(false)
+    const [state, setState] = useState({ format: "MM-DD-YYYY" })
+
     useEffect(() => {
         AOS.init({
             duration: 800,
@@ -68,7 +76,7 @@ const UserInterface = () => {
         setUserID(data?.id)
         setGender(data?.gender)
         setPhone(data?.phone_number)
-        setDob(data?.j_dob)
+        setDob(data?.dob.slice(0,10))
         setFirst_name(data?.first_name)
         setLast_name(data?.last_name)
         setEducation(data?.education)
@@ -94,6 +102,7 @@ const UserInterface = () => {
                     Accept: 'application/json',
                 }
             })
+            console.log(response)
             if (response.status == 200) {
                 setLoading(false)
                 Swal.fire({
@@ -119,10 +128,23 @@ const UserInterface = () => {
                 confirmButtonText: 'باشه',
                 backdrop: 'rgba(0,0,0,0.78)'
             })
-            //console.log(e)
+            console.log(e)
         }
     }
-    //console.log('interface', data)
+    //@ts-ignore
+    const convert = (date, format = state.format="YYYY-MM-DD"):any => {
+        let object = { date, format }
+        setState({
+            //@ts-ignore
+            gregorian: new DateObject(object).convert(gregorian, gregorian_en).format("YYYY-MM-DD"),
+            persian: new DateObject(object).format(),
+            ...object
+        })
+        //@ts-ignore
+        setDob(state.gregorian)
+    }
+    console.log('dob',dob)
+    // console.log('interface', data)
     return (
         <div className={'bg-[#0A2E65] w-[100%] lg:h-[2040px]'}>
             <UserNavbar data={data}/>
@@ -147,9 +169,25 @@ const UserInterface = () => {
                             <div className={'ml-[1.3%] mr-[2.16%] w-[80%]  lg:w-[22.7%]'}>
                                 <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
                                    style={{direction: "rtl"}}>تاریخ تولد</p>
-                                <input value={dob} onChange={(e) => setDob(e.target.value)}
-                                       className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] '}
-                                       placeholder={'تاریخ تولد'}/>
+                                <DatePicker
+                                    animations={[
+                                        transition({
+                                            from: 35,
+                                            transition: "all 400ms cubic-bezier(0.335, 0.010, 0.030, 1.360)",
+                                        }),
+                                    ]}
+                                    //@ts-ignore
+                                    value={state.date}
+                                    //@ts-ignore
+                                    onChange={convert}
+                                    inputClass="w-[300px] lg:w-[220px] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] "
+                                    calendar={persian}
+                                    locale={persian_fa}
+                                    calendarPosition="bottom-center"
+                                />
+                                {/*<input value={dob} onChange={(e) => setDob(e.target.value)}*/}
+                                {/*       className={'w-[100%] h-[40px] bg-[#0A2E65] rounded-[12px] text-center font-[400] text-[#FFFFFF] text-[14px] '}*/}
+                                {/*       placeholder={'تاریخ تولد'}/>*/}
                             </div>
                             <div className={' mr-[2.16%] w-[80%] lg:w-[22.7%]'}>
                                 <p className={'font-[400] my-[10px] text-[#FFFFFF] text-[14px] mr-[10px]'}
