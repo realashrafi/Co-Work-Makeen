@@ -5,6 +5,7 @@ import logoMakeen from "@/app/user/components/data/logo-makeen.png";
 import Image from "next/image";
 import RegisterModalStep2 from "@/app/components/RegisterModalStep2";
 import gifIcon from "@/app/components/data/movedIcon.gif";
+import axios from "axios";
 
 const RegisterModalStep1 = ({statusLogin, statusRegister}: any) => {
     const [showModal, setShowModal] = useState(false)
@@ -40,7 +41,7 @@ const RegisterModalStep1 = ({statusLogin, statusRegister}: any) => {
                         <path id="Line 202" d="M1.25 0.99707L1.25 21.0033" stroke="#FF792C" strokeLinecap="round"/>
                     </svg>
                     <div
-                         className="text-white text-sm font-normal ml-[1%] -mt-[3px] group-hover:text-orange-500">ورود
+                        className="text-white text-sm font-normal ml-[1%] -mt-[3px] group-hover:text-orange-500">ورود
                     </div>
                 </div>
             </div>

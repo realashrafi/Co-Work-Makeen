@@ -1,5 +1,5 @@
 'use client'
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import ReactModal from "react-modal";
 import logoMakeen from "@/app/user/components/data/logo-makeen.png";
 import Image from "next/image";
@@ -8,7 +8,7 @@ import axios from "axios";
 import {redirect, useRouter} from 'next/navigation'
 import Swal from "sweetalert2";
 
-const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any) => {
+const RegisterModalStep2 = ({checked, number, statusLogin}: any) => {
     const [showModal, setShowModal] = useState(false)
     const [showModalStep, setShowModalStep] = useState(false)
     const [userExist, setUserExist] = useState()
@@ -25,11 +25,7 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
     const [loadingStep2Login, setLoadingStep2Login] = useState<any>(false)
     const [loadingStep2Register, setLoadingStep2Register] = useState<any>(false)
     const router = useRouter()
-    const finalCheck = () => {
-        if (number.length > 10) {
-            !lastChecked
-        } else lastChecked
-    }
+
     const handleInput = (e: any) => {
         const inputValue: any = e.target.value
         const numericValue =
@@ -149,8 +145,9 @@ const RegisterModalStep2 = ({checked, number, statusLogin, statusRegister}: any)
         <div>
             <div className={'flex justify-center mt-[48px]'} onClick={handleSubmit}>
                 <button disabled={number.length > 10 ? lastChecked : !lastChecked}
-                        className={'w-[79%] disabled:opacity-50 h-10 bg-sky-400 rounded-xl flex items-center justify-center text-white text-base font-bold'}>{loadingStep1 ?
-                    <div className="animate-spin ease-linear rounded-full w-4 h-4 border-t-2 border-b-2 border-orange-500">
+                        className={'w-[81%] disabled:opacity-50 h-10 bg-sky-400 rounded-xl flex items-center justify-center text-white text-base font-bold'}>{loadingStep1 ?
+                    <div
+                        className="animate-spin ease-linear rounded-full w-4 h-4 border-t-2 border-b-2 border-orange-500">
                     </div> : 'ادامه'}
                 </button>
             </div>
